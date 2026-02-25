@@ -1,0 +1,76 @@
+---
+title: "Personalization"
+description: "Shape how Earmark's AI understands you and your team"
+keywords: ["AI personalization", "role context", "company vision", "artifact customization"]
+---
+
+## What it does
+
+Personalization lets you give Earmark context about who you are and what your team cares about. This context shapes every artifact Earmark generates, from tone and terminology to what gets prioritized in summaries.
+
+## Why it matters
+
+Generic AI outputs waste time. When Earmark knows your role, your focus areas, and your company's mission, artifacts come out tailored, relevant, and ready to share without heavy editing.
+
+## Your personalization settings
+
+Open **Settings > Personalization** to configure:
+
+<Note>
+**Screenshot needed:** **Settings > Personalization** showing the Role field, About you (bio) textarea, and tone settings. Save as `/images/personalization-settings.png`.
+</Note>
+
+### Role
+
+A short label for what you do (for example, "Senior Product Manager" or "Engineering Lead"). This shapes the tone and terminology Earmark uses in your artifacts.
+
+<Tip>
+Keep your role concise and recognizable. It directly influences how AI frames decisions and recommendations in your outputs.
+</Tip>
+
+### About you (bio)
+
+A longer description (up to 5,000 characters) where you can share:
+
+- Your focus areas and current priorities
+- Communication style preferences
+- Goals for the quarter or project
+- Writing style notes (formal vs. casual, technical depth, etc.)
+
+The more context you provide, the more relevant your artifacts become. This is especially useful for recurring meetings where Earmark can consistently align outputs with your perspective.
+
+## Workspace-level context
+
+### Company vision
+
+Workspace admins can set a **company vision** in **Settings > Workspace**: a short description (up to 500 characters) of your mission, values, or strategic priorities.
+
+<Note>
+**Screenshot needed:** **Settings > Workspace** showing the company vision textarea (admin view). Save as `/images/company-vision.png`.
+</Note>
+
+The company vision is used across all artifact generation for everyone in the workspace. It helps Earmark:
+
+- Frame recommendations in terms of your team's goals
+- Prioritize discussion points that align with company direction
+- Use the Vision Alignment Analysis template to evaluate decisions against your mission
+
+<Info>
+Both personal context (role + bio) and workspace context (company vision) are combined when generating artifacts. Personal context shapes individual outputs; company vision shapes team-wide alignment.
+</Info>
+
+## How personalization flows into artifacts
+
+```text
+Your role + bio ──┐
+                   ├── AI artifact generation ──> Tailored output
+Company vision ───┘
+```
+
+Every template and freeform prompt benefits from this context. You don't need to repeat your role or priorities in every prompt; Earmark already knows.
+
+## Tips
+
+- Update your bio when your focus areas shift (new quarter, new project, new team)
+- Set the company vision early; it improves every artifact for every team member
+- Use role-specific language so the AI matches your communication style

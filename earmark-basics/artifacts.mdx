@@ -1,0 +1,99 @@
+---
+title: "AI artifacts"
+sidebarTitle: "Tasks and artifacts"
+description: "Turn meetings into structured outputs your team can act on"
+keywords: ["AI artifacts", "meeting summaries", "action items", "PRD generation", "meeting deliverables"]
+---
+
+## Not notes. Real work.
+
+Artifacts are not meeting summaries. They're structured, shippable deliverables: PRDs, Linear/Jira tickets, decision logs, exec updates, engineering specs, and follow-ups, generated directly from the live conversation.
+
+## Tasks create artifacts
+
+You start by **adding a task**, which is a prompt that tells Earmark what you need. Earmark processes the task against your transcript and produces an **artifact**: the structured output that appears in the editor. One meeting can have multiple tasks, each generating its own artifact.
+
+Think of it this way:
+- **Task** = what you ask for ("Summarize decisions and next steps")
+- **Artifact** = what Earmark creates (the formatted document with owners, dates, and action items)
+
+You can write a task from scratch or pick one from the [template library](/earmark-basics/templates). Templates are pre-built tasks designed for common workflows, so you get a polished artifact without writing the prompt yourself.
+
+<Frame caption="Add a task and watch Earmark generate a structured artifact">
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    src="https://bwopjpjsyqjaz3ty.public.blob.vercel-storage.com/discovery-checklist/add-your-first-task-P9NE1vGhZsGE63wLmZfY0VGKvPJRHs.mp4"
+    style={{ borderRadius: '0.75rem', width: '100%' }}
+  />
+</Frame>
+
+## Why it matters
+
+Meeting value is realized after the call. Artifacts shorten the path from conversation to execution: turn talk into done. Produces clean, structured deliverables with owners and dates, so there's no "second shift" of docs and follow-ups.
+
+## How it works
+
+<Steps>
+<Step title="Open a meeting in Earmark">
+Start or join a meeting so Earmark is capturing the conversation.
+</Step>
+<Step title="Add a task">
+Write a prompt describing what you need, or pick a template from the library. You can also type `/` in the prompt bar for quick access to templates.
+</Step>
+<Step title="Earmark creates the artifact">
+Earmark processes your task against the transcript and generates a structured document.
+</Step>
+<Step title="Review and share">
+Check the artifact, then share it with your team. Artifacts are visible to everyone in the workspace with access to the meeting.
+</Step>
+</Steps>
+
+## Live updates
+
+When a meeting is actively being recorded, artifacts regenerate automatically to stay current with the conversation. Task agents build summaries, follow-ups, and deliverables while you're still talking. Click **Sync live** on any task to see it update every 45 seconds.
+
+<Frame caption="Watch tasks update in real time as the conversation progresses">
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    src="https://bwopjpjsyqjaz3ty.public.blob.vercel-storage.com/discovery-checklist/live-updates-rF3VMElMU7UhGQpelzqWypt8AQ2pzF.mp4"
+    style={{ borderRadius: '0.75rem', width: '100%' }}
+  />
+</Frame>
+
+Once recording stops, the artifact finalizes with the complete transcript.
+
+## What artifacts look like
+
+Artifacts are rich documents with headings, lists, tables, and structured sections. They follow the format defined by your prompt or template.
+
+<CardGroup cols={2}>
+  <Card title="Summaries" icon="align-left">
+    Capture what changed, what was decided, and what still needs follow-up.
+  </Card>
+  <Card title="Action items and tickets" icon="list-checks">
+    Clarify next steps so owners can move immediately. Generate tickets ready for your project tracker.
+  </Card>
+  <Card title="Update posts" icon="paper-plane">
+    Create formatted updates for Slack, Teams, or email, ready to send.
+  </Card>
+  <Card title="Engineering specs" icon="code">
+    Extract actionable engineering items with motivation, requirements, and acceptance criteria.
+  </Card>
+</CardGroup>
+
+## Personalization
+
+Artifacts are shaped by your context. Earmark uses your **role**, **bio**, and your workspace's **company vision** to tailor tone, terminology, and relevance. You can set these in [Personalization settings](/customization/personalization).
+
+## Tips for better artifacts
+
+- Be specific in your prompt: "Summarize the API discussion with risks" works better than "Summarize the meeting"
+- Use templates as starting points, then customize the prompt to your exact need
+- Review outputs before sharing: AI captures the conversation faithfully, but always confirm critical decisions
+- Create multiple artifacts per meeting for different audiences (engineering spec for devs, executive summary for leadership)

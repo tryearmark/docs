@@ -1,0 +1,27 @@
+name: docs-ci
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Install Mintlify CLI
+        run: npm install -g mint
+
+      - name: Validate docs build
+        run: mint validate
+
+      - name: Check broken links
+        run: mint broken-links

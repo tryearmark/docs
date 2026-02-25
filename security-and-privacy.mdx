@@ -1,0 +1,59 @@
+---
+title: "Security and privacy"
+description: "How Earmark handles your data, privacy, and meeting security"
+keywords: ["security", "privacy", "data handling", "botless", "no training", "data retention", "HIPAA"]
+---
+
+## Private by default
+
+Earmark is botless. Nothing joins your calls, no plugins are installed on your meeting platform, and no participants are alerted. Audio is captured directly from your device.
+
+## How audio capture works
+
+Earmark records audio locally on your device and streams it to AssemblyAI for real-time transcription over a secure WebSocket connection (WSS, port 443). No audio is stored after the transcript is generated.
+
+| What happens | Detail |
+| --- | --- |
+| Audio capture | Local device only (microphone + system audio on desktop) |
+| Transcription | Streamed to AssemblyAI over WSS |
+| Audio storage | Not stored after transcription |
+| Transcript storage | Stored in your workspace, subject to your retention settings |
+
+## No training on your data
+
+Earmark does not use your meeting data, transcripts, or artifacts to train AI models. Your content is processed to generate your outputs and is not shared with other customers or used for model improvement.
+
+## Data retention
+
+You control how long meeting data is retained:
+
+- **Standard meetings**: stored in your workspace until you delete them
+- **Temporary meetings**: automatically soft-deleted after the meeting ends, permanently removed after 30 days
+- **Deleted meetings**: kept in a 30-day recovery window, then permanently purged with all associated data (transcripts, tasks, artifacts, participants)
+
+See [Temporary meetings](/earmark-basics/temporary-meetings) for details on ephemeral meeting mode.
+
+## Workspace isolation
+
+Meeting content is isolated per user. Each person sees only the meetings they created. Workspace collaboration means shared access to the workspace itself, team membership, and workspace-level settings, not cross-access to other people's meetings.
+
+## Authentication
+
+Earmark uses Clerk for authentication with support for:
+
+- Email and password
+- Google SSO
+- Microsoft SSO
+
+Enterprise customers can configure SSO through their identity provider.
+
+## Enterprise security
+
+Enterprise plans include:
+
+- Google and Microsoft SSO
+- Workspace-level controls
+- Custom terms and security review
+- High-priority support
+
+[Contact sales](https://cal.com/mark-barbir-wlqvvg/30min?overlayCalendar=true) for enterprise security requirements.

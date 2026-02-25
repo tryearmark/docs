@@ -1,0 +1,35 @@
+---
+title: "\"Open Earmark\" does nothing"
+description: "Desktop app doesn't launch when clicking links in the browser"
+keywords: ["deep linking", "desktop app not opening", "browser links", "protocol handler", "troubleshooting"]
+---
+
+## What you'll see
+
+<Note>
+**Screenshot needed:** browser showing the "Open Earmark" button/link that fails to launch the app. Save as `/images/troubleshoot-deep-link.png`.
+</Note>
+
+Clicking "Open Earmark" in the browser does nothing  -  the desktop app doesn't launch. The browser may try to search for the URL instead of opening the app. This typically affects sign-in, since authentication redirects from the browser back to the desktop app.
+
+## Why this happens
+
+Earmark Desktop registers a custom URL protocol (`earmark://`) so the browser can hand control back to the installed app. If your browser or endpoint management policies block custom protocol handlers, the handoff fails silently.
+
+## What to allow
+
+| Setting | Value |
+| --- | --- |
+| External protocol handler | `earmark://` |
+| Browser / endpoint policies | Must allow launching registered desktop apps from links |
+
+## What to check
+
+- **Browser settings**  -  some browsers ask before opening external apps; make sure Earmark hasn't been permanently blocked in that prompt
+- **Endpoint management / MDM**  -  corporate device policies sometimes restrict which custom protocols can be launched
+- **Default app registration**  -  on macOS, check that Earmark is properly registered as the handler for `earmark://` (reinstalling the app usually fixes this)
+- **Windows SmartScreen or Gatekeeper**  -  security software may block the app from being launched via protocol handler on first use
+
+<Tip>
+A quick test: paste `earmark://` directly into your browser's address bar and press Enter. If the app opens, the protocol handler is working and the issue is with the specific link. If nothing happens, the protocol is being blocked.
+</Tip>

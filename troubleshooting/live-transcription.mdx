@@ -1,0 +1,41 @@
+---
+title: "Live transcription not working"
+description: "Transcript stuck on connecting or not starting"
+keywords: ["transcription not working", "WebSocket", "firewall", "VPN", "AssemblyAI", "troubleshooting"]
+---
+
+## What you'll see
+
+The live transcript stays stuck on "connecting" or never starts after you begin recording. Audio is being captured but no text appears.
+
+<Note>
+**Screenshot needed:** the meeting view with the transcript stuck in a "connecting" state. Save as `/images/troubleshoot-transcription.png`.
+</Note>
+
+## Why this happens
+
+Earmark streams audio to AssemblyAI for transcription using a secure WebSocket connection. If your network blocks WebSocket upgrades  -  common with corporate firewalls, VPNs, and TLS inspection proxies  -  the connection can't be established.
+
+## What to allow
+
+| Setting | Value |
+| --- | --- |
+| Hostname | `streaming.assemblyai.com` |
+| Protocol | WSS |
+| Port | 443 |
+
+WebSocket endpoint:
+
+```text
+wss://streaming.assemblyai.com/v3/ws
+```
+
+## What to check
+
+- **Firewall / proxy rules**  -  WebSocket traffic on port 443 must not be blocked or downgraded to plain HTTPS
+- **TLS inspection**  -  some corporate proxies intercept and re-sign TLS traffic, which can break WebSocket upgrades
+- **VPN split tunneling**  -  if your VPN routes all traffic through a corporate gateway, WebSocket connections may be dropped
+
+<Tip>
+If you're on a corporate network and transcription works fine on your home network, your IT team likely needs to allowlist the AssemblyAI hostname above.
+</Tip>

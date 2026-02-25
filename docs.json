@@ -1,122 +1,137 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Earmark",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#059669",
+    "light": "#34d399",
+    "dark": "#059669"
   },
-  "favicon": "/favicon.svg",
+  "fonts": {
+    "family": "Geist"
+  },
+  "favicon": "/logo/favicon.png",
+  "logo": {
+    "light": "/logo/dark.png",
+    "dark": "/logo/light.png"
+  },
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Product guide",
         "groups": [
           {
             "group": "Getting started",
+            "icon": "rocket",
             "pages": [
               "index",
-              "quickstart",
-              "development"
+              "getting-started/platforms",
+              "getting-started/setup-guide",
+              "getting-started/calendar",
+              "getting-started/run-your-first-meeting"
+            ]
+          },
+          {
+            "group": "Earmark basics",
+            "icon": "book-open",
+            "pages": [
+              "earmark-basics/transcription",
+              "earmark-basics/artifacts",
+              "earmark-basics/templates",
+              "earmark-basics/command-menu",
+              "earmark-basics/meeting-history",
+              "earmark-basics/temporary-meetings",
+              "earmark-basics/workspaces",
+              {
+                "group": "Integrations",
+                "expanded": false,
+                "pages": [
+                  "integrations/overview",
+                  "integrations/cursor",
+                  "integrations/linear",
+                  "integrations/v0",
+                  "integrations/codex"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Using Earmark",
+            "icon": "map",
+            "pages": [
+              "using-earmark/before-a-meeting",
+              "using-earmark/during-a-meeting",
+              "using-earmark/after-a-meeting"
             ]
           },
           {
             "group": "Customization",
+            "icon": "sliders",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "customization/personalization",
+              "customization/multilingual"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Troubleshooting",
+            "icon": "wrench",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              "troubleshooting/live-transcription",
+              "troubleshooting/app-disconnected",
+              "troubleshooting/desktop-deep-linking"
             ]
           },
           {
-            "group": "AI tools",
+            "group": "Security and privacy",
+            "icon": "shield",
             "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API reference",
-        "groups": [
-          {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "security-and-privacy"
             ]
           }
         ]
       }
     ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "global": {}
   },
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "Website",
+        "href": "https://www.tryearmark.com"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Launch app",
+      "href": "https://app.tryearmark.com"
     }
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
+  },
+  "seo": {
+    "indexing": "all",
+    "metatags": {
+      "og:site_name": "Earmark Docs",
+      "twitter:card": "summary_large_image",
+      "keywords": "meeting productivity, AI meeting assistant, live transcription, meeting artifacts, botless transcription, botless meeting tool",
+      "robots": "index, follow",
+      "language": "en",
+      "category": "Technology"
+    }
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "website": "https://www.tryearmark.com"
     }
   }
 }

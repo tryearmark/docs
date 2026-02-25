@@ -1,0 +1,62 @@
+---
+title: "Past meetings"
+sidebarTitle: "Past meetings"
+description: "Review past meetings and restore deleted ones"
+keywords: ["meeting history", "past meetings", "restore meetings", "deleted meetings", "meeting search"]
+---
+
+## What it does
+
+Earmark keeps a full history of your meetings, organized by date. You can revisit any past meeting to review the transcript, regenerate artifacts, or share outputs after the fact. If you delete a meeting by mistake, you can restore it within 30 days.
+
+## Browsing your meetings
+
+### Recent meetings
+
+The sidebar shows your most recent meetings for quick access. Click any meeting to open it and review its transcript and artifacts.
+
+### All meetings
+
+<Note>
+**Screenshot needed:** the Meetings page showing full meeting history grouped by date. Save as `/images/meeting-history.png`.
+</Note>
+
+Open the **Meetings** page from the sidebar to see your full meeting history, grouped by date. Each entry shows the meeting title (auto-generated from the transcript if you didn't set one manually) and when it was last updated.
+
+## Auto-generated titles
+
+When you stop recording a meeting for the first time, Earmark automatically generates a descriptive title based on the transcript content. This makes it easy to identify meetings at a glance without manual labeling. You can always edit the title later.
+
+## Deleting and restoring meetings
+
+Earmark uses a soft-delete system so you never lose important meeting data by accident.
+
+<Steps>
+<Step title="Delete a meeting">
+Delete a meeting from the meetings page. The meeting moves to the **Recently deleted** section in settings.
+</Step>
+<Step title="Find it in Recently deleted">
+Go to **Settings > Recently deleted** to see all meetings deleted within the last 30 days.
+
+<Note>
+**Screenshot needed:** **Settings > Recently deleted** showing deleted meetings with Restore buttons. Save as `/images/recently-deleted.png`.
+</Note>
+</Step>
+<Step title="Restore if needed">
+Click **Restore** to bring the meeting back with all its data: transcript, tasks, artifacts, and participants.
+</Step>
+</Steps>
+
+## Data retention
+
+| Stage | What happens |
+| --- | --- |
+| **Active** | Meeting is visible and accessible in your meeting history |
+| **Soft-deleted** | Meeting is hidden but restorable for 30 days |
+| **Permanently purged** | After 30 days, the meeting and all associated data are permanently removed |
+
+When a meeting is deleted, all associated data is cascade-deleted with it: transcript chunks, tasks, artifacts, and participant records. Restoring a meeting brings all of this back.
+
+<Note>
+Permanent purge runs automatically once per day. There is no way to recover a meeting after the 30-day retention window.
+</Note>

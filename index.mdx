@@ -1,97 +1,86 @@
 ---
 title: "Introduction"
-description: "Welcome to the new home for your documentation"
+description: "The productivity suite where work completes itself"
+keywords: ["meeting productivity", "AI meeting assistant", "botless transcription", "meeting artifacts", "live transcription", "product teams"]
 ---
 
-## Setting up
+<Frame>
+  <div style={{ position: 'relative', borderRadius: '0.75rem', overflow: 'hidden' }}>
+    <img
+      src="/images/background.avif"
+      alt="Earmark app interface showing live meeting transcription and AI artifact generation"
+      style={{ width: '100%', display: 'block' }}
+    />
+    <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      src="https://framerusercontent.com/assets/nCT5UH8yRh9ar6sVwI4GarsOWsI.mp4"
+      style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '80%',
+        borderRadius: '0.5rem',
+      }}
+    />
+  </div>
+</Frame>
 
-Get your documentation site up and running in minutes.
+## Meetings shouldn't create more work
+
+Earmark turns conversation directly into deliverables, generating specs, tickets, and decisions in real time. Completely botless. No bots join your calls, no plugins to install. Just open Earmark and start talking.
+
+Talk in. Deliverables out. Decisions, owners, and technical constraints are captured in real time. Walk out of each meeting with clear direction, specs, and working outputs.
+
+Earmark is available as a **desktop app** (macOS and Windows) and a **web app**. The desktop app captures both sides of a conversation, including when you're wearing headphones, and adds calendar integration, notifications, and system tray features.
 
 <Card
-  title="Start here"
+  title="Quickstart"
   icon="rocket"
-  href="/quickstart"
+  href="/getting-started/setup-guide"
   horizontal
 >
-  Follow our three step quickstart guide.
+  Install Earmark, create your workspace, and run your first meeting in minutes.
 </Card>
 
-## Make it yours
+## See it in action
 
-Design a docs site that looks great and empowers your users.
+<Frame>
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    src="https://bwopjpjsyqjaz3ty.public.blob.vercel-storage.com/discovery-checklist/live-updates-rF3VMElMU7UhGQpelzqWypt8AQ2pzF.mp4"
+    style={{ borderRadius: '0.75rem', width: '100%' }}
+  />
+</Frame>
 
-<Columns cols={2}>
-  <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
-  >
-    Edit your docs locally and preview them in real time.
-  </Card>
-  <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
-  >
-    Customize the design and colors of your site to match your brand.
-  </Card>
-    <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
-  </Card>
-  <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
-  >
-    Auto-generate API documentation from OpenAPI specifications.
-  </Card>
-</Columns>
-
-## Create beautiful pages
-
-Everything you need to create world-class documentation.
+## Common questions
 
 <Columns cols={2}>
-  <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
-  >
-    Use MDX to style your docs pages.
+  <Card title="How do I transcribe meetings without a bot?" icon="waveform" href="/earmark-basics/transcription">
+    Earmark captures audio directly from your device. Nothing joins your call or alerts other participants.
   </Card>
-  <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
-  >
-    Add sample code to demonstrate how to use your product.
+  <Card title="How do I record both sides of a call through headphones?" icon="laptop" href="/getting-started/platforms">
+    The desktop app records your microphone and system audio together, so remote meetings are fully transcribed.
   </Card>
-  <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
-  >
-    Display images and other media.
+  <Card title="How do I turn meetings into completed work?" icon="file-lines" href="/earmark-basics/artifacts">
+    Write a prompt or pick a template. Earmark generates structured deliverables grounded in the actual transcript.
   </Card>
-  <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
-  >
-    Write once and reuse across your docs.
+  <Card title="How do I generate Linear tickets from a meeting?" icon="grid-2" href="/earmark-basics/templates">
+    30+ templates for every role and workflow, plus slash commands for instant access during live meetings.
+  </Card>
+  <Card title="Does it work with Zoom, Teams, and Google Meet?" icon="video" href="/getting-started/platforms">
+    Desktop or web. Remote or in-person. Just click record.
+  </Card>
+  <Card title="How do I connect my calendar?" icon="calendar" href="/getting-started/calendar">
+    Link Google Calendar or Outlook in settings. Upcoming meetings appear in the sidebar with one-click join.
+  </Card>
+  <Card title="How do I customize AI notes for my role?" icon="user-gear" href="/customization/personalization">
+    Set your role, bio, and company vision so every artifact matches your tone, terminology, and priorities.
   </Card>
 </Columns>
-
-## Need inspiration?
-
-<Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
->
-  Browse our showcase of exceptional documentation sites.
-</Card>
