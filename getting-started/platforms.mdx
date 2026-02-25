@@ -1,0 +1,104 @@
+---
+title: "Desktop vs. web"
+description: "What's available on desktop, web, macOS, and Windows"
+keywords: ["desktop app", "web app", "macOS", "Windows", "system audio", "platform comparison"]
+---
+
+## Where Earmark runs
+
+Earmark is available as a **desktop app** (macOS and Windows) and as a **web app**. The core experience (meetings, transcription, AI artifacts, templates, and search) works everywhere. The desktop app unlocks additional capabilities that require native system access.
+
+## Platform comparison
+
+| Feature | Web | Desktop (macOS) | Desktop (Windows) |
+| --- | :---: | :---: | :---: |
+| Live transcription (microphone) | Yes | Yes | Yes |
+| System audio transcription | — | Yes | Yes |
+| AI artifacts and templates | Yes | Yes | Yes |
+| Command menu (Cmd+K / Ctrl+K) | Yes | Yes | Yes |
+| Meeting history and search | Yes | Yes | Yes |
+| Workspace collaboration | Yes | Yes | Yes |
+| Calendar integration | — | Yes | Yes |
+| Desktop notifications | — | Yes | Yes |
+| Menu bar countdown | — | Yes | — |
+| One-click join and auto-record | — | Yes | Yes |
+| System tray menu | — | Yes | Yes |
+
+## Audio and transcription
+
+This is the biggest difference between platforms. The desktop app can capture **system audio** in addition to your microphone, which means it can transcribe what other people are saying, even when you're wearing headphones.
+
+### Desktop: microphone + system audio
+
+On desktop, Earmark captures two audio streams:
+
+- **Your microphone**: what you say
+- **System audio (loopback)**: what plays through your speakers or headphones
+
+This means Earmark can transcribe both sides of a conversation when you're on a video call in Zoom, Google Meet, Teams, or any other app. The two streams are mixed together for a complete transcript.
+
+<Tip>
+System audio capture is what makes Earmark work for remote meetings where you're wearing headphones. Without it, transcription would only capture your voice.
+</Tip>
+
+### Web: microphone only
+
+On the web, Earmark can only access your microphone through the browser. There is no way for a web app to capture system audio or loopback audio; this is a browser security restriction, not an Earmark limitation.
+
+This means:
+- **Your voice** is transcribed normally
+- **Other participants' audio** is not captured unless it plays through your device speakers loud enough for the microphone to pick it up
+
+For the best transcription quality on remote meetings, use the desktop app.
+
+### Permissions
+
+| Permission | Web | Desktop (macOS) | Desktop (Windows) |
+| --- | --- | --- | --- |
+| Microphone | Browser prompt | System Preferences | Windows Settings |
+| System audio | Not available | Screen & System Audio Recording permission | System audio permission |
+
+On macOS, system audio capture requires the "Screen & System Audio Recording" permission. Despite the name, Earmark only captures audio; no visual screen content is recorded or stored.
+
+## Calendar integration
+
+Calendar features are **desktop-only** because they depend on native APIs for OAuth token management, system tray integration, and desktop notifications.
+
+### What calendar unlocks (desktop only)
+
+- **Coming up sidebar section**: today's meetings from your Google Calendar or Outlook appear automatically
+- **One-click join and capture**: start recording directly from the sidebar or a notification
+- **Auto-record**: launch a meeting from a notification and recording starts immediately
+- **Desktop notifications**: get notified before meetings with a join button
+- **Menu bar countdown (macOS)**: see your next meeting and time remaining in the macOS menu bar
+- **System tray menu**: quick access to upcoming meetings from the tray icon
+
+### On the web
+
+Calendar integration is not available on the web. You can still create meetings manually and use all core features (live transcription, artifacts, templates, search), but meetings won't sync from your calendar automatically.
+
+See [Calendar](/getting-started/calendar) for full setup details.
+
+## macOS-specific features
+
+These features are only available on macOS:
+
+- **Menu bar countdown**: displays your next meeting title and a live countdown timer directly in the macOS menu bar. Configure in **Settings > Calendar > Menu bar**.
+- **Trackpad navigation**: two-finger swipe gestures for back/forward navigation within the app.
+- **Native menu bar**: macOS uses the system menu bar for app actions.
+
+## Windows-specific features
+
+- **App menu**: Windows uses a custom menu button (top-left) since there's no native menu bar in frameless mode. Provides File, View, Settings, and Help menus.
+- **Caption controls**: minimize, maximize, and close buttons are integrated into the title bar.
+
+## Choosing a platform
+
+<AccordionGroup>
+  <Accordion icon="desktop" title="When to use the desktop app">
+    Use the desktop app when you're in remote meetings and need to capture what other participants are saying, especially when wearing headphones. The desktop app is also required for calendar integration, notifications, and auto-record.
+  </Accordion>
+  <Accordion icon="globe" title="When the web app works fine">
+    The web app works well for in-person meetings where a single microphone captures the room, or for reviewing past meetings, generating artifacts from existing transcripts, and managing your workspace. All core features except system audio capture and calendar sync are available.
+  </Accordion>
+</AccordionGroup>

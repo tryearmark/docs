@@ -1,0 +1,97 @@
+---
+title: "Live transcription"
+sidebarTitle: "Live transcription"
+description: "Follow conversation in real time and keep everyone aligned"
+keywords: ["live transcription", "real-time transcription", "speech to text", "meeting transcription", "multilingual"]
+---
+
+## What it does
+
+Live transcription shows your conversation as it happens, giving everyone a shared reference during the meeting. The transcript is the foundation for all AI-generated artifacts: every summary, action list, or spec is grounded in what was actually said.
+
+## Why teams use it
+
+- Reduces missed points in fast-moving discussions
+- Gives everyone a shared, scrollable source during the meeting
+- Powers artifact generation with accurate meeting context
+- Makes end-of-meeting recap much faster
+
+## How it works
+
+Earmark is botless: nothing joins your call or alerts other participants. Audio is captured directly from your device.
+
+<Note>
+**Screenshot needed:** the meeting view with a live transcript scrolling during an active recording. Save as `/images/transcription-live.png`.
+</Note>
+
+<Steps>
+<Step title="Start recording">
+Open Earmark and begin capturing. The transcript appears in real time as the conversation progresses.
+</Step>
+<Step title="Follow along">
+The transcript scrolls live so you can reference what was said moments ago without interrupting flow.
+</Step>
+<Step title="Stop recording">
+When the meeting ends, the full transcript is saved. Earmark automatically generates a title based on the conversation content.
+</Step>
+</Steps>
+
+## Speaker recognition
+
+Earmark does not label individual speakers in the transcript. There are no speaker tags like "Speaker 1" or "Speaker 2." However, the transcription engine is strong at inferring conversational turns, so the transcript naturally reflects when the conversation shifts between participants. Combined with the context of what's being said, it's straightforward to follow who said what when reviewing the transcript or generating artifacts.
+
+## What gets transcribed depends on your platform
+
+Earmark's transcription captures different audio depending on whether you're using the desktop app or the web app. See [Platforms](/getting-started/platforms) for the full comparison.
+
+### Desktop (macOS and Windows)
+
+The desktop app captures **both your microphone and system audio**. This means Earmark transcribes what you say and what other participants say, even when you're wearing headphones on a Zoom, Meet, or Teams call.
+
+This is the recommended setup for remote meetings.
+
+### Web
+
+The web app can only capture your **microphone**. Other participants' audio is not transcribed unless it's loud enough for your microphone to pick up (for example, playing through speakers in a conference room).
+
+The web app works well for:
+- In-person meetings with a shared microphone
+- Reviewing past meetings and generating artifacts
+- Quick sessions where you only need to capture your own voice
+
+<Tip>
+For the best transcription of remote meetings, use the Earmark desktop app. System audio capture is what makes it possible to get a complete transcript of both sides of the conversation.
+</Tip>
+
+## Language support
+
+Your workspace admin can set the transcription language mode in **Settings > Workspace**:
+
+| Mode | What it covers |
+| --- | --- |
+| **English** | Highest accuracy for English-only conversations |
+| **Multilingual** | Supports English, Spanish, French, German, Italian, and Portuguese in the same session |
+
+<Tip>
+Use English mode when your meetings are entirely in English for the best accuracy. Switch to Multilingual when participants speak different languages.
+</Tip>
+
+## Best-use moments
+
+- Scope clarification and requirements gathering
+- Tradeoff discussions where exact wording matters
+- Action-item assignment: confirm who owns what
+- Client calls where you need to capture feedback verbatim
+
+## Transcript search
+
+Earmark indexes every transcript for full-text search. Use the **command menu** (`Cmd+K` / `Ctrl+K`) to search across all your meeting transcripts and find specific discussions quickly.
+
+<AccordionGroup>
+  <Accordion icon="eye" title="How to use transcription well">
+    Treat transcription as a decision aid, not a perfect legal transcript. Confirm critical decisions explicitly with the team before the meeting ends.
+  </Accordion>
+  <Accordion icon="triangle-exclamation" title="Where teams can go wrong">
+    Relying on transcript text alone without confirming ownership and due dates. Always review and confirm action items before sharing.
+  </Accordion>
+</AccordionGroup>

@@ -1,0 +1,104 @@
+---
+title: "Calendar"
+sidebarTitle: "Connect your calendar"
+description: "Connect your calendar to streamline meeting capture"
+keywords: ["calendar integration", "Google Calendar", "Outlook", "meeting notifications", "one-click join"]
+---
+
+## What it does
+
+Connect your Google Calendar or Microsoft Outlook to Earmark so your scheduled meetings appear automatically in the sidebar. Your day at a glance. Instantly see what's coming up, how many meetings you have left, and how long you have. Join and start capturing with one click.
+
+<Frame caption="Calendar integration: join link, attendees, and agenda auto-loaded">
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    src="https://bwopjpjsyqjaz3ty.public.blob.vercel-storage.com/features/earmark%2Bcalendar-v3.mp4"
+    style={{ borderRadius: '0.75rem', width: '100%' }}
+  />
+</Frame>
+
+<Note>
+Calendar integration is a desktop-only feature (macOS and Windows). It requires native APIs for notifications, system tray, and OAuth token management. See [Platforms](/getting-started/platforms) for a full comparison of what's available on desktop vs web.
+</Note>
+
+## Why it matters
+
+When meetings are connected to your calendar, you start faster, stay in context, and never miss capturing an important conversation.
+
+<Columns cols={2}>
+  <Card title="One-click join and capture" icon="bolt">
+    See upcoming meetings in the sidebar and start recording instantly, with no manual setup.
+  </Card>
+  <Card title="Never miss a meeting" icon="bell">
+    Get desktop notifications before meetings with a button to join and start capturing.
+  </Card>
+  <Card title="Menu bar countdown" icon="clock">
+    See your next meeting and time remaining directly in the macOS menu bar.
+  </Card>
+  <Card title="Cleaner recurring rituals" icon="repeat">
+    Weekly standups, planning sessions, and retros are always ready to capture.
+  </Card>
+</Columns>
+
+## Connecting your calendar
+
+<Note>
+**Screenshot needed:** **Settings > Calendar** showing the Google Calendar and Outlook connection buttons. Save as `/images/calendar-settings.png`.
+</Note>
+
+<Steps>
+<Step title="Open Settings">
+Go to **Settings > Calendar** in the Earmark desktop app.
+</Step>
+<Step title="Choose your provider">
+Connect either **Google Calendar** or **Microsoft Outlook**. You can have one provider connected at a time.
+</Step>
+<Step title="Authorize access">
+Complete the OAuth flow in your browser to grant Earmark read access to your calendar events.
+</Step>
+<Step title="Select visible calendars">
+After connecting, choose which calendars appear in Earmark. Toggle individual calendars on or off (for example, show your team calendar but hide personal events).
+</Step>
+</Steps>
+
+## Upcoming meetings in the sidebar
+
+Once connected, today's meetings appear in the **Coming up** section of the sidebar. Each meeting shows:
+
+<Note>
+**Screenshot needed:** the sidebar "Coming up" section showing upcoming meetings with countdown badges and join buttons. Save as `/images/calendar-sidebar.png`.
+</Note>
+
+- The meeting title from your calendar
+- A countdown badge showing time remaining ("in 30m", "in 2h", "now")
+- A link to join and start capturing
+
+Meetings that have passed their end time are automatically hidden unless they're actively being recorded.
+
+## Desktop notifications
+
+Enable **One click join and capture** in calendar settings to receive a notification before each meeting. The notification includes a button to join the meeting and start recording instantly.
+
+## Menu bar countdown (macOS)
+
+On macOS, Earmark can display your next meeting and a live countdown directly in the system menu bar. Toggle this in **Settings > Calendar > Menu bar**.
+
+<Note>
+**Screenshot needed:** macOS menu bar showing the next meeting title and live countdown timer. Save as `/images/calendar-menubar.png`.
+</Note>
+
+The preview in settings shows exactly what the menu bar will look like, and updates live as you toggle the setting.
+
+## Switching providers
+
+To switch from Google to Outlook (or vice versa), disconnect your current calendar first, then connect the new one. Earmark will prompt you to clear any stale upcoming meetings from the previous provider to keep the sidebar clean.
+
+## Good fit
+
+- Team standups and daily syncs
+- Weekly planning and retrospectives
+- Roadmap reviews and milestone check-ins
+- Client calls and stakeholder meetings

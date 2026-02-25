@@ -1,0 +1,46 @@
+---
+title: "App appears disconnected or stale"
+description: "Data not updating, meetings not syncing, or app stuck loading"
+keywords: ["app disconnected", "data not updating", "stale data", "app stuck", "troubleshooting"]
+---
+
+## What you'll see
+
+The app loads but data looks stale  -  meetings don't update, artifacts don't appear, or the UI feels stuck. You might also see loading spinners that never resolve.
+
+<Note>
+**Screenshot needed:** the app showing stale data or loading spinners that never resolve. Save as `/images/troubleshoot-disconnected.png`.
+</Note>
+
+## Why this happens
+
+Earmark uses Convex as its realtime backend. Convex relies on WebSocket connections to push updates to clients without polling. If your network blocks WebSocket upgrades while allowing plain HTTPS, the app will load but won't receive live updates.
+
+## What to allow
+
+| Setting | Value |
+| --- | --- |
+| Convex API | `https://sync.tryearmark.com` |
+| HTTP Actions | `https://api.tryearmark.com` |
+| Protocols | WSS and HTTPS |
+| Port | 443 |
+
+WebSockets are established over HTTPS (WSS) on port 443  -  the same port as regular web traffic. Blocking WebSocket upgrades while allowing plain HTTPS is the most common cause of this issue.
+
+## Connectivity test
+
+Run Convex's network test tool to verify your network can reach Earmark's backend:
+
+<Card title="Convex network test" icon="wifi" href="https://network-test.previews.convex.dev/">
+  Checks basic HTTPS and WebSocket connectivity to Convex domains. All checks should pass for Earmark to function correctly behind a firewall or proxy.
+</Card>
+
+## What to check
+
+- **Proxy / firewall rules**  -  ensure WSS traffic to `sync.tryearmark.com` is not being blocked or downgraded
+- **TLS inspection**  -  deep packet inspection can interfere with WebSocket handshakes
+- **Browser extensions**  -  some ad blockers or privacy extensions block WebSocket connections
+
+<Tip>
+If the Convex network test above fails any checks, share the results with your IT team  -  it pinpoints exactly which connection type is being blocked.
+</Tip>
