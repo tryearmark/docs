@@ -89,6 +89,18 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "Changelog",
+        "groups": [
+          {
+            "group": "Changelog",
+            "icon": "calendar",
+            "pages": [
+              "changelog"
+            ]
+          }
+        ]
       }
     ],
     "global": {}
