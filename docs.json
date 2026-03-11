@@ -69,6 +69,7 @@
             "icon": "sliders",
             "pages": [
               "customization/personalization",
+              "customization/custom-templates",
               "customization/multilingual"
             ]
           },
