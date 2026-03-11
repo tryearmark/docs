@@ -79,7 +79,8 @@
             "pages": [
               "troubleshooting/live-transcription",
               "troubleshooting/app-disconnected",
-              "troubleshooting/desktop-deep-linking"
+              "troubleshooting/desktop-deep-linking",
+              "troubleshooting/capture-session-limit"
             ]
           },
           {
