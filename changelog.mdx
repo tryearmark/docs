@@ -4,6 +4,52 @@ description: "Stay up to date with Earmark product updates, improvements, and bu
 rss: true
 ---
 
+<Update label="March 13, 2026">
+## Billing added to workspace settings
+
+Admins can now manage billing from `Settings > Billing` instead of bouncing between trial notices and external links. Less tab archaeology, more shipping. See [Workspaces](/earmark-basics/workspaces).
+
+<Frame>
+  <div
+    style={{
+      backgroundImage: 'url(/images/background-blue.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      borderRadius: '1rem',
+      padding: '4%',
+    }}
+  >
+    <div
+      style={{
+        borderRadius: '0.875rem',
+        overflow: 'hidden',
+        boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
+      }}
+    >
+      <img src="/images/changelog/2026-03-13/billing.png" alt="Settings > Billing showing the current plan summary and monthly/yearly plan cards." style={{ width: '100%', display: 'block' }} />
+    </div>
+  </div>
+</Frame>
+
+## Desktop join and capture got more reliable
+
+Desktop notification and tray handoffs are more dependable now, especially around cold starts and first-click joins. Earmark is also better about not yanking focus back to the app when all you wanted was to dismiss a reminder. See [Calendar](/getting-started/calendar).
+
+## Improvements
+
+- Added a `Billing` section in settings with plan visibility, trial status, and upgrade actions. One place instead of three.
+- Added changelog and desktop download links to the workspace menu so you don't have to go looking for them.
+- Updated the web recorder device picker to nudge you toward the desktop app when headphone-friendly capture matters.
+
+## Bug fixes
+
+- Fixed dismissing desktop meeting notifications on macOS sometimes bringing the main app forward like an overhelpful intern.
+- Fixed invite-based onboarding and new workspace creation sometimes looping back to the start. Nobody should have to onboard twice.
+- Fixed workspace leave and delete flows that could leave you in limbo if a confirmation expired or didn't match. Limbo is not a feature.
+- Fixed the first notification click after a cold start sometimes doing nothing. It does something now.
+- Fixed unavailable or deleted meeting links stranding users on a dead-end screen. You now get sent home with an explanation instead of a blank stare.
+</Update>
+
 <Update label="March 6, 2026">
   <h2 style={{ fontSize: '20px', lineHeight: '1.4', fontWeight: 600 }}>Introducing Earmark 2.0</h2>
 
