@@ -4,6 +4,36 @@ description: "Stay up to date with Earmark product updates, improvements, and bu
 rss: true
 ---
 
+<Update label="March 13, 2026">
+## Billing is now a first-class workspace setting
+
+Admins can now manage billing from `Settings > Billing` instead of bouncing between trial notices and external links. The new view shows the current plan or trial state, compares Starter and Pro across monthly and yearly billing, and gives teams a direct path to upgrade or contact sales. Slightly less tab archaeology, slightly more shipping. See [Workspaces](/earmark-basics/workspaces).
+
+Screenshot to add: `Settings > Billing` showing the current plan summary and the monthly/yearly plan cards.
+
+## One-click join and capture is more reliable on desktop
+
+Desktop notification and tray handoffs are more dependable now, especially around cold starts and first-click joins. Earmark is better at opening the right meeting and starting capture without forcing you into recovery mode or pulling focus back to the app when all you wanted to do was dismiss a reminder. See [Calendar](/getting-started/calendar) and [Desktop vs. web](/getting-started/platforms).
+
+## Workspace setup and switching got less brittle
+
+Joining an invited workspace, creating a new one, and switching between workspaces now land more consistently in the right place. This week’s changes tighten the setup flow so users are less likely to get bounced through onboarding again or hit awkward handoff states while leaving, deleting, or activating a workspace. See [Setup guide](/getting-started/setup-guide) and [Workspaces](/earmark-basics/workspaces).
+
+## Improvements
+
+- Added a `Billing` section in settings with plan visibility, trial status, and upgrade actions in one place.
+- Added changelog and desktop download links to the workspace menu so release notes and installers are easier to reach.
+- Updated the web recorder device picker to point people to the desktop app when they need headphone-friendly capture.
+
+## Bug fixes
+
+- Fixed cases where invite-based onboarding or new workspace creation could loop instead of completing cleanly.
+- Fixed workspace leave and delete flows so expired or mismatched confirmations fail safely instead of leaving users in a broken state.
+- Fixed desktop notification and tray joins sometimes missing the first meeting-open handoff after launch.
+- Fixed dismissing desktop meeting notifications on macOS sometimes bringing the main app forward like an overhelpful intern.
+- Fixed unavailable or deleted meeting links leaving users on a dead-end screen; they now return you home with a notice.
+</Update>
+
 <Update label="March 6, 2026">
   <h2 style={{ fontSize: '20px', lineHeight: '1.4', fontWeight: 600 }}>Introducing Earmark 2.0</h2>
 
