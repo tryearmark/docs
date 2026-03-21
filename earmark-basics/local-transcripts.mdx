@@ -103,7 +103,7 @@ You can toggle local transcripts off in **Settings > Personalization > Meeting f
 
 ## File format
 
-Each file has frontmatter followed by a `## Transcript` section:
+Each file is named with the meeting start time in UTC, for example `2026-03-20_21-30-00Z.md`. Inside the file, the metadata stays in your local time zone and includes the timezone. Each file has frontmatter followed by a `## Transcript` section:
 
 ```markdown
 ---
@@ -122,16 +122,6 @@ format_version: 1
 
 Alex: Let's start with the status update...
 ```
-
-### File naming
-
-Each file is named by the meeting's start timestamp:
-
-```
-2026-03-20_14-30-00.md
-```
-
-The filename never includes the meeting title. This keeps the path stable — if the title changes, only the content of the file is rewritten, not the filename. This makes files safe to reference by path in scripts, prompts, or any tool that stores a direct link.
 
 <Warning>
   **Transcript not accessible?** iCloud Drive may be offloading the file to save
