@@ -41,6 +41,7 @@
               "earmark-basics/command-menu",
               "earmark-basics/meeting-history",
               "earmark-basics/temporary-meetings",
+              "earmark-basics/local-transcripts",
               "earmark-basics/workspaces",
               {
                 "group": "Integrations",

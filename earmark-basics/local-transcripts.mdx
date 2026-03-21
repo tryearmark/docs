@@ -1,0 +1,144 @@
+---
+title: "Local transcript files"
+description: "Automatically save meeting transcripts as markdown files on your desktop so local AI agents can read them."
+keywords:
+  [
+    "local transcripts",
+    "markdown files",
+    "Claude Code",
+    "Claude Cowork",
+    "Cursor",
+    "Codex",
+    "local AI tools",
+    "transcript export",
+    "desktop",
+  ]
+---
+
+<Frame>
+  <div
+    style={{
+      backgroundImage: "url(/images/background-blue.png)",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      borderRadius: "1rem",
+      overflow: "hidden",
+      height: "320px",
+    }}
+  >
+    <div
+      style={{
+        transform: "scale(1.5) translateX(70px) translateY(40px)",
+        transformOrigin: "top left",
+      }}
+    >
+      <div
+        style={{
+          borderRadius: "0rem",
+          overflow: "hidden",
+          boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
+        }}
+      >
+        <img
+          src="/images/local-transcripts.png"
+          alt="Meeting transcripts saved as local markdown files, shown in a file browser."
+          style={{ width: "100%", display: "block" }}
+        />
+      </div>
+    </div>
+  </div>
+</Frame>
+
+## What it does
+
+Earmark saves a markdown transcript to your device every time a meeting ends. This is enabled by default and works for both standard and [temporary](/earmark-basics/temporary-meetings) meetings.
+
+Files are saved to:
+
+```
+Documents/Earmark/Meeting Transcripts/
+```
+
+If the meeting title changes after the file is written (for example, a system-generated title arrives), Earmark rewrites the file automatically.
+
+<Note>
+  This is a desktop-only feature. It requires the Earmark Mac or Windows app.
+</Note>
+
+## What you can do with it
+
+Point Claude Code, Claude Cowork, Codex, Cursor or your local tool of choice at `~/Documents/Earmark/Meeting Transcripts` and try prompts like:
+
+- What meetings did I have this week?
+- Summarize my last meeting and extract action items.
+- I'm about to start a 1:1 with Sam — what should I remember from our previous meetings?
+- What decisions were made in the product sync on Monday?
+- Are there any open questions or unresolved threads from this week's meetings?
+
+## Settings
+
+You can toggle local transcripts off in **Settings > Personalization > Meeting files**.
+
+<Frame>
+  <div
+    style={{
+      backgroundImage: "url(/images/background-blue.png)",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      borderRadius: "1rem",
+      padding: "4%",
+    }}
+  >
+    <div
+      style={{
+        borderRadius: "0.875rem",
+        overflow: "hidden",
+        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
+      }}
+    >
+      <img
+        src="/images/local-transcripts-settings.png"
+        alt="Settings panel showing the Meeting files toggle under Personalization."
+        style={{ width: "100%", display: "block" }}
+      />
+    </div>
+  </div>
+</Frame>
+
+## File format
+
+Each file has frontmatter followed by a `## Transcript` section:
+
+```markdown
+---
+title: "Product Sync"
+date: "2026-03-20 14:30"
+participants: "Alex Johnson (creator) <alex@example.com>, Sam Lee <sam@example.com>"
+started_at: "2026-03-20 14:30"
+ended_at: "2026-03-20 15:01"
+timezone: "America/Los_Angeles"
+meeting_key: "abc-123"
+workspace_name: "Acme Inc"
+format_version: 1
+---
+
+## Transcript
+
+Alex: Let's start with the status update...
+```
+
+### File naming
+
+Each file is named by the meeting's start timestamp:
+
+```
+2026-03-20_14-30-00.md
+```
+
+The filename never includes the meeting title. This keeps the path stable — if the title changes, only the content of the file is rewritten, not the filename. This makes files safe to reference by path in scripts, prompts, or any tool that stores a direct link.
+
+<Warning>
+  **Transcript not accessible?** iCloud Drive may be offloading the file to save
+  disk space. In Finder, navigate to `Documents/Earmark/Meeting Transcripts`,
+  right-click the file, and select **Keep Downloaded**.
+</Warning>
