@@ -51,11 +51,13 @@ keywords:
 
 ## What it does
 
-Earmark saves markdown files to your device when meetings end. This is enabled by default and works for both standard and [temporary](/earmark-basics/temporary-meetings) meetings. Files are saved to:
+Earmark auto-saves a markdown file to your device when each meeting ends. This is enabled by default and works for both standard and [temporary](/earmark-basics/temporary-meetings) meetings. The default save location is:
 
 ```
 ~/Documents/Earmark/Meeting Transcripts/
 ```
+
+You can change the save location in settings.
 
 Point Claude Code, Claude Cowork, Codex, Cursor or your local AI agent of choice at the folder and try prompts like:
 
@@ -73,7 +75,10 @@ If the meeting title changes after the file is written (for example, a system-ge
 
 ## Settings
 
-You can toggle local transcripts off in **Settings > Personalization > Meeting files**.
+Open **Settings > Personalization > Meeting files** to manage local transcripts.
+
+- **Auto-save transcripts to this device** — toggle the feature on or off.
+- **Save location** — when auto-save is enabled, a location row appears where you can change the destination folder. The folder must be inside your home directory (`~`).
 
 <Frame>
   <div
@@ -94,7 +99,7 @@ You can toggle local transcripts off in **Settings > Personalization > Meeting f
     >
       <img
         src="/images/local-transcripts-settings.png"
-        alt="Settings panel showing the Meeting files toggle under Personalization."
+        alt="Settings panel showing the Meeting files section under Personalization with auto-save toggle and save location."
         style={{ width: "100%", display: "block" }}
       />
     </div>
@@ -125,6 +130,6 @@ Alex: Let's start with the status update...
 
 <Warning>
   **Transcript not accessible?** iCloud Drive may be offloading the file to save
-  disk space. In Finder, navigate to `Documents/Earmark/Meeting Transcripts`,
-  right-click the file, and select **Keep Downloaded**.
+  disk space. In Finder, navigate to your save location, right-click the file,
+  and select **Keep Downloaded**.
 </Warning>
