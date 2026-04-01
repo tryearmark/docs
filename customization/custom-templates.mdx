@@ -1,12 +1,25 @@
 ---
 title: "Custom templates"
-description: "Get Earmark to generate the exact outputs your team needs from every meeting"
-keywords: ["custom templates", "custom task agents", "workflow templates", "artifact customization", "template request"]
+description: "Create reusable meeting templates for yourself or your workspace"
+keywords: ["custom templates", "meeting templates", "workspace templates", "template sharing", "slash commands"]
 ---
 
 ## What it does
 
-Custom templates let you configure Earmark to produce artifacts that match your team's exact formats and workflows. Whether you need product requirements in a specific structure, engineering tickets that match your tracker, stakeholder updates in a particular format, or internal communications that follow a house style, we'll build a custom task agent that handles it.
+Custom templates let you save reusable meeting prompts in Earmark.
+
+Use them when you have a format your team runs often, like:
+
+- Weekly standup recaps
+- Customer call summaries
+- Ticket or action-item trackers
+- Team-specific updates and handoff notes
+
+Once saved, a template can be:
+
+- Used again from the **Templates** picker
+- Invoked quickly from the `/` command in the meeting view
+- Shared with teammates through **Workspace** visibility or a copyable link
 
 <Frame>
   <div
@@ -25,72 +38,254 @@ Custom templates let you configure Earmark to produce artifacts that match your 
         boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
       }}
     >
-      <img src="/images/custom-templates.png" alt="Earmark custom template request form showing fields for template name, description, and sample format." style={{ width: '100%', display: 'block' }} />
+      <img
+        src="/images/custom-templates.png"
+        alt="Custom template creation flow showing a template name, prompt, visibility controls, and copy-link actions."
+        style={{ width: '100%', display: 'block' }}
+      />
     </div>
   </div>
 </Frame>
 
-## Why it matters
+## Create a template
 
-Every team has its own way of working. Built-in templates cover common patterns, but your sprint retro format, your client debrief structure, or your post-mortem checklist is unique. Custom templates close that gap so Earmark produces outputs you can use immediately, without reformatting.
+### From the Templates picker
 
-## How it works
+Open the **Templates** picker in the meeting view, then create a new template from your personal or workspace section.
+
+<Frame>
+  <div
+    style={{
+      backgroundImage: 'url(/images/background-blue.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      borderRadius: '1rem',
+      padding: '4%',
+    }}
+  >
+    <div
+      style={{
+        borderRadius: '0.875rem',
+        overflow: 'hidden',
+        boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
+      }}
+    >
+      <img
+        src="/images/my-templates.png"
+        alt="Templates picker showing the My templates section and its empty state before creating a first custom template."
+        style={{ width: '100%', display: 'block' }}
+      />
+    </div>
+  </div>
+</Frame>
+
+### From the fullscreen composer
+
+If you are in the fullscreen artifact composer and want to reuse the prompt later, open the composer menu and choose **Save as template**.
+
+<Frame>
+  <div
+    style={{
+      backgroundImage: 'url(/images/background-blue.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      borderRadius: '1rem',
+      padding: '4%',
+    }}
+  >
+    <div
+      style={{
+        borderRadius: '0.875rem',
+        overflow: 'hidden',
+        boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
+      }}
+    >
+      <img
+        src="/images/custom-templates-composer.png"
+        alt="Fullscreen composer menu showing the Save as template option."
+        style={{ width: '100%', display: 'block' }}
+      />
+    </div>
+  </div>
+</Frame>
+
+<Note>
+You can also start from an existing template instead of starting from scratch.
+</Note>
+
+## Choose visibility
+
+### Private
+
+- Visible only to you
+- Best for personal workflows or drafts
+
+### Workspace
+
+- Visible to your team in the workspace
+- Best for shared team formats
+
+## Who can edit or delete a template
+
+### If the template is Private
+
+- Only the creator can see it
+- Only the creator can edit it
+- Only the creator can delete it
+
+### If the template is Workspace
+
+- The creator can edit and delete it
+- Workspace admins can also edit and delete it
+
+### Important visibility rule
+
+Only the original creator can move a workspace template back to **Private**.
+
+## Share a template with Copy link
+
+`Copy link` creates a template snapshot link. It is not a live shared editing link.
+
+- If someone already has access to that template, Earmark can open it directly
+- If they do not already have it, Earmark lets them import their own copy
+
+You can copy a link that opens in:
+
+- The web app
+- The desktop app
+
+<Tip>
+Use the quick row action when you just want a web link fast. Use the full template editor when you want to choose between web and desktop explicitly.
+</Tip>
+
+## Use a template in a meeting
+
+### Option 1: Use the Templates picker
+
+Open the **Templates** picker and select your template from:
+
+- **My templates**
+- **Workspace templates**
+
+### Option 2: Type `/` in the composer
+
+Type `/` and start searching by name. Earmark shows matching custom templates inline, so you can select one immediately without opening the full picker.
+
+<Frame>
+  <div
+    style={{
+      backgroundImage: 'url(/images/background-blue.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      borderRadius: '1rem',
+      padding: '4%',
+    }}
+  >
+    <div
+      style={{
+        borderRadius: '0.875rem',
+        overflow: 'hidden',
+        boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
+      }}
+    >
+      <img
+        src="/images/command-menu.png"
+        alt="Inline slash-command menu showing custom template suggestions in the meeting composer."
+        style={{ width: '100%', display: 'block' }}
+      />
+    </div>
+  </div>
+</Frame>
 
 <Steps>
-<Step title="Share your format">
-Send us the structure you want Earmark to generate. This can be:
-
-- An existing template or document format your team already uses
-- A ticket format from your project tracker
-- A checklist or workflow you follow after meetings
-- A past example of an artifact you liked
-
-The more concrete the example, the better the result.
+<Step title="Type / in the meeting composer">
+The inline suggestion menu opens.
 </Step>
-<Step title="We create the task agent">
-Our team configures a custom task agent that understands your format and produces outputs aligned to the structure you provided.
+<Step title="Search by template name">
+Keep typing to narrow the results.
 </Step>
-<Step title="Use it in meetings">
-The task agent appears in your template library. Run it during any conversation and it produces the artifact automatically, just like a built-in template.
-</Step>
-<Step title="Iterate if needed">
-We'll refine the template based on your feedback until the output matches your workflow.
+<Step title="Select a template">
+Press Enter or click the result to use it immediately.
 </Step>
 </Steps>
 
-## What makes a good template
+## Edit or delete a template
 
-The best custom templates share a few traits:
+You can:
 
-- **Clear structure** with defined sections, fields, or headings
-- **Repeatable workflow** that your team follows regularly
-- **Recurring artifact** that gets created after most meetings (not a one-off)
+- Rename a template
+- Update its prompt
+- Change its visibility if you are the creator
+- Delete it if you have permission
+
+## Best practices for writing a good template
+
+A strong template usually does three things:
+
+1. Start with a clear job to be done
+2. Tell Earmark what to focus on
+3. Define the exact output structure with headings
+
+### A strong pattern
+
+Use something like:
+
+```md
+Capture the key outcomes from this meeting. Use the format:
+
+# Meeting Recap
+## Key Discussion Points
+## Decisions Made
+## Action Items
+## Next Steps
+```
+
+This gives Earmark both a clear instruction and a clear output format.
+
+### What makes templates work well
+
+- Be specific about the outcome you want
+- Use explicit section headings
+- Keep the format stable across meetings
+- Write for a repeatable workflow, not a one-off conversation
+- Test the template in a real meeting and refine it after seeing the result
+
+### A good default pattern
+
+Many strong templates follow this structure:
+
+- A short instruction at the top
+- Then `Use the format:`
+- Then a clean Markdown outline with headings
+
+### Keep them focused
+
+Avoid trying to do everything in one template.
+Three focused templates are usually better than one giant catch-all prompt.
+
+## Limits and behavior to know
+
+- Template prompts can be up to **8,000 characters**
+- You need to save a template before you can copy a link to it
+- Shared links create importable copies when needed, not a live shared editing object
+- Workspace visibility controls who sees the template inside Earmark
+- Copy link controls how people open or import the template, not who owns it
+
+## When to use a custom template instead of a built-in template
+
+Use a custom template when:
+
+- your team already has a house format
+- you repeat the same output often
+- a built-in template is close, but not quite right
+- you want your workspace to standardize a recurring artifact
+
+Use a built-in template when:
+
+- you are exploring a workflow for the first time
+- your format does not need to be strict
+- you just want a fast starting point
 
 <Tip>
-Not sure whether your workflow qualifies? Just ask. We're happy to help you shape it into a template.
+A good way to create your first custom template is to start from a built-in template, run it in a real meeting, then save an improved version that matches your team’s exact format.
 </Tip>
-
-## Request a custom template
-
-### From the template library
-
-Open the template library in any meeting and select **Request template**. Fill in the details and submit, and we'll follow up by email.
-
-### By email
-
-Contact [support@tryearmark.com](mailto:support@tryearmark.com) with:
-
-- **What it's called** — a short name for the template
-- **What it does** — describe the artifact and its purpose
-- **A sample or format** — attach an example document, screenshot, or written structure
-- **Key fields or sections** — call out any specific sections the output should always include
-- **Where the output will be used** — tickets, docs, Slack updates, email, or something else
-
-We'll review your request and get back to you to finalize the format.
-
-## Tips
-
-- Start with a real example from a past meeting rather than describing the format from memory
-- Include section headings, field names, and any boilerplate text you always use
-- Let us know which meetings this template will be used in so we can optimize for that context
-- You can request changes anytime after the template is live
