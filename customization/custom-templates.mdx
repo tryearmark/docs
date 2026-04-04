@@ -19,7 +19,8 @@ Once saved, a template can be:
 
 - Used again from the **Templates** picker
 - Invoked quickly from the `/` command in the meeting view
-- Shared with teammates through **Workspace** visibility or a copyable link
+- Shared with teammates through **Workspace** visibility
+- Shared through a public `Copy link` URL that opens the current template in Earmark
 
 <Frame>
   <div
@@ -144,19 +145,26 @@ Only the original creator can move a workspace template back to **Private**.
 
 ## Share a template with Copy link
 
-`Copy link` creates a live shared link for that template.
+`Copy link` creates or reuses one public link for a saved template. That link always points to the current version of the template.
 
-- Anyone with the link can open it
-- If you update the template later, those changes are reflected through the same link
-- You can turn link sharing off later from the share settings
+In share settings, choose:
 
-You can copy a link that opens in:
+- `Anyone with link` to make the template available through its public link
+- `Off` to turn that public link off again
 
-- The web app
-- The desktop app
+Only the template creator can manage this link.
+
+When someone opens the link:
+
+- Earmark opens a share page that can hand off to the desktop app or continue in the web app
+- The link leads into Earmark's import flow rather than a multi-user shared editor
+- If the person does not already have that template, they can import their own local copy
+- If they already have that same template family, Earmark opens the existing local template instead of creating a duplicate
+
+Turning the link off revokes public access without changing where the template appears inside Earmark.
 
 <Tip>
-Use the quick row action when you just want a web link fast. Use the full template editor when you want to choose between web and desktop explicitly.
+Use `Workspace` visibility to control who can find the template inside Earmark. Use `Copy link` when you want a public entry point for opening or importing it.
 </Tip>
 
 ## Use a template in a meeting
@@ -268,9 +276,11 @@ Three focused templates are usually better than one giant catch-all prompt.
 
 - Template prompts can be up to **8,000 characters**
 - You need to save a template before you can copy a link to it
-- Shared links create importable copies when needed, not a live shared editing object
+- `Copy link` creates or reuses one stable public link per template
+- Turning the link `Off` revokes public access without changing the template itself
+- Public links open the latest template in Earmark and import a local copy only when needed
 - Workspace visibility controls who sees the template inside Earmark
-- Copy link controls how people open or import the template, not who owns it
+- Only the template creator can manage the public link
 
 ## When to use a custom template instead of a built-in template
 
