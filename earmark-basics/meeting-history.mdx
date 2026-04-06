@@ -17,9 +17,31 @@ The sidebar shows your most recent meetings for quick access. Click any meeting 
 
 ### All meetings
 
-<Note>
-**Screenshot needed:** the Meetings page showing full meeting history grouped by date. Save as `/images/meeting-history.png`.
-</Note>
+<Frame caption="Meetings list grouped by date">
+  <div
+    style={{
+      backgroundImage: 'url(/images/background-blue.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      borderRadius: '1rem',
+      padding: '4%',
+    }}
+  >
+    <div
+      style={{
+        borderRadius: '0.875rem',
+        overflow: 'hidden',
+        boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
+      }}
+    >
+      <img
+        src="/images/meeting-history-view-all.png"
+        alt="Meetings page showing full meeting history with entries grouped by date."
+        style={{ width: '100%', display: 'block' }}
+      />
+    </div>
+  </div>
+</Frame>
 
 Open the **Meetings** page from the sidebar to see your full meeting history, grouped by date. Each entry shows the meeting title (auto-generated from the transcript if you didn't set one manually) and when it was last updated.
 
@@ -38,9 +60,31 @@ Delete a meeting from the meetings page. The meeting moves to the **Recently del
 <Step title="Find it in Recently deleted">
 Go to **Settings > Recently deleted** to see all meetings deleted within the last 30 days.
 
-<Note>
-**Screenshot needed:** **Settings > Recently deleted** showing deleted meetings with Restore buttons. Save as `/images/recently-deleted.png`.
-</Note>
+<Frame caption="Settings > Recently deleted with Restore actions">
+  <div
+    style={{
+      backgroundImage: 'url(/images/background-blue.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      borderRadius: '1rem',
+      padding: '4%',
+    }}
+  >
+    <div
+      style={{
+        borderRadius: '0.875rem',
+        overflow: 'hidden',
+        boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
+      }}
+    >
+      <img
+        src="/images/recenetly-deleted-meetings.png"
+        alt="Recently deleted meetings in settings with Restore buttons for each soft-deleted meeting."
+        style={{ width: '100%', display: 'block' }}
+      />
+    </div>
+  </div>
+</Frame>
 </Step>
 <Step title="Restore if needed">
 Click **Restore** to bring the meeting back with all its data: transcript, tasks, artifacts, and participants.

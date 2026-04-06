@@ -7,14 +7,32 @@ keywords: ["live meeting", "real-time artifacts", "meeting copilot", "live sync"
 Once recording starts, Earmark is actively working. Your pre-seeded tasks begin generating, and you can add more on the fly. It's like having a trusted advisor by your side. Get instant insights and suggestions that keep conversations focused and productive. The goal: stay present in the conversation while Earmark captures and structures everything around you.
 
 <Frame caption="Real-time task updates as the conversation unfolds">
-  <video
-    autoPlay
-    muted
-    loop
-    playsInline
-    src="https://bwopjpjsyqjaz3ty.public.blob.vercel-storage.com/discovery-checklist/live-updates-rF3VMElMU7UhGQpelzqWypt8AQ2pzF.mp4"
-    style={{ borderRadius: '0.75rem', width: '100%' }}
-  />
+  <div
+    style={{
+      backgroundImage: 'url(/images/background-blue.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      borderRadius: '1rem',
+      padding: '4%',
+    }}
+  >
+    <div
+      style={{
+        borderRadius: '0.875rem',
+        overflow: 'hidden',
+        boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
+      }}
+    >
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        src="https://bwopjpjsyqjaz3ty.public.blob.vercel-storage.com/discovery-checklist/live-updates-rF3VMElMU7UhGQpelzqWypt8AQ2pzF.mp4"
+        style={{ width: '100%', display: 'block' }}
+      />
+    </div>
+  </div>
 </Frame>
 
 ## Start recording and let it run
@@ -62,9 +80,31 @@ This is where Earmark becomes a live copilot. These templates are designed to be
 
 ## Use slash commands for speed
 
-<Note>
-**Screenshot needed:** prompt bar with `/` typed and filtered template suggestions visible. Save as `/images/during-meeting-slash.png`.
-</Note>
+<Frame caption="Type / in the prompt bar to filter templates">
+  <div
+    style={{
+      backgroundImage: 'url(/images/background-blue.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      borderRadius: '1rem',
+      padding: '4%',
+    }}
+  >
+    <div
+      style={{
+        borderRadius: '0.875rem',
+        overflow: 'hidden',
+        boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
+      }}
+    >
+      <img
+        src="/images/template-shortcut.png"
+        alt="Meeting prompt bar with slash command active and filtered template suggestions in the dropdown."
+        style={{ width: '100%', display: 'block' }}
+      />
+    </div>
+  </div>
+</Frame>
 
 Type `/` in the prompt bar for instant access to any template without opening the full library. Start typing to filter (for example, `/acronym`, `/ticket`, `/smart`), then press Enter.
 

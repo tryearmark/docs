@@ -20,9 +20,31 @@ Live transcription shows your conversation as it happens, giving everyone a shar
 
 Earmark is botless: nothing joins your call or alerts other participants. Audio is captured directly from your device.
 
-<Note>
-**Screenshot needed:** the meeting view with a live transcript scrolling during an active recording. Save as `/images/transcription-live.png`.
-</Note>
+<Frame caption="Live transcript during an active recording">
+  <div
+    style={{
+      backgroundImage: 'url(/images/background-blue.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      borderRadius: '1rem',
+      padding: '4%',
+    }}
+  >
+    <div
+      style={{
+        borderRadius: '0.875rem',
+        overflow: 'hidden',
+        boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
+      }}
+    >
+      <img
+        src="/images/transcript-live-normal.png"
+        alt="Meeting view with live transcription panel showing scrolling transcript text during recording."
+        style={{ width: '100%', display: 'block' }}
+      />
+    </div>
+  </div>
+</Frame>
 
 <Steps>
 <Step title="Start recording">
