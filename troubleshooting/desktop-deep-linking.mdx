@@ -6,9 +6,31 @@ keywords: ["deep linking", "desktop app not opening", "browser links", "protocol
 
 ## What you'll see
 
-<Note>
-**Screenshot needed:** browser showing the "Open Earmark" button/link that fails to launch the app. Save as `/images/troubleshoot-deep-link.png`.
-</Note>
+<Frame caption="Browser sign-in flow that hands off to the desktop app">
+  <div
+    style={{
+      backgroundImage: 'url(/images/background-blue.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      borderRadius: '1rem',
+      padding: '4%',
+    }}
+  >
+    <div
+      style={{
+        borderRadius: '0.875rem',
+        overflow: 'hidden',
+        boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
+      }}
+    >
+      <img
+        src="/images/setup-sign-in.png"
+        alt="Browser window during Earmark sign-in showing the step that should open the desktop app via earmark links."
+        style={{ width: '100%', display: 'block' }}
+      />
+    </div>
+  </div>
+</Frame>
 
 Clicking "Open Earmark" in the browser does nothing  -  the desktop app doesn't launch. The browser may try to search for the URL instead of opening the app. This typically affects sign-in, since authentication redirects from the browser back to the desktop app.
 

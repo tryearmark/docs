@@ -8,9 +8,31 @@ keywords: ["app disconnected", "data not updating", "stale data", "app stuck", "
 
 The app loads but data looks stale  -  meetings don't update, artifacts don't appear, or the UI feels stuck. You might also see loading spinners that never resolve.
 
-<Note>
-**Screenshot needed:** the app showing stale data or loading spinners that never resolve. Save as `/images/troubleshoot-disconnected.png`.
-</Note>
+<Frame caption="When the UI loads but live updates do not arrive">
+  <div
+    style={{
+      backgroundImage: 'url(/images/background-blue.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      borderRadius: '1rem',
+      padding: '4%',
+    }}
+  >
+    <div
+      style={{
+        borderRadius: '0.875rem',
+        overflow: 'hidden',
+        boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
+      }}
+    >
+      <img
+        src="/images/live-sync-toggle-on.png"
+        alt="Earmark meeting interface highlighting sync-related controls when realtime updates may appear stuck."
+        style={{ width: '100%', display: 'block' }}
+      />
+    </div>
+  </div>
+</Frame>
 
 ## Why this happens
 
