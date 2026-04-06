@@ -11,9 +11,31 @@ Skip the blank canvas. Earmark converts what you discussed into v0-ready UI prom
 
 ## How it works
 
-<Note>
-**Screenshot needed:** an artifact showing a v0-ready UI prompt with component descriptions and layout requirements. Save as `/images/integration-v0.png`.
-</Note>
+<Frame caption="v0-ready UI prompt from meeting context">
+  <div
+    style={{
+      backgroundImage: 'url(/images/background-blue.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      borderRadius: '1rem',
+      padding: '4%',
+    }}
+  >
+    <div
+      style={{
+        borderRadius: '0.875rem',
+        overflow: 'hidden',
+        boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
+      }}
+    >
+      <img
+        src="/images/v0-prompt.png"
+        alt="Artifact with a v0-ready UI prompt including component descriptions and layout requirements."
+        style={{ width: '100%', display: 'block' }}
+      />
+    </div>
+  </div>
+</Frame>
 
 1. Run a meeting where UI or design decisions are discussed
 2. Use a custom prompt like "Generate a v0 prompt for the dashboard layout we discussed, including the data tables and filter sidebar"
