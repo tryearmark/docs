@@ -4,6 +4,17 @@ description: "Stay up to date with Earmark product updates, improvements, and bu
 rss: true
 ---
 
+<Update label="April 8, 2026">
+## Calendar reconnect now reflects immediately in Settings
+
+Connecting or reconnecting a calendar from Settings on desktop now updates the UI as soon as the OAuth flow completes. Before this fix, the browser handoff would finish but Settings would stay in its pre-connect state — toggles could show stale provider data and the connection felt like it had only partially worked. The backend connection usually succeeded; the UI just was not keeping up. See [Connect your calendar](/getting-started/calendar).
+
+## Bug fixes
+
+- Fixed the Settings calendar section not reacting to the desktop OAuth return, so the panel now refreshes as soon as the app regains focus after the browser handoff.
+- Fixed calendar toggles sometimes showing the wrong provider's calendars after a reconnect by isolating the Google and Microsoft calendar list caches per provider.
+</Update>
+
 <Update label="April 3, 2026">
 ## Custom templates are live
 
