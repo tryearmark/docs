@@ -36,6 +36,7 @@
             "icon": "book-open",
             "pages": [
               "earmark-basics/transcription",
+              "earmark-basics/transcript-import",
               "earmark-basics/artifacts",
               "earmark-basics/templates",
               "earmark-basics/command-menu",

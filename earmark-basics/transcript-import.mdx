@@ -1,0 +1,123 @@
+---
+title: "Import a transcript"
+sidebarTitle: "Import transcript"
+description: "Create an Earmark meeting from a transcript captured somewhere else"
+keywords:
+  [
+    "import transcript",
+    "transcript import",
+    "external transcript",
+    "edit transcript",
+    "backdate meeting",
+    "create meeting from transcript",
+    "migrate transcripts",
+  ]
+---
+
+## What it does
+
+Transcript import creates a regular Earmark meeting from text you already have. The imported meeting is fully searchable, accepts templates and artifacts, and lives in your meeting history the same way a recorded meeting does. The only difference is that the transcript came from outside Earmark.
+
+<Frame caption="Import transcript dialog">
+  <div
+    style={{
+      backgroundImage: 'url(/images/background-blue.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      borderRadius: '1rem',
+      padding: '4%',
+    }}
+  >
+    <div
+      style={{
+        borderRadius: '0.875rem',
+        overflow: 'hidden',
+        boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
+      }}
+    >
+      <img
+        src="/images/import-transcript.png"
+        alt="Import transcript dialog with fields for meeting title, date, time started, and pasted transcript text."
+        style={{ width: '100%', display: 'block' }}
+      />
+    </div>
+  </div>
+</Frame>
+
+## When to use it
+
+- **The conversation was captured somewhere else.** Bring transcripts in from another transcription tool, a video platform, or hand-typed notes so the meeting lives next to the rest of your team's history.
+- **The meeting happened in the past.** Date and time accept any timestamp, so a backfilled meeting lands at the moment it actually took place rather than the moment of import.
+- **You need to edit a transcript.** Earmark transcripts are intentionally locked once captured. To make corrections, copy the transcript, edit it offline, and reimport the cleaned version as a new meeting.
+
+## How to import
+
+<Steps>
+<Step title="Open the import dialog">
+From the main screen or any meeting, open the **...** menu in the header and select **Import transcript**.
+
+<Frame caption="Import transcript in the header menu">
+  <div
+    style={{
+      backgroundImage: 'url(/images/background-blue.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      borderRadius: '1rem',
+      padding: '4%',
+    }}
+  >
+    <div
+      style={{
+        borderRadius: '0.875rem',
+        overflow: 'hidden',
+        boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
+      }}
+    >
+      <img
+        src="/images/header-menu.png"
+        alt="Header menu opened from the meeting header showing the Import transcript option."
+        style={{ width: '100%', display: 'block' }}
+      />
+    </div>
+  </div>
+</Frame>
+</Step>
+<Step title="Fill in the meeting details">
+Add a meeting title, then set the date and time the meeting actually started. Both can be in the past.
+</Step>
+<Step title="Paste the transcript">
+Paste the transcript text. The imported meeting works with templates and artifacts the same way a recorded meeting does.
+</Step>
+<Step title="Import">
+Click **Import**. Earmark creates the meeting and opens it. From there you can run templates, generate artifacts, and share output like any other meeting.
+</Step>
+</Steps>
+
+## Edit a transcript by reimporting
+
+Earmark locks transcripts so artifacts always trace back to a verifiable source. When you do need to fix something — for example, redacting a section before generating artifacts on top of it — reimport is the supported path.
+
+<Steps>
+<Step title="Copy the existing transcript">
+Open the meeting you want to fix and copy its transcript text.
+</Step>
+<Step title="Edit it offline">
+Paste it into a text editor, make your changes, then copy the cleaned version.
+</Step>
+<Step title="Import as a new meeting">
+Open the Import transcript dialog and paste the corrected text. Reuse the original meeting's title, date, and time so it lands in the same spot in your history.
+</Step>
+<Step title="Delete the original">
+Once you've confirmed the imported meeting looks right, delete the original. It stays in **Recently deleted** for 30 days in case you change your mind.
+</Step>
+</Steps>
+
+<Note>
+Imported meetings behave identically to recorded ones. They appear in your meeting history at the date you set, are searchable from the [command menu](/earmark-basics/command-menu), and accept artifacts, templates, and tasks like any other meeting.
+</Note>
+
+<AccordionGroup>
+  <Accordion icon="eye" title="When this is useful">
+    Migrating a backlog of meetings from another tool, capturing a session that wasn't recorded in Earmark, or correcting a transcript before generating artifacts on top of it. Anywhere the source-of-truth text already exists and you want it to live in Earmark.
+  </Accordion>
+</AccordionGroup>
