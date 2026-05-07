@@ -1,0 +1,186 @@
+---
+title: "Composer"
+description: "Refine any card with plain-language instructions and a live preview"
+keywords: ["composer", "artifact editor", "meeting cards", "prompt", "templates", "live preview"]
+---
+
+Composer is how you make a card your own.
+
+When Earmark generates a summary, action items, or any other [artifact](/earmark-basics/artifacts) from a meeting, the result is a starting point. Composer is the panel on the left in the fullscreen card view: you describe what you want, and the preview on the right re-renders to match.
+
+If a card is the answer, Composer is where you write the question.
+
+<Frame caption="Fullscreen card view with Composer on the left and the generated preview on the right">
+  <div
+    style={{
+      backgroundImage: 'url(/images/background-blue.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      borderRadius: '1rem',
+      padding: '4%',
+    }}
+  >
+    <div
+      style={{
+        borderRadius: '0.875rem',
+        overflow: 'hidden',
+        boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
+      }}
+    >
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        src="/images/composer_example.mp4"
+        title="Fullscreen meeting card with Composer prompt panel on the left and artifact preview on the right."
+        style={{ width: '100%', display: 'block' }}
+      />
+    </div>
+  </div>
+</Frame>
+
+## When to use it
+
+Use Composer whenever the default output is close, but not quite what you need.
+
+Common cases:
+
+- The summary covers what was said, but not what was decided — ask for decisions only.
+- Action items feel flat — ask for them grouped by owner, due date, or blocking relationships.
+- You need a recap for a specific reader — say who it is for (manager, customer, teammate who missed the call). Tone follows audience.
+- You only care about one thread — pin that thread and drop the rest.
+- You want the same shape every week — tune the prompt here, then [save it as a template](/customization/custom-templates).
+
+The pattern is always the same: type what you want, watch the preview, adjust until it lands.
+
+## Open Composer
+
+Composer lives in the fullscreen view of any card.
+
+1. From a meeting, click a card to open it.
+2. The card fills the screen. Composer is on the **left**; the preview is on the **right**.
+
+On a small screen, Composer sits in a sheet. Tap the **panel** icon in the header to open it. When you close the sheet, your prompt saves automatically.
+
+{/* Screenshot placement: narrow viewport — header with panel icon, sheet half-open over preview (or short video of open/close). */}
+
+## Write a prompt
+
+The Composer field is a plain notes area. You can be casual, specific, or both.
+
+A strong prompt usually covers three things:
+
+1. **What the output is for** — recap, list, brief, draft email.
+2. **Who it is for** — teammate, customer, your future self.
+3. **What to leave out** — small talk, tangents, off-topic noise.
+
+Example (spacing matters; short lines are easier to scan and edit later):
+
+```text
+Recap for my manager.
+Cover what we decided and what's still open.
+Keep it under 150 words. No filler, no pleasantries.
+```
+
+No Markdown required in the prompt unless you want it. Plain text is enough.
+
+## Live preview
+
+By default, the preview **updates as you type**. Pause briefly and the right-hand panel reflects what you wrote. That is the fastest way to see whether your instruction is working.
+
+To work in drafts and refresh only when you are ready, open the **Composer menu** (three dots in the Composer header) and turn off **Update as you type**. After that, press **Shift + Enter** to apply the prompt. Edit freely, then apply when you mean it.
+
+<Frame caption="Composer header menu for preview mode and template actions">
+  <div
+    style={{
+      backgroundImage: 'url(/images/background-blue.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      borderRadius: '1rem',
+      padding: '4%',
+    }}
+  >
+    <div
+      style={{
+        borderRadius: '0.875rem',
+        overflow: 'hidden',
+        boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
+      }}
+    >
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        src="/images/composer_update.mp4"
+        title="Composer panel header showing the overflow menu for Update as you type and Save as template."
+        style={{ width: '100%', display: 'block' }}
+      />
+    </div>
+  </div>
+</Frame>
+
+**Behavior to expect**
+
+- The preview scrolls toward new content as it streams. On long cards, the top may be off-screen for a moment — scroll up if you need the beginning.
+- Prompt text **saves automatically**. Closing the meeting, switching cards, or reloading does not wipe your draft.
+
+{/* Screenshot placement: long preview during streaming refresh — optional; shows auto-scroll and need to scroll up for the start of the card. */}
+
+## Save a prompt as a template
+
+When a prompt reliably gives the output you want — the one you would run on every similar meeting — open the Composer menu and choose **Save as template**.
+
+A template is a named, saved prompt. It appears with your other [custom templates](/customization/custom-templates), can be reused on future meetings, and can be shared with the workspace.
+
+Why save instead of pasting each time:
+
+- You discover the right instruction by typing and watching the preview, not by guessing in an empty template form.
+- A prompt proven on a real meeting usually transfers to the next real meeting better than one written from scratch.
+
+If you paste the same prompt twice, save it.
+
+<Frame caption="Save as template from the Composer menu">
+  <div
+    style={{
+      backgroundImage: 'url(/images/background-blue.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      borderRadius: '1rem',
+      padding: '4%',
+    }}
+  >
+    <div
+      style={{
+        borderRadius: '0.875rem',
+        overflow: 'hidden',
+        boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
+      }}
+    >
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        src="/images/composer_template_created.mp4"
+        title="Composer overflow menu with Save as template selected."
+        style={{ width: '100%', display: 'block' }}
+      />
+    </div>
+  </div>
+</Frame>
+
+## Tips
+
+- **Whitespace helps future you** when you reopen a prompt weeks later.
+- **Negative instructions work.** Saying what to omit is often stronger than listing what to include.
+- **One job per prompt.** For both a recap and a follow-up list, two cards usually beat one overloaded prompt.
+- **Ask for fewer words when unsure.** The model defaults to thorough; you often want concise.
+- **Right after the meeting ends**, cards can keep refreshing for about a minute while the transcript finishes. If the first result looks partial, wait a moment and try again.
+
+## What Composer is not
+
+- **Not a chat.** There is no threaded history. The latest prompt text is what Earmark uses.
+- **Does not change the meeting.** Rewriting a card does not edit the source transcript.
+- **Does not span meetings.** Each card is tied to its meeting. For work across many meetings, use your [integrations](/integrations/overview) or a local workflow (for example [local transcript files](/earmark-basics/local-transcripts)) with an external agent.
