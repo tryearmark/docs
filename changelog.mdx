@@ -69,7 +69,7 @@ New artifact cards can now point you toward Composer when a generated document i
 
 The desktop toolbar can now do more without bringing the main window forward. Use `Quick Capture` for an ad-hoc recording, use `Stop Capture` while a recording is active, and click a `Coming up` meeting to open the call and start recording. On macOS, the menu bar countdown still shows what is next or currently running; on Windows, the tray icon now switches between idle and recording states. See [Earmark toolbar](/using-earmark/toolbar).
 
-<Frame>
+<Frame caption="Start a recording with Quick Capture from the toolbar">
   <div
     style={{
       backgroundImage: "url(/images/background-blue.png)",
@@ -84,13 +84,15 @@ The desktop toolbar can now do more without bringing the main window forward. Us
         borderRadius: "0.875rem",
         overflow: "hidden",
         boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
-        maxWidth: "420px",
-        margin: "0 auto",
       }}
     >
-      <img
-        src="/images/settings-macOS-tray-calendar-menu-expanded.png"
-        alt="Earmark toolbar menu showing Open Earmark, Show Events in Menu Bar, Coming up, Refresh, and Quit Completely."
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        src="https://bwopjpjsyqjaz3ty.public.blob.vercel-storage.com/toolbar/toolbar-start.mp4"
+        title="Quick Capture started from the Earmark toolbar menu."
         style={{ width: "100%", display: "block" }}
       />
     </div>
@@ -100,16 +102,12 @@ The desktop toolbar can now do more without bringing the main window forward. Us
 ## Improvements
 
 - Desktop update checks now run quietly when the app opens or comes back into focus, so the sidebar `Update` badge is less likely to miss an available desktop update.
-- The web and desktop client refresh version was bumped so open sessions are prompted onto the patched app bundle.
-- Delete confirmation buttons now use the shared destructive action style, including in dark mode.
-- The template picker is cleaner now that the old custom-templates promo banner has been removed.
-- Preview deployments now run broader web end-to-end coverage across navigation, command menu, templates, settings, artifact interactions, transcript import, and web calendar gating.
+- Delete confirmations now look consistent in dark mode.
 
 ## Bug fixes
 
-- Fixed Windows tray icons sometimes failing to update after capture started or stopped by loading fresh icon assets and using the Windows-specific native image path.
-- Fixed repeated Windows tray asset updates getting stuck behind desktop webview cache.
-- Fixed a web E2E setup import path after the comprehensive coverage suite was added.
+- Fixed Windows tray icons sometimes failing to switch into the right recording state after capture started or stopped.
+- Fixed cases where Windows could keep showing an older tray icon after an update.
 
 </Update>
 
