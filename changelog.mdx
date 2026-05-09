@@ -4,6 +4,115 @@ description: "Stay up to date with Earmark product updates, improvements, and bu
 rss: true
 ---
 
+<Update label="May 9, 2026">
+## Import transcripts you already have
+
+You can now create an Earmark meeting from a transcript captured somewhere else. Open the header menu, choose `Import transcript`, add a title, set when the meeting happened, and paste the transcript. The imported meeting lands in your history at the date you picked, works with search, and accepts templates and artifacts like a recorded meeting. See [Import a transcript](/earmark-basics/transcript-import).
+
+<Frame>
+  <div
+    style={{
+      backgroundImage: "url(/images/background-blue.png)",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      borderRadius: "1rem",
+      padding: "4%",
+    }}
+  >
+    <div
+      style={{
+        borderRadius: "0.875rem",
+        overflow: "hidden",
+        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
+      }}
+    >
+      <img
+        src="/images/import-transcript.png"
+        alt="Import transcript dialog with fields for meeting title, date, time, and transcript text."
+        style={{ width: "100%", display: "block" }}
+      />
+    </div>
+  </div>
+</Frame>
+
+## Composer is easier to discover
+
+New artifact cards can now point you toward Composer when a generated document is ready to refine. Inside Composer, a `Show me` tip types a practical example prompt, the preview updates as you type, and you can save a working prompt as a reusable template. See [Composer](/using-earmark/composer).
+
+<Frame>
+  <div
+    style={{
+      backgroundImage: "url(/images/background-blue.png)",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      borderRadius: "1rem",
+      padding: "4%",
+    }}
+  >
+    <div
+      style={{
+        borderRadius: "0.875rem",
+        overflow: "hidden",
+        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
+      }}
+    >
+      <img
+        src="/images/composer-view.png"
+        alt="Composer view with prompt editing on the left and a live meeting-minutes preview on the right."
+        style={{ width: "100%", display: "block" }}
+      />
+    </div>
+  </div>
+</Frame>
+
+## Toolbar capture controls
+
+The desktop toolbar can now do more without bringing the main window forward. Use `Quick Capture` for an ad-hoc recording, use `Stop Capture` while a recording is active, and click a `Coming up` meeting to open the call and start recording. On macOS, the menu bar countdown still shows what is next or currently running; on Windows, the tray icon now switches between idle and recording states. See [Earmark toolbar](/using-earmark/toolbar).
+
+<Frame>
+  <div
+    style={{
+      backgroundImage: "url(/images/background-blue.png)",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      borderRadius: "1rem",
+      padding: "4%",
+    }}
+  >
+    <div
+      style={{
+        borderRadius: "0.875rem",
+        overflow: "hidden",
+        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
+        maxWidth: "420px",
+        margin: "0 auto",
+      }}
+    >
+      <img
+        src="/images/settings-macOS-tray-calendar-menu-expanded.png"
+        alt="Earmark toolbar menu showing Open Earmark, Show Events in Menu Bar, Coming up, Refresh, and Quit Completely."
+        style={{ width: "100%", display: "block" }}
+      />
+    </div>
+  </div>
+</Frame>
+
+## Improvements
+
+- Desktop update checks now run quietly when the app opens or comes back into focus, so the sidebar `Update` badge is less likely to miss an available desktop update.
+- The web and desktop client refresh version was bumped so open sessions are prompted onto the patched app bundle.
+- Delete confirmation buttons now use the shared destructive action style, including in dark mode.
+- The template picker is cleaner now that the old custom-templates promo banner has been removed.
+- Preview deployments now run broader web end-to-end coverage across navigation, command menu, templates, settings, artifact interactions, transcript import, and web calendar gating.
+
+## Bug fixes
+
+- Fixed Windows tray icons sometimes failing to update after capture started or stopped by loading fresh icon assets and using the Windows-specific native image path.
+- Fixed repeated Windows tray asset updates getting stuck behind desktop webview cache.
+- Fixed a web E2E setup import path after the comprehensive coverage suite was added.
+
+</Update>
+
 <Update label="May 1, 2026">
 ## Visual refresh across the app
 
