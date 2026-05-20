@@ -1,0 +1,577 @@
+---
+title: "Customer onboarding and training"
+description: "Convert customer training sessions, implementation workshops, and onboarding calls into the structured follow-up artifact that keeps every commitment, configuration need, feature request, and documentation gap from quietly slipping through"
+keywords: ["customer onboarding", "implementation", "training", "EIC", "follow-ups", "customer success", "workflow"]
+---
+
+The first 30–90 days of a customer's relationship with your product is where retention gets decided. Customers who experience smooth onboarding — questions answered, configurations completed, follow-ups honored, value realized on the timeline that was promised — become loyal customers who stay for years. Customers who experience rough onboarding — questions that don't get answered, configurations that drift, follow-ups that get forgotten — churn within 6–18 months regardless of how strong the product is.
+
+The work that determines which experience the customer has is largely done by trainers, implementation engineers, EICs, and CSMs running training sessions. They run six to ten sessions per week, sometimes more. Each session produces dozens of small *"we'll come back to that"* moments — a configuration question that needs a documentation lookup, a feature request that should go to product, a workflow the customer wants to confirm with their internal team, a follow-up the trainer promised.
+
+By end of day, the trainer has accumulated 50+ small items across 6–8 sessions. Half have already started decaying in memory. The follow-up email captures the most prominent items; the rest live in a notebook, a Slack thread, a hastily-jotted post-it, or nowhere at all. The customer waits for follow-ups that don't arrive. The internal queue of items needing engineering or documentation work gets fragmented across many trainers, never reaching the people who could act on it.
+
+This guide is a specific instance of the [workflows](/workflows) pattern, applied to the highest-volume specialized workflow most CS organizations run. It is the specialized implementation-context version of the [action items workflow](/workflows/action-items-workflow) — that workflow handles general meeting commitments; this one is shaped for the rigid categorization and high session volume of customer implementation work.
+
+## Foundation
+
+### Identify which sessions feed the workflow
+
+Not every customer touchpoint is a training session. The candidates:
+
+| Session type | Run the workflow? |
+| --- | --- |
+| Kickoff / discovery | Yes — usually high item volume |
+| Configuration sessions | Yes — the highest-volume category |
+| Training sessions (feature-by-feature) | Yes — primary use case |
+| Workshops with multi-team customers | Yes — items often by stakeholder |
+| Pre-go-live readiness reviews | Yes — high-stakes; gaps must be caught |
+| Go-live support / hypercare calls | Yes — incident-like items |
+| Post-launch follow-up sessions | Yes — items often roll into expansion or churn risk |
+| Quick status checks (5-min syncs) | Optional — usually too thin |
+| Internal customer-account reviews | Use [structured meeting notes](/workflows/structured-meeting-notes-workflow) instead |
+| Pure sales follow-ups | Use [sales calls workflow](/workflows/sales-calls-workflow) |
+
+The workflow's value scales with how consistently it runs on every session.
+
+### Establish your categorization model
+
+The single most important decision in this workflow. The categories determine what the artifact looks like and what makes it useful.
+
+A starting model that covers most implementation contexts:
+
+| Category | What goes here |
+| --- | --- |
+| **Questions needing configuration** | Customer asked about a setting, workflow, or option that needs to be set up or confirmed. Trainer owns figuring out the answer; sometimes the customer owns making the change. |
+| **Feature requests** | Customer asked for capability the product doesn't currently have. Product / engineering owns. |
+| **Documentation gaps** | Customer asked a question that should have been answerable from existing docs but wasn't. Documentation team owns. |
+| **Bug reports** | Something is broken. Engineering owns; trainer flags. |
+| **Follow-ups by trainer / EIC** | Trainer committed to doing something — sending a doc, scheduling a follow-up, looking into a question. Trainer owns. |
+| **Follow-ups by customer** | Customer committed to doing something — configuring, getting back to the trainer, talking to their team. Customer owns. |
+| **Follow-ups by other team** | Items requiring engineering, support, product, or other internal teams. |
+| **Risks and concerns** | Things the customer raised that signal implementation or escalation risk. |
+| **Wins and positive signals** | Things worth tracking for advocacy, case studies, renewal positioning. |
+
+The discipline this categorization imposes is what makes the artifact useful. A flat list of items requires the trainer to mentally sort every time they read it. A categorized list is scannable — the trainer reads only their own items, the customer reads only theirs, engineering reads only the relevant categories.
+
+### The "only unresolved" discipline
+
+This is the operating principle that separates this workflow from generic meeting recaps:
+
+> Capture only unresolved insights, feedback, requests, or concerns that require action or follow-up. Do not log questions that were fully answered during the session.
+
+A trainer running 6 sessions a day cannot read 6 full session recaps. They can read 6 *"what's still open"* lists.
+
+The template enforces this. Items raised and resolved during the session do not enter the artifact. The artifact is a queue of work, not a record of conversation. The conversation record lives in the Earmark transcript; the work queue lives in the artifact.
+
+This is the single biggest behavioral difference from generic meeting recaps. Internalize it before standing the workflow up.
+
+### Destinations
+
+The artifact has multiple audiences; the destinations vary:
+
+| Audience | Destination |
+| --- | --- |
+| The customer | Same-day follow-up email; sometimes a shared implementation doc |
+| The trainer's own queue | Personal task system (Linear, Asana, Things) |
+| The implementation team | Per-customer tracking doc (Notion, Coda) or CSM platform (Gainsight, ChurnZero, Vitally, Catalyst) |
+| Product team | Productboard, Jira Product Discovery, or whatever your product feature-request system is |
+| Documentation team | Documentation backlog (Notion, GitHub Issues, internal queue) |
+| Engineering team | Tickets in [Linear](/integrations/linear), Jira, or GitHub via the [meeting-to-tickets workflow](/workflows/meeting-to-tickets-workflow) |
+| CRM | Customer's account record with implementation status |
+
+The workflow's value scales with how cleanly these handoffs work. An item categorized correctly but routed nowhere is functionally the same as an item not captured. Wire the destinations before standing the workflow up.
+
+### Ownership
+
+The trainer who ran the session owns the cleanup and routing. Always.
+
+For sessions with multiple trainers from your side (a CSM, an EIC, and a solutions engineer on the same call), one of them owns the artifact — usually the relationship lead.
+
+For team-wide pattern detection, the implementation team lead or training lead owns the cross-customer synthesis cadence.
+
+## The four templates
+
+### Template A — Per-session training capture
+
+The workhorse. Runs on every training session.
+
+```md
+Extract follow-up items from this training/implementation session.
+
+CRITICAL: Capture ONLY items that require future action or follow-up.
+
+Do NOT log:
+- Questions that were fully answered during the session
+- Discussion that resolved during the call
+- Background context or pleasantries
+- Items already covered in earlier sessions (unless they re-surfaced
+  as still unresolved)
+
+Be faithful to the conversation — only include items that were
+actually raised or committed to. Where ownership is unclear, write
+"Unclear — confirm" rather than guessing.
+
+No emojis. Be concise.
+
+Format:
+
+# Training Session: {Customer} — {Session topic} — YYYY-MM-DD
+**Trainer/EIC:** {Name}
+**Customer attendees:** {Names with roles}
+**Session number:** {e.g., 3 of estimated 12}
+**Implementation phase:** Kickoff | Configuration | Training | Pre-Go-Live | Go-Live | Post-Launch
+**Earmark link:** {auto-fill}
+
+## Headline
+One sentence: the most important thing about this session and where
+the implementation stands after it.
+
+## Items requiring follow-up (the queue)
+
+### Questions needing configuration
+- **Item:** {specific question or configuration need}
+  **Customer context:** {what the customer is trying to accomplish}
+  **Owner:** Trainer | Customer | Both
+  **Priority:** Blocker | High | Medium | Low
+  **Target resolution:** {date or session}
+  **Notes:** {context the resolver needs}
+
+(If no items: "None this session.")
+
+### Feature requests
+- **Request:** {what the customer is asking for}
+  **Underlying job:** {what they're actually trying to accomplish}
+  **Stated urgency:** {from the customer's framing}
+  **Owner:** Product (with trainer to log)
+  **Quote (if useful):** "{verbatim from session}"
+
+### Documentation gaps
+- **Gap:** {topic that lacked documentation}
+  **What the customer needed:** {specific information}
+  **Owner:** Documentation team
+  **Workaround:** {what the trainer provided}
+
+### Bug reports
+- **Symptom:** {what's broken}
+  **Customer environment:** {relevant context}
+  **Repro steps:** {if discussed}
+  **Owner:** Engineering (with trainer to file)
+  **Workaround:** {if any}
+
+### Follow-ups by trainer / EIC
+- **Action:** {what the trainer committed to do}
+  **By when:** {committed date or next session}
+  **Notes:** {context}
+
+### Follow-ups by customer
+- **Action:** {what the customer committed to do}
+  **Who specifically on customer side:** {if multiple stakeholders}
+  **By when:** {committed date or next session}
+  **What it unblocks:** {why this matters to the implementation}
+
+### Follow-ups by other team
+- **Action:** {what's needed}
+  **Owner:** {team — engineering, support, product, billing}
+  **By when:** {target}
+  **Notes:** {context the other team needs}
+
+## Risks and concerns
+Things raised that signal implementation or relationship risk. Be
+honest; flag what would normally be tempting to soft-pedal.
+- {Risk} — {what to monitor}
+
+## Wins and positive signals
+- {Signal} — {context, quote if useful}
+
+## What was resolved in this session
+A brief reminder of what NOT to log — items that came up and were
+fully handled during the session. This section is for the trainer's
+mental confirmation; it doesn't need to go to the customer.
+- {Resolved item — one line each, no detail needed}
+
+## Next session
+- **Planned date:** {date or "TBD"}
+- **Planned topic:** {agenda}
+- **Customer prep needed:** {what the customer should do before next}
+- **Trainer prep needed:** {what the trainer should do before next}
+
+## Customer-facing follow-up email (paste-ready)
+A 150–250 word email I can send to the customer same-day:
+- Brief recap of what we covered
+- Items the customer needs to follow up on (their queue, their language)
+- Items the trainer/EIC is following up on (set expectations)
+- Next session details
+- One warm closing sentence
+
+{Email content drafted here, ready to be pasted into the trainer's email client}
+```
+
+Three things in this template are load-bearing.
+
+**The "only unresolved" rule.** Items raised and resolved during the session do not enter the artifact. This is the discipline that makes the workflow usable at six sessions a day. A flat list of everything would be ignored; a queue of what's still open gets used.
+
+**Rigid categorization with no catch-all.** Items get sorted into specific buckets. If an item doesn't fit a category, the categories need updating, not a catch-all. The rigidity is what makes the artifact scannable and routable.
+
+**The customer-facing email generated alongside the internal artifact.** Same source; different audiences; both produced in one pass. The trainer doesn't write the email separately — the workflow produces it together with the internal queue.
+
+The **"what was resolved in this session"** section is counterintuitive. It lists what NOT to include in the queue. Its purpose is to confirm the trainer's mental model: these things came up, they were handled, they don't need follow-up. Helps the trainer trust that the workflow isn't losing items.
+
+### Template B — Customer-facing follow-up email
+
+For trainers who want the customer email as a standalone artifact rather than as a section of Template A. Same content, slightly warmer phrasing.
+
+```md
+Based on this training session transcript, draft a follow-up email
+to the customer. Warm but professional; references what was discussed;
+includes the customer's specific follow-ups; sets expectations for
+what the trainer is doing.
+
+Constraints:
+- Under 250 words
+- Address the customer by name (extract from transcript)
+- Open with a sentence specific to what was discussed, not generic thanks
+- Use the customer's language where it appeared in the session
+- No emojis
+- Sign-off placeholder for trainer to fill
+
+Format:
+
+Subject: {Concrete subject — e.g., "Follow-up from today's training on {topic}"}
+
+Hi {Customer name},
+
+{One to two sentences specific to what was discussed. Reference a
+topic or a moment, not generic thanks.}
+
+Quick recap of what we covered:
+- {Topic 1 — one line in customer language}
+- {Topic 2 — one line}
+- {Topic 3 if applicable}
+
+A few things on your side to follow up on:
+- {Customer action} — {why it matters or when needed}
+- {Customer action}
+
+What I'll be following up on for you:
+- {Trainer action} — {by when}
+- {Trainer action} — {by when}
+
+{If escalating: "I've also flagged {topic} to our {team} — I'll loop
+back when I hear back."}
+
+{If there are unresolved questions:} A couple of questions I want to
+confirm before our next session — I'll follow up with answers by {date}.
+
+Our next session is {date/time} and we'll cover {topic}.
+
+{One warm closing sentence — references a customer goal, a positive
+moment from the session, or forward momentum.}
+
+—
+{Sign-off placeholder}
+```
+
+The structure separates customer-owned items from trainer-owned items deliberately. Customers see what they need to do; they also see what's being done for them. Both sides know what's coming.
+
+### Template C — Customer implementation milestone synthesis
+
+For looking at one customer across all their training sessions. Run before milestones (pre-go-live, end-of-onboarding, mid-implementation review) or whenever the team needs a snapshot of where this customer stands.
+
+```md
+Synthesize across the training session artifacts provided for this
+customer. Produce an implementation snapshot showing where the
+customer stands now: what's been resolved, what's still open, what's
+at risk, what's coming next.
+
+Format:
+
+# Implementation Snapshot: {Customer} — As of YYYY-MM-DD
+**Implementation start date:** {date}
+**Current phase:** {phase}
+**Target go-live date:** {date}
+**Sessions completed:** {N of estimated total}
+**Primary trainer/EIC:** {Name}
+**Customer key contacts:** {list with roles}
+
+## Implementation health
+**Overall status:** On track | At risk | Behind | Churn risk
+**Reasoning:** Two to three sentences grounded in observed signals.
+
+## Items still open across the implementation
+
+### Questions needing configuration
+Aggregate across sessions; show which session each item came from.
+- {Item} — opened in {session N} — owner — target resolution
+
+### Feature requests
+Aggregate; flag if any have been pending unusually long.
+- {Request} — opened in {session N} — current status with product
+
+### Documentation gaps
+Aggregate.
+- {Gap} — opened in {session N} — status
+
+### Bug reports
+Aggregate; flag any blocking customer's progression.
+- {Bug} — opened in {session N} — status
+
+### Customer-side actions still pending
+- {Action} — committed in {session N} — current status
+
+### Trainer/internal actions still pending
+- {Action} — committed in {session N} — current status
+
+## Items resolved across the implementation
+A summary count and key resolutions:
+- {N} configuration items resolved
+- {N} feature requests logged to product
+- {N} documentation items routed to docs team
+- Key resolutions worth noting: {list}
+
+## Risks
+Items raised across sessions that signal implementation or renewal
+risk. Be honest.
+- {Risk} — {evidence from sessions where it appeared}
+
+## Wins and positive signals
+- {Signal} — {session where it surfaced, quote if useful}
+
+## Customer's stated goals (tracked across sessions)
+What has the customer said they want to achieve? Has it shifted?
+- {Goal} — first stated in {session N} — current status
+
+## Stakeholder map
+- **{Name}:** {role} — {engagement read: Engaged | Periodic | Absent}
+
+## Recommendation
+Given the state of the implementation, what's the recommended next
+action?
+
+## Cross-team escalations needed
+Items requiring escalation outside the implementation team.
+```
+
+This template is what the implementation team takes into pipeline reviews, milestone gates, and renewal conversations. It also feeds customer-facing implementation review meetings.
+
+### Template D — Cross-customer pattern detection
+
+For the implementation team lead. Run quarterly (or monthly for higher-volume teams) across all customer implementation artifacts to surface patterns. This template uses the standard multi-meeting workaround — paste relevant artifacts from many customer sessions into Customize context, then run the template.
+
+```md
+Synthesize across the training session artifacts provided (multiple
+customers, specified period). Identify patterns worth acting on at
+the team or product level.
+
+Format:
+
+# Cross-Customer Pattern Report — Period: {date range}
+**Customers covered:** {count}
+**Sessions analyzed:** {count}
+**Trainers/EICs involved:** {list}
+
+## Configuration questions that recurred
+Questions or configuration needs that appeared across multiple
+customers. For each:
+- **Pattern:** the recurring question/need
+- **Customers affected:** count and segment characteristics
+- **Currently handled by:** whoever resolves it now
+- **Recommendation:** Document it | Train all trainers | Build self-serve | Address in product
+
+## Feature requests that recurred
+- **Request:** the capability requested
+- **Customers requesting:** count and segment
+- **Stated urgency:** pattern in how urgently it was requested
+- **Current status with product:** filed | not yet filed | in development
+
+## Documentation gaps recurring
+- **Gap:** topic that lacked documentation
+- **Customers affected:** count
+- **Recommendation:** specific documentation to create or update
+
+## Bug patterns
+- **Bug:** description
+- **Customers reporting:** count
+- **Engineering status:** open | in progress | fixed | not yet filed
+
+## Customer-side friction patterns
+Common places customers struggle:
+- **Friction point:** what customers find difficult
+- **Customers affected:** count
+- **Recommendation:** training adjustment | UX improvement | docs | onboarding flow change
+
+## Trainer behavior patterns
+- **Pattern:** trainer behavior
+- **Observed in:** how widely
+- **Recommendation:** enablement | template update | training
+
+## Implementation timing patterns
+- Average session count per implementation: {number}
+- Common stuck points: {list}
+- Customers with implementations dragging beyond expected timeline: {count}
+
+## Risk patterns across customers
+- {Risk pattern} — {count of customers} — {recommendation}
+
+## Recommendations for next period
+- **Product team:** {list}
+- **Documentation team:** {list}
+- **Training enablement:** {list}
+- **Implementation process:** {list}
+
+## Customers worth special attention
+- **At-risk:** customers showing concerning signals
+- **Champions:** customers with strong positive signal worth amplifying
+```
+
+This template is what transforms the training function from reactive to systematic. The implementation team starts shaping the product, documentation, and training process based on real aggregate signal — not on which customer complained loudest in the last QBR.
+
+## Save them as workspace templates
+
+<Steps>
+<Step title="Start with Template A">
+The per-session capture is the workhorse. Save it first with your team's categorization customized. The other templates can be added as you encounter their use cases.
+</Step>
+<Step title="Embed your categorization">
+The starting categorization in the Foundation section is generic; adapt it to your team's actual implementation model. If your trainers track different categories or your destinations have different intake structures, build that into the template.
+</Step>
+<Step title="Save with Workspace visibility">
+Training capture is a team standard, especially for teams with multiple trainers. **Workspace** visibility means every trainer produces artifacts in the same shape. See [Custom templates](/customization/custom-templates).
+</Step>
+</Steps>
+
+## Running the workflow on a single session
+
+<Steps>
+<Step title="Pre-seed every training session">
+For trainers running multiple sessions per day, the template attachment becomes a recurring habit. Some teams set up the template as the default for the entire training calendar series; others attach per-session. Either way, set it before the session starts so the artifact is ready when the session ends. See [Before a meeting](/using-earmark/before-a-meeting).
+</Step>
+<Step title="State the right things during the session">
+A few habits make the categorization noticeably more accurate:
+
+- **Name the category out loud when you commit to follow-ups.** *"Let me look into that configuration question and get back to you"* — the words "configuration" plus "let me look into" plus "get back to you" give the model a clean signal.
+- **Confirm ownership explicitly.** *"I'll send you the documentation by Thursday"* beats *"we'll figure out the documentation."*
+- **Distinguish resolved from unresolved out loud.** *"OK, so we've handled the user permissions question. Moving on to..."* — this verbal marker tells the model the previous item is resolved.
+- **Flag what's blocking what.** *"We can't move forward on training until you've got your data imported"* — signals dependency.
+</Step>
+<Step title="The three-to-five-minute curation pass">
+Fast enough to fit between back-to-back sessions:
+
+- **Read the headline.** Does it reflect where the implementation actually stands?
+- **Verify the categorization.** Items in the wrong category cause downstream confusion. Quick scan; fix anything that's clearly miscategorized.
+- **Confirm "resolved during session" items are actually resolved.** The model occasionally promotes a resolved item into the open queue. Move anything still open back into the queue.
+- **Sharpen vague items.** *"Customer to confirm something with their team"* is too vague. Sharpen to *"Customer to confirm timeline with operations team by Friday."*
+- **Confirm the customer-facing email reads like you wrote it.** Adjust tone, add personal touches, verify customer name and stakeholder names are correct.
+
+Skipping this pass means the model's output ships unverified, which erodes trust quickly.
+</Step>
+<Step title="Route to destinations same-day">
+Same-day, every time:
+
+- **Send the customer-facing email.** Within hours of the session.
+- **Update the customer's implementation tracking record.** New items added; resolved items marked.
+- **Push trainer follow-ups to your task system.** Don't trust the artifact alone; put your action items where you actually plan your day.
+- **File feature requests in product's intake system.** Use the [meeting-to-tickets workflow](/workflows/meeting-to-tickets-workflow) for engineering work.
+- **Log documentation gaps in the docs team's intake.**
+- **Update CSM platform / CRM with implementation status changes.**
+
+The routing step is where the workflow's value gets realized. Items captured but not routed are functionally the same as items not captured.
+</Step>
+<Step title="Brief the next session">
+If another team member runs the next session with this customer, share the artifact with them ahead of their session. They start with the customer's open items already in their head; the customer experiences continuity.
+</Step>
+</Steps>
+
+<Tip>
+The "only unresolved" discipline is the discipline. Items that came up and were resolved during the session don't enter the queue. The artifact is a queue of work, not a transcript of conversation. The conversation lives in the Earmark recording; the queue lives in the artifact.
+</Tip>
+
+## The customer journey: cross-session synthesis per customer
+
+Single sessions are tactical. The cross-session view per customer is what the implementation team needs to manage the customer's overall trajectory. This synthesis uses the standard cross-meeting workaround — paste the relevant session artifacts for one customer into Customize context, run Template C against the assembled corpus.
+
+**The weekly customer health check.** For each active customer implementation, run Template C weekly. The 15-minute output shows items still open and aging, implementation health read, risks and wins, recommendation for next session. This is the artifact the implementation manager reviews in their weekly portfolio walkthrough.
+
+**Pre-milestone synthesis.** Before any implementation milestone (kickoff complete, configuration phase complete, pre-go-live readiness, go-live, end of onboarding), run Template C and validate: Are all critical items for this phase resolved? Are there blockers that should delay the milestone? What does the customer still need from us? What do we still need from the customer? This is the structured gate that prevents *"we said we'd go live this week but we missed three configuration items"* failures.
+
+**Stuck-implementation diagnosis.** When an implementation is dragging — sessions are happening but the customer isn't progressing — Template C surfaces why. Common patterns: customer-side actions pending too long (customer was supposed to do X three sessions ago; never did); same questions recurring (customer keeps asking variations of the same thing — diagnose understanding gap); feature gaps blocking progress (customer's use case requires capabilities the product doesn't have); stakeholder drift (initial champion has disengaged; new contact doesn't have context). Each pattern has a different remediation.
+
+**Renewal and expansion preparation.** Before a renewal conversation, run Template C across the customer's full implementation history. The artifact tells the renewal lead what was promised vs. delivered, what's still pending, where enthusiasm was strongest, where friction was raised, what stakeholders are most engaged. A renewal conversation grounded in this artifact is materially different from one grounded in memory.
+
+## Cross-customer pattern detection
+
+The single most strategically valuable habit in the workflow. Most implementation teams know they have aggregate insight buried in their session artifacts; few have a systematic way to surface it.
+
+**The quarterly pattern report.** Once a quarter, the implementation lead runs Template D across the team's session artifacts (manually assembled via the standard cross-meeting workaround). The output:
+
+- Configuration questions that recurred across N customers → documentation update or self-serve build
+- Feature requests that recurred → product priority signal
+- Documentation gaps that recurred → documentation work
+- Bug patterns → engineering escalation
+- Customer-side friction patterns → onboarding process improvement
+- Trainer behavior patterns → enablement focus
+
+This is what transforms implementation from a reactive function into a feedback engine for product, documentation, and process.
+
+**The monthly recurrence scan.** For higher-volume teams, a monthly scan catches patterns faster. Lighter than the quarterly report — focused on *"what came up this month that's worth flagging?"*
+
+**Cross-functional handoffs.** Patterns surfaced through the workflow need to land somewhere actionable. Product: feature-request patterns feed Productboard, JPD, or your product intake. Documentation: gap patterns feed the docs team's quarterly backlog. Engineering: bug patterns feed engineering triage. Training enablement: trainer behavior or customer friction patterns feed the training improvement queue. Without these handoffs, patterns surface but nothing changes.
+
+For very large multi-customer corpora, [exporting local transcripts](/earmark-basics/local-transcripts) and running an external agent is the alternative to manual assembly.
+
+## Routing into systems of record
+
+**The customer's implementation tracking record.** The primary durable home. Whether you use a CSM platform (Gainsight, ChurnZero, Vitally, Catalyst), a custom Notion / Coda workspace, or your CRM's account record — every customer has one place where their implementation status lives. Every session artifact updates this record. Open items get added; resolved items get marked. The record stays current within hours of each session.
+
+**Trainer / EIC personal queue.** Each trainer's own task system holds their specific follow-ups. Every trainer-owned item from every session lands here, dated. This is what makes *"what do I owe customers today?"* a 10-second answer.
+
+**Product intake.** Feature requests routed to the product team's intake system. Aggregate via the pattern report so product sees frequency-weighted requests.
+
+**Documentation team intake.** Documentation gaps routed to docs team's queue.
+
+**Engineering intake.** Bug reports and engineering-blocking items routed via the [meeting-to-tickets workflow](/workflows/meeting-to-tickets-workflow) and the [Linear integration](/integrations/linear).
+
+**CSM / Account record.** The CRM or CS platform's account record tracks the customer's overall trajectory.
+
+**Earmark archive as source.** Source meetings stay in Earmark. Every artifact links back. When a question arises six months later — *"what did we agree on about {topic} during the configuration phase?"* — the answer is one click from the artifact to the source. Especially valuable during renewal conversations and during escalations.
+
+## Closing the loop
+
+Three habits.
+
+**Resolution tracking.** Open items need to close. Every item has a target resolution date; items past their target get flagged; a weekly trainer review confirms resolution status; items resolved get marked closed; items still open get re-dated or escalated. A trainer's running queue should trend toward equilibrium — items getting resolved at roughly the rate they're being added. If items accumulate, that's a signal: either the trainer is overloaded, or items are being added that don't need resolution, or items are stuck on dependencies that need to be unblocked.
+
+**Milestone validation.** Before declaring an implementation milestone complete, run Template C and verify no critical items still open, all committed customer-side actions resolved or actively in progress, all committed trainer/team actions resolved or actively in progress, no risks unaddressed. Milestones declared complete without this check come back as escalations weeks later.
+
+**Onboarding retrospective.** Within 30 days of an implementation completing, run a brief retrospective using the customer's full implementation artifact archive. What did we promise? Did we deliver? What items took longest to resolve? Why? What patterns showed up that should inform the next implementation? What did we learn about the customer that should inform their post-launch engagement? What feedback should go to product, docs, engineering? The retrospective is what feeds learnings forward.
+
+## Common pitfalls
+
+- **Logging resolved items as if they were open.** Defeats the workflow's whole purpose. The "only unresolved" discipline is non-negotiable.
+- **Skipping categorization.** A flat list requires manual sorting every time. Force the categorization.
+- **No "follow-up by customer" tracking.** Trainers focus on their own queue; customer-side items get forgotten. Track them deliberately; chase them when they age past their target.
+- **No same-day customer email.** The email's value degrades hourly.
+- **Categorized items that don't get routed.** Items captured in the artifact but never sent to the destination they need to reach. The routing step is where value gets realized.
+- **No cross-customer synthesis.** Patterns that exist in the data go unseen because nobody runs Template D. Quarterly at minimum.
+- **Stuck implementations not getting diagnosed.** When an implementation drags, run the diagnostic synthesis.
+- **No milestone gating.** Going live without verifying critical items are resolved is the most common cause of post-launch escalations.
+- **No resolution tracking.** Open items accumulate forever. Trust in the artifact collapses.
+- **Feature requests captured but never aggregated.** Individual requests lose their signal. Aggregate in pattern reports.
+- **Inconsistent trainers.** Some run the workflow; others don't. Customers assigned to non-using trainers get worse experiences. Standardize team-wide.
+- **Customer-facing email written generically.** Recipients can tell. Reference specifics from the session.
+- **Letting the artifact replace the relationship.** The artifact tracks; the trainer relates. The customer's experience depends on both.
+- **No senior-trainer review of artifacts in early adoption.** New trainers benefit from senior trainers reviewing their first artifacts and catching categorization issues.
+
+## Where to go next
+
+- [Workflows](/workflows) — the general shape this is an instance of
+- [Action items workflow](/workflows/action-items-workflow) — the general version this workflow specializes
+- [Email follow-up workflow](/workflows/email-follow-up-workflow) — for the customer-facing email patterns
+- [Meeting-to-tickets workflow](/workflows/meeting-to-tickets-workflow) — for routing bugs and engineering work to the tracker
+- [Customer research workflow](/workflows/customer-research-workflow) — for the customer-signal-capture sibling to this workflow
+- [SOPs and playbooks workflow](/workflows/sops-and-playbooks-workflow) — for documenting the implementation procedures themselves
+- [Demo and facilitator scripts workflow](/workflows/demo-and-facilitator-scripts-workflow) — for capturing how senior trainers run their sessions, as transferable scripts
+- [Linear integration](/integrations/linear) — for engineering tickets
+- [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
+- [Composer](/using-earmark/composer) — for tuning the prompt before saving as a workspace template
+- [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding the template on every training session
+- [Local transcripts](/earmark-basics/local-transcripts) — for external synthesis on large cross-customer corpora

@@ -1,0 +1,392 @@
+---
+title: "Email follow-up"
+description: "Turn every customer call, partner meeting, and internal kickoff into a warm, specific, same-day follow-up email that honors what was promised and lands before the conversation cools"
+keywords: ["email follow-up", "customer email", "post-meeting email", "introduction", "handoff", "workflow"]
+---
+
+A typical customer-facing meeting ends with somewhere between three and twelve commitments — some explicit (*"I'll send you the ROI analysis"*), some implicit (*"here's a help doc you should look at"*), some operational (*"our next call should cover X"*), some relational (*"I'll loop in Brett"*). The participants leave the call feeling the meeting was productive and the path forward is clear.
+
+Then the gap opens. The follow-up email needs to get written, same-day, with the right tone, every link promised, the next call confirmed. The writer is usually the same person who finished the meeting moments ago and has another meeting in twelve minutes.
+
+What predictably happens: the email gets pushed to end-of-day, written from tired memory; it's shorter than it should be, misses two of the links, feels generic. Or it gets skipped entirely. The customer waits two days; the relationship momentum cools; the next conversation starts colder than it should.
+
+Email is the medium that has both immediacy and durability — it lands in the inbox immediately and stays there indefinitely — so the failure to write it well is the failure that compounds most over time. A bad follow-up email isn't forgotten by tomorrow; it sits in the recipient's inbox as evidence.
+
+This guide is a specific instance of the [workflows](/workflows) pattern, applied to the relationship-building email after customer-facing meetings. It is the deeper treatment of the customer-follow-up template covered briefly in the [shareable summaries workflow](/workflows/shareable-summaries-workflow) — pick this page when external relationship emails are the focus, and that page when you're producing audience-aware summaries across multiple formats.
+
+## Foundation
+
+### Identify the recipient — specifically
+
+The single most consequential variable in email quality is whether the writer is thinking about the recipient as a specific person or as a generic category. Bad follow-ups read as written to *"the customer."* Good ones read as written to *this* customer.
+
+Before generating the email, hold the recipient in mind. What was their stated context on the call (role, company stage, pain, time pressure)? What did they react warmly to? What did they push back on? What's the history — first call or tenth? What do they need from this email specifically — confirmation of next steps? A reference document? Reassurance? An introduction?
+
+The model extracts most of this from the transcript. The writer's job is to confirm the read and ensure the tone matches.
+
+### Match tone to the relationship stage
+
+| Stage | Tone |
+| --- | --- |
+| First conversation | Warm but professional; not presumptuous; confirms next steps |
+| Active discovery / evaluation | Substantive; references specifics from the call; shows you were listening |
+| Established working relationship | Conversational; lighter on preamble; can use shared in-jokes or callbacks |
+| Difficult / recovery conversation | Restrained; acknowledges; doesn't oversell; confirms exactly what was agreed |
+| Renewal / expansion | Confident; outcome-oriented; references shared history and proven value |
+| Sensitive / contractual | Precise; careful with language; sometimes legal review before sending |
+
+Tone is the part most templates handle poorly. The template flags relationship stage so the model calibrates; the writer's curation pass is where tone gets sharpened.
+
+### CRM, signature, and ownership
+
+For customer-facing email, the CRM is the durable record. The email lives in the recipient's inbox and your sent-mail; the CRM gets the structured trace. Common patterns: BCC a CRM email-in address (Salesforce, HubSpot, Pipedrive all support this), or manually log the email as an activity on the opportunity. Use the [Linear integration](/integrations/linear) if commitments map to tickets you'll spin up from the same conversation.
+
+Every follow-up ends with your signature — your name, role, company, contact, calendar link. The model shouldn't generate this; keep a fixed signature you append. The template ends with a placeholder so you add it explicitly. This also gives you a last chance to confirm the email is going to the right person under the right name.
+
+The person on the call owns the follow-up. Always. For team-attended calls (CSM + AE + SE on the same customer call), one person — usually the relationship lead — owns the email; others contribute specifics but don't write parallel emails.
+
+## The four templates
+
+### Template A — Customer or external follow-up
+
+The workhorse. For follow-ups after customer calls, partner meetings, vendor conversations — any external relationship where warmth and specificity both matter.
+
+```md
+Based on this meeting transcript, draft a follow-up email I can send
+to the customer or external attendees. The email should land in the
+recipient's inbox the same day as the meeting.
+
+Constraints:
+- Warm but professional tone
+- Under 250 words for routine follow-ups; up to 400 if substantive
+- Address the recipient by name (extract from the transcript)
+- Open with thanks for the time — specific, not generic
+- Recap what we discussed in two to four specific bullets, using their
+  language where possible
+- List what was agreed as next steps, with owners and dates
+- Include every link, attachment, and resource promised on the call —
+  flag with "[ATTACH: ...]" or "[LINK: ...]" placeholders for me to fill in
+- Close with one warm forward-looking sentence
+- Sign-off line left blank
+- No emojis
+- Do NOT invent commitments, attendees' enthusiasm, or paraphrase the
+  customer in ways they would not recognize
+
+Format:
+
+Subject: {Concrete subject line referencing what was discussed — not
+"Following up" or "Recap"}
+
+Hi {Name},
+
+{One sentence of thanks — specific, not generic. Reference the
+substance of the conversation, not "thanks for your time."}
+
+Quick recap of what we covered:
+- {Topic 1 — one line, using their language where possible}
+- {Topic 2 — one line}
+- {Topic 3 — one line}
+
+What we agreed on next:
+- {Commitment from my side} — by {date}
+  {If a resource was promised: "I've attached {resource}" or "Here's
+   the link I mentioned: [LINK]"}
+- {Commitment from their side, if any} — by {date}
+- {Next call} — scheduled for {date/time, if discussed}
+
+{One sentence — warm, forward-looking, specific to this conversation.
+Optional but valuable.}
+
+{If there's an open question from the call that needs their input,
+phrase it as a polite ask here.}
+
+—
+{Sign-off placeholder}
+```
+
+Three things in this prompt are load-bearing.
+
+**Subject lines are concrete.** "Following up" is generic and goes unopened. "Notes from today's call on dispatching" is specific and gets opened. The template forces the first form.
+
+**The recap uses their language.** When the customer used a specific phrase to describe their pain, the email should echo that phrase. This signals listening — the most important signal a follow-up can send.
+
+**"Do NOT invent commitments or paraphrase enthusiasm."** The model can occasionally make the customer sound more excited than they were, or include commitments the writer didn't actually make. Both fail spectacularly when the customer reads the email. The personalization pass below catches them.
+
+### Template B — Internal team follow-up
+
+For internal meetings where the follow-up goes to teammates, cross-functional partners, or your manager. Different tone — more direct, less preamble.
+
+```md
+Based on this meeting transcript, draft a follow-up email to the
+internal attendees. Lighter on preamble; more direct on decisions,
+action items, and asks.
+
+Constraints:
+- Under 250 words
+- No emojis
+- No preamble — "thanks for the time" is unnecessary internally
+- Lead with the most important decision or development
+- Action items have explicit owners and dates
+- Asks of recipients are clearly flagged
+- Include links to relevant docs, tickets, or artifacts
+
+Format:
+
+Subject: {Action-oriented — e.g., "Decisions and next steps from
+{project} sync"}
+
+Hi team,
+
+{One sentence stating the most important outcome of the meeting.}
+
+**Decisions:**
+- {Decision} — context: one phrase
+- "None to report" if no decisions were made
+
+**Action items:**
+- {Owner} — {what} — by {date}
+
+**Asks for the team:**
+- {Specific ask of a specific person, if applicable}
+
+**Open questions to resolve before next meeting:**
+- {Question}
+
+**Related materials:**
+- {Link to relevant doc, ticket, or artifact}
+
+{Optional one- to two-sentence forward-looking note.}
+
+—
+{Sign-off}
+```
+
+Shorter and more direct because internal recipients don't need warmth-building. They need to know what was decided, what they owe, and what's coming next.
+
+### Template C — Introduction or handoff
+
+For when a meeting introduces a new contact, hands off to a teammate, or schedules a next step with someone new. The email's main job is making the introduction clean and the next step clear.
+
+```md
+Based on this meeting transcript, draft an email that introduces a
+new contact or hands off to a teammate. The email's primary purpose
+is to make the introduction or handoff smooth, with the receiving
+party fully briefed.
+
+Constraints:
+- Warm tone
+- Under 300 words
+- Addresses all parties (TO and CC if appropriate)
+- Briefs the new party on the relevant context from the meeting
+- Confirms the next step
+- Frames it so the recipient understands why they're being introduced
+
+Format:
+
+Subject: {Introducing {Name} | Handoff to {Name} | Next call with
+{Name} scheduled}
+
+Hi {original contact name} and {new contact name},
+
+{One to two sentences setting up why the introduction is happening.
+Refer to the meeting and what was discussed.}
+
+{New contact name}, let me give you a bit of background:
+- {Brief context the new contact needs — what the original contact
+  is working on, what their goal is, what's been discussed so far}
+- {Anything specific about them or their context that would be useful}
+
+{Original contact name}, {new contact name} will be {role or
+relationship to you going forward}. They'll {what they'll do for you}.
+
+The next step: {the agreed next step — usually a meeting, with date
+and time if discussed, or a specific action}.
+
+{Optional one sentence on what to expect or how to prepare.}
+
+I'll {my role going forward — usually "stay copied" or "step back,
+you're in great hands"}.
+
+—
+{Sign-off}
+```
+
+The introduction email is one of the highest-leverage emails a CSM, AE, or founder can send. Done well, it makes a relationship transition feel smooth. Done badly, it makes the new contact feel cold-handed and the original contact feel abandoned. The template's "you're in great hands" framing is the part most introductions skip and most relationships miss.
+
+### Template D — Specific ask
+
+For follow-ups whose primary purpose is to make a specific ask: a testimonial, an introduction, a reference call, a customer review, a referral, a beta test.
+
+```md
+Based on this meeting transcript, draft an email making a specific ask
+of the recipient. The ask should be grounded in what came up naturally
+in the conversation — don't ask for something the meeting didn't
+surface as appropriate.
+
+Constraints:
+- Warm tone; not transactional
+- Under 200 words
+- The ask is specific and easy to say yes to
+- Acknowledges the recipient's time and context
+- Provides any information they'd need to fulfill the ask
+- Includes an easy out — "if this doesn't work for you, no worries"
+
+Format:
+
+Subject: {Specific — e.g., "Quick ask about your experience with
+{product}" or "Would you be open to a quick intro?"}
+
+Hi {Name},
+
+{One sentence of warmth or reference to the meeting / relationship.}
+
+{The ask, stated clearly. One sentence if possible.}
+
+{Context for the ask — why I'm asking, why now, what it would involve
+for them, why I think they might be willing.}
+
+{If applicable: what they'd need to do, in concrete terms — "it would
+take five minutes to fill out this form" or "I'd love a twenty-minute
+call any time next week."}
+
+{Easy out — "no pressure if the timing isn't right" or "totally
+understand if this isn't a fit."}
+
+{Specific gratitude or warmth as close.}
+
+—
+{Sign-off}
+```
+
+The **easy out** is the part most ask emails skip. Including it materially increases the response rate. Recipients are more likely to say yes when saying no is also clearly available — the request reads as collaborative rather than transactional.
+
+## Save them as workspace templates
+
+<Steps>
+<Step title="Start with Template A">
+The customer follow-up is the most-used template for most teams. Save it first.
+</Step>
+<Step title="Tune to your voice">
+The biggest difference between a generic follow-up and a useful one is voice. Customize the opening and closing patterns in the template to sound like your team — every team's "warm but professional" reads slightly different.
+</Step>
+<Step title="Save with Workspace visibility">
+Customer follow-up is a team standard. **Workspace** visibility means every CSM, AE, and PM produces emails in the same shape. See [Custom templates](/customization/custom-templates).
+</Step>
+<Step title="Add B, C, and D as you encounter the cases">
+Don't save all four if you'll only use two. Most teams end up with A and one of B/C/D.
+</Step>
+</Steps>
+
+## Run it on a single meeting
+
+<Steps>
+<Step title="Pre-seed the meeting with the right template">
+For external customer calls, attach Template A. For meetings where a handoff or introduction is coming, attach Template C. See [Before a meeting](/using-earmark/before-a-meeting).
+</Step>
+<Step title="State the right things during the meeting">
+A few habits sharpen the draft dramatically:
+
+- **State commitments out loud, with timing.** *"I'll send you the ROI analysis by Thursday"* beats *"I'll send that over."* The model captures the dated version reliably.
+- **Name the next step explicitly.** *"Our next call should cover X — let's get on the calendar for {day}."* Implicit next steps get fuzzy in the draft.
+- **Mention specific resources by name.** *"I'll send the Reputation Management help doc."* The model puts the right link placeholder in the email.
+- **Confirm contact names and spellings.** Auto-transcription can miss names; the email going to "Christy" instead of "Kristi" is a small but real impression cost.
+</Step>
+<Step title="Two-minute personalization pass">
+Within an hour of the meeting, before the next call if possible:
+
+- **Read the subject line.** Specific to this conversation? If generic, sharpen.
+- **Read the opening sentence.** Warm and specific to this person, or template-shaped? If template-shaped, rewrite in your voice.
+- **Confirm the recap bullets match what was discussed.** Cut anything not covered. Sharpen anything that used the wrong language.
+- **Verify every link and attachment placeholder.** Fill them in. The single biggest small failure of this workflow is shipping an email with `[LINK: ...]` still in the text.
+- **Check the close.** Does the warm forward-looking sentence sound like you, or like the model? Replace if the latter.
+</Step>
+<Step title="Add the sign-off and send">
+Append your signature. Confirm recipient names in the To/CC fields. Read once more for typos. Send.
+
+For customer-facing emails, also:
+- BCC or forward to the CRM as an activity log
+- If a calendar invite is part of the next step, send it from the same context
+- Confirm any referenced attachment is actually attached (the second-biggest small failure)
+</Step>
+</Steps>
+
+<Tip>
+A great email tomorrow is worse than a good email today. Calendar the writing time right after the meeting; defend it.
+</Tip>
+
+## Same-day cadence
+
+The single biggest determinant of this workflow's value over time is consistency. A CSM who sends great follow-ups three days a week and skips two has worse relationships than one who sends solid follow-ups every day.
+
+**Calendar the writing time.** Block 10–15 minutes after each external meeting on your calendar for the follow-up. Not "end of day" — right after the meeting, while the context is warm. A common pattern: external meetings are scheduled for 50 minutes in a 60-minute slot, with the last 10 minutes reserved for the email.
+
+**The 3pm sweep.** For days when the post-meeting habit broke down (calls run over; emergencies happen), build a 3pm sweep into your calendar. Catch any emails that didn't get sent immediately and send them before end-of-day. The sweep is the safety net that makes same-day achievable even on chaotic days.
+
+**The Friday audit.** Once a week, scan your sent-mail and confirm every external meeting produced a follow-up. Any that didn't: send a brief note now, even four days late. A late follow-up is better than no follow-up. The audit also surfaces patterns — which meetings consistently don't get follow-ups? Often the answer is *"the ones I dread because they were hard."* Those are the most important to send.
+
+## Multi-stakeholder and ongoing relationships
+
+Two cases that come up often enough to handle deliberately.
+
+### Multi-stakeholder meetings
+
+When a meeting had multiple contacts from the customer side — say a CSM call with three people at different roles — the follow-up sometimes needs different angles. The economic buyer wants the ROI summary and timeline; the technical evaluator wants implementation details; the end-user champion wants workflow specifics and help docs.
+
+Three approaches, in order of effort:
+
+- **Single email to all, written for common ground.** Easiest. Works for meetings where everyone needs roughly the same recap. Default for most cases.
+- **Single email with sections per stakeholder.** *"For the leadership team: {summary}. For the engineering team: {details}."* Works well when stakeholders are on the same thread and don't mind seeing each other's sections.
+- **Separate emails per stakeholder.** Most personalized; most effort. Worth it for high-stakes deals or sensitive accounts. Run the template separately for each recipient with the recipient identified specifically.
+
+### Ongoing relationships
+
+For customers you talk to weekly or biweekly, the follow-up becomes part of an ongoing thread. The cadence changes what each email contains:
+
+- **Don't recap things they clearly remember.** Cut the throat-clearing.
+- **Reference prior conversations.** *"As we discussed last week about X…"* — shows you're tracking the relationship across calls, not treating each one as standalone.
+- **Track commitments across meetings.** *"I owed you the analysis from two weeks ago — here it is, finally."* Better than pretending the commitment didn't exist.
+- **Update on prior asks.** *"Following up on the question you raised about Y — here's what I learned."* Closes loops the customer is tracking even if you weren't.
+
+The template adapts well if you tell it: add to the prompt *"This is an ongoing weekly conversation; cut the preamble and focus on what's new and what's open."* The output gets noticeably tighter.
+
+### Multi-meeting consolidation
+
+For implementation engagements with several customer touchpoints in a short window, a single consolidated update sometimes beats three separate recaps. The cross-meeting synthesis is the same workaround as everywhere else: paste the relevant artifacts from the source meetings into a Customize-context document, then run the customer-follow-up template against the assembled material. Earmark refines artifacts within a single meeting today; cross-meeting generative synthesis is manual assembly.
+
+## Closing the loop
+
+Three habits that make follow-up emails work as part of an ongoing relationship rather than as isolated artifacts.
+
+**Track responses.** After sending, the relationship continues based on what the recipient does (or doesn't). Three categories: replied substantively (continue the thread); replied briefly *"thanks, got it"* (relationship is warm, no further action); didn't reply (after 3–5 business days for most customer threads, send a gentle bump — *"Wanted to bump this in case it got buried — let me know if you have any questions"*). The bump recovers a meaningful percentage of dropped threads. Don't be afraid to send it.
+
+**Honor every commitment in the email.** The email made commitments. If it said *"I'll send the ROI analysis by Thursday,"* the analysis goes by Thursday. The reliability of follow-up emails as trust-building artifacts depends entirely on whether the commitments in them get honored. After sending the email, immediately add the commitments to your task system with due dates. Don't trust your memory. The [action items workflow](/workflows/action-items-workflow) covers the personal task-tracking side; commitments that affect engineering work belong in the [tickets workflow](/workflows/meeting-to-tickets-workflow).
+
+**Reference prior emails in future emails.** Two emails into a relationship, refer to the first. Five emails in, reference the arc. This is how a sequence of follow-ups becomes a relationship rather than a series of transactions. *"When we first spoke in February, you mentioned X. Here's how that's evolving…"* — the customer feels the continuity. Use the [command menu](/earmark-basics/command-menu) (`Cmd+K` / `Ctrl+K`) to find prior conversations when assembling the reference.
+
+## Common pitfalls
+
+- **Inventing customer enthusiasm.** *"You sounded really excited about X"* when they didn't. The customer reads this and trust drops. The "do not invent" constraint is non-negotiable.
+- **Inventing commitments.** *"I'll get you the white paper"* when you didn't say that. Now you either send a white paper you didn't plan to or explain the inconsistency.
+- **Generic subject lines.** *"Following up"* goes unopened. *"Notes from today's call on dispatching"* gets opened.
+- **Leaving link or attachment placeholders unfilled.** `[ATTACH: ROI analysis]` in a sent email is the single most common small failure. The personalization pass catches it.
+- **Sending late.** Same-day is the bar. Calendar the time; defend it.
+- **Boilerplate openings.** *"Thanks for taking the time today"* is fine occasionally; it grates when every email starts the same way. Vary the opening; reference something specific.
+- **Tone mismatch.** A casual customer relationship gets a stiff formal email; a sensitive recovery conversation gets a chipper warm one. The tone calibration above is what prevents this.
+- **Single email when multiple are needed.** A multi-stakeholder meeting sometimes needs three separate emails to do justice to each contact.
+- **Email going to the wrong person.** The recipient field gets pre-filled; the writer doesn't double-check. Read names carefully in the personalization pass.
+- **No internal logging.** The customer gets the email; the CRM doesn't get the trace. Three months later, the relationship history is fragmented. Always log the email.
+- **Skipping the follow-up on hard calls.** The temptation is to skip after a difficult conversation. The hard call is exactly when the email matters most — the customer reads it carefully, and a thoughtful follow-up can recover a relationship that the call alone couldn't.
+- **Not honoring commitments.** The email's value collapses if commitments don't get delivered. Track them; deliver them.
+- **Treating the email as the end of the workflow.** The email is the beginning of the next phase of the relationship. Track responses, follow up on silence, reference the email in the next conversation.
+
+## Where to go next
+
+- [Workflows](/workflows) — the general shape this is an instance of
+- [Shareable summaries workflow](/workflows/shareable-summaries-workflow) — for the broader audience-aware output pattern (Slack, exec, external — this page is the deeper treatment of external email)
+- [Sales calls workflow](/workflows/sales-calls-workflow) — for the deal-context layer that informs sales-related follow-ups
+- [Customer research workflow](/workflows/customer-research-workflow) — for capturing the customer signal that follow-up emails reference
+- [Action items workflow](/workflows/action-items-workflow) — for tracking your personal commitments after the email is sent
+- [Meeting-to-tickets workflow](/workflows/meeting-to-tickets-workflow) — when commitments in the email map to engineering work
+- [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
+- [Composer](/using-earmark/composer) — for tuning the prompt before saving as a workspace template
+- [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding the template on external customer calls

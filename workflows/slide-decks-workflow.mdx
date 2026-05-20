@@ -1,0 +1,550 @@
+---
+title: "Slide decks"
+description: "Convert strategy discussions, status reviews, customer conversations, and exec briefings into slide-by-slide deck content — with narrative arc, speaker notes, and supporting evidence — ready for visual layout"
+keywords: ["slide deck", "presentation", "pitch deck", "board deck", "sales deck", "strategy deck", "workflow"]
+---
+
+Most companies have the same broken process for building decks. A senior person has been accumulating context across meetings; they know what the deck should say. They schedule two hours to build it. Ninety minutes later, they've spent most of it on visual layout, twenty minutes on the title slide, and have an outline that's roughly half-done. They give up and ship a rough version.
+
+Or alternative version: the senior person delegates to a junior person who wasn't in the meetings. The junior person builds from a brief. The deck is technically complete and visually polished, but misses the strategic narrative the senior person would have woven through. The senior person presents it, improvises through the gaps, walks out wondering why the deck felt off.
+
+Or third version: the team recycles last quarter's deck, updates the numbers, ships it. Content is stale; audience-fit is wrong; the deck reads as theater.
+
+What these failure modes share is a single pattern: the substance the deck should communicate lives in meetings — strategy discussions, customer calls, project reviews, exec briefings — and the deck construction process doesn't have a cheap way to translate that substance into slide-shaped content. So the substance either gets reconstructed from memory (lossy) or skipped entirely in favor of visual polish (empty). Decks look good and say little.
+
+This guide is a specific instance of the [workflows](/workflows) pattern. It differs from its closest siblings in that it produces **slide-shaped artifacts where narrative arc and visual sequencing both matter**. The [leadership readouts workflow](/workflows/leadership-readouts-workflow) and the [shareable summaries workflow](/workflows/shareable-summaries-workflow) produce prose-shaped artifacts; pick those when the output is a written readout. Pick this one when slides are the destination.
+
+## Foundation
+
+### Be explicit about the audience
+
+The single most consequential variable in deck quality is whether the presenter is building for a specific audience or for "the room." Decks built for "the room" address everyone partially and no one fully.
+
+| Audience | What they want |
+| --- | --- |
+| Board | Strategic state; key decisions needed; risks; financial reality. Scan-friendly. |
+| Leadership team | Aligned mental model; decisions to make; cross-functional implications |
+| Whole company / all-hands | Direction, motivation, focus. Story matters more than detail. |
+| Investors (pitch) | Why-now, wedge, traction, path forward. Confidence under scrutiny. |
+| Investors (update) | Progress vs. plan, risks, asks. Honest assessment. |
+| Prospects (sales deck) | Their problem in their language; how you solve it; proof. |
+| Customers (review / QBR) | Outcomes they've achieved; what's coming; relationship signals. |
+| Cross-functional partners | Why this affects them; what they need to do; coordination details. |
+| Press / external | Newsworthiness, strategic narrative, quotable language. |
+
+A board deck and a customer deck about the same product launch are different artifacts, not different formattings.
+
+### Pick the narrative shape before building slides
+
+Decks need a narrative arc. The arc varies by deck type:
+
+| Arc | Shape |
+| --- | --- |
+| Pitch | Problem → why now → solution → wedge → traction → path → ask |
+| Strategic | Where we are → what we've learned → where we're going → how we get there → what we need |
+| Status | Headline → progress vs. plan → wins → misses → forward → asks |
+| Sales | Their world → their pain → our approach → proof → what comes next |
+| Decision | Decision needed → context → options → recommendation → trade-offs → ask |
+| Training | Why this matters → what you'll learn → walk-through → practice → next steps |
+
+Pick the arc before opening a slide-builder. The arc structures the content; the slides serve the arc. Skipping this step is how decks become lists of slides without a story.
+
+### Design system, destination, ownership
+
+**Design system.** A branded company template, slide hierarchy (title, section dividers, content, data, closing), typography limited to one or two fonts, a small color palette. Mostly visual-craft territory outside the content workflow's scope — but the workflow has to know what the destination looks like so the content fits.
+
+**Destination.** Google Slides, PowerPoint, Keynote, Pitch, Beautiful.ai, Gamma — whichever your team uses. For sales-facing decks, often a sales enablement platform (Highspot, Showpad, Seismic) where the deck lives once finalized. For investor and board materials, often a data room or shared drive. The workflow produces content drafts; the deck itself lives in the destination tool.
+
+**Ownership.** One author per deck — usually the person presenting, sometimes a chief of staff producing on behalf of someone else. Multiple authors on a single deck produce voice drift and visible patchwork. If multiple people contribute, one person owns the integration and the final narrative.
+
+## The four templates
+
+### Template A — Executive or board presentation
+
+For decks presented to a board, leadership team, or executive audience. Attention is scarce; substance matters more than polish; asks have to be unmistakable.
+
+```md
+Based on this meeting transcript (a strategy discussion, planning
+meeting, function review, or other substantive conversation), produce
+the content for an executive presentation. The audience has scarce
+attention and expects decisions to be requested or signaled clearly.
+
+Constraints:
+- 8–14 content slides (not counting title and section dividers)
+- Each slide has a single headline that carries the message
+- Each slide has three to five supporting points maximum
+- Speaker notes accompany each slide
+- Asks are unmistakable
+- No emojis. No vague qualifiers.
+
+Format:
+
+# Deck: {Presentation Title}
+**Author:** {Name}
+**Presenter:** {Name}
+**Audience:** Board | Exec team | Other leadership group
+**Presentation date:** {date}
+**Source discussion(s):** {Meeting names — dates — Earmark links}
+**Duration:** {target presentation length}
+
+## Narrative arc
+One to two sentences. The through-line of the deck.
+
+## Slide-by-slide content
+
+### Slide 1 (Title)
+**Title:** {Deck title — concrete, not generic}
+**Subtitle:** {strategic context in one line}
+**Speaker notes:** {Opening line the presenter says}
+
+### Slide 2: {Headline that carries the meaning}
+**Slide content:**
+- {Supporting point 1 — specific, brief}
+- {Supporting point 2}
+- {Supporting point 3}
+
+**Visual element:** {What goes on this slide — chart, diagram, photo,
+key quote. "None" is acceptable.}
+
+**Speaker notes:** What the presenter says when this slide is up. Two
+to four sentences. Conversational, not a script — the presenter
+shouldn't sound like they're reading.
+
+**Time on slide:** {target — usually 30 seconds to 2 minutes}
+
+[Repeat for each slide]
+
+### Slide N: The headline
+For executive decks, an explicit headline slide before the close:
+- The single message leadership should remember
+- Stated clearly, briefly
+
+### Slide N+1: Asks
+The decisions or input being requested. This is the slide the
+executive deck ultimately exists for.
+
+**Slide content:**
+- **Ask 1:** {Specific decision needed — by when — from whom}
+- **Ask 2:** {...}
+- **For your awareness (no ask):** {items leadership should know but
+  not act on}
+
+**Speaker notes:** How the presenter frames each ask. What input is
+specifically wanted. Where the presenter has a recommendation; where
+the question is open.
+
+### Slide N+2: Appendix (optional)
+Material the audience may want to refer to but that doesn't need air
+time during the presentation.
+
+## Cross-deck notes
+**The headline:** The single sentence the audience should remember.
+**Key risks to flag during Q&A:** {list}
+**Anticipated questions:** Q → A (evidence-grounded responses)
+**What NOT to include:** Topics that would derail the main message
+```
+
+Three things in this prompt are load-bearing.
+
+**One headline per slide, carrying the message.** Slides whose headlines are generic (*"Q3 Performance"*) are slides whose headlines didn't earn their space. Every headline should be a complete thought that survives standalone. A useful test: cover everything on the slide except the headline. Does the headline alone carry the point?
+
+**Speaker notes are conversational, not scripted.** Reading from notes reads as reading from notes. Speaker notes anchor the content; the presenter speaks naturally over the top. The model produces speaker notes that sound generic — the curation pass rewrites them in your voice.
+
+**Asks are explicit and unmistakable.** Executive decks exist to produce decisions. If the deck doesn't surface what's being asked of leadership, it's missing the point. Vague asks (*"input welcome"*) produce vague non-responses; specific asks (*"decide between Option 1 and Option 2 by Friday"*) produce decisions.
+
+### Template B — Sales or customer-facing deck
+
+For decks presented to prospects, used in sales conversations, or shared with customers. The audience is external; attention is for sale to whichever competitor frames their problem most accurately.
+
+```md
+Based on this meeting transcript (a customer discovery call, sales
+conversation, or strategy discussion about positioning), produce a
+sales / customer deck. The audience is a prospect or customer; the
+deck's job is to frame their problem in their language, show your
+solution, and prompt action.
+
+Constraints:
+- 10–16 slides
+- Headlines lead with the customer's situation, not your product's
+  features
+- Customer language used where the source captures it (verbatim quotes,
+  real phrasings)
+- No emojis unless brand voice specifies otherwise
+- Specific evidence over generic claims
+- Clear next step at the end
+
+Format:
+
+# Sales Deck: {Audience / context}
+**Source:** {Meeting(s) — Earmark links}
+**Use case:** {When this deck gets used — first call, follow-up, proposal}
+
+## Narrative arc
+Their world → their pain → why solving it now → our approach → proof
+→ next step.
+
+## Slide-by-slide content
+
+### Slide 1 (Title)
+**Title:** {Concrete to the customer — not "Acme Corp Overview" but
+"How {Customer} can {outcome}"}
+**Speaker notes:** {How the presenter opens — brief, sets up the
+conversation}
+
+### Slide 2: Their world today
+The customer's situation in their language. Use verbatim phrasings.
+
+**Headline:** {The customer's current reality, framed accurately}
+
+**Slide content:** Aspects of their current state.
+
+### Slide 3: Their pain
+What's not working. Specific. Use customer language.
+
+**Headline:** {The pain in customer framing}
+
+**Slide content:** Specific pain points with evidence.
+
+**Speaker notes:** The presenter often pauses here for customer response.
+
+### Slide 4: Why solve it now
+The urgency. What's the cost of inaction? What's the trigger?
+
+**Speaker notes:** This slide is where deals stall or move. Build
+urgency from real evidence, not from manufactured pressure.
+
+### Slides 5–7: Our approach
+The solution, framed as outcomes the customer experiences.
+- Slide 5: Overall approach — one sentence, one image
+- Slide 6: Capability 1 → outcome
+- Slide 7: Capability 2 → outcome
+
+### Slide 8: Proof
+Customer outcomes from existing customers similar to the prospect.
+
+**Slide content:**
+- {Customer name (if shareable)} — {outcome with numbers}
+- Customer quote — verbatim if available
+- Outcome with evidence
+
+**Speaker notes:** Anchor proof in the prospect's situation — "for a
+company in your space, the comparable outcome would be…"
+
+### Slide 9: Differentiation
+- vs. {alternative}: differentiator
+- vs. status quo: why act now
+
+### Slides 10–11: How it works (light)
+Enough technical or operational substance to make the solution feel
+real, not deep enough to lose non-technical audience.
+
+### Slide 12: Pricing / packaging (optional)
+For deck-only use; for in-call use, often handled verbally.
+
+### Slide 13: What comes next
+Specific. Not *"let's stay in touch"* — *"let's schedule the technical
+review with your team for next Thursday."*
+
+### Slide 14 (Appendix): FAQ / objection responses
+Optional slides the presenter pulls up in response to questions.
+
+## Cross-deck notes
+- **Customer-language phrasings used throughout:** {verbatim list}
+- **Proof points cited:** {with sources}
+- **Things deliberately not in this deck:** {topics that would distract}
+```
+
+The **customer-language section** is what most sales decks lose between drafting and delivery. The source meetings capture how customers actually describe their world; the deck should use that language, not internal product language.
+
+### Template C — Strategy or vision deck
+
+For decks that align teams or organizations around direction. Often presented at all-hands, strategy offsites, kickoffs, or org-wide announcements.
+
+```md
+Based on this meeting transcript (a strategy discussion, exec session,
+or vision-articulation meeting), produce a strategy / vision deck.
+The audience needs to leave with a shared mental model and clear
+direction.
+
+Constraints:
+- 12–20 slides depending on scope
+- Lead with the strategic message; build the case across slides
+- Use specific examples, not abstractions
+- Show the trade-offs, don't hide them
+- End with clarity on what changes for the audience
+
+Format:
+
+# Deck: {Strategy / Vision title}
+**Audience:** Whole company | Leadership | Function
+**Date:** {presentation date}
+**Source(s):** {Meeting(s) — Earmark links}
+
+## Narrative arc
+Where we are → what we've learned → where we're going → how we get
+there → what changes for you → what we need.
+
+## Slide-by-slide content
+
+### Slide 1: Title
+{Title that signals the strategic shift, not the topic}
+
+### Slide 2: Why we're here
+The trigger for this conversation. What's changed?
+
+### Slide 3: What we've been doing
+Honest assessment. Wins, losses, learnings. Don't gloss over misses.
+
+### Slide 4: What we've learned
+The insights that inform the new direction. Earned learning.
+
+### Slides 5–6: Where we're going
+The vision. Use vivid, specific language. Avoid generic strategic
+language (*"be best-in-class," "delight customers"*).
+
+### Slides 7–8: The strategy
+How we get there. Specific bets, not aspirations.
+- Bet 1: what and why
+- Bet 2
+- Bet 3
+
+### Slide 9: Trade-offs and non-goals
+What we're NOT doing. This is the slide that distinguishes a strategy
+from a wish list.
+
+### Slide 10: Why we'll win
+The differentiation. Why this is achievable for us specifically.
+
+### Slides 11–12: What this means for you
+For the audience: what changes? What's your role? What should you
+focus on or stop focusing on?
+
+### Slide 13: Risks
+What could go wrong. What we're watching for.
+
+### Slide 14: What we're asking of you
+Specific. Not *"be on board"* — *"do these things; stop doing those;
+engage with this question."*
+
+### Slide 15: Q&A / appendix
+Prepared responses for likely questions.
+
+## Cross-deck notes
+- **The single sentence the audience should leave with:** {...}
+- **The most important slide:** {Slide number — why}
+- **Likely pushback and how to address:** {...}
+```
+
+The **non-goals slide** is the part strategy decks most often skip and most need. A strategy without explicit non-goals is a wish list. Forcing the choice clarifies the strategy and inoculates the team against scope creep.
+
+### Template D — Project or status update deck
+
+For recurring or one-off presentations of project progress, function updates, or initiative reviews. The audience is tracking the work over time; the deck is one snapshot in a series.
+
+```md
+Based on this meeting transcript (a project review, status meeting, or
+function update), produce a status update deck. The audience already
+has context; the deck answers: where are we, what's new, what's at
+risk, what do you need.
+
+Constraints:
+- 6–12 slides
+- Lead with the headline (the most important development)
+- Don't recap what the audience already knows
+- Be honest about misses
+- End with explicit asks and decisions needed
+
+Format:
+
+# Deck: {Project / Function} Update — {Period}
+**Audience:** {Who}
+**Period covered:** {last sync to now / quarter / etc.}
+**Source(s):** {Meeting(s) — Earmark links}
+**Cadence:** One-off | Weekly | Monthly | Quarterly
+
+## Slide-by-slide content
+
+### Slide 1: Headline
+The single most important development. Not *"Q3 Update"* — *"We hit X
+milestone two weeks ahead of plan; the next bet is Y."*
+
+### Slide 2: Where we are
+Status against plan. Concrete.
+- **On track:** {items}
+- **Behind:** {items + brief context}
+- **Ahead:** {items}
+
+**Visual:** Often a scorecard or RAG chart.
+
+### Slide 3: Major progress / wins
+What got done that matters. Three to five items maximum.
+
+### Slide 4: Misses / where we're behind
+Honest. Specific reasons. Not *"tracking slightly behind on X"* but
+*"X is two weeks late because {reason}. We're addressing by {action}."*
+
+### Slide 5: What we learned
+For projects with substantive learning.
+
+### Slide 6: What's coming
+The next period's focus.
+
+### Slide 7: Risks and asks
+- **Risks we're watching:** with current read
+- **Asks of you:** specific input / decision needed
+
+### Slide 8 (optional): Appendix
+Detailed metrics, related work, supporting material.
+
+## Cross-deck notes
+- **What changed from last update:** {if recurring}
+- **Decisions needed at this presentation:** {explicit}
+```
+
+The **honest-about-misses** approach distinguishes status decks that build credibility from those that erode it. Audiences who never hear about misses stop believing the wins.
+
+## Save them as workspace templates
+
+<Steps>
+<Step title="Start with the deck type you produce most">
+For founders: pitch deck or board deck (Template A). For sales teams: customer-facing deck (Template B). For team leads: status update (Template D). For execs running offsites or all-hands: strategy/vision (Template C). Save the most-used first.
+</Step>
+<Step title="Embed your design system context">
+The model produces content; the destination is slides. Note the deck destination (Google Slides, Pitch, Keynote) in the template so the content density matches what the visual tool can handle.
+</Step>
+<Step title="Save with Workspace visibility">
+Deck construction is often a team standard. **Workspace** visibility means every contributor produces content drafts in the same shape. See [Custom templates](/customization/custom-templates).
+</Step>
+</Steps>
+
+## Running the workflow on a single meeting
+
+<Steps>
+<Step title="Pre-seed the meeting with the right template">
+When you know a deck will come out of the meeting, attach the right template before. For meetings where the deck is decided afterward, run the template post-hoc. See [Before a meeting](/using-earmark/before-a-meeting).
+</Step>
+<Step title="State the right things during the meeting">
+A few habits make the deck content noticeably better:
+
+- **Articulate the headline.** *"If we walked out of this meeting and had to summarize it in one sentence to leadership, what would the sentence be?"* The headline written explicitly in the meeting survives into the deck.
+- **State the asks.** *"What do we need from leadership / the board / the audience?"* Asks that aren't explicit rarely make it into the deck cleanly.
+- **Articulate non-goals.** *"What are we explicitly NOT doing?"* Strategy meetings that name non-goals produce decks that include them.
+- **Reach for specific examples.** Concrete customer names, real numbers, specific scenarios. Specificity in the source produces specificity in the deck.
+- **Confirm narrative arc.** *"So the story we're going to tell is: A, then B, then C, leading to D."* The deck inherits this structure.
+</Step>
+<Step title="The 45-to-90-minute curation pass">
+For decks, the curation pass is heavier than most workflows because narrative shaping is real work and speaker notes need the presenter's voice.
+
+- **Read the narrative arc out loud.** Does the deck tell a coherent story? If not, restructure.
+- **Pressure-test every slide's headline.** Is the headline carrying the message? Cover everything except the headline — does the headline alone carry the point? If not, strengthen it or rebuild the slide.
+- **Verify customer-facing language.** For sales and customer decks: ensure the customer language reflects what was actually said.
+- **Rewrite speaker notes in your voice.** The model produces speaker notes that sound generic. Rewrite to sound like you.
+- **Sharpen the asks.** Vague asks produce vague non-responses; specific asks produce decisions.
+- **Cut what doesn't earn its place.** Each slide competes with every other for attention. Slides that don't carry weight come out.
+- **Evaluate visual element placeholders.** For each *"chart goes here"* or *"diagram goes here"*: commit to building the visual, or cut the placeholder and find a different way to make the point.
+- **Pre-mortem.** Imagine presenting this deck. Where do you lose the audience? Where might they push back? Address weaknesses before shipping.
+</Step>
+<Step title="Hand off to the slide-building process">
+The content draft is ready; slides need to be built. Three patterns:
+
+- **You build the slides yourself.** Most common. Use your team's template.
+- **A designer builds the slides.** For high-polish decks (board, investor pitch). Hand off the content draft with visual intent notes.
+- **A slide AI tool builds them.** Gamma, Beautiful.ai, Pitch, Tome can convert structured content into initial designs. Useful for first-pass; usually needs hand-tuning.
+
+The handoff succeeds when the content draft is fully done — finalized headlines, finalized speaker notes, finalized asks. Trying to design slides while content is drifting wastes everyone's time.
+</Step>
+<Step title="Rehearse">
+For any high-stakes presentation, rehearse out loud at least once. The rehearsal catches slides where transitions don't work; speaker notes that don't survive being said aloud; slides that take longer than expected; sections where energy lags; phrases that read fine but sound stilted.
+
+After rehearsal, update the speaker notes to match what you actually said. The deck and the presentation reinforce each other when notes reflect real delivery.
+</Step>
+</Steps>
+
+<Tip>
+The content and design phases should be distinct. Finalize content in a document (Notion, Google Doc, the Earmark artifact itself) before opening the slide tool. Trying to write content in the slide builder means spending most of the time on visual layout and rushing the substance.
+</Tip>
+
+## Multi-meeting synthesis
+
+Many decks draw from multiple source conversations. A board deck synthesizes across a quarter's worth of leadership meetings; a pitch deck pulls from customer interviews, strategy discussions, and traction reviews; an all-hands strategy deck combines exec discussions, customer signal, and team feedback. Earmark refines artifacts within a single meeting today; cross-meeting synthesis uses the standard manual workaround.
+
+**Tag the source meetings.** When you know multiple meetings will feed a deck, tag them with a consistent identifier. Paste the relevant artifacts from each into a **Customize context** document; run the template against the assembled corpus. The output draws from all of them with attribution per section.
+
+**Watch for contradictions.** Multi-meeting synthesis often reveals tensions — the strategy discussion said one thing; subsequent customer calls said another; the product roadmap implied one trajectory; the financial review surfaced a different reality. The deck should resolve these tensions, not paper over them. Sometimes the right move is to acknowledge the tension in the deck itself — that's often the most honest and well-received content.
+
+**The repeated-deck pattern.** Some decks get presented to different audiences (a strategy deck that goes to the board, then leadership, then all-hands; a sales deck used across many prospects). Build a master content version from the source meetings; tailor variants for each audience by selecting and reframing slides; maintain the master as canonical with variants as projections. Faster than building each from scratch, keeps the core message consistent.
+
+**Iteration across deliveries.** A deck used repeatedly improves with use. After each delivery, note which slides landed, which didn't, what questions came up that the deck didn't anticipate, what transitions didn't work. Update the deck before the next delivery. A recurring sales deck or roadshow pitch deck gets sharper across a quarter of use.
+
+For very large multi-meeting corpora, [local transcripts](/earmark-basics/local-transcripts) and running an external agent is the alternative.
+
+## From content to slides: the visual handoff
+
+The workflow produces content; slides are downstream. Treating these as distinct phases is what separates teams that ship sharp decks from teams that waste senior time on visual layout.
+
+**Content phase:** narrative arc, slide headlines, speaker notes, supporting evidence — produced by this workflow.
+
+**Design phase:** visual layout, typography, charts, images, transitions — produced by slide-building tools, sometimes with a designer.
+
+**Slides serve the headline.** Each slide's visual layout should support a single message — the headline. The supporting bullets, the diagram, the chart, the photo — all should reinforce what the headline says. A useful test: cover everything on the slide except the headline. Does the headline alone carry the point? If yes, the slide works. If no, the headline is weak or the supporting elements are doing the wrong work.
+
+**Visual hierarchy matters.** Within each slide: the headline is the largest text element (it's what the audience reads first). Supporting bullets are subordinate. The visual element anchors the slide but doesn't compete with the headline. Footers, page numbers, brand elements are utility. Slides with violated hierarchy — small headlines, dominant footers, oversized supporting text — read as amateurish even when the content is strong.
+
+**Charts and data slides.** When a slide is primarily a chart: the headline states what the chart shows (*"Revenue grew 40% YoY"*), not what the chart is (*"Q3 Revenue Chart"*). The chart itself is uncluttered. A brief annotation calls out the key insight if it's not immediately obvious. Speaker notes elaborate on context not visible in the chart.
+
+**When to involve a designer.** For high-stakes decks (board, investor pitch, major external presentation), a designer pays off. Brief them with the finalized content draft, the narrative arc (so they understand what each slide is doing), visual references, and specific creative direction. The content draft is what makes the designer brief useful. Without it, the designer is guessing at substance and producing visual variations on thin content.
+
+## Routing and the deck archive
+
+Decks worth presenting are usually worth archiving. Common destinations:
+
+- **Internal team library:** Notion, Confluence, a shared drive folder organized by deck type and date
+- **Sales enablement:** Highspot, Showpad, Seismic — for sales decks with usage tracking, where the master lives and reps customize for specific accounts
+- **Investor data rooms / shared drives:** for pitch decks, board materials, investor updates
+- **Internal knowledge base:** for training decks, internal strategy decks
+
+For internal decks (all-hands, board, leadership), recording the actual presentation creates a complete archive — the deck shows what was presented, the recording shows how, and the Earmark sources show where the substance came from. Future viewers can navigate the full context.
+
+Source meetings stay in Earmark. Decks link back. When a future deck-builder asks *"where did this content come from?"*, the source is one click away. This is especially valuable for recurring decks — the Q4 board deck inherits content patterns from Q3, which inherits from Q2, all linked to source meetings. The team's presentation tradition becomes navigable.
+
+## Closing the loop
+
+Three habits.
+
+**Post-delivery review.** After every substantial presentation: What landed? What didn't? What questions came up that the deck didn't anticipate? Where did the audience disengage? Where did they lean in? What would you change for the next delivery? Five minutes of honest review beats vague *"good deck"* reactions. Capture the notes; feed them into the next iteration.
+
+**Deck retirement.** Decks have lifespans. A pitch deck for one fundraise doesn't apply to the next. A sales deck for one positioning doesn't apply after the positioning shifts. The discipline: when a deck's underlying context is no longer current, archive it. Don't let stale decks remain in the active library quietly misleading future deck-builders.
+
+**Pattern recognition across decks.** Quarterly, scan the library. Which deck patterns produced the decisions you wanted? Which sales decks correlated with closes? Which strategy decks aligned the team most effectively? Apply the patterns to the next batch. This is how a team's presentation craft compounds over years rather than plateauing.
+
+## Common pitfalls
+
+- **Generic headlines.** *"Q3 Update," "Marketing Pro Overview"* — these don't carry messages. Make every headline a complete thought.
+- **Slides that are walls of text.** A slide with eight bullet points each two lines long is a slide nobody reads. Cut.
+- **No clear narrative arc.** A sequence of slides without a through-line is a list. Make the arc explicit before building slides.
+- **Skipping the non-goals or trade-offs slide.** Strategy decks that don't name what's NOT being done aren't strategies.
+- **Vague asks.** *"Input welcome"* produces no input. *"Decide between Option 1 and Option 2 by Friday"* produces a decision.
+- **Speaker notes that sound like a script.** Reading from notes reads as reading from notes. Notes should anchor; the presenter should sound natural.
+- **Customer-facing decks in internal language.** Product code names, internal jargon, organizational structure references. Customers don't know or care; cut.
+- **Inventing customer quotes or proof points.** The model can fabricate plausible-sounding examples. Every quote and number needs source verification.
+- **Spending more time on visual layout than on content.** The most common failure. Content drives the deck's value; finalize it before opening the slide builder.
+- **Recycling the last deck without re-anchoring.** Audience-fit drifts; context changes. Recycled decks need refresh, not numerical updates.
+- **Skipping rehearsal.** Decks that work on paper sometimes don't work aloud.
+- **Decks built for "the room" rather than a specific audience.** Audience-specific decks land; audience-generic decks bounce.
+- **Too many slides.** Decks that try to cover everything cover nothing. The discipline of cutting slides is the discipline of having a deck that lands.
+- **No closing ask.** Decks without a clear next step end on a whimper.
+- **Letting stale decks accumulate.** Decks that don't apply anymore mislead future deck-builders. Archive deliberately.
+- **No post-delivery review.** What you learn from a presentation feeds the next one — only if you capture it.
+
+## Where to go next
+
+- [Workflows](/workflows) — the general shape this is an instance of
+- [Leadership readouts workflow](/workflows/leadership-readouts-workflow) — for the prose-shaped cousins of board/exec decks
+- [Shareable summaries workflow](/workflows/shareable-summaries-workflow) — for audience-aware summaries that aren't slide-shaped
+- [Marketing collateral workflow](/workflows/marketing-collateral-workflow) — for the customer-facing artifacts that often feed into sales decks
+- [Sales calls workflow](/workflows/sales-calls-workflow) — for the deal context that informs customer-specific decks
+- [Meeting-to-PRD workflow](/workflows/meeting-to-prd-workflow) — for the product specs that motivate strategic decks
+- [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
+- [Composer](/using-earmark/composer) — for tuning the prompt before saving as a workspace template
+- [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding the template on meetings expected to produce decks
+- [Local transcripts](/earmark-basics/local-transcripts) — for external synthesis on large multi-meeting corpora

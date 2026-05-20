@@ -1,0 +1,271 @@
+---
+title: "Workflows"
+description: "Make the same kind of meeting produce the same shape of output every time"
+keywords: ["workflows", "repeatable meetings", "templates", "custom templates", "meeting patterns", "artifact destinations"]
+---
+
+<Frame>
+  <div
+    style={{
+      backgroundImage: 'url(/images/background-blue.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      borderRadius: '1rem',
+      padding: '4%',
+    }}
+  >
+    <div
+      style={{
+        borderRadius: '0.875rem',
+        overflow: 'hidden',
+        boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
+      }}
+    >
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        src="https://bwopjpjsyqjaz3ty.public.blob.vercel-storage.com/features/ticket-generator.mp4"
+        style={{ width: '100%', display: 'block' }}
+      />
+    </div>
+  </div>
+</Frame>
+
+You already run the same meetings every week. Standups. 1:1s. Customer calls. Sprint reviews. The conversations compound. The outputs don't have to start from scratch each time.
+
+A workflow is the shift from "I got a good artifact from this meeting" to "every meeting of this kind produces the same shape of artifact, automatically."
+
+## What a workflow actually is
+
+A single meeting in Earmark gives you finished work from one call — a brief, a ticket, a recap. That's an [artifact](/earmark-basics/artifacts).
+
+A workflow is what happens when you stop reinventing the prompt every time and start running the same task on every meeting of the same kind. Three pieces hold it together:
+
+| Piece | What it is | Where it lives |
+| --- | --- | --- |
+| **A saved template** | The prompt that shapes the artifact | [Templates](/earmark-basics/templates) or your own [custom template](/customization/custom-templates) |
+| **A pre-seed habit** | Adding that task before the meeting starts | [Before a meeting](/using-earmark/before-a-meeting) |
+| **A destination** | Where the artifact lands after the call ends | [Integrations](/integrations/overview), or paste into the tool your team already uses |
+
+Each piece is a feature you already have. The workflow is the habit of using them together, on the same kind of meeting, every time.
+
+## What the output looks like
+
+Every workflow ends with the same kind of structured output for that meeting type. The headings differ by workflow; the property that matters is **same shape, every call**.
+
+A worked example for a weekly team sync:
+
+```md
+# Team sync — May 12
+
+## Decisions
+- Ship the export fix in 2.4; defer bulk-edit to 2.5
+- On-call rotation moves to a two-week cycle starting June 1
+
+## Action items
+- @Jamie: draft the export fix spec by Thursday
+- @Alex: post the on-call runbook in #eng-ops by Friday
+
+## Blockers
+- Staging deploy still requires manual approval — slowing QA
+
+## Open questions
+- Do we need a customer comms draft before 2.4 ships?
+```
+
+Twenty artifacts in that shape aggregate cleanly in Notion, Airtable, or Slack. Twenty free-form summaries do not.
+
+## Why it matters
+
+A single artifact ages out the moment the meeting ends. Action items get done or forgotten. The recap scrolls past in Slack. Next meeting, you start over.
+
+Repeatable patterns compound. Discovery call ten sharpens the picture from calls one through nine. Quarter three of 1:1 recaps shows trends in your team you'd miss week to week. Twenty stakeholder reviews expose the same blocker showing up under different names.
+
+Same shape, same place, every time, so the next person who needs the answer can find it.
+
+## How to stand one up
+
+<Steps>
+<Step title="Pick the meeting you already run most">
+Twice a week beats twice a quarter. Volume is what creates the compounding. Strategic-sounding workflows you'd touch four times a year don't build the muscle.
+</Step>
+<Step title="Find the closest built-in template">
+Open the [template library](/earmark-basics/templates) and pick the closest match. Run it in a real meeting before customizing.
+</Step>
+<Step title="Refine in the Composer, then save it">
+Use the [Composer](/using-earmark/composer) to shape the output to your exact format. When the prompt reliably gives you what you want, open the Composer menu and choose **Save as template**. Set visibility to **Workspace** if the whole team should produce the same shape. See [Custom templates](/customization/custom-templates).
+</Step>
+<Step title="Pre-seed the next meeting">
+Add the saved template as a task to the next meeting of this kind before it starts. Earmark generates the artifact live during the call. See [Before a meeting](/using-earmark/before-a-meeting).
+</Step>
+<Step title="Pick a destination">
+Decide where the artifact goes after the meeting. Linear ticket? Cursor prompt? Slack post? See [Integrations](/integrations/overview) for formats Earmark generates with the right destination in mind.
+</Step>
+</Steps>
+
+<Tip>
+A prompt proven on a real meeting transfers to the next real meeting better than one written from scratch. Tune in the Composer, then save.
+</Tip>
+
+## Common starting points
+
+| If you run… | Template to start from | Where the output goes |
+| --- | --- | --- |
+| **Sprint planning** | Engineering Specs + Ticket Generator | [Linear](/integrations/linear) |
+| **Discovery or customer calls** | Client Call + Topic Outcome Tracker | Slack, Notion, your CRM |
+| **Stakeholder reviews** | Stakeholder Review + Executive Summary | Email to leadership |
+| **Design reviews** | PRD Outline | [v0](/integrations/v0) or [meeting-to-prototype](/workflows/meeting-to-prototype-workflow) |
+| **Engineering syncs** | Engineering Specs + Decision Summary | [Cursor](/integrations/cursor) or [Codex](/integrations/codex) |
+| **Weekly team sync** | Real-Time Meeting Minutes + Slack Update Post Generator | Slack |
+| **1:1s** | [People and team meetings](/workflows/people-and-team-meetings-workflow) | Shared with your report same day |
+
+<Tip>
+Start with one workflow, not three. Templates need tuning, habits take a few weeks, and destinations need to stick. Get one to the point where you'd notice if it disappeared, then add a second.
+</Tip>
+
+## Build the habit
+
+The same template plus the same destination is the workflow. The habit is what makes it compound.
+
+- **Before each meeting**: pre-seed the same task. Five seconds of setup beats five minutes of post-meeting cleanup.
+- **Right after**: send the artifact to its destination while the conversation is fresh.
+- **Weekly**: scan your last few outputs. If they keep needing the same edit, update the template once.
+- **Monthly**: revisit your [personalization settings](/customization/personalization) so tone and terminology stay current.
+
+## When the output needs a pass
+
+The model gets things wrong. Every workflow assumes a few minutes of curation, not none.
+
+- **Structure drift**: headings missing or merged. Promote each item to its own line; if it happens every call, sharpen the template in the Composer.
+- **Over-confident tags or severity**: downgrade unless the conversation supported it. After a few weeks of consistent curation, the model calibrates to the bar your team actually uses.
+- **Paraphrase instead of quote**: replace from the transcript before sending to the destination — verbatim is the asset when your workflow depends on it.
+- **Three people, three prompts**: outputs stop aggregating. Lock the template at the workspace level and update it deliberately.
+
+## What workflows don't do
+
+Each artifact is tied to the meeting it came from. Earmark refines outputs within a single meeting, not across many — so a question like "summarize every pain point we heard this quarter" isn't a one-click action inside Earmark today.
+
+Practical workarounds:
+
+- **Search across meetings** with the [command menu](/earmark-basics/command-menu) (`Cmd+K` / `Ctrl+K`) to find specific discussions, decisions, or action items.
+- **Aggregate in the destination tool.** Twenty artifacts in the same Notion table is one filter away from a quarterly view. This is the payoff for the stable template shape.
+- **Use [local transcript files](/earmark-basics/local-transcripts)** with an external agent if you want a rollup you control end-to-end.
+
+Without the repeatable template, none of these have anything aggregateable to work on. That's why the template comes first.
+
+## Guides
+
+Step-by-step guides for specific meeting types. Each is an instance of the three-piece pattern above.
+
+### Essentials
+
+Start here for outputs every team needs — use [ad-hoc Q&A](/workflows/ad-hoc-qa-workflow) when you need a grounded answer from a single call, or [pre-meeting prep](/workflows/pre-meeting-prep-workflow) when you need context before the next one.
+
+<CardGroup cols={2}>
+  <Card title="Advanced meeting recaps" icon="file-text" href="/workflows/generic-recaps-workflow">
+    The universal default — turn any meeting into a readable recap, and know when to graduate to something more specialized.
+  </Card>
+  <Card title="Action items" icon="list-check" href="/workflows/action-items-workflow">
+    Turn every conversation into a clean list of what needs to happen next, who owns it, and when.
+  </Card>
+  <Card title="Structured meeting notes" icon="clipboard-list" href="/workflows/structured-meeting-notes-workflow">
+    Turn every working meeting into decisions, todos, open questions, and a shareable summary — same shape, every time.
+  </Card>
+  <Card title="Ad-hoc Q&A" icon="circle-question" href="/workflows/ad-hoc-qa-workflow">
+    Ask any recorded meeting a question and get a grounded answer — patterns, verification, and cross-call workarounds.
+  </Card>
+  <Card title="Pre-meeting prep" icon="clipboard-check" href="/workflows/pre-meeting-prep-workflow">
+    Use your captured archive before the next meeting — open threads, commitments, and a recommended opening, not a cold start.
+  </Card>
+</CardGroup>
+
+### Product and engineering
+
+From feature conversations to shipped work — specs, tickets, prototypes, architecture docs, and prompts for your AI dev tools.
+
+<CardGroup cols={2}>
+  <Card title="Meeting-to-prototype" icon="palette" href="/workflows/meeting-to-prototype-workflow">
+    Turn a feature conversation into a working prototype the same day — meeting transcript to paste-ready prompt for Figma Make, v0, or similar tools.
+  </Card>
+  <Card title="AI tool orchestration" icon="wand-sparkles" href="/workflows/ai-tool-orchestration-workflow">
+    Turn meetings into well-shaped prompts for Claude Code, Cursor, v0, Perplexity, and the rest of your AI tool stack — code, analysis, documents, and persistent assistants.
+  </Card>
+  <Card title="Meeting-to-PRD" icon="file-lines" href="/workflows/meeting-to-prd-workflow">
+    Convert discovery, kickoffs, and design reviews into one-pagers, full PRDs, and technical specs — the document layer between research and tickets.
+  </Card>
+  <Card title="Roadmap synthesis" icon="map" href="/workflows/roadmap-synthesis-workflow">
+    Synthesize customer signal, strategy, capacity, and competitive context into a defensible Now / Next / Later roadmap — and keep it current as the world changes.
+  </Card>
+  <Card title="Meeting-to-tickets" icon="ticket" href="/workflows/meeting-to-tickets-workflow">
+    Convert refinement, triage, and escalation calls into tracker-ready stories, spikes, bugs, and epics — same day, with context intact.
+  </Card>
+  <Card title="Architecture documentation" icon="sitemap" href="/workflows/architecture-documentation-workflow">
+    Turn design reviews and technical debates into ADRs, SDDs, sequence diagrams, and integration specs — with alternatives, validation criteria, and source links.
+  </Card>
+</CardGroup>
+
+### Communication and leadership
+
+Audience-tuned outputs for people who were not in the room — or who need the executive version.
+
+<CardGroup cols={2}>
+  <Card title="Shareable summaries" icon="share-nodes" href="/workflows/shareable-summaries-workflow">
+    Turn meeting outputs into audience-tuned messages for people who were not in the room.
+  </Card>
+  <Card title="Slide decks" icon="presentation-screen" href="/workflows/slide-decks-workflow">
+    Convert strategy discussions, customer calls, and exec briefings into slide-by-slide content with narrative arc, speaker notes, and evidence — ready for visual layout.
+  </Card>
+  <Card title="Email follow-up" icon="envelope" href="/workflows/email-follow-up-workflow">
+    Turn customer calls and partner meetings into warm, specific, same-day follow-up emails that honor what was promised.
+  </Card>
+  <Card title="Leadership readouts" icon="presentation" href="/workflows/leadership-readouts-workflow">
+    Produce weekly digests, business reviews, board pre-reads, and decision memos on a reliable cadence.
+  </Card>
+</CardGroup>
+
+### Go-to-market
+
+Research, messaging, and pipeline intelligence from customer-facing conversations.
+
+<CardGroup cols={2}>
+  <Card title="Customer research" icon="users" href="/workflows/customer-research-workflow">
+    Turn discovery, usability, and win/loss calls into structured pain, asks, and verbatim quotes — call by call.
+  </Card>
+  <Card title="Customer onboarding and training" icon="graduation-cap" href="/workflows/customer-onboarding-and-training-workflow">
+    Turn training and implementation sessions into categorized follow-up queues, same-day customer emails, and cross-session implementation snapshots.
+  </Card>
+  <Card title="Marketing collateral" icon="megaphone" href="/workflows/marketing-collateral-workflow">
+    Turn customer calls, strategy discussions, and launch planning into GTM artifacts — capability briefs, customer-facing copy, launch announcements, and messaging pillars.
+  </Card>
+  <Card title="Sales calls" icon="phone" href="/workflows/sales-calls-workflow">
+    Turn every sales conversation into structured deal intelligence that lands in your CRM and survives pipeline review.
+  </Card>
+</CardGroup>
+
+### People and operations
+
+Relationship meetings, hiring loops, repeatable demos, and operational knowledge your team runs on.
+
+<CardGroup cols={2}>
+  <Card title="People and team meetings" icon="user-group" href="/workflows/people-and-team-meetings-workflow">
+    Run 1:1s, skip-levels, interviews, and standups so relationship conversations stop running on memory.
+  </Card>
+  <Card title="Hiring" icon="user-plus" href="/workflows/hiring-workflow">
+    Turn interview conversations into evidence-grounded scorecards your loop can calibrate on.
+  </Card>
+  <Card title="Demo and facilitator scripts" icon="scroll" href="/workflows/demo-and-facilitator-scripts-workflow">
+    Turn excellent demos, workshops, and trainings into replicable scripts — beats, phrasing, recovery moves, and what not to do.
+  </Card>
+  <Card title="SOPs and playbooks" icon="book-bookmark" href="/workflows/sops-and-playbooks-workflow">
+    Convert operational discussions into SOPs, playbooks, runbooks, and policies your team executes against — with owners, review cadences, and audit trails.
+  </Card>
+</CardGroup>
+
+## Where to go next
+
+- [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding so the artifact runs live
+- [After a meeting](/using-earmark/after-a-meeting) — generating audience-specific outputs from the same transcript
+- [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
+- [Templates](/earmark-basics/templates) — built-in starting points and the template library

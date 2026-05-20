@@ -1,0 +1,422 @@
+---
+title: "Leadership readouts"
+description: "Produce weekly digests, business reviews, board pre-reads, and decision memos on a reliable cadence, grounded in what actually happened"
+keywords: ["leadership digest", "board pre-read", "business review", "investor update", "decision memo", "executive", "workflow"]
+---
+
+The information that reaches the top of a company is, by default, the worst-instrumented information in the building. Filtered through layers of writers managing perception. Arriving late, after the decisions it should have informed are already drifting. Optimized to convey what the writer wants leadership to think, not what leadership needs to know.
+
+A CEO reads ten function updates on Sunday night, written by ten different people in ten different shapes, and forms a picture of the company that doesn't match what's actually happening on the ground. A board meeting becomes a series of surprises because the pre-read didn't predict them. An investor update gets written in two hours of guilt the night before it's due — conveys neither candor nor calibration, and the investor learns to discount it.
+
+The unit of leadership decision-making (the call, the bet, the reallocation) depends on a unit of information (the readout, the summary, the memo) that is typically produced under conditions guaranteed to corrupt it.
+
+This guide is a specific instance of the [workflows](/workflows) pattern. It pairs with the [shareable summaries workflow](/workflows/shareable-summaries-workflow) — that page handles per-meeting outputs shaped for different audiences; this page handles recurring leadership artifacts that roll up across many meetings.
+
+## A note on this workflow specifically
+
+Leadership readouts are by definition rollups across many meetings. Earmark refines artifacts within a single meeting today; cross-meeting synthesis is not a one-click action. So this workflow has the largest manual assembly step of any in this guide series.
+
+What that means in practice: the four template prompts below are real and produce useful drafts. They run on a **Customize context** document you assemble manually — pasting in the relevant inputs (key meeting artifacts, function lead updates, metrics) before running the template. The drafting step still saves substantial time. The synthesis step is the writer's curation work.
+
+This is the honest tradeoff. Most of this guide is about how to do the manual side well.
+
+## Five decisions before your first readout
+
+### Audience
+
+Different readouts reach different audiences. The same content shaped for different audiences is a different artifact. Be explicit:
+
+| Artifact | Primary audience | What they want |
+| --- | --- | --- |
+| Weekly leadership digest | Internal leadership team | Shared picture of the week, alignment on what's hot, awareness of risks |
+| Function monthly business review | Executive team | Performance vs. plan, what's working, what's at risk, what changes |
+| Board pre-read | Board of directors | Strategic state, key decisions needed, risks, financial reality |
+| Investor update | Investors (often non-board) | Progress, specific asks, honest read |
+| Decision memo | Whoever holds decision rights | The decision, options, recommendation, what's needed from them |
+
+If you're not sure who the audience is, you're not ready to write.
+
+### Cadence
+
+Predictability beats frequency. A weekly digest that lands every Friday morning for 52 weeks is dramatically more valuable than an excellent monthly digest that lands sometimes on the first and sometimes on the third week. Recommended cadences:
+
+| Artifact | Cadence | When |
+| --- | --- | --- |
+| Weekly leadership digest | Weekly | Friday morning or Monday morning — pick one and hold |
+| Monthly business review | Monthly | Within 5 business days of month close |
+| Board pre-read | Per board meeting | 5–7 days before |
+| Investor update | Monthly or quarterly | Same day each month |
+| Decision memo | Ad-hoc | When a decision needs to be made |
+
+The cadence is a commitment to the audience. Breaking it is worse than not starting.
+
+### Scope
+
+The hardest part of writing for leadership is deciding what *not* to include. Every readout should have an explicit scope rule:
+
+- *"The weekly leadership digest covers commercial, product, and people developments. It does not cover individual incident detail unless it's strategic."*
+- *"The board pre-read covers KPIs vs. plan, decisions needed, and major risks. It does not cover normal operating updates."*
+
+A scope rule written down once protects every future artifact from drift. Without it, every readout tries to include everything, and signal density collapses.
+
+### Durable home
+
+Every series needs a home where the archive lives so it compounds. A Notion page, a Confluence space, a board portal, an investor archive — whichever fits the audience. The home is what makes the series queryable a year later. The Slack/email send is distribution; the home is record.
+
+### Ownership
+
+One person owns the writing for each recurring artifact, even if they synthesize inputs from many. Shared ownership fails reliably — the artifact becomes irregular and uneven. The writer doesn't have to be the most senior person; they have to be the most accountable.
+
+## The four templates
+
+### Template A — Weekly leadership digest
+
+For the operating leadership team. Read by 5–15 people. Sets the shared picture of the week.
+
+```md
+Synthesize the inputs provided into a weekly leadership digest.
+Audience: internal leadership team.
+
+Constraints:
+- 250–500 words maximum
+- Headline on the first line: the most important development of the week
+- No emojis
+- Calibrate confidence — do not pretend certainty you do not have; do
+  not hedge what you do
+- Lead with what changed; not a recap of everything
+
+Format:
+
+**Week of YYYY-MM-DD — Leadership Digest**
+
+{Headline — one sentence on the most important thing about this week.}
+
+**This week's big moves:**
+- {What changed, decided, shipped, or launched}
+- Three to six items maximum
+
+**Where we are by area:**
+- **Commercial / GTM:** one to two lines; current state vs. plan; trend
+- **Product / Engineering:** one to two lines; in flight; at risk
+- **People / Operations:** one to two lines; hires, departures, org changes
+- **Finance / Cash:** one line; any material change
+
+**What's at risk this week:**
+- {Risk} — current read (Likely | Possible | Watch) — what we are doing
+- Limit to three items. Anything not on this list is implicitly off-radar.
+
+**Decisions made this week:**
+- {Decision} — by {whom} — context: one phrase
+- "None to report" is fine if true.
+
+**Asks of the leadership team:**
+- {Ask} — what is needed and by when
+- "None this week" is fine.
+
+**Looking ahead:**
+- Two to four lines on what to watch for next week
+```
+
+Three things make this template work.
+
+**The headline is required and singular.** If you cannot pick the most important development of the week, you do not yet have a clear enough picture to write the digest. Write the headline first; everything else is downstream.
+
+**Risks are capped at three.** The cap is the discipline. A list of nine risks is functionally a list of zero risks because nobody can act on nine.
+
+**The "Asks" section is load-bearing.** This is where the digest earns its keep. If the digest never produces asks, leadership isn't using it as a decision tool — and you should question what it's for.
+
+### Template B — Periodic business review
+
+For a function lead reporting to the executive team, monthly or quarterly. Longer, more analytical, heavier on numbers.
+
+```md
+Synthesize the inputs provided into a business review. Audience:
+executive team.
+
+Constraints:
+- 600–1200 words
+- Lead with the headline — the single most important takeaway
+- Numbers before narrative — show the data, then interpret
+- Honest about misses; specific about reasons; concrete about what changes
+- No emojis, no padding, no hedging the misses with vague language
+
+# {Function or Team} — {Month or Quarter} Business Review
+
+## Headline
+One paragraph (three to five sentences) on the period. What worked, what
+did not, what changes as a result. Written so an executive who reads
+nothing else gets the message.
+
+## Performance vs. plan
+For each top metric:
+
+| Metric | Plan | Actual | Delta | Read |
+
+Read column = "On plan" / "Above" / "Below — major" / "Below — minor."
+If something is materially off, one to two sentences on why.
+
+## What worked
+Two to four specific things with evidence. Not "the team executed well"
+— "shipped X two weeks ahead of plan; specific drivers were Y and Z."
+
+## What did not work
+Two to four specific things with evidence. Be honest.
+
+## Strategic decisions made this period
+- {Decision} — context: one to two sentences
+- "None of note" is acceptable if true.
+
+## What we are changing as a result
+Specific operational or strategic changes. The function's *response*
+to what was learned.
+
+## Risks heading into next period
+- {Risk} — likelihood — mitigation in flight or proposed
+- Cap at five.
+
+## Outlook for next period
+One paragraph. Specific, not aspirational. What we expect to ship.
+What we are betting on. What would change the picture.
+
+## Asks of the executive team
+- {Ask} — what input, decision, or support is needed
+- Vague asks get vague non-decisions. Be specific.
+```
+
+The **What didn't work** section is the most important part of this template. Most business reviews bury misses or recast them as opportunities. A review that surfaces misses honestly — without spin, with specifics, with what changes — is dramatically more useful, and dramatically more trusted over time, than one that doesn't.
+
+### Template C — Board pre-read
+
+For the board of directors, 5–7 days before the meeting. Different audience, different norms, higher formality.
+
+```md
+Produce a board pre-read for the upcoming meeting. Audience: board of
+directors and any invited observers.
+
+Constraints:
+- 1500–3000 words; longer only if material warrants, no padding
+- Lead with the big-picture state
+- Numbers before narrative
+- Risks categorized (financial, commercial, operational, regulatory, people)
+- Specific board asks
+- Discussion topics flagged for the meeting
+
+# Board Pre-Read — {Meeting date}
+
+## State of the company
+One page maximum. The CEO's honest read on where the company is. What
+is working, what is not, what is most on our minds. Written to a board
+that will skim if it is not useful and read carefully if it is — make
+it worth reading carefully.
+
+## Scorecard
+Top 8–15 metrics with plan / actual / delta / read, grouped by
+category (commercial, product, financial, people).
+
+## Major developments this period
+Categorized list, two to four sentences each:
+- **Commercial:** wins, losses, pipeline movement, ARR changes
+- **Product:** ships, roadmap shifts, technical debt moves
+- **People:** key hires, departures, org changes, comp/equity decisions
+- **Finance:** cash runway, fundraising context, material expense changes
+- **Strategic:** anything that changes the company's direction or thesis
+
+## Decisions made by management since last board
+Decisions taken under management's authority that the board should be
+aware of, even if not requiring approval.
+
+## Decisions needed from the board
+Specific calls being asked of the board at this meeting. For each:
+- **The decision:** stated as a clear question
+- **Recommendation:** management's recommended path
+- **Why:** evidence-grounded
+- **Risks of each path:** including the one management did not recommend
+- **What we need from the board:** approval, discussion, deferral
+
+## Risks
+Categorized: financial, commercial, operational, people, regulatory,
+existential. For each: likelihood, magnitude, mitigation.
+
+## Forward look
+What we are betting on. What would change the picture. Where
+management's confidence is genuine and where it is calibrated against
+uncertainty.
+
+## Topics for board discussion
+Specific items the agenda should make time for beyond the decisions
+above. One sentence each on why.
+
+## Appendices
+- Detailed financials
+- Cap table updates if relevant
+- Anything the board specifically requested
+```
+
+The **Decisions needed from the board** section is what distinguishes a board pre-read from a status update. Boards are decision-making bodies. If the pre-read does not surface decisions, the meeting becomes a download — a waste of the board.
+
+### Template D — Decision memo
+
+For when a specific decision needs leadership input. Often ad-hoc.
+
+```md
+Produce a decision memo. Audience: whoever holds decision rights on
+this call.
+
+Constraints:
+- 400–800 words
+- The decision being asked for is in the first two sentences
+- Options are explicit; recommendation is explicit
+- Risks of the recommended path are surfaced honestly
+- The ask of the reader is unambiguous
+
+# Decision Memo: {Title}
+
+**Decision needed:** {State the decision in one sentence as a clear choice.}
+**Recommended:** {Recommended path, in one sentence.}
+**Owner asking:** {Name and role}
+**Deadline for decision:** {Date}
+
+## Context
+Two to four sentences. Why this decision is needed now. What changed.
+
+## Options considered
+For each option:
+
+### Option {N}: {Name}
+- **What it is:** one to two sentences
+- **Pros:** bulleted
+- **Cons:** bulleted
+- **Risks:** bulleted
+- **Cost / effort:** rough estimate
+- **Reversibility:** Reversible | Hard to reverse | One-way door
+
+## Recommendation
+Stated again, with three to five sentences of reasoning.
+
+## What I'm less sure about
+The honest part. What in the recommendation could be wrong? What would
+change my mind?
+
+## What I need from you
+Specific. Not "your thoughts." Either "approval to proceed by Friday,"
+or "your decision between Option 1 and Option 2," or "your input on the
+risks section before I finalize." Be precise.
+```
+
+The **What I'm less sure about** section is what distinguishes a good decision memo from a sales pitch. Leadership can tell when a memo is hiding the weak parts of an argument. Surfacing them honestly is what earns trust over time — and is the part that makes the memo most useful as a decision tool.
+
+## Save them as workspace templates
+
+<Steps>
+<Step title="Start in the Composer with a real input set">
+For the weekly digest, do the manual input assembly described below, paste it into a new task, and iterate the prompt in the [Composer](/using-earmark/composer) until the draft lands.
+</Step>
+<Step title="Tune the constraints">
+Length caps, no-emoji, calibration discipline, the cap-at-three risk limit. The constraints are the template — they're what produces the difference between a useful draft and a generic one.
+</Step>
+<Step title="Save with the right visibility">
+Weekly digest and decision memos are usually Private (the writer's working surface). Business reviews and board pre-reads are often Workspace if multiple leaders will produce them with the same shape. See [Custom templates](/customization/custom-templates).
+</Step>
+</Steps>
+
+## Run a single readout
+
+<Steps>
+<Step title="Assemble the inputs into a Customize context document">
+This is the manual synthesis step. For the weekly digest, gather:
+
+- The week's key meeting artifacts (leadership meetings, all-hands, key project meetings, customer escalations) — surface them via the [command menu](/earmark-basics/command-menu) (`Cmd+K` / `Ctrl+K`) and copy the relevant sections
+- Function-lead updates if you collect them
+- Metrics from your dashboards
+- Slack signal — what dominated the week, what surfaced as a crisis
+
+Paste the inputs into a single **Customize context** document. This is the raw material the template runs on.
+</Step>
+<Step title="Write the headline first, before the draft">
+The headline is the artifact in compressed form. If you can't write the headline, you don't yet have a clear picture. A good test: if a leader read only the headline, would they have the right impression of the period? If yes, you're done. If no, sharpen.
+</Step>
+<Step title="Run the template against the inputs">
+Draft from the saved template, with the assembled context document as input. This is the 80% draft — a starting point, not the final.
+</Step>
+<Step title="The 20-minute curation pass">
+This is where the writer's judgment goes in. Five things:
+
+- **Re-read the headline against the draft.** Does the body support the headline? If not, either the headline is wrong or the body needs sharpening.
+- **Calibrate confidence.** Walk through every claim. "On track" claims that aren't grounded should be downgraded to "tracking; the risk is X." Hedge language ("we believe," "should") should be cut where the writer actually knows, and kept where they don't.
+- **Cut what isn't useful.** Hardest step. Every paragraph competes for attention. Anything that isn't directly useful to the audience comes out, even if it took effort to produce.
+- **Sharpen the asks.** Vague asks ("input would be appreciated") get vague non-responses. Specific asks ("approval by Friday on Option 2") get decisions.
+- **The leak test.** Would you be comfortable if this readout reached someone outside the intended audience? If not, cut the sensitive content or restrict distribution.
+</Step>
+<Step title="Ship on schedule, archive in the durable home">
+Same day of the week, same time. Predictability is the commitment. After distribution, paste a copy into the series archive — Notion, Confluence, board portal, investor archive. The archive is what makes the series compound.
+</Step>
+</Steps>
+
+<Tip>
+Triangulate signal in the synthesis. The highest-value content in a leadership artifact often lives in tensions: a function lead's update says "on track" while customer call artifacts say customers are frustrated; the sales pipeline view says strong while recent deal artifacts say champions are weakening. Look for these tensions deliberately when assembling inputs. They're invisible to single-source summaries; surfacing them is what makes the readout earn the read.
+</Tip>
+
+## What this workflow doesn't do
+
+The biggest cross-meeting promise — *"run a synthesis prompt across the week's leadership meetings and get a structured digest"* — is exactly the cross-call generative Q&A capability covered in the [ad-hoc Q&A workflow](/workflows/ad-hoc-qa-workflow). Single-call Q&A in the [Composer](/using-earmark/composer) is real today. Cross-call generative Q&A across a chosen corpus is not a one-click action.
+
+So the workaround above — manually assembling inputs into a **Customize context** document, then running the template prompt against it — is the actual workflow. The honest framing: the templates plus Composer save substantial time on the draft (the 80% step). The input assembly and the 20-minute curation pass are the writer's work. Both together usually run 30–45 minutes for a weekly digest — meaningfully cheaper than producing the artifact from scratch.
+
+For larger-scale synthesis (quarterly reviews across many meetings), [exporting local transcripts](/earmark-basics/local-transcripts) and running an external agent is the other option.
+
+## Distribution and feedback
+
+Distribution rules by artifact:
+
+- **Weekly digest** — email or dedicated Slack channel to the leadership team, same time every week
+- **Monthly business review** — posted to the durable home; emailed to the exec team; often discussed at the next exec meeting
+- **Board pre-read** — through the board portal or directly to board members 5–7 days before the meeting
+- **Investor update** — email to the investor list, same day each month
+- **Decision memo** — directly to the decision-maker(s); followed up if no response within the requested timeframe
+
+Watch for these signals to know whether the workflow is working:
+
+- **Are leadership decisions being made faster?** If asks turn into decisions within the cadence, the workflow is working.
+- **Are board meetings less surprising?** If pre-reads predict what comes up at the meeting, they're doing their job.
+- **Are leaders quoting the readout back?** *"As your weekly note mentioned…"* is the highest-value feedback signal.
+
+If none of these are happening after a quarter, something needs adjusting — the audience is wrong, the asks aren't sharp, the cadence is off, or the content is missing what leadership actually needs.
+
+## The accuracy retrospective
+
+Quarterly, the writer should look back at the previous quarter's readouts and ask:
+
+- Where did the readout predict accurately?
+- Where did the read turn out wrong, and why?
+- Were there things we should have flagged but didn't?
+- Were there things we flagged that turned out to be noise?
+
+This retrospective sharpens the writer's calibration over time. It's also useful to share back with the audience: *"Here's what we said three months ago; here's what actually happened; here's what we're updating."*
+
+The retrospective is manual today — pull the relevant past readouts from the archive, pair them with what actually happened, and run an external synthesis or work through them by hand. Cheap, high-leverage, and rarely done.
+
+## Common pitfalls
+
+- **Writing for the writer, not the reader.** The biggest single failure. The 20-minute curation pass is the antidote.
+- **Bloated artifacts.** Length is not value. Past a certain point, every additional paragraph degrades the signal of every previous paragraph. Hold the word counts.
+- **Hedging instead of calibrating.** "We believe we are tracking well" is hedge. "We expect to land at 110% of plan; the main risk is X" is calibration. Leadership notices.
+- **Burying misses.** Counterintuitively, surfacing misses with specifics builds credibility faster than reporting only wins.
+- **Vague asks.** "Your thoughts would be welcome" produces nothing. "Approval by Friday on Option 2" produces a decision.
+- **Inconsistent cadence.** A weekly digest that lands every Friday for 50 weeks beats a great digest that lands sometimes. Pick a sustainable cadence and hold it.
+- **Trying to cover everything.** The scope rule exists for a reason. Everything in the artifact crowds out the most important thing. Cut ruthlessly.
+- **Letting the model write the final.** The model produces the draft. The writer's judgment — what to elevate, what to cut, how to calibrate — is the 20% that produces 80% of the value.
+- **No durable home.** Without the archive, the series doesn't compound. Set up the home before the first artifact ships.
+- **Confusing audiences.** A weekly leadership digest written for the board reads wrong. A board pre-read written for investors reads wrong. Different audiences, different artifacts.
+- **No retrospective.** Without periodic review, the writer's calibration doesn't improve.
+- **Leaks.** Leadership artifacts contain sensitive content. The leak test before every send is non-negotiable. One badly-handled leak is worse than 100 missed cadences.
+
+## Where to go next
+
+- [Workflows](/workflows) — the general shape this is an instance of
+- [Shareable summaries workflow](/workflows/shareable-summaries-workflow) — for per-meeting outputs shaped for different audiences (the lighter cousin of this workflow)
+- [Ad-hoc Q&A workflow](/workflows/ad-hoc-qa-workflow) — for the cross-meeting capabilities and the manual workarounds this workflow depends on
+- [Structured meeting notes workflow](/workflows/structured-meeting-notes-workflow) — for the per-meeting artifacts that feed leadership digests as inputs
+- [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
+- [Composer](/using-earmark/composer) — for tuning the prompt before saving as a template
+- [Command menu](/earmark-basics/command-menu) — for finding the right meetings to assemble as input
+- [Local transcripts](/earmark-basics/local-transcripts) — for export when you need external synthesis on larger scales

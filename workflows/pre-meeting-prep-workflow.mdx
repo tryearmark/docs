@@ -1,0 +1,501 @@
+---
+title: "Pre-meeting prep"
+description: "Use your captured meeting archive to walk into the next meeting already knowing what was discussed last time, what's open, what was promised, and what to address"
+keywords: ["meeting prep", "briefing", "1:1 prep", "customer prep", "coverage", "handoff", "workflow"]
+---
+
+There's a quiet pattern across most knowledge work. Meetings happen and get captured. The capture creates a growing archive — every customer call, every 1:1, every project meeting. Users invest in the capture; few invest in the retrieval. The result is an archive that's mostly write-only. You put meetings in; you rarely pull them out.
+
+Meanwhile, the next meeting is starting in 15 minutes. You're rushing between calls. You have a vague sense of the topic and the participants. The calendar description is sparse or empty. You walk in and spend the first three minutes reconstructing context: *"Where were we last time?"* *"Did we ever resolve that thing about the integration?"* *"What did you commit to follow up on?"* The meeting starts cold; momentum is rebuilt from scratch every time.
+
+This workflow inverts the direction of every other workflow in this guide series. Instead of capturing what happened in a meeting, it uses your captured archive to prepare you before the next one. The captured corpus stops being a write-only backstop and becomes an active operating substrate for every meeting you take.
+
+This guide is a specific instance of the [workflows](/workflows) pattern, applied prospectively. It's the systematic, scheduled-before-every-meeting use of the [ad-hoc Q&A](/workflows/ad-hoc-qa-workflow) capability — the same query layer, with templates and a habit around it.
+
+## What works today and what doesn't
+
+Worth being precise about up front, because this workflow is more cross-meeting-dependent than any other in the series.
+
+**Single-call briefings work directly.** If your prep needs context from one specific prior meeting — *"what did we discuss in our call last Tuesday?"* — the Composer on that prior meeting gives you a usable briefing in seconds. Real today, no workaround needed.
+
+**Multi-call briefings use the manual workaround.** If your prep needs synthesis across many prior meetings — *"what's open across our last three calls with this customer?"* — that's the cross-meeting Q&A capability covered in the [ad-hoc Q&A](/workflows/ad-hoc-qa-workflow) page. Earmark refines artifacts within a single meeting today; multi-meeting briefings require manual context assembly: use the [command menu](/earmark-basics/command-menu) (`Cmd+K` / `Ctrl+K`) to find the relevant prior calls; paste the artifacts (or transcript excerpts) from each into a Customize-context document; run the briefing template against the assembled corpus.
+
+**The morning sweep takes 10–15 minutes.** For users who run briefings on every substantive meeting, the morning sweep — generate all the day's briefings at once — is the practical pattern. Each briefing is 60–90 seconds of assembly plus a 30-second model run. Five briefings before a packed day works.
+
+**For very large corpora** (every customer call across two years for a renewal conversation), [exporting local transcripts](/earmark-basics/local-transcripts) and running an external agent is the alternative to manual assembly.
+
+The rest of this guide is built around these mechanics. The workflow is fully usable today; the multi-call cases require the manual workaround the rest of the series has documented.
+
+## Foundation
+
+Light setup compared to other workflows.
+
+### Which meetings warrant prep
+
+Not every meeting needs a briefing. The meetings that actually benefit:
+
+| Meeting type | Run the workflow? | Template |
+| --- | --- | --- |
+| Recurring customer call (CSM, AE) | Yes — primary use case | A |
+| Recurring 1:1 with a report | Yes — high leverage | B |
+| Skip-level you don't meet weekly | Yes — context decays between sessions | B |
+| Peer 1:1 (cross-functional alignment) | Yes — especially if monthly or less | B |
+| Sales follow-up or evaluation meeting | Yes — context matters intensely | A |
+| Renewal / QBR with a customer | Yes — high-stakes; needs full history | A + multi-meeting synthesis |
+| Investor call (recurring) | Yes — investor remembers; you should too | B (adapted) |
+| Hiring loop interview where you're not first | Yes — read prior interviewer artifacts | A (adapted) |
+| Covering for a colleague | Yes — primary handoff use case | C |
+| Onboarding into a project mid-stream | Yes — synthesize across project meetings | D (adapted) |
+| First-time call with new party | No prior context to draw on | — |
+| Brainstorms with the same internal team | Optional — only if it builds on prior work | — |
+| All-hands, town halls, standups | No | — |
+
+The default: any meeting with a recurring counterparty where context from prior meetings would meaningfully change how the meeting goes. About 30–60% of most knowledge workers' meetings.
+
+### When to prep
+
+Briefings have a useful window. Too early and you'll forget by meeting time; too late and you're scrambling. The sweet spot: 5–30 minutes before the meeting.
+
+Practical patterns:
+
+- **Between meetings.** If you have back-to-back meetings, run the briefing as the previous one ends. Sixty seconds to assemble; one minute to read; into the next meeting prepped.
+- **Morning sweep.** For meetings happening later in the day, do a sweep first thing in the morning. Briefings ready to glance at right before each meeting.
+- **End-of-day prep for next morning.** For the first one or two meetings of the next day, prep at end of today.
+- **On demand.** When meetings move or new ones drop in, run the briefing in the moment.
+
+### Organize the corpus for retrieval
+
+The briefing queries your captured archive. Better organization produces sharper briefings.
+
+- **Name meetings consistently.** *"Customer X — Weekly check-in"* beats *"Meeting."* Cmd+K uses titles to find relevant prior calls.
+- **Tag meetings by relationship.** Customer name, project name, person name. Tags make the query efficient.
+- **Keep identifiers consistent.** Don't switch between *"Acme"* and *"Acme Corp"* and *"Acme, Inc."* — the model handles small variations but consistency helps.
+- **Use Earmark's standard organizational features.** Whatever your version of folders, projects, or accounts is, use it consistently.
+
+The corpus doesn't need to be perfect; it needs to be navigable.
+
+### Ownership
+
+Each briefing has one owner: you, the person who'll be in the meeting. There's no shared ownership model because the briefing is for one person's preparation. For coverage and handoff scenarios, the person being briefed is the consumer; the regular owner generates the briefing.
+
+## The four templates
+
+Each template includes the manual workaround instructions in its preamble — *"assemble prior call artifacts into Customize context, then run this prompt."*
+
+### Template A — Account or customer briefing
+
+For sales calls, CSM check-ins, customer review meetings, and any recurring conversation with an external party. The workhorse for customer-facing roles.
+
+```md
+I have an upcoming meeting with {Customer / Account name} on {date}.
+
+Source material: Paste the artifacts from prior meetings with this
+customer over the past {N} months below. Include the most recent call
+plus any others where substantive context was set. If running against
+many calls, use Cmd+K to find them; export local transcripts for very
+large corpora.
+
+Produce a briefing covering everything I should walk in knowing.
+
+Be specific. Quote verbatim from prior calls where useful. If the
+record is thin in any area, write "limited prior context" rather than
+inventing.
+
+Format:
+
+# Briefing: {Customer / Account} — meeting on {date}
+**Last met:** {date of last call}
+**Meeting frequency:** weekly | monthly | ad-hoc
+**Stage / relationship status:** from prior context
+
+## What we discussed last time
+Two to four lines on the substance of the most recent call. The topics
+covered; the headline outcome.
+
+## Open threads from prior calls
+Items raised but not yet resolved. The most important section.
+- {Open thread} — opened in {call date} — current status
+
+## Commitments I made
+What I owed them coming out of the last meeting. Specific.
+- {Commitment} — delivered / partial / pending — context
+
+## Commitments they made
+What they owed me.
+- {Commitment} — status from any subsequent contact
+
+## Their pain points and priorities (current read)
+What's been on their mind across recent calls. Their stated priorities,
+in their language.
+- {Pain / priority} — verbatim quote if useful
+
+## What they care about most
+The headline priority from the relationship.
+
+## Signals to watch for
+- {Risk signal} — what to listen for
+- {Positive signal} — what to reinforce
+- {Concern they raised} — whether it's been addressed
+
+## Stakeholders involved
+- **Primary contact:** name, role, engagement level
+- **Other contacts engaged:** names with brief context
+- **Stakeholders I haven't engaged but should:** names if mentioned
+
+## Verbatim quotes worth remembering
+Two to four specific things they said that capture their position:
+- "{Quote}" — said on {date}
+
+## Where the relationship stands
+Two to three sentences. Trajectory? Risk? Working?
+
+## Recommended approach for this meeting
+- **Open with:** specific reference to a prior conversation or
+  commitment, to signal continuity
+- **Cover:** topics to make sure get addressed
+- **Ask about:** open threads to surface
+- **Watch for:** signals specific to this customer
+
+## If they ask about
+- "{likely question}" → grounded response based on prior context
+```
+
+Three things in this template are load-bearing.
+
+**"Open threads from prior calls" is the load-bearing section.** It's what makes you walk in knowing what to follow up on. Without it, you'd address the topics you remember; with it, you address the topics they remember too.
+
+**Verbatim quotes are extracted.** Reading what the customer actually said — not your interpretation — primes the meeting differently. You hear their voice; the meeting opens with their language.
+
+**The "recommended opening" gives you a first sentence.** *"Last time you mentioned the integration timeline was tight — how is that going?"* beats *"How are things?"* The recommended-opening prep is what makes the warmth feel intentional.
+
+### Template B — 1:1 / direct report briefing
+
+For managers prepping for their next 1:1 with a report.
+
+```md
+I have a 1:1 with {Report name} on {date}.
+
+Source material: Paste the artifacts from prior 1:1s with this report
+over the past {N} months below. Use the manual workaround pattern —
+Cmd+K to find prior 1:1s, paste relevant sections into Customize
+context.
+
+Produce a briefing covering everything I should walk in knowing.
+
+Be specific. Quote verbatim where useful. Treat sensitive context with
+care; do not surface anything that should stay private to other
+contexts.
+
+Format:
+
+# 1:1 Briefing: {Report name} — meeting on {date}
+**Last met:** {date}
+**Cadence:** weekly | biweekly | other
+**Tenure / role context:** brief
+
+## What we discussed last time
+Two to four lines. Topics they raised, topics I raised, the substance.
+
+## Open threads to follow up on
+The most important section. Items raised but not resolved across our
+recent 1:1s.
+- {Thread} — raised in {date} — by them | me — current status
+
+## Topics they raised across recent 1:1s
+What patterns are emerging? Has their focus shifted?
+- {Theme} — frequency, brief context
+
+## Commitments I made to them
+- {Commitment} — status
+
+## Commitments they made
+- {Commitment} — status
+
+## Career and development arc
+Where are they in their growth conversation? What goals have they
+articulated? What support have they asked for?
+
+## Wellbeing and engagement signals
+What's their state across recent conversations? Energy, frustrations,
+enthusiasm signals — anything that informs how I should show up?
+
+## What they want from me
+What have they asked for or signaled they need?
+
+## What I want from them
+What I've been trying to develop, redirect, or support — and whether
+it's landing.
+
+## Verbatim quotes worth remembering
+- "{Quote}" — said on {date}
+
+## Recommended approach for this 1:1
+- **Open with:** follow-up on their last raised thread
+- **Make sure to cover:** open threads, commitments to revisit
+- **Listen for:** signals to attend to
+- **Be careful not to:** pattern I've been falling into
+
+## If anything sensitive comes up
+Recent context worth keeping in mind:
+- {Sensitive context — performance concerns, feedback I owe them}
+```
+
+The **"topics they raised across recent 1:1s"** section is what makes the longitudinal pattern visible. A report who's been raising the same concern in three consecutive 1:1s is signaling something; the briefing surfaces the pattern even if the manager hasn't been tracking it explicitly.
+
+### Template C — Handoff / coverage briefing
+
+For when you're covering for a colleague (or being covered for). The audience is someone walking into a meeting cold; the briefing has to do the work of catching them up.
+
+```md
+{Colleague name} is unavailable. I am covering for them | briefing
+them for an upcoming meeting with {counterparty/topic} on {date}.
+
+Source material: Paste the artifacts from prior meetings between
+{Colleague} and {Counterparty} over the past {N} months below.
+
+Produce a briefing that lets the cover walk in informed.
+
+Be specific. The cover doesn't have the regular owner's context; the
+briefing has to substitute. Include personal details about the
+counterparty where relevant (preferred name, communication style notes).
+
+Format:
+
+# Coverage Briefing: {Counterparty} — meeting on {date}
+**Original owner:** {Colleague name}
+**Cover:** {Your name}
+**Reason for cover:** PTO, conflict, etc.
+**Relationship duration:** how long the original owner has worked
+with this counterparty
+
+## Who the counterparty is
+- **Name:** primary contact, preferred name if known
+- **Role and company:** their position
+- **Communication style:** from observed pattern — direct, warm,
+  technical
+- **Other stakeholders involved:** names and roles
+
+## Relationship history (brief)
+Three to five sentences. How this relationship started, where it
+stands, what's been the substance of recent conversations.
+
+## What's on the table right now
+The current state of the relationship / deal / project. Active
+threads, recent shifts.
+
+## What was discussed in the last few meetings
+Bulleted summary of the recent substantive exchanges.
+
+## Open items going into this meeting
+The threads the counterparty is likely tracking — they'll expect you
+to know these.
+- {Open item} — context
+
+## What {Colleague} last committed to
+What the counterparty is expecting follow-through on.
+- {Commitment} — status (if known)
+
+## What the counterparty has committed to
+What you can hold them accountable to.
+
+## Specific things to address in this meeting
+Items you should make sure to cover.
+
+## Things to handle carefully
+Sensitive topics, things that have caused friction before, areas where
+the counterparty has been frustrated.
+
+## Recommended opening
+A specific reference to recent context, so the cover doesn't sound cold:
+- "{Sample opening that references prior context}"
+
+## How to explain the coverage
+Suggested framing for explaining why the regular contact isn't there.
+
+## What to NOT commit to
+Things that are above the cover's authority or that the regular owner
+needs to handle:
+- {Item}
+
+## When to escalate / what to defer
+- {Topic} → defer with {framing}
+- {Topic} → escalate to {colleague}
+```
+
+The **"what to NOT commit to"** section is what makes coverage briefings actually usable. The cover walks in armed to handle the meeting and clear about the limits of their authority — so they don't accidentally commit to something the regular owner wouldn't have.
+
+### Template D — Recurring meeting refresh
+
+For ongoing internal meetings (weekly leadership sync, recurring project meeting, monthly cross-functional). The cadence is recurring; the briefing primes you on what's recently happened.
+
+```md
+I have an upcoming {meeting name} on {date}.
+
+Source material: Paste the artifacts from the last {N} sessions of
+this meeting series below. Include any related discussions outside
+the series (relevant project meetings, strategic discussions).
+
+Format:
+
+# Briefing: {Meeting name} — {Date}
+**Last met:** {date}
+**Cadence:** weekly | biweekly | monthly
+**Attendees:** regular participants and their roles
+
+## What's developed in this meeting series recently
+Two to four lines on the recent arc. What's been the focus? What's
+shifted?
+
+## Open threads / pending decisions
+Items the group has discussed but not resolved.
+- {Thread} — current status
+
+## Decisions made recently
+Decisions from prior sessions that govern current work.
+- {Decision} — made on {date}
+
+## My commitments in this meeting series
+What I've committed to in recent sessions.
+- {Commitment} — status
+
+## Others' commitments
+What other attendees committed to that affects me or the work.
+- {Person}: {commitment} — status
+
+## What this meeting is likely to cover
+Based on the recent arc and the meeting's standing agenda:
+- {Topic likely to come up}
+
+## What I should make sure to raise
+Things I'm tracking that should be surfaced.
+
+## What I'm hoping to learn from this meeting
+Open questions I'm tracking that this meeting might resolve.
+
+## Recent context from outside this meeting series
+Relevant developments from other meetings or contexts that affect
+this group's work.
+
+## Recommended approach
+- **Bring up:** items I should drive
+- **Listen for:** signals to attend to
+- **Be ready to address:** topics where I'm likely to be asked something
+```
+
+The recurring-meeting briefing is what makes you the person who walks into the standing meeting with the most current state of the work. Most attendees walk in with their own slice; the briefing gives you the team's slice.
+
+## Save them as private templates
+
+<Steps>
+<Step title="Start with the template you'll use most">
+For sales and CS: Template A. For managers: Template B. For internal team leads: Template D. For anyone whose colleagues take PTO: Template C. Save the most-used first.
+</Step>
+<Step title="Save with Private visibility">
+Briefings are personal prep, not team standards. **Private** visibility is the right default. Templates can be exported and shared when standing up handoff scenarios. See [Custom templates](/customization/custom-templates).
+</Step>
+<Step title="Practice the workaround once">
+Before relying on the workflow daily, run it once end-to-end on a real upcoming meeting: Cmd+K to find the prior calls; paste relevant sections into Customize context on a new task; run the briefing template. Notice the friction of the assembly step; that's where most of the per-briefing time goes.
+</Step>
+</Steps>
+
+## Running the workflow before a single meeting
+
+<Steps>
+<Step title="Pick the template">
+Match to the meeting type. A for customer/account, B for 1:1s, C for coverage scenarios, D for recurring internal.
+</Step>
+<Step title="Assemble the source material">
+For single-call briefings: open the prior call's artifact directly and run the Composer on it.
+
+For multi-call briefings: use [Cmd+K](/earmark-basics/command-menu) to find the relevant prior meetings (search by customer name, person name, project name); copy the relevant sections from each into a Customize-context document on a new task. The assembly takes 60–90 seconds for most briefings. For large corpora (renewal preparation across two years of customer history), [export local transcripts](/earmark-basics/local-transcripts) and run an external agent.
+</Step>
+<Step title="Run the briefing template">
+Against the assembled material. Output appears in seconds.
+</Step>
+<Step title="Scan, don't read">
+The briefing is a tool for priming, not a document for reading. Sixty seconds of scanning is usually enough. Headlines, bullets, verbatim quotes — close it, walk in.
+</Step>
+<Step title="Walk in armed">
+The meeting opens. Your first sentence references real prior context. The counterparty notices. The meeting starts warm.
+</Step>
+</Steps>
+
+<Tip>
+For longer or high-stakes meetings, keep the briefing open on a second screen — not to read, but to reference if you blank on a specific item or commitment. Renewal calls and board sessions especially benefit from this.
+</Tip>
+
+## Building the briefing habit
+
+The workflow's value depends entirely on consistency. A briefing run before half your meetings is dramatically less useful than briefings run before all of them, because the asymmetric advantage erodes when the practice is inconsistent.
+
+**The trigger.** For most users, the trigger is the calendar. Every recurring meeting on tomorrow's calendar gets a briefing today; every meeting today gets a briefing in the 5–30 minute window before it.
+
+**The morning sweep.** A useful pattern for managers and executives with packed days: a 15-minute morning sweep where you generate briefings for every substantive meeting on the day's calendar. Briefings sit ready; you scan each one in the minute before the meeting starts. The morning sweep prevents the failure mode of *"I'll prep right before the meeting"* — which collapses when meetings run long and you're walking in cold to the next one.
+
+**The between-meeting rhythm.** For users in back-to-back meetings, the briefing becomes part of the transition: meeting ends, briefing for next meeting runs, scan briefing while walking to the next room, meeting starts. The 60-second transition is enough.
+
+**The "skip prep" check.** For meetings you'd normally skip prep for, ask: would 30 seconds of preparation make this meeting better? If yes, run the briefing. The exception is highly repetitive meetings where the prior context is in your head — daily standups with the same team, twice-weekly status checks.
+
+**The compounding effect.** A user running this workflow for a quarter accumulates noticeable effects: relationships feel deeper because they reference specifics from prior interactions; commitments carry forward reliably; meetings move faster because the cold-start cost is eliminated. By a year in, the user is operating at a different level than peers who run the same meetings without the workflow.
+
+## Coverage and handoff scenarios
+
+The single most underrated application of this workflow. Coverage scenarios — when someone covers for a colleague, when a new team member onboards, when an account transitions — are usually disasters because context evaporates.
+
+**Covering for a colleague on PTO.** Day before PTO starts, the colleague generates Template C briefings for each meeting their cover will attend. Briefings get shared with the cover (Slack DM, email, shared doc). Cover scans each briefing 5 minutes before its meeting; walks in informed; counterparty barely notices the handoff. The investment from the colleague going on PTO: maybe 15 minutes generating briefings. The payoff for customer experience: substantial.
+
+**Onboarding a new team member into ongoing situations.** Every new team member inherits a portfolio of ongoing relationships. Historically the onboarding is a series of "let me bring you up to speed" conversations. With this workflow, briefings get generated for each ongoing relationship; the new team member reads them in their first few days; they walk into their first meetings already informed. This is one of the highest-leverage uses of the workflow — new hires who would historically be useful at month four become useful at week three.
+
+**Account transitions.** When an account moves from one CSM/AE to another, the briefing is the handoff. The outgoing rep generates Template A; the incoming rep reads it; the relationship continues with the customer feeling continuity. Add personal context the model can't extract — *"Lisa is hard to read but always engaged when we talk about data; Marcus is the real decision-maker even though Lisa is the contact"*.
+
+**Manager transitions.** When a report's manager changes — reorg, departure, promotion — the new manager inherits the relationship cold. The new manager reading the 1:1 briefings can pick up real threads on the first 1:1 — *"I know you've been raising the integration timeline issue; how is that going?"* The transition feels continuous rather than reset.
+
+**Returning from your own leave.** Apply the workflow to yourself when returning from extended PTO: what's happened in the meeting series while I was out, what threads should I pick back up, what did the cover commit to that I'm now inheriting. A 30-minute *"catch up on my own life"* briefing session at the end of a vacation prevents the *"I'm back but I have no idea what's going on"* first week.
+
+## What this workflow doesn't do (and how to work around it)
+
+The honest summary: this workflow is built on the cross-meeting Q&A pattern, which is the most-workarounded capability in the entire workflow series.
+
+What works without workaround:
+
+- Single-call briefings (prep needs only the last meeting)
+- Asking a focused question of any one past meeting via the Composer
+- Finding prior meetings by keyword via [Cmd+K](/earmark-basics/command-menu) full-text search
+
+What requires the workaround pattern (paste relevant artifacts into Customize context, then run the briefing template):
+
+- Multi-call briefings across a customer's history
+- 1:1 briefings drawing on the report's last six meetings
+- Project briefings synthesizing across many recent sessions
+- Coverage briefings spanning the original owner's full history with the counterparty
+
+The workaround is light enough to be practical — under 90 seconds for most briefings — but it's not zero-effort. If the workflow's value to you is large enough (and for most meeting-heavy professionals, it is), the workaround is worth running. If it's not, single-call briefings still give you most of the value at lower cost.
+
+For very large corpora (renewal preparation across two years; onboarding into a complex multi-year account), [exporting local transcripts](/earmark-basics/local-transcripts) and running an external agent is the alternative.
+
+## Common pitfalls
+
+- **Skipping the briefing on busy days.** The exact days when briefings are most valuable are the days when you're rushed enough to skip them. The 60-second cost is worth paying.
+- **Trying to read briefings in full.** They're scan documents. Headlines, bullets, verbatim quotes; close it; walk in.
+- **Treating the briefing as a script.** The briefing primes you; it doesn't script the meeting.
+- **Generating briefings too early.** A briefing generated two days before the meeting may be slightly stale. Generate close to the meeting.
+- **Pasting raw briefing content into the meeting context.** Briefings often contain candid notes — *"watch for: customer was frustrated about pricing."* Don't paste these as-is into the meeting room or share with the counterparty.
+- **Assuming the briefing is complete.** The briefing reflects what was captured. If important context lived in Slack threads or emails Earmark didn't see, the briefing won't include it.
+- **Generating briefings for every meeting.** Some meetings don't benefit. Standups, all-hands, and first-time calls don't need them.
+- **Inventing context.** The model can fabricate plausible-sounding prior context that didn't actually happen. The verbatim-quote check is your defense — if the briefing references a specific quote, that's source-grounded; if it asserts a pattern without specifics, scrutinize.
+- **Not using briefings during handoffs and coverage.** The single largest missed opportunity. Coverage briefings should be standard practice.
+- **Letting briefings replace relationship-building.** The briefing primes you; it doesn't substitute for being attentive in the meeting itself.
+- **Reading the briefing during the meeting.** Visible reading reads as inattention. Read before; reference its content naturally.
+
+## Where to go next
+
+- [Workflows](/workflows) — the general shape this is an instance of
+- [Ad-hoc Q&A](/workflows/ad-hoc-qa-workflow) — the underlying capability this workflow systematizes; covers the cross-meeting workaround in detail
+- [Command menu](/earmark-basics/command-menu) — for finding the prior meetings to assemble into briefing context
+- [Local transcripts](/earmark-basics/local-transcripts) — for very large corpora where external synthesis is the alternative
+- [People and team meetings workflow](/workflows/people-and-team-meetings-workflow) — for the 1:1 capture artifacts that feed Template B briefings
+- [Sales calls workflow](/workflows/sales-calls-workflow) — for the deal context that feeds Template A briefings on customer accounts
+- [Customer onboarding and training workflow](/workflows/customer-onboarding-and-training-workflow) — for implementation contexts where briefings draw on session histories
+- [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
+- [Composer](/using-earmark/composer) — the surface where briefing generation actually runs
+- [Before a meeting](/using-earmark/before-a-meeting) — the per-meeting workflow this prep workflow precedes

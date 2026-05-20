@@ -1,0 +1,295 @@
+---
+title: "Advanced meeting recaps"
+description: "The universal default — turn any meeting into a readable recap, and know when to graduate to something more specialized"
+keywords: ["meeting recap", "summary", "TL;DR", "catch-up", "personal notes", "workflow", "advanced"]
+---
+
+The honest baseline at most companies is that the typical meeting produces no written artifact at all. The conversation happens, people walk out with their own mental version, and within 48 hours half of what was said is gone. Nobody decides this. It's the default that wins when nobody pushes back.
+
+The second-most-common state is barely better: an over-long block of notes that nobody reads, or a one-line "we met about X" calendar comment that conveys nothing. The recap exists in form but not in function.
+
+This is the workflow you reach for when you don't have a specialized template, don't need one, and want a clean recap. It is the lightest workflow in the [workflows](/workflows) series — and the most likely to be used when something more specialized would have been better. This guide covers both: how to do advanced meeting recaps well, and how to know when to graduate.
+
+This guide is a specific instance of the [workflows](/workflows) pattern.
+
+## Match the recap to the audience
+
+Even an advanced meeting recap is for someone. Be honest about who:
+
+| Audience | Use template | Typical length |
+| --- | --- | --- |
+| Yourself only | Personal notes | 200–400 words |
+| One colleague who missed it | Catch-me-up | 300–500 words |
+| Slack channel or DM with quick context | Standard recap | 150–350 words |
+| Slack reply to "how did it go?" | TL;DR | 5 lines |
+| A broader audience that wasn't in the room | Use the [shareable summaries workflow](/workflows/shareable-summaries-workflow) instead | — |
+
+Recap length should be inversely related to how much your reader cares. Counter-intuitive but true: the reader who already cares (this is their project, their team) can pull the full notes if they want; the reader who's curious wants the TL;DR. People over-write recaps far more often than they under-write them.
+
+## The four templates
+
+### TL;DR
+
+For when you want only the bottom line. Often used as a Slack reply to "how did it go?"
+
+```md
+Produce a 5-line TL;DR of this meeting.
+
+Constraints:
+- 5 lines maximum
+- Line 1: the headline — the most important outcome
+- Lines 2–4: the substance of the meeting in compressed form
+- Line 5: what's next (a decision pending, a follow-up, the next meeting)
+- No emojis, no preamble, no padding
+```
+
+The 5-line cap is the discipline. If you can't fit the meeting into 5 lines, the meeting needs the standard recap below.
+
+### Standard recap
+
+The workhorse. Use when you don't know which template you need.
+
+```md
+Produce a clean recap of this meeting.
+
+Constraints:
+- 150–350 words
+- Headline on the first line: the most important outcome or topic
+- Organized by topic, not chronologically
+- Include decisions, action items, and open questions if any
+- No emojis, no filler, no pleasantries
+- Be honest about what was actually said — do not infer or embellish
+
+Format:
+**{Headline}**
+
+**What we discussed:** Two to four sentences on the substance.
+
+**Decisions:**
+- {Decision} — context if needed
+- "None" if no decisions were made.
+
+**Action items:**
+- {Owner} — {what} — by {when}
+- "None" if no action items.
+
+**Open questions:**
+- {Question raised but not resolved}
+- "None" if nothing is open.
+
+**What's next:**
+- One to two lines on the next step or next meeting.
+```
+
+This is the template most users should reach for by default. Flexible enough to work for almost any meeting, structured enough to be useful, short enough to read.
+
+### Catch-me-up
+
+For someone who missed the meeting and needs to know what happened. Slightly longer because the reader has zero context to start.
+
+```md
+Produce a recap of this meeting for someone who was not there and needs
+to be brought up to speed.
+
+Constraints:
+- 300–500 words
+- Opens with one to two sentences of context (what the meeting was,
+  who was there, what it was for)
+- Walks through what happened in enough detail that the reader could
+  hold an informed conversation
+- Captures decisions, action items, and open threads
+- Notes anything the absent reader specifically needs to know — items
+  assigned to them, commitments made on their behalf, questions raised
+  about their work
+- No emojis
+
+Format:
+**Catch-up: {Meeting Name} — YYYY-MM-DD**
+
+**Context:** One to two sentences on what this meeting was and why.
+Who was there.
+
+**Main topics:**
+For each major topic:
+- **{Topic}:** Two to four sentences on what was discussed, what
+  positions emerged, where it landed.
+
+**Decisions made:**
+- {Decision} — context
+
+**Action items:**
+- {Owner} — {what} — by {when}
+
+**Items relevant to you specifically:**
+If anything was raised about the absent reader's work, commitments were
+made on their behalf, or items were assigned to them.
+- {Item}
+
+**Open questions / what's still being worked through:**
+- {Question}
+
+**What's next:**
+- Next meeting, follow-up calls, deadlines.
+```
+
+The **Items relevant to you specifically** section is the distinguishing feature. A catch-me-up that calls out the reader's stake explicitly is dramatically more useful than one that doesn't.
+
+### Personal notes
+
+For your own reference. Written for one reader: future you.
+
+```md
+Produce a personal recap of this meeting for my own reference. The
+audience is me; the goal is to capture what I personally need to
+remember and act on.
+
+Constraints:
+- 200–400 words
+- Focused on what I said, committed to, and need to follow up on
+- Captures useful context for my own work going forward
+- Honest about my own moments in the call I want to remember
+- No emojis
+
+Format:
+**My recap: {Meeting Name} — YYYY-MM-DD**
+
+**The point of the meeting:** One sentence.
+
+**What happened (substance):** Three to five sentences on what was
+discussed and where it landed.
+
+**What I committed to:**
+- {What} — by {when}
+
+**What others committed to (that affects me):**
+- {Owner} — {what} — by {when}
+
+**What I want to remember:**
+Specific things from the conversation worth holding onto — a useful
+framing someone offered, a piece of information I didn't know, a
+question I should sit with, a person to follow up with.
+
+**What I want to do differently next time:**
+Self-coaching note. Anything I'd handle differently? Skip if nothing
+comes up.
+
+**Follow-ups I need to initiate:**
+- {Action} — by {when}
+```
+
+The **What I want to remember** and **What I want to do differently** sections are what make this template worth using over the standard recap for personal use. They turn a recap into a small reflective artifact that compounds across calls.
+
+## Save them as private templates
+
+<Steps>
+<Step title="Start with the Standard recap">
+For most users, this is the only template they need. Paste the prompt into a new task in the [Composer](/using-earmark/composer), run on a real meeting, iterate until the output is reliably useful.
+</Step>
+<Step title="Add the others as you need them">
+Most users end up with two saved templates: Standard recap and one of the others (often Catch-me-up or Personal notes). Don't save all four if you'll only use two.
+</Step>
+<Step title="Save with Private visibility">
+Advanced meeting recaps are usually a personal habit, not a team standard. **Private** visibility is the right default. See [Custom templates](/customization/custom-templates).
+</Step>
+</Steps>
+
+## Run it on a single meeting
+
+<Steps>
+<Step title="Pick a template — or default to Standard">
+Based on audience. If you can't decide, use Standard.
+</Step>
+<Step title="Run it">
+The output appears in seconds. Read it once.
+</Step>
+<Step title="The 60-second check">
+For advanced meeting recaps, the cleanup pass is much shorter than for structured workflows. Three things to verify:
+
+- **Is the headline right?** If the first line isn't the most important thing about the meeting, fix it.
+- **Are there hallucinations?** Skim for anything that doesn't match what actually happened. Cut.
+- **Vague qualifiers?** "The team was excited" — either back it up with a specific or cut it.
+
+Sixty seconds. If you're spending five minutes on cleanup, you needed a structured template, not an advanced meeting recap.
+</Step>
+<Step title="Share or file">
+Send it to whoever needs it (Slack DM, channel, email) or leave it in Earmark as the meeting's artifact. There's no fourth step for advanced meeting recaps; the workflow ends here.
+</Step>
+</Steps>
+
+<Tip>
+Hallucinated action items are the most common failure mode. The model sometimes assigns todos to whoever spoke most or last when no assignment was actually made. Read the action-items line carefully.
+</Tip>
+
+## When to graduate to a specialized workflow
+
+This is the most important section of the page. An advanced meeting recap is the right tool for many things and the wrong tool for many others.
+
+Signs you should graduate — any of these means you're using the wrong tool:
+
+- **You're running the same advanced meeting recap on the same recurring meeting every week.** That's a structured-notes workflow waiting to happen. Set up the template once; let it do the work going forward.
+- **The recap needs to flow into a system of record.** Advanced meeting recaps don't have the shape your CRM, ATS, Linear, or research repo wants.
+- **You're routinely cleaning up the recap to extract specific things.** If every advanced meeting recap on a sales call gets pulled apart by hand for MEDDPICC dimensions, the [sales calls workflow](/workflows/sales-calls-workflow) saves that work.
+- **The same audience reads the recap on a cadence.** A leadership team reading your recap every Friday wants a leadership digest, not a meeting recap. Use the [leadership readouts workflow](/workflows/leadership-readouts-workflow).
+- **The content is sensitive.** 1:1s, candidate interviews, and comp conversations need the consent and confidentiality discipline of the specialized workflows.
+
+The meeting-type-to-workflow map:
+
+| If the meeting is… | Use this instead |
+| --- | --- |
+| A recurring team meeting with continuity needs | [Structured meeting notes](/workflows/structured-meeting-notes-workflow) |
+| A customer interview or user research call | [Customer research workflow](/workflows/customer-research-workflow) |
+| A sales call (discovery, demo, negotiation) | [Sales calls workflow](/workflows/sales-calls-workflow) |
+| A 1:1, performance check-in, or candidate interview | [People and team meetings workflow](/workflows/people-and-team-meetings-workflow) or [hiring workflow](/workflows/hiring-workflow) |
+| Something requiring an audience-shaped summary | [Shareable summaries workflow](/workflows/shareable-summaries-workflow) |
+| Something requiring a leadership-facing artifact | [Leadership readouts workflow](/workflows/leadership-readouts-workflow) |
+| Something where the action items are what you need | [Action items workflow](/workflows/action-items-workflow) |
+| A one-off question against a single past call | [Ad-hoc Q&A](/workflows/ad-hoc-qa-workflow) |
+
+The rule of thumb: if the meeting produces work the organization needs later, use a structured workflow. If the meeting produces knowledge a person needs in the next 48 hours, an advanced meeting recap is usually enough.
+
+Equally important: **don't over-engineer.** A common failure is reading all the workflow guides and concluding everything needs a specialized template. Many things don't. The advanced meeting recap is enough most of the time:
+
+- The meeting is one-off
+- The audience is you alone, or one colleague
+- You need something quick and the stakes are low
+- You're not yet sure whether the meeting type will recur
+- The structured workflow's overhead isn't justified by the value
+
+## The graduation move
+
+When you notice you're running the same advanced meeting recap repeatedly on the same meeting type, the move is straightforward:
+
+1. Read the corresponding specialized workflow guide
+2. Save the relevant template as a workspace or private template
+3. Pre-seed it on the next instance of that meeting (often via the calendar series)
+4. Run the new workflow for two weeks before deciding whether it's an upgrade
+
+Most graduations are obvious within two weeks. Either the specialized template is producing materially more value, or it isn't and you go back to advanced meeting recaps. Either answer is fine; the experiment is cheap.
+
+## Common pitfalls
+
+- **Using advanced meeting recap when a structured workflow is the right tool.** The most common mistake. If you're doing the same manual cleanup repeatedly, graduate.
+- **Skipping the 60-second check.** The check is fast but not optional. The model occasionally hallucinates, smooths over disagreement, or invents a confident headline.
+- **Over-writing.** Advanced meeting recaps suffer more from being too long than too short. Hold the constraints in the template.
+- **Treating the recap as a durable record.** An advanced meeting recap is not a decision log, an action item list in your task system, or a CRM note. If the content needs to survive past next week with structure, route it deliberately or use a specialized workflow.
+- **Generating recaps for meetings that didn't need one.** Quick syncs, broadcasts, brainstorms — sometimes there's nothing useful to capture. Generating a recap "because I always do" produces noise.
+- **Hallucinated action items.** The model sometimes assigns todos to whoever spoke most or last when no assignment was made. Read the action-items line carefully.
+- **Advanced meeting recap as substitute for being present.** The point is to free you to be present, not to absent yourself from the meeting. The recap is downstream of attention, not a replacement.
+- **Hoarding recaps as proof of work.** The recap is for retrieval, not for filing. If you're never going back to a recap, you don't need to keep it.
+
+## Where to go next
+
+- [Workflows](/workflows) — the general shape this is the lightest instance of
+- [Custom templates](/customization/custom-templates) — for saving the templates above
+- [Composer](/using-earmark/composer) — the surface where recap generation actually runs
+- [Command menu](/earmark-basics/command-menu) — for finding past recaps with full-text search
+- The full specialized workflow set:
+  - [Structured meeting notes](/workflows/structured-meeting-notes-workflow) — when recurring meetings need continuity
+  - [Action items](/workflows/action-items-workflow) — when the recap is mostly the todos
+  - [Shareable summaries](/workflows/shareable-summaries-workflow) — when audience-aware sharing is the point
+  - [Customer research](/workflows/customer-research-workflow) — for discovery and user-research calls
+  - [Sales calls](/workflows/sales-calls-workflow) — for discovery, demo, and deal calls
+  - [People and team meetings](/workflows/people-and-team-meetings-workflow) — for 1:1s, skip-levels, candidate interviews, standups
+  - [Hiring](/workflows/hiring-workflow) — for the systematic version of interview evaluation
+  - [Leadership readouts](/workflows/leadership-readouts-workflow) — for weekly digests, business reviews, board pre-reads, decision memos
+  - [Ad-hoc Q&A](/workflows/ad-hoc-qa-workflow) — for asking questions of any meeting in your workspace

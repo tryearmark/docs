@@ -1,0 +1,571 @@
+---
+title: "Marketing collateral"
+description: "Turn customer calls, product reviews, exec strategy discussions, and launch planning meetings into the GTM artifacts your motion actually runs on — capability briefs, customer-facing copy, launch announcements, and messaging pillars"
+keywords: ["marketing collateral", "GTM", "voice of customer", "messaging", "launch announcement", "capability brief", "positioning", "workflow"]
+---
+
+A quiet pattern shapes how most marketing collateral gets produced. A product gets built; a launch gets planned. The PMM, content marketer, or founder sits down to write the artifact — a features sheet, a landing page, a launch announcement. They write from the PRD, from internal Slack threads, from a brief their team produced, from what they remember from the last customer call they happened to be on.
+
+What they don't write from — because the source isn't available in usable form — is the actual conversation where the customer described their pain in their own words, or the working session where the founder articulated the strategic narrative in the clearest form they've ever managed, or the customer review where the rough edges of the positioning got tested and refined. Those conversations existed; their substance is gone within days; the artifact gets written from second-hand summaries.
+
+The results follow a pattern. A features sheet that lists what the product does (*"now supports multi-region deployments"*) without ever expressing what customers gain (*"your global teams stop waiting on each other"*). A landing page that uses internal naming and never surfaces the language the customer actually uses. A press release that captures the launch fact but misses the strategic narrative the founder articulated brilliantly in last week's all-hands. The artifacts are accurate; they don't sell.
+
+This guide is a specific instance of the [workflows](/workflows) pattern, applied to GTM and marketing materials. It pairs with the [customer research workflow](/workflows/customer-research-workflow) — that workflow captures customer signal as research; this one converts that signal plus strategic discussions into external-facing artifacts.
+
+The central insight: the best marketing language comes from the customer's mouth and the founder's most articulate moments. Both used to live in untranscribed meetings and get translated through lossy memory. With Earmark, both are accessible to whoever's writing the artifact.
+
+## Foundation
+
+### Be explicit about audience
+
+The single most important variable in marketing artifact quality is whether the writer is producing content for a specific audience or for "the market." The latter produces blandness; the former produces work that lands.
+
+| Audience | What they want from the artifact |
+| --- | --- |
+| Prospects (top of funnel) | "Why should I care?" — pain framed in their language; outcome made concrete |
+| Prospects (evaluation stage) | "How does this work for my situation?" — specific scenarios, proof points, comparisons |
+| Existing customers | "What's new and what should I do about it?" — value to them, action they should take |
+| Sales reps | "What do I take into a customer conversation?" — talking points, objection handling |
+| Press | "Why is this newsworthy?" — strategic narrative, market context, quotable language |
+| Employees | "What does this mean for me?" — direction, change, what to communicate externally |
+| Investors | "Why does this matter strategically?" — narrative, metrics, positioning |
+| Industry analysts | "How does this fit the category?" — differentiation, evidence |
+
+A capability brief for sales reps looks nothing like a capability brief for prospects. The template helps; the writer's deliberate choice of audience is what makes the template work.
+
+### Establish your voice and language baseline
+
+Before standing up the workflow, document three things and bake them into the template as a constraint block:
+
+- **Brand voice principles.** Three to seven, no more. *"We write the way our customers talk, not the way our engineers talk." "We avoid superlatives." "We lead with the customer outcome, not the feature."*
+- **Glossary and naming.** Product names spelled consistently. Internal jargon that should never appear externally. Customer-facing terms preferred over internal ones.
+- **Anti-patterns.** Phrasings to avoid. Buzzwords that have lost meaning. Claims that don't survive scrutiny.
+
+The model uses the block; the writer doesn't have to remember every brand rule on every artifact.
+
+### Identify your source meetings
+
+Marketing artifacts draw from a recognizable set of meeting types:
+
+| Source meeting | Useful for |
+| --- | --- |
+| Customer interviews / discovery calls | Pain language; outcome framings; quotes for testimonials |
+| Customer review sessions | How customers describe value after using the product |
+| Product reviews / internal demos | What the product does; specific capability descriptions |
+| Exec / founder strategy discussions | Strategic narrative; positioning; the big-picture frame |
+| Launch planning meetings | What's shipping; what the marketing moment is |
+| Sales call recordings | Real objections; competitive context; how reps currently position |
+| Win/loss interviews | Why customers choose us; why they don't |
+| Customer support and escalations | Pain points; gaps in current messaging |
+
+A single artifact often pulls from multiple meeting types. The multi-meeting synthesis section below covers how to handle that.
+
+### Destinations and ownership
+
+Marketing artifacts live in specific tools. The Earmark workflow produces drafts that route into them. Don't try to make Earmark the durable home for marketing artifacts; let it be the source-of-truth for the underlying conversations and route the drafts into the marketing systems where they actually live.
+
+Common destinations: CMS (Webflow, WordPress, HubSpot CMS, Contentful) for web copy; sales enablement platforms (Highspot, Showpad, Seismic, Mindtickle) for sales-facing collateral; marketing automation (HubSpot, Marketo, Pardot) for email; Notion or Confluence for messaging frameworks and positioning docs; PR distribution tools (PRNewswire, Business Wire, Cision) for press releases. All paste-based — Earmark doesn't integrate directly with any of them.
+
+Each artifact has one owner. Launch artifacts owned by PMM; always-on collateral by content lead or PMM; strategic narrative docs by marketing lead or CMO with founder sign-off; sales enablement materials by sales enablement lead. Single ownership per artifact — shared ownership produces drift, especially in marketing where voice consistency matters and committee-written work is recognizable.
+
+## The four templates
+
+### Template A — Capability brief
+
+For internal-facing GTM enablement and adjacent external one-pagers. The artifact translates product capabilities into outcome language sales and customers can use.
+
+```md
+Based on this meeting transcript, produce a capability brief that
+translates what the product does into the outcomes customers gain.
+
+Be faithful to the source — only describe capabilities that were
+actually shown or described. If a capability was mentioned but not
+detailed, note "Detail needed from product team."
+
+Use customer language where the meeting captured it (verbatim quotes
+from customers, user-side framings). Avoid internal jargon, product
+code names, and feature-list framing unless the audience is internal.
+
+Do not use vague qualifiers — "seamless," "intuitive," "industry-leading."
+Use specific, evidence-grounded language.
+
+Audience: {Specify — internal sales, prospects, existing customers}
+
+Format:
+
+# {Capability / Feature / Product Module Name}
+**Audience:** {from above}
+**Source:** {Meeting name — date — Earmark link}
+**Owner:** {Name}
+
+## The customer problem this solves
+Two to three sentences in customer language. What were they doing
+before? What was painful about it? Use verbatim phrasing if it came up
+in the source meeting.
+
+## What it is (in one line)
+A single sentence describing the capability. Outcome-led, not
+feature-led. The sentence sales reps will memorize.
+
+## What it does
+Three to five bullets grouped by user-visible outcome, not by
+technical feature. For each:
+- **{Outcome the customer experiences}:** what specifically the
+  capability does to deliver it.
+
+## Why this matters
+- {Strategic benefit}
+- {Operational benefit}
+- {Outcome they can measure}
+
+## How it works (when audience needs it)
+For technical or evaluation-stage audiences:
+- Brief technical context
+- Architecture, integration, requirements
+
+## Who it's for
+- **Primary persona:** {role / use case}
+- **Secondary personas:** {list}
+- **Not for:** explicit exclusions — situations where this isn't the
+  right fit
+
+## Common objections and responses
+For sales-facing briefs:
+- **Objection:** "{language reps actually hear}"
+  **Response:** {grounded answer with evidence}
+
+## Proof points
+- {Specific outcome with metric where possible}
+- Customer quote: "..." (if from a captured meeting)
+
+## Competitive context
+- **vs. {Alternative}:** {differentiator}
+- **vs. status quo:** {why act now}
+
+## Sales talking points (for internal briefs)
+Three to five phrases sales reps can take verbatim into customer
+conversations.
+- "{phrase}"
+- "{phrase}"
+- "{phrase}"
+
+## Resources
+- {Demo link if applicable}
+- {Documentation}
+- {Customer references}
+```
+
+Three things in this prompt are load-bearing.
+
+**Outcomes lead; features support.** The structure forces the writer to lead with what the customer experiences and then explain what the product does. The reverse — feature-first, outcome-as-afterthought — is the marketing pattern that doesn't land.
+
+**Verbatim customer phrasings are explicit.** When a customer in the source meeting used a specific phrase to describe pain, the template preserves it. This is the part most marketing artifacts lose in translation and the part that most distinguishes good copy from generic copy.
+
+**The "Not for" section is uncomfortable and load-bearing.** Sales reps who know when to disqualify close more deals than reps who pitch everything to everyone. Forcing the exclusion saves the team from selling to bad-fit accounts.
+
+### Template B — External customer-facing copy
+
+For materials read by prospects or customers — landing pages, email copy, ad copy, blog post drafts. The reader is making a quick "is this for me?" judgment, not evaluating internal collateral.
+
+```md
+Based on this meeting transcript, produce customer-facing marketing
+copy. Audience is prospects or customers; the copy needs to capture
+attention, communicate value, and prompt action — in that order.
+
+Use the customer's own language wherever the source meeting captured
+it. If you're tempted to use a buzzword, find what the customer
+actually said instead.
+
+Be specific. "Save time" doesn't sell; "stop spending two hours every
+Monday reconciling reports" does.
+
+No emojis unless brand voice specifically calls for them. No
+superlatives without evidence ("the best," "the leading" — cut unless
+quantifiably true).
+
+Audience: {TOFU prospect, MOFU evaluator, existing customer, specific
+persona}
+
+Format:
+
+# {Asset name — what this copy is for}
+**Audience:** {from above}
+**Channel:** {Landing page | Email | Ad | Blog}
+**Goal:** {Primary action you want the reader to take}
+**Source:** {Meeting(s) — Earmark links}
+
+## Headline
+The single line that has to earn the rest of the read. Use the
+customer's framing of the pain or outcome. Test it against: would the
+customer recognize themselves in this headline?
+
+**Headline option 1:** "..."
+**Headline option 2:** "..."
+**Headline option 3:** "..."
+
+## Subhead
+One to two sentences that follow the headline. Makes the headline's
+promise concrete enough that the reader keeps reading.
+
+## Body — the case
+
+### What's broken (the problem)
+Two to three sentences. The customer's pain in their language. Use
+verbatim quotes from the source meeting where they captured the pain.
+
+### What's different (the offer)
+Two to three sentences. What this product or feature does that solves
+the pain. Outcome-led; not feature-listed.
+
+### Why it works (the proof)
+One to three specific proof points:
+- A specific outcome customers have achieved
+- A way the product mechanically addresses the pain
+- A quote from a real customer (with attribution if shareable)
+
+### What it costs / what's required
+If commercial details are relevant.
+
+## Call to action
+What you want the reader to do. Verb-led, specific.
+- **Primary CTA:** "{verb-led action}"
+- **Secondary CTA (if applicable):** "{lighter action}"
+
+## Frequently asked
+Three to five questions the audience would have at this stage.
+
+## Customer voice
+If the source meeting had quotable customer language:
+> "{verbatim quote}"
+> — {attribution if shareable}
+
+## What this is NOT
+For artifacts where misalignment risks are real: clarify what this
+isn't, who it isn't for, when this isn't the right fit. Counter-
+intuitively strengthens credibility.
+
+## SEO and metadata (for web artifacts)
+- **Title tag:** {variant of headline}
+- **Meta description:** {under 160 chars}
+- **Primary keyword:** {based on source customer language}
+```
+
+The **three headline options** structure is what most external-copy templates skip. The first headline a writer comes up with is rarely the strongest one. Forcing three variants is the discipline that gets to the better headline.
+
+### Template C — Launch announcement / press release
+
+For external launch moments. Press releases, launch blog posts, customer announcement emails. The artifact is news-shaped — there has to be something newsworthy.
+
+```md
+Based on this meeting transcript (a launch planning meeting, exec
+strategy discussion, or product review for an upcoming launch),
+produce a launch announcement. The artifact answers: what changed,
+why now, what does it mean for {audience}, what should they do.
+
+For press releases specifically: standard PR format. Lead with the
+news. Quote the founder/CEO with the strategic narrative.
+
+Format:
+
+# {Launch name}
+**Type:** Press release | Blog post | Customer email | All-hands
+**Audience:** Press | Customers | Employees | Prospects
+**Publish date:** {date}
+**Source:** {Meeting(s) — Earmark links}
+
+## Headline
+**Headline:** "{news headline}"
+**Subhead:** "{strategic context in one sentence}"
+
+## Lead paragraph
+For press releases: who, what, when, where, why — standard inverted
+pyramid. Two to three sentences. If a reader stops here, they have
+the news.
+
+For blog posts: an engaging opening that earns the rest of the read.
+
+## The news (what's launching)
+One to two paragraphs. What's actually launching, in the language the
+audience cares about.
+
+## Strategic narrative
+Why this matters. The big-picture frame the founder or exec articulated
+in the source meeting. Use verbatim phrasing where it landed well.
+
+> "Quote from founder or CEO — extracted from source meeting,
+>  attributed correctly, captures the strategic message in their voice."
+
+## What this means for {primary audience}
+The "so what" layered on top of the news.
+
+## Detail / supporting points
+Three to five supporting points:
+- {Capability or change}
+- {Customer or partner context if applicable}
+
+## Voices in the announcement
+Quotes that round out the announcement — founder/CEO for strategic
+narrative; product lead for what's launching; customer if willing to
+be quoted; partner/investor where relevant.
+
+## Availability and next steps
+- **Available when:** {date}
+- **Available to whom:** {customers / segments / tiers}
+- **How to access:** {URL, sign-up, contact sales}
+
+## Boilerplate (for press releases)
+- **About {Company}:** {standard boilerplate}
+- **Media contact:** {name, email}
+
+## Distribution plan
+- Primary publication
+- Secondary distribution (email, social, partner co-marketing)
+- Press outreach if applicable
+- Internal communication
+- Customer communication
+```
+
+The **strategic narrative** section is the part most launch announcements treat as filler and the part most launches actually need. A launch announcement that ships without the founder's strategic framing reads as a product update. One that includes it reads as a positioning move the market should pay attention to.
+
+### Template D — Messaging pillars / positioning document
+
+For the foundational documents that shape how the entire GTM motion talks about a category, product, or company. Audience is internal (the rest of marketing, sales, product, leadership); the output governs many downstream artifacts.
+
+```md
+Based on this meeting transcript (a strategy discussion, positioning
+workshop, or exec narrative session), produce a messaging pillars
+document. This artifact governs how the company talks about {topic}
+across all channels.
+
+Be faithful to the source. If the meeting articulated specific
+phrasings or framings, preserve them.
+
+Format:
+
+# Messaging Framework: {Topic / Product / Category}
+**Status:** Draft v1.0
+**Source discussions:** {Meeting names — dates — Earmark links}
+**Approved by:** {Required approvers}
+**Owner:** {Name}
+**Review cadence:** Quarterly | Annual
+
+## The market context
+Two to three sentences. What's true about the market we're operating
+in. What's shifting. Why this messaging matters now.
+
+## The customer we serve
+- **Primary persona / segment:** who
+- **What they care about:** their stated priorities
+- **What they're worried about:** their stated concerns
+- **What they don't yet realize:** the insight we're bringing
+
+## The category we're in (or creating)
+- **Established category name:** if existing
+- **How we describe our position in it:** language
+- **If creating a new category:** name, definition, why this category
+  needs to exist
+
+## Our core message
+The single sentence that everything else supports.
+
+> "{The core message, in one sentence}"
+
+## Messaging pillars
+Three to five pillars that support the core message.
+
+### Pillar 1: {Pillar name}
+- **Pillar message:** "{one-sentence framing}"
+- **What we say:** language we use to express this pillar
+- **Evidence:** specific proof points, customer outcomes, capabilities
+- **What this counters:** common alternative views or competitor
+  positioning this pillar argues against
+- **Sample applications:** how this pillar shows up in specific
+  artifacts (web copy, sales talk tracks)
+
+### Pillar 2: {Name}
+[Same structure]
+
+[Repeat for three to five pillars]
+
+## Anti-messaging
+What we explicitly do NOT say. Phrasings and positions to avoid.
+- {Anti-phrasing} — why we avoid it
+- {Anti-phrasing} — why we avoid it
+
+## Competitive positioning
+For each material competitor or alternative:
+- **vs. {Competitor}:** how we differentiate; language we use; language
+  we avoid
+- **vs. status quo:** why act on this rather than not
+
+## Customer voice
+Three to five verbatim quotes from real customer conversations
+(extracted from source meetings) that exemplify how customers describe
+the value or the pain in their own language.
+
+> "{Quote}" — {Persona / segment}
+
+These quotes are the corpus that downstream marketing copy should
+draw from. Match the voice; don't invent new framings.
+
+## Specific language guidance
+- **Preferred terms:** use these
+- **Avoided terms:** don't use these
+
+## Application across the GTM motion
+- **Web copy:** implications
+- **Sales enablement:** implications
+- **Content marketing:** implications
+- **Internal communications:** implications
+
+## What this doesn't cover
+Topics or audiences that need their own framework.
+
+## Change log
+[Version table]
+```
+
+The **Anti-messaging** section is what distinguishes messaging frameworks that get used from those that get filed. Teams need to know what NOT to say as clearly as what to say. Forcing the negative side is what makes the framework operationally useful.
+
+## Save them as workspace templates
+
+<Steps>
+<Step title="Start with the artifact you produce most">
+For most marketing teams: customer-facing copy (Template B) or capability briefs (Template A). For founder-led marketing: launch announcements (Template C) or messaging pillars (Template D). Save the most-used template first.
+</Step>
+<Step title="Embed your brand voice block">
+The principles, glossary, and anti-patterns from Foundation go into every template. Bake them in once; the model applies them every generation.
+</Step>
+<Step title="Save with Workspace visibility">
+Marketing artifacts represent the company. Workspace visibility means every contributor produces drafts in the same voice. See [Custom templates](/customization/custom-templates).
+</Step>
+</Steps>
+
+## Running the workflow on a single meeting
+
+<Steps>
+<Step title="Pre-seed the source meeting with the right template">
+Customer call → Templates A or B. Strategy discussion → Template C or D. Product review → Template A. Launch planning → Template C. See [Before a meeting](/using-earmark/before-a-meeting). For meetings that might produce multiple artifacts, run multiple templates against the same source after the fact.
+</Step>
+<Step title="Sharper meeting habits">
+A few habits make the marketing-relevant content much easier to extract:
+
+- **Encourage verbatim customer language.** In customer calls, when a customer describes pain in their own words, repeat it back. *"So when you say you're 'drowning in dashboards,' you mean…"* anchors the language so it survives the transcript.
+- **Articulate strategic framings explicitly.** In strategy meetings, the founder sometimes articulates the narrative crisply once and moves on. Catch the moment — *"Can you say that again?"* — and let it land.
+- **Quantify proof points.** *"They saved time"* is unusable in copy. *"They went from 6 hours a week to 30 minutes"* is gold. Push for the number in the source meeting.
+- **Distinguish features from outcomes out loud.** *"We added multi-region support, which means customers' global teams stop waiting on each other."* The model captures both; the artifact uses the outcome framing.
+</Step>
+<Step title="The 30-to-60-minute curation pass">
+Marketing curation is the heaviest in this guide series because the artifact represents the company externally.
+
+- **Read it as a member of the target audience.** Would a prospect read this and say *"this is for me"*? Would a sales rep read this and want to use it?
+- **Cut everything not earning its space.** Marketing artifacts compete for attention. Sentences that explain the obvious, hedge unnecessarily, or sound generic — out.
+- **Replace internal jargon with customer language.** Wherever the model used a product code name, an internal term, or an industry buzzword, check whether customers actually use that language. If not, swap.
+- **Confirm verbatim quotes are accurate.** Verify against the source. Quotes that misrepresent the speaker damage trust; quotes that capture exactly what was said create credibility.
+- **Strip vague qualifiers.** *"Seamless," "intuitive," "game-changing," "industry-leading"* — every instance is a candidate for cutting unless it earns its place with evidence.
+- **Test the headline ruthlessly.** If your headline could appear on any company's launch in your space, it's not specific enough.
+- **Sharpen the CTA.** *"Learn more"* is rarely the right CTA. *"Schedule a demo,"* *"Read the launch post,"* *"Start your trial"* — what specifically do you want them to do?
+- **Check brand voice compliance.** Does it sound like the company, or like generic SaaS marketing? If the latter, rewrite in your voice.
+</Step>
+<Step title="Internal review and approval">
+Common pattern: first review by the artifact owner; PMM / messaging review for strategic alignment; product review for accuracy of claims; legal review for regulated areas; brand review for voice consistency; exec / founder review for strategic artifacts. For repeated artifact types, establish a standing process so the cycle doesn't restart from zero each time.
+</Step>
+<Step title="Route to the destination">
+Push the finalized artifact to its destination — CMS, sales enablement platform, marketing automation, PR distribution. The destination handles publication, scheduling, and distribution.
+</Step>
+</Steps>
+
+<Tip>
+Read the artifact out loud before shipping. If it sounds like a real person could say it, you're close. If it sounds like marketing copy, you're not. The voice test catches more brand-voice problems than any review process.
+</Tip>
+
+## Multi-meeting synthesis and the voice-of-customer corpus
+
+Many marketing artifacts draw from multiple source conversations. A launch announcement pulls from the launch planning meeting plus the strategic narrative discussion plus customer reviews. A messaging pillar document synthesizes across customer calls plus exec strategy plus competitive intelligence. A battle card pulls from sales calls plus win/loss interviews plus product reviews. Earmark refines artifacts within a single meeting today; cross-meeting synthesis uses the standard manual workaround.
+
+**Tag source meetings by artifact.** When multiple meetings feed a single artifact, tag them with a consistent identifier (*"Q3-launch-acme-feature"*). Paste the relevant artifacts from each tagged meeting into a Customize-context document; run the template against the assembled corpus. The output draws from all of them with attribution per section.
+
+**The voice-of-customer extraction.** A specifically marketing use of multi-meeting synthesis. Across many customer interviews, extract the language patterns customers use to describe a problem space:
+
+```md
+Across the customer interviews provided, identify the most common
+ways customers describe {pain / outcome / use case}. For each pattern:
+
+- The phrasing customers use (with verbatim quotes)
+- How many calls it came up in
+- Which customer segments use it
+- Adjacent phrasings that mean similar things
+
+The output is a customer-language corpus that downstream marketing
+copy should draw from.
+```
+
+The corpus becomes the source-of-truth for customer language. Future copy decisions reference it; the team stops drifting into internal jargon because the customer language is documented and accessible. Maintain it as a queryable database (Notion, Airtable) with the quote, the customer / persona / segment, the topic, the source meeting Earmark link, the date, and tags for theme, sentiment, and use case. The investment compounds — future positioning work, future copy, future messaging frameworks all draw from it.
+
+**Cross-meeting message testing.** When a messaging pillar has been articulated in one strategic discussion, test it against accumulated customer conversations to see if it resonates:
+
+```md
+The messaging pillar is: "{pillar message}"
+
+Across the customer conversations provided, identify:
+- Moments where customers expressed something aligned with this
+  pillar (with quotes)
+- Moments where customers expressed something orthogonal or
+  contradictory
+- Specific phrasings the pillar might adopt to land better with
+  customers
+```
+
+This is how a messaging pillar gets refined over its first quarter — by checking it against accumulated customer voice rather than by debating it internally.
+
+For very large corpora, [exporting local transcripts](/earmark-basics/local-transcripts) and running an external agent is the alternative.
+
+## Review and iteration
+
+Marketing artifacts iterate more than most other artifact types in this series. The first draft is rarely the shipped version. Three to four rounds is normal.
+
+**Single source of truth during iteration.** Keep one document. Multiple parallel versions across email threads is how artifacts go to chaos. Pick one tool and stay there until it ships.
+
+**Specific feedback, specific reviewers.** Each reviewer is asked specific questions: *"Is this strategically accurate?" / "Is this in our voice?" / "Are there any claims we can't defend?"* Generic *"thoughts?"* rounds produce generic feedback.
+
+**Pre-mortem on high-stakes artifacts.** For press releases, major launches, and positioning documents, do a brief pre-mortem before shipping: *If this lands badly, what's the failure mode? Is there a claim that might not survive scrutiny? Is there a phrasing that could be misinterpreted out of context?* Five minutes catches the issues that ship-and-regret cycles surface the hard way.
+
+## Closing the loop
+
+Three habits.
+
+**Measure how artifacts perform.** Marketing artifacts have measurable performance — clickthrough rates, conversion rates, sales usage rates, engagement metrics. Track them. Patterns emerge: certain framings consistently outperform; certain personas convert at different rates; certain channels work better for certain artifact types. The data feeds the next round of artifacts.
+
+**Customer-language audit, quarterly.** Compare a sample of shipped artifacts against the voice-of-customer corpus. How often did the artifact use language customers actually use? Where did internal jargon creep in? Which framings landed (based on performance data) and which didn't? Without this audit, marketing drifts back toward internal language gradually and the customer-grounded advantage erodes.
+
+**Sales feedback loop.** Once a quarter, ask the sales team: Which collateral do you actually use? Why? Which do you avoid? Why? What objections come up that the collateral doesn't address? What new framings would help you? Sales teams who see their feedback reflected in the next version use the collateral more; sales teams who don't revert to writing their own.
+
+## Common pitfalls
+
+- **Writing from a brief instead of from the source meeting.** Reintroduces the translation loss the workflow was designed to eliminate.
+- **Internal jargon in customer-facing copy.** Product code names, internal terms, organizational acronyms. The curation pass has to catch these.
+- **Generic phrasings** — *"seamless," "intuitive," "game-changing."* Every instance is a candidate for replacement with specifics.
+- **Feature-list framing instead of outcome-led.** *"Now supports multi-region"* is feature-list. *"Your global teams stop waiting on each other"* is outcome-led.
+- **Inventing customer quotes.** Every quote in a shipped artifact must come from a real meeting with verifiable attribution. Always.
+- **Inventing claims or proof points.** If a metric, outcome, or proof point isn't grounded, cut it or replace with something defensible.
+- **Skipping the "Not for" or "Anti-messaging" sections.** These uncomfortable sections are what makes the artifact operationally useful.
+- **One artifact, many audiences.** Trying to serve TOFU prospects, existing customers, and sales reps in the same artifact produces something that doesn't serve any of them.
+- **Headlines that could appear on any company's launch.** *"Introducing the future of {category}."* If the headline isn't specific to this launch, it's not earning its space.
+- **No measurement.** Marketing artifacts have measurable performance. Not measuring it means the next artifact is informed by intuition.
+- **No customer-language corpus.** Without a maintained archive of how customers actually talk, the team drifts back to internal language.
+- **Press releases that aren't actually news.** A press release without genuine news lands flat. If you can't articulate why it's newsworthy, it might not warrant a release.
+- **Letting committees write the artifact.** Shared authorship produces voice drift and bland edges. Single owner; reviewers contribute feedback, not co-writing.
+- **Skipping the voice test.** Read it aloud. If it sounds like marketing copy rather than like a real person talking, rewrite.
+- **Strategic narrative lost in translation.** When the founder articulates the strategy crisply in a meeting, that articulation should make it to the press release, the all-hands deck, and the investor update verbatim. If it doesn't, the workflow lost its most valuable signal.
+
+## Where to go next
+
+- [Workflows](/workflows) — the general shape this is an instance of
+- [Customer research workflow](/workflows/customer-research-workflow) — for capturing the customer signal that this workflow turns into external artifacts
+- [Shareable summaries workflow](/workflows/shareable-summaries-workflow) — for audience-aware summaries within the company (internal cousin of this workflow)
+- [Leadership readouts workflow](/workflows/leadership-readouts-workflow) — for leadership-facing artifacts where strategic narrative is central
+- [Sales calls workflow](/workflows/sales-calls-workflow) — for the deal-context that informs sales enablement collateral
+- [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
+- [Composer](/using-earmark/composer) — for tuning the prompt before saving as a workspace template
+- [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding the template on customer calls and strategy meetings
+- [Local transcripts](/earmark-basics/local-transcripts) — for external synthesis on large voice-of-customer corpora
