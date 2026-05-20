@@ -1,0 +1,535 @@
+---
+title: "AI tool orchestration"
+description: "Use Earmark as the contextual substrate for your entire AI tool stack — converting meetings into well-shaped prompts for Claude Code, Cursor, v0, Perplexity, and the specialized AI tools your work depends on"
+keywords: ["AI prompts", "Claude Code", "Cursor", "v0", "Perplexity", "system prompt", "AI orchestration", "workflow"]
+---
+
+The AI tool landscape has fragmented. Where a year ago you had ChatGPT and Claude as general assistants, today you have a dozen specialized tools: Claude Code and Cursor for engineering, v0 for React components, Lovable and Bolt for full-stack apps, Figma Make for UI prototypes, Perplexity for research, Notebook LM for source-grounded analysis. Each tool is dramatically better at its specialty than a general assistant. Each, used well, can produce real artifacts that previously required a specialist.
+
+The catch is the same as the general-purpose case, amplified: these tools are starved of good context. They're excellent at producing artifacts from well-shaped prompts; they're mediocre at producing artifacts from thin prompts. The quality of what you get out is determined by what you put in. The marginal cost of producing an artifact has dropped to near-zero; the marginal cost of producing a *good* artifact is still dominated by the human time spent shaping the prompt.
+
+And the prompts that produce the best artifacts share a recognizable property: they encode context from conversations you've had — strategy discussions, technical reviews, customer calls, project planning sessions. The best prompt for Claude Code explains the codebase, the problem, the constraints, and the approach the way the engineering team discussed it. The best prompt for Perplexity frames the research question the way you'd frame it for a colleague already in your context. The best prompt for v0 describes the UI the way the design discussion described it.
+
+That context is in your head — sometimes — and otherwise in meetings whose substance has already faded. The result is AI work that's significantly worse than it could be — sometimes 70% there with manual fixes filling the gap, sometimes 30% there with the human giving up and doing the work the slow way.
+
+This guide is a specific instance of the [workflows](/workflows) pattern, applied to the AI tool stack. It generalizes what the [meeting-to-prototype workflow](/workflows/meeting-to-prototype-workflow) does for visual prototyping tools — extending the meeting-to-prompt pattern across every category of specialized AI tool you use.
+
+## The strategic frame
+
+Worth being explicit about up front: as the AI tool ecosystem fragments into specialists, the value of a unified contextual substrate increases. Whatever AI tools you use today, you'll use more of them tomorrow. The meeting → prompt workflow is how you make each new tool immediately useful instead of requiring weeks of prompt-craft learning.
+
+The compounding effect: a modern PM using Claude Code well produces engineering output that previously required ticketing the engineering team. A modern designer using v0 well produces React components that previously required engineering collaboration. A modern founder using Perplexity well produces market research that previously required hiring an analyst. The constraint on this expansion is not the AI tools — they're capable enough. The constraint is the contextual translation: each tool needs specific, well-shaped prompts. The translation happens either in the user's head (lossy, memory-limited) or in a manual prompt-writing process (slow, competes with the actual work).
+
+Earmark closes the translation gap. Conversations get captured; templates shape them into prompts each tool can use; the tools produce artifacts that are usable on the first attempt rather than after heavy editing.
+
+## Foundation
+
+### Map your AI tool stack
+
+Before standing this up, inventory what you actually use and what each tool is good at:
+
+| Tool category | Tools | Best for |
+| --- | --- | --- |
+| Code generation | [Claude Code / Cursor / Aider](/integrations/cursor) | Code generation, refactoring, multi-file changes |
+| UI components | [v0 by Vercel](/integrations/v0) | React components, Tailwind UI |
+| Full-stack apps | Lovable, Bolt.new | Web apps with backend |
+| UI prototypes | Figma Make | UI prototypes with design-system context (see [meeting-to-prototype](/workflows/meeting-to-prototype-workflow)) |
+| Coded engineering tasks | [Codex](/integrations/codex) | Engineering tasks shaped by architecture docs |
+| Engineering tickets | [Linear](/integrations/linear) | Tickets that flow from architectural decisions |
+| General analysis | Claude / ChatGPT (Projects mode) | Analysis, writing, structured thinking |
+| Web research | Perplexity | Web research with citations |
+| Source-grounded analysis | Notebook LM | Analysis across uploaded documents |
+| Slide deck generation | Gamma, Beautiful.ai | First-draft slide design from structured content |
+| Persistent assistants | Custom GPTs, Claude Projects | Persistent assistants for specific recurring tasks |
+
+Earmark has direct integrations with Cursor, v0, Codex, and Linear (linked above). The rest are paste targets — Earmark generates the prompt; you paste into the tool.
+
+For each tool you use, know: what is it good at, what is it bad at, what does a good prompt for it look like?
+
+### Tool-specific prompt format expectations
+
+Each AI tool has prompt patterns that work better than others:
+
+**Claude Code, Cursor, Aider** — concrete file paths and language/framework specifics; existing code patterns to follow; acceptance criteria (what "done" means); style conventions; for multi-file changes, the scope and interaction explicitly.
+
+**v0 by Vercel** — component name and shape; design system context (Tailwind, shadcn/ui, or named tokens); states to include (loading, empty, populated, error); behavior (interactivity); copy/labels (real, not placeholder).
+
+**Lovable, Bolt.new** — user-story-anchored (what the user does in the app); backend requirements (data, auth, persistence); specific UI states and flows; stack constraints.
+
+**Claude / ChatGPT for analysis** — the question stated clearly; the data or context (paste or attach); the reasoning approach you want; the output format (table, list, prose, structured); the audience.
+
+**Perplexity** — a research question, not a search query; context for why you're asking; source quality preferences (academic, recent news, primary sources); output format.
+
+**Notebook LM** — pre-uploaded source documents; the question framed against the sources; citations expected.
+
+The templates below produce prompts that match these expectations. The accuracy of the match is what determines tool output quality.
+
+### Prompt conventions
+
+A few conventions worth establishing:
+
+- **Provenance.** Every prompt notes the source meeting. When the artifact comes back, you can trace it to the conversation that informed it.
+- **Constraint blocks.** Standard constraints (tone, length, format, do-not patterns) live in reusable blocks you append to prompts of a given type.
+- **Output format specification.** Always explicit. *"Output as markdown with H2 sections"* beats hoping the AI picks the right format.
+- **Length limits.** Tools have context windows; longer isn't always better. Most prompts work best in the 300–1500 word range.
+
+### Ownership
+
+The simplest ownership model in the workflow series: the user owns their own prompts. Prompts don't typically need cross-team review — they're personal productivity artifacts. When a prompt is worth sharing (particularly well-shaped, applies to a recurring use case), it can graduate to a shared prompt library. But the default is personal.
+
+## The four templates
+
+### Template A — Code generation prompt
+
+For Claude Code, Cursor, Aider, v0, Copilot. The prompt produces code; the tool runs it.
+
+```md
+Based on this meeting transcript (an engineering design discussion,
+technical review, or feature kickoff), produce a prompt for [Claude
+Code | Cursor | v0 | other code-gen tool] that will generate the
+code/component described.
+
+The prompt should be self-contained — the downstream tool will not
+have access to the transcript. Include all necessary context.
+
+Constraints:
+- Specific about language, framework, existing patterns
+- States acceptance criteria explicitly
+- Notes constraints, style conventions, and anti-patterns
+- Provides examples if the meeting referenced patterns to follow
+- Single, focused scope (don't bundle multiple changes)
+
+Format:
+
+# Prompt for {Target Tool}
+**Target tool:** {Claude Code | Cursor | v0 | etc.}
+**Source meeting:** {Meeting name — date — Earmark link}
+
+---
+
+## The task
+One to two sentences. The specific code change or component.
+
+## Context
+**Codebase / project:**
+- Language/framework: {e.g., TypeScript, Next.js 14, App Router}
+- Existing patterns to follow: {point to specific files or describe
+  conventions}
+- Style: {code style guide or example reference}
+
+**The problem being solved:**
+Two to three sentences from the meeting. What's broken or missing?
+What should be true after this change?
+
+## Specific requirements
+1. {Requirement from the meeting}
+2. {Requirement}
+
+## Edge cases to handle
+- {Edge case mentioned}
+
+## What's out of scope
+Things discussed but not part of this task.
+- {Item}
+
+## Acceptance criteria
+- [ ] {Specific testable criterion}
+- [ ] {Specific testable criterion}
+
+## Style / convention notes
+- {Convention}: example or pointer
+
+## Anti-patterns / what NOT to do
+- {Anti-pattern} — why to avoid
+
+## File-level guidance (if multi-file)
+- **Create:** files to create
+- **Modify:** files to modify with brief description
+- **Don't touch:** files explicitly out of scope
+
+## Examples to reference
+{If the meeting referenced existing code patterns, paste them or
+point to them}
+
+---
+
+End of prompt.
+```
+
+Two things in this template are load-bearing.
+
+**"What NOT to do" is explicit.** Code generation tools follow what you tell them. If you don't tell them what to avoid, they sometimes do it. The anti-patterns section is the part most prompts skip and most need.
+
+**Acceptance criteria are testable.** *"It should work"* isn't an acceptance criterion. *"When a user clicks the button, the form submits and shows a success state without a page reload"* is.
+
+### Template B — Analysis or research prompt
+
+For Claude, ChatGPT, Perplexity, Notebook LM when used for analytical or research tasks.
+
+```md
+Based on this meeting transcript (a strategic discussion, customer
+feedback session, data review, or problem-framing conversation),
+produce a prompt for [Claude | ChatGPT | Perplexity | Notebook LM]
+that will produce the analysis or research output discussed.
+
+Format:
+
+# Prompt for {Target Tool}
+**Target tool:** {tool name}
+**Source meeting:** {Meeting name — date — Earmark link}
+**Purpose:** {What I want to do with the output}
+
+---
+
+## The question / goal
+Stated clearly. One sentence preferred, two at most.
+
+## Context
+Two to four sentences. Why this analysis matters. What decision or
+work it will inform. Constraints the analyst should be aware of.
+
+## What I'm trying to understand
+Specific sub-questions:
+1. {Sub-question}
+2. {Sub-question}
+
+## Data / sources to use
+{For Perplexity: types of sources to prioritize}
+{For Notebook LM: which uploaded sources are relevant}
+{For Claude/ChatGPT: data pasted below or attached}
+
+**Data:**
+{Paste relevant data, or describe what data the tool has access to,
+or attach files}
+
+## Reasoning approach
+- {Comparative analysis between X and Y}
+- {Pattern identification across N items}
+- {Cause/effect tracing}
+- {Trend analysis over time}
+
+## Output format
+- **Length:** target — brief, moderate, comprehensive
+- **Structure:** sections, bullets, table, comparative matrix
+- **Audience:** who reads this
+- **Tone:** analytical-neutral, executive-summary, internal-team
+
+## What I want to leave out
+Specific things NOT to include. Helps focus the output.
+- {Topic out of scope}
+
+## Quality criteria
+The analysis is good if:
+- {Specific criterion}
+
+## Citations / evidence requirements
+{For Perplexity: cite sources, prefer X over Y, note recency}
+{For Notebook LM: quote source documents}
+{For others: when to be confident vs. when to flag uncertainty}
+
+## What to do if you don't have enough information
+How the tool should handle gaps — ask clarifying questions, make
+clearly-flagged assumptions, return partial analysis with explicit
+gaps.
+
+---
+
+End of prompt.
+```
+
+The **"what to leave out"** and **"what to do if you don't have enough information"** sections distinguish analysis prompts that produce useful output from those that produce confident-sounding noise. AI tools default to filling gaps with plausible content; explicit guidance about how to handle uncertainty produces more honest analysis.
+
+### Template C — Document generation prompt
+
+For Claude, ChatGPT, or specialized writing tools used to draft long-form documents.
+
+```md
+Based on this meeting transcript (a discussion of a document or
+communication that needs to be produced), produce a prompt for
+[Claude | ChatGPT | other writing AI] that will draft the document.
+
+Format:
+
+# Prompt for {Target Tool}
+**Target tool:** {tool name}
+**Source meeting:** {Meeting name — date — Earmark link}
+**Document type:** {PRD | Email | Memo | Blog post | Report}
+
+---
+
+## What I'm creating
+One to two sentences describing the document.
+
+## Audience
+- **Who reads this:** specific audience
+- **What they already know:** baseline context
+- **What they care about:** their priorities
+- **What they're skeptical of:** pushbacks to pre-empt
+
+## Goal of the document
+What action or understanding should the reader come away with?
+
+## Structure
+The document should have these sections:
+1. {Section name} — what goes here, one sentence
+2. {Section name} — what goes here
+
+Or, if freer-form, the narrative arc:
+{Opening → middle → close, as discussed}
+
+## Voice and tone
+- {Tone descriptor — analytical / warm / firm}
+- **Avoid:** specific tone or language to stay away from
+
+## Source material
+The substance to draw on:
+{Paste relevant content from the meeting transcript, or quotes, or
+supporting documents}
+
+## Length
+- **Target:** word count or page count
+- **Hard limit:** absolute max
+
+## Specific requirements
+- Must include: things the document must cover
+- Must mention: people, products, references to name explicitly
+- Must NOT include: topics out of scope
+
+## Style constraints
+- Brand voice if applicable
+- Formatting conventions
+- Use of headings, bullets, tables
+- No emojis (unless brand voice allows)
+
+## Examples to follow / avoid
+{Positive reference if you have one; negative reference if useful}
+
+## Output format
+- **Format:** Markdown | Plain text | Specific structure
+- **Sign-off / closing:** if applicable
+- **Placeholders:** items I'll fill in manually
+
+---
+
+End of prompt.
+```
+
+The **"must NOT include"** section matters as much as what to include — particularly for documents that touch on sensitive topics or that need to avoid drift into adjacent territory.
+
+### Template D — Agent / persistent system prompt
+
+For AI tools that maintain state across conversations — Claude Projects, Custom GPTs, persistent assistants you've configured for ongoing work. The prompt primes the AI for an entire ongoing relationship.
+
+```md
+Based on this meeting transcript (a discussion of a recurring task or
+domain you want AI assistance with), produce a system prompt or
+project-context document for [Claude Project | Custom GPT | persistent
+assistant]. This prompt establishes the context the assistant uses
+across every future conversation.
+
+Format:
+
+# System Prompt for {Target Assistant}
+**Target:** {Claude Project / Custom GPT / other}
+**Purpose:** {What this assistant exists to help with}
+**Source:** {Meeting(s) — Earmark link(s)}
+
+---
+
+## Role
+You are {role description — be specific. "An assistant" is too generic.
+"A product manager for X team helping me think through technical
+trade-offs" is useful}.
+
+## Context about me / my work
+Two to four paragraphs that establish what the assistant should know:
+- **What I work on:** specific products, projects, areas
+- **My role:** function, responsibilities, scope
+- **Who I work with:** team, stakeholders
+- **What I'm currently focused on:** active projects, near-term goals
+- **My typical use cases for you:** what I'll typically ask for
+
+## Domain context
+- **Product / system specifics:** what the system is, how it works
+- **Industry context:** if relevant
+- **Key concepts and terminology:** internal language the assistant
+  should know and use
+- **People I'll reference:** team members, customers, partners
+
+## What I'm trying to accomplish (broadly)
+Strategic goals or recurring objectives.
+
+## How I want you to behave
+- **Tone:** how you should sound — direct, exploratory, careful
+- **Bias toward:** behaviors I want — pushback on weak ideas, ask
+  clarifying questions, propose alternatives
+- **Avoid:** behaviors I don't want — excessive hedging, generic
+  advice, "as an AI" disclaimers
+- **When uncertain:** what to do — say so, propose, ask
+- **Format preferences:** length, structure, formatting
+
+## Knowledge I'm giving you
+Reference documents, specifications, or context the assistant should
+treat as authoritative for this project.
+
+## What you DON'T need to know
+Topics or contexts the assistant should not assume — to avoid drift.
+
+## How I'll typically engage with you
+Pattern of interaction — quick questions, deep dives, iterative
+drafting.
+
+---
+
+End of system prompt.
+```
+
+System prompts are the most strategically valuable category. They establish persistent context that makes every future interaction more productive. Once configured well, they eliminate the need to re-explain context at the start of each conversation. Configure deliberately; revisit quarterly as your work evolves.
+
+## Save them as workspace templates
+
+<Steps>
+<Step title="Start with the AI tool you use most">
+Most users start with Template A (code generation) if they're engineering-focused, Template B (analysis) if they're operating-focused, or Template C (document generation) if they're communications-focused. Save the most-relevant first.
+</Step>
+<Step title="Tune each template to your most-used downstream tool">
+The template structure is generic; the specific prompt-format-expectations vary by tool. Adjust the saved template to match your specific tool's conventions.
+</Step>
+<Step title="Save with Private visibility (most often)">
+Prompts are typically personal. Save with Private visibility unless you're standing up a team prompt library. See [Custom templates](/customization/custom-templates).
+</Step>
+</Steps>
+
+## Running the workflow on a single meeting
+
+<Steps>
+<Step title="Decide what you'll produce with the downstream AI tool">
+*"I want Claude Code to refactor this module"* → Template A. *"I want Perplexity to research this market segment"* → Template B. *"I want Claude to draft this memo"* → Template C. *"I want a Custom GPT for ongoing architecture discussions"* → Template D.
+</Step>
+<Step title="Attach the right template">
+Match the template to the downstream tool category. See [Before a meeting](/using-earmark/before-a-meeting) for pre-seeding meetings where you anticipate generating prompts.
+</Step>
+<Step title="The 10-to-15-minute curation pass">
+The curation is lighter than for most workflow artifacts because the artifact is a prompt, not a final document. But it's not trivial — the prompt's quality determines the downstream tool's output quality.
+
+- **Read the prompt as if you were the downstream AI tool.** Is the task clear? Are the constraints unambiguous?
+- **Check tool-specific conventions.** Does the prompt match how the target tool expects to be prompted?
+- **Cut what the tool doesn't need.** Meeting transcripts contain conversational noise; not all of it helps. Cut.
+- **Add what the model didn't capture.** Sometimes context is relevant but wasn't said explicitly.
+- **Verify the output format specification.** Specify explicitly.
+- **Scrub for sensitive content.** The prompt goes to a third-party AI service. Customer names, financial data, confidential strategy — handle per your team's external-AI policy.
+</Step>
+<Step title="Paste into the downstream tool">
+The prompt is ready. Paste into Claude Code, Cursor, v0, Claude, Perplexity, or whichever tool the prompt was shaped for.
+</Step>
+<Step title="Evaluate the output and iterate">
+Does it match what you wanted? If yes, use the artifact. If no, refine the prompt (see iteration section below). Real use is iterative; expect two to four rounds for substantive outputs.
+</Step>
+</Steps>
+
+<Tip>
+Treating the chain as one-shot — *"ran it once, output wasn't great, gave up"* — is the most common failure mode. Treating it as iterative — *"ran it three times with specific refinements between each"* — is what produces results that outperform manual work.
+</Tip>
+
+## The chain: tool/task matching
+
+The workflow is a chain: meeting → meta-prompt → tool → artifact. Each link matters. The chain's quality is limited by its weakest link.
+
+**Match the tool to the task.** Mismatches are common and costly:
+
+- Using a general assistant for code generation when Claude Code or Cursor would work much better
+- Using a code-gen tool for analysis it isn't suited for
+- Using Perplexity for analysis of content you already have, when Notebook LM would work better
+- Using Figma Make for a flow that v0 would handle better
+
+Each tool has a sweet spot. The template choice is partly determined by this match.
+
+**When to drop down to manual.** Don't force the workflow on tasks it doesn't fit:
+
+- The task is simple enough that writing the prompt would take longer than doing the work
+- The task requires judgment the AI tool can't make
+- You don't have meeting source material relevant to the task
+- The output requires verification more carefully than the task itself
+
+The workflow's value is on tasks where meeting context exists, the downstream tool is actually capable of the task, and shaping a good prompt is cheaper than doing the work manually.
+
+## Iteration and refinement
+
+Prompts that work well are usually iterated, not first-drafted. The first draft tells you whether the prompt made sense to the downstream tool, whether the tool produced something useful, and what the prompt failed to specify clearly.
+
+**Refinement patterns** based on common first-output issues:
+
+- Output too generic → add more specific examples, more concrete acceptance criteria, more anti-patterns
+- Output missed a constraint → make the constraint more prominent; sometimes restate at both start and end
+- Output went in the wrong direction → tighten the goal statement; add *"focus on X, not Y"* clarification
+- Output was confidently wrong → add *"if you're not sure, say so"*; ask for citations or reasoning
+- Output too long / too short → specify length more precisely; show an example
+- Output used the wrong tone → add specific tone instructions; reference a positive example
+
+**The feedback prompt.** After getting unsatisfying output, the natural next step is a feedback prompt — telling the tool what was wrong and asking for a refined version. *"The component you generated has these issues: [specific issues]. Refine to address them while keeping [specific things that worked]."* Faster than re-prompting from scratch because the tool already has context loaded.
+
+**System prompt iteration** is different. The system prompt governs many future conversations, not only one. After every conversation with the assistant, note: did it have the context it needed? Did it behave as you wanted? Periodically — weekly at first, then monthly — refine. When your work changes, update the system prompt to match. A well-tuned system prompt makes a Custom GPT or Claude Project feel like an assistant who's been working with you for months.
+
+## Routing into systems of record
+
+The workflow has its own version of systems of record — different from documentation-focused workflows but no less important.
+
+**The prompt library.** A maintained library of prompts that have worked well. Tools:
+
+- Notion / Coda / Obsidian database — most flexible; tag-rich; supports both personal and team libraries
+- A dedicated prompts repo (Git) — for engineering teams; version-controlled; reviewable
+- Specialized prompt management tools (PromptHub, Latitude, PromptLayer) — for teams managing many prompts at scale
+- A simple Google Sheet or Airtable — sufficient for personal use
+
+Per prompt, capture: the prompt itself, the target tool, the use case, a quality note, related prompts, the source meeting context. The library compounds — after a year, 100–300 prompts make search and reuse high-leverage activities.
+
+**The system prompt store.** For persistent system prompts (Template D), the destination is the tool itself. But maintain a backup in a doc repo so the prompts you've invested in are portable when you migrate between tools.
+
+**The artifact archive.** Outputs from downstream tools go to their normal destinations — code into the codebase, analyses into project docs, docs into the destination doc tool. Capture which prompts produced which artifacts. Tag the artifact with the prompt that generated it. When you want to *"do something like that again,"* you can find both.
+
+**The source link.** Every prompt should retain a link back to the source meeting in Earmark. The chain is: meeting → meta-prompt → tool output → artifact. Each step links backward; future you can trace any artifact back to the conversation that informed the prompt that produced it.
+
+**Team prompt sharing.** If you're on a team running this workflow, sharing strong prompts is high-leverage. The pattern: personal prompt library for personal use; shared team library for prompts worth distributing; periodic review where strong personal prompts get nominated to the team library. The team equivalent of the demo-script library — but for AI prompts.
+
+## Closing the loop
+
+Three habits.
+
+**Evaluate output against meeting intent.** When the downstream tool produces an artifact, ask: does this match what the source meeting actually intended? Sometimes the chain produces something plausible that drifts from the original conversation. If drifted, refine the prompt. If matched, ship.
+
+**Learn from chain failures.** When output is substantially worse than what you'd have produced manually, debug. Was the meeting source actually rich enough? Was the prompt template the right shape? Was the downstream tool the right tool? Was the curation pass thorough enough? Most chain failures are diagnosable; the diagnostic improves the workflow over time.
+
+**Build the prompt library deliberately.** Don't let prompts ephemeralize. After every successful chain run, ask *"is this prompt worth saving?"* If yes, save with metadata. Over time, the library becomes a meaningful productivity asset.
+
+## Common pitfalls
+
+- **Pasting the meeting transcript instead of generating a shaped prompt.** Transcripts are too noisy and unstructured for most AI tools. The shaped prompt is the workflow's whole point.
+- **Skipping the curation pass.** The template produces a first-pass prompt; the curation makes it actually work with the target tool.
+- **Wrong tool for the task.** Using Claude Code for analysis, Perplexity for code generation, or v0 for backend logic. Match tool to task.
+- **One-shot expectation.** Treating the chain as *"run once, get the answer."* Real use is iterative.
+- **Skipping the source link.** Prompts without provenance can't be traced back to the conversations that informed them. The traceability is what makes the workflow durable.
+- **Inventing context the meeting didn't actually contain.** Models can fill in plausible-sounding context that wasn't discussed. The curation pass catches this.
+- **Confidential content in prompts to third-party AI.** Customer names, financial data, sensitive strategy. Scrub before sending; follow your team's external-AI policy.
+- **Building a prompt library no one uses.** A library that isn't searchable, tagged, or in a tool you open isn't a library. Pick a tool you'll actually use.
+- **Letting system prompts go stale.** System prompts for persistent assistants need refresh as your work evolves. Update.
+- **Mixing what each AI tool is for.** Using the same general approach for code-gen, analysis, and writing produces mediocre output. Each category has different prompt patterns; honor the differences.
+- **Treating the AI tool's output as final.** Always review. AI outputs are first drafts even when they look polished.
+- **Forgetting that AI tools improve.** The prompt that worked well six months ago may underperform the simpler prompt that today's tool can handle. Periodically revisit.
+- **Over-templating.** Trying to capture every possible meeting type with a perfectly-shaped template creates overhead exceeding the benefit. Four templates cover most cases.
+- **Workflow fatigue.** Trying to run every task through the chain when some tasks are faster to do manually. The workflow has a sweet spot — substantial tasks where meeting context exists. Use it there; not everywhere.
+
+## Where to go next
+
+- [Workflows](/workflows) — the general shape this is an instance of
+- [Meeting-to-prototype workflow](/workflows/meeting-to-prototype-workflow) — the focused version of this workflow for visual prototyping tools
+- [Meeting-to-tickets workflow](/workflows/meeting-to-tickets-workflow) — for the engineering tickets that follow from architecture decisions
+- [Meeting-to-PRD workflow](/workflows/meeting-to-prd-workflow) — for product specs that motivate AI-tool work
+- [Architecture documentation workflow](/workflows/architecture-documentation-workflow) — for the technical documentation that often grounds engineering AI prompts
+- [Cursor integration](/integrations/cursor) — for coded implementation
+- [v0 integration](/integrations/v0) — for UI components
+- [Codex integration](/integrations/codex) — for engineering tasks
+- [Linear integration](/integrations/linear) — for tickets that flow from AI-tool work
+- [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
+- [Composer](/using-earmark/composer) — for tuning the prompt before saving as a workspace template
+- [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding the template on meetings expected to produce AI prompts
+- [Local transcripts](/earmark-basics/local-transcripts) — for export when you want to use the transcript with an external tool directly

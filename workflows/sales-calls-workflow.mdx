@@ -1,0 +1,407 @@
+---
+title: "Sales calls"
+description: "Turn every sales conversation into structured deal intelligence that lands in your CRM and survives the next pipeline review"
+keywords: ["sales calls", "MEDDPICC", "BANT", "discovery", "deal intelligence", "CRM", "champion", "next step", "win loss"]
+---
+
+Sales is a memory-driven game running on systematically broken memory. By the end of a busy day, a rep cannot reliably tell you what was said in their first call that morning, let alone the third call last Tuesday. The CRM gets updated when the rep has time and motivation — which is to say, when the deal is going well. Hard calls, ambiguous calls, and calls where the rep is unsure of the read are exactly the calls that do not get logged.
+
+The failure isn't effort. Reps work hard. The failure is that the unit of work — the deal — runs across many calls and many weeks, and human memory is not built for that timescale.
+
+This guide is a specific instance of the [workflows](/workflows) pattern, applied to sales conversations. It pairs with the [action items workflow](/workflows/action-items-workflow) — the next-step extraction at the bottom of every sales artifact is a specialized version of that workflow.
+
+## What the artifact looks like
+
+A worked example — a first discovery call with a mid-market prospect, using MEDDPICC:
+
+```md
+# Deal: Acme Health — Discovery 2026-03-04
+
+**Stage:** Discovery
+**Participants:**
+- Mark (AE, our side)
+- Jamie (Controller, customer side)
+- Priya (Director of Finance Ops, customer side)
+
+## Pain and use cases
+
+- **Stated pain:** "We spend two hours every Monday reconciling vendor
+  invoices by hand." — Jamie
+- **Business impact:** Two FTE-hours/week — implied, not quantified
+  in dollars
+- **Implications of doing nothing:** "We're going to fail our next
+  internal audit if we don't fix the approval trail." — Jamie
+- **Use cases discussed:** Bulk export with row-limit toggle;
+  approver-identity in audit log
+
+## MEDDPICC read
+
+### Metrics
+Reduce reconciliation time from 2 hours/week to under 30 minutes.
+Source: Jamie, stated.
+
+### Economic buyer
+- Name: Unknown
+- Title: Likely CFO; not named in conversation
+- Engaged in this deal? No
+- Notes: Jamie said "I'd need to bring this to finance leadership."
+  We have not met them.
+
+### Decision criteria
+- Audit-log capability is mandatory — stated
+- Export performance at 500+ rows — stated
+- Integration with existing ERP — implied (asked twice)
+
+### Decision process
+- Stakeholders: Jamie (Controller), CFO (unmet), IT (unmet)
+- Steps: Implied — Jamie evaluates → CFO approval → procurement
+- Current step: Initial evaluation
+
+### Paper process
+Unknown — not discussed.
+
+### Champion
+- **Name:** Jamie
+- **Title:** Controller
+- **Strength signals:**
+  - Introduced us to others? No (yet)
+  - Spending political capital? Unclear
+  - Articulates our value back correctly? Yes — referenced our
+    audit-log demo unprompted
+  - Shared internal info we would not otherwise get? Yes — the
+    failed-audit comment
+- **Strength read:** Developing
+- **Risk:** Has not yet introduced us to CFO; political will untested
+
+### Competition
+- Status quo (manual reconciliation) — primary alternative
+- "We looked at [Competitor X] last year." — Jamie. Unclear what
+  came of that evaluation.
+
+## Multi-threading
+- Engaged: Jamie, Priya
+- Should engage: CFO (economic buyer), IT lead (integration)
+- Coverage read: Single-threaded into Finance
+
+## Timeline and critical event
+- Buyer's stated timeline: Internal audit "later this year"
+- Critical event: The audit (date unknown — flag to ask next call)
+- Our forecast close date: Q3, low confidence
+
+## Single next step
+- **Owner:** Me
+- **What:** Send the audit-log demo recording and book a follow-up
+  with Jamie + CFO
+- **By when:** 2026-03-11 (agreed)
+- **Why this matters:** Without the CFO meeting, the deal cannot
+  advance past evaluation.
+
+## Risk signals
+- Economic buyer unmet — biggest single risk
+- Timeline vague ("later this year") — no critical-event pressure yet
+- Prior competitor evaluation went unfinished — implies the buying
+  process stalls
+
+## Quotes worth keeping
+- "I trust the numbers. I just don't trust who signed off on them." — Jamie
+- "If you fix the export thing, we stay another year." — Jamie
+
+## CRM update — ready to paste
+
+Discovery call with Jamie (Controller) and Priya (Finance Ops). Pain:
+manual invoice reconciliation, ~2 hrs/wk, plus audit-log gap. Critical
+event: internal audit, date TBC. Champion (Jamie) is developing — needs
+to introduce us to CFO. Next step: send audit-log demo, book follow-up
+with Jamie + CFO by 2026-03-11. Risks: economic buyer unmet,
+single-threaded, prior competitor eval stalled.
+```
+
+One artifact, eight outputs: pain, MEDDPICC dimensions, multi-threading state, timeline, the single next step, risk signals, quotes, and a CRM-ready paste block. Same shape every call.
+
+## The template that produces it
+
+Save this as a workspace template. The version below is MEDDPICC-shaped; the dimension swap for BANT, SPICED, or CHAMP is mechanical — replace the section labels and keep everything else.
+
+```md
+Extract structured deal intelligence from this sales conversation. Be
+faithful to what was actually said. Distinguish between:
+- What the buyer said directly (quote or close paraphrase)
+- What was implied (mark as "implied")
+- What is unknown (write "Unknown" — do not guess)
+
+No emojis. No pleasantries or filler.
+
+# Deal: {Prospect or Company} — {Call type} {YYYY-MM-DD}
+
+**Stage:** {Discovery | Demo | Negotiation | Other}
+**Participants:**
+- {Name, role, our side}
+- {Name, role, customer side}
+
+## Pain and use cases
+- **Stated pain:** {their framing} — "verbatim quote"
+- **Business impact:** what does this cost them? Verbatim if quantified;
+  "Unknown" if not.
+- **Implications of doing nothing:** what happens if they don't solve
+  this? Quote if stated.
+- **Use cases discussed:** specific scenarios where our product fits.
+
+## MEDDPICC read
+
+### Metrics
+What measurable outcome does the buyer expect? "Unknown" if not stated.
+
+### Economic buyer
+- Name: {name | Unknown}
+- Title: {title | Unknown}
+- Engaged in this deal? {yes | no | unclear}
+- Notes on access: what would it take to get in front of them?
+
+### Decision criteria
+What is the buyer evaluating us on? List explicitly. Quote if available.
+
+### Decision process
+How will they decide? Who's involved, what are the steps, what's the
+sequence?
+- Stakeholders: {list with roles}
+- Steps: {e.g., shortlist → POC → procurement → legal → signature}
+- Current step: {where they are now}
+
+### Paper process
+Procurement, legal, security review. Have they started? Expected timeline?
+
+### Identify pain
+Have we explicitly tied our solution to a quantified pain? {yes | no}
+
+### Champion
+- **Name:** {name | none identified}
+- **Title:** {title}
+- **Strength signals:**
+  - Have they introduced us to others? {yes | no}
+  - Are they spending political capital? {yes | no | unclear}
+  - Do they articulate our value back correctly? {yes | no}
+  - Have they shared internal info we would not otherwise get? {yes | no}
+- **Strength read:** {Strong | Developing | Weak | None}
+- **Risk:** what would cause us to lose this champion?
+
+### Competition
+Who else are they evaluating? Status quo (doing nothing) counts.
+
+## Multi-threading
+- Engaged: {list}
+- Should engage: {list with reasons}
+- Coverage read: {Strong | Adequate | Single-threaded | At-risk}
+
+## Timeline and critical event
+- Buyer's stated timeline: {date | range | Unknown}
+- Critical event: {event | none identified}
+- Our forecast close date: {date}
+
+## Single next step
+The ONE specific action that moves this deal forward. Not three.
+- **Owner:** {me | them | shared}
+- **What:** {exact action}
+- **By when:** {date — explicitly agreed, or flagged if not}
+- **Why this matters:** one sentence
+
+## Other action items
+- [ ] **{Owner}** — {what} — by {when}
+
+## Open questions / information gaps
+What we still need to learn to qualify or close.
+
+## Risk signals
+Anything that could indicate stalled momentum, competitive pressure,
+or champion weakness. List even minor signals.
+
+## Quotes worth keeping
+Two to four verbatim quotes that capture pain, urgency, or commitment.
+
+## CRM update — ready to paste
+A five- to eight-line summary formatted to paste directly into the
+opportunity activity log. Lead with stage, single next step, and any
+risk signals.
+```
+
+Three things in this prompt are load-bearing.
+
+**The Stated / Implied / Unknown discipline.** This is the single most important rule in the workflow. "Unknown" is a valid and required answer — guessing pollutes the deal record and erodes forecast accuracy. The model will fill in plausible-sounding details unless told not to.
+
+**"Single next step" enforced as singular.** Deals stall when a rep walks away with three vague next steps. Forcing the model to pick one keeps the deal honest. A deal with no real next step is a deal in trouble — recognize it explicitly rather than inventing one.
+
+**The champion strength-signals checklist.** A champion is not someone who is nice to you. A champion is someone who spends political capital advocating for you when you are not in the room. The checklist forces the reader to point to specific behaviors rather than a feeling. Champion overestimation is the most common forecast killer; this section is the brake.
+
+## Save it as a workspace template
+
+<Steps>
+<Step title="Start from the Client Call template">
+The `Client Call` built-in template is the closest starting point. Add it as a task from the [template library](/earmark-basics/templates) and run a real discovery call through it.
+</Step>
+<Step title="Rework into MEDDPICC shape in the Composer">
+Open the artifact in fullscreen. In the [Composer](/using-earmark/composer), iterate the prompt toward the structure above — the Stated/Implied/Unknown discipline, the MEDDPICC sections, the single-next-step enforcement, the champion checklist. Watch the preview reshape until the artifact reads like the worked example.
+</Step>
+<Step title="Swap the framework if you don't use MEDDPICC">
+If your team uses BANT, SPICED, or CHAMP, replace the MEDDPICC section labels with your framework's dimensions. The rest of the prompt stays the same. Consistency matters more than the choice — a mixed-framework pipeline is worse than a consistently-applied weaker framework.
+</Step>
+<Step title="Save with Workspace visibility">
+Open the Composer menu and choose **Save as template**. Set visibility to **Workspace** so every rep on the team produces the same shape. See [Custom templates](/customization/custom-templates) for permissions.
+</Step>
+</Steps>
+
+<Tip>
+The first artifact will be rough. By the third or fourth call run through the saved template, the model is calibrated to your buyers' language and the cleanup shrinks to a couple of minutes. The investment is the first few calls.
+</Tip>
+
+## Run it on a single call
+
+<Steps>
+<Step title="Pre-seed the meeting">
+Open the call in Earmark before it starts and add your saved Sales Discovery template as a task. See [Before a meeting](/using-earmark/before-a-meeting).
+</Step>
+<Step title="Use Customize context for prior-call carryover">
+For follow-up calls, paste the **CRM update** and the **Risk signals** from your last call with this account into the **Customize context** dialog. The template will read it and produce an artifact that reflects what changed since last call, not a cold first-call view.
+</Step>
+<Step title="State commitments and next steps out loud">
+Two habits sharpen the artifact dramatically:
+
+- "Our next step is X by Y — agreed?" before the call ends. If the buyer hesitates, that hesitation is a signal worth capturing.
+- "So we're saying we'll send the security questionnaire by Thursday." Beats implicit handoffs.
+
+These are good selling habits regardless of recording.
+</Step>
+<Step title="Three-minute cleanup">
+Within the hour, before the next call:
+
+- **Read the Stated / Implied / Unknown tags.** The model is sometimes optimistic. If it tagged something as "stated" that you wished the buyer had said, downgrade to "implied" or "Unknown."
+- **Check the champion read honestly.** If the model called the champion "Strong" but you cannot point to specific advocacy behaviors, downgrade. Champion overestimation kills more forecasts than any other failure.
+- **Confirm the single next step.** If no real next step was agreed — the buyer said "let me get back to you" — write that. Do not invent a next step that was not agreed.
+- **Flag risk signals the model missed.** Hesitation, vague language, evasion on budget — these often live in tone the transcript does not fully capture. Add them.
+- **Finalize the CRM update text.** This is what gets pasted.
+</Step>
+<Step title="Push to the CRM same day">
+Paste the **CRM update** block into the opportunity activity log. Update stage, next-step field, forecast close date, and stakeholder contacts. The full Earmark artifact stays in Earmark — the CRM gets the curated summary with a link back, not the full transcript. A sales workflow whose outputs do not reach the CRM the same day is not a workflow.
+</Step>
+</Steps>
+
+## Variations
+
+Same skeleton, two close relatives.
+
+### Demo and technical evaluation
+
+For demo calls, POCs, technical deep-dives, and pricing discussions. The shape shifts because the conversation centers on fit, objections, and reactions rather than discovery. Add a section after Pain:
+
+```md
+## Buyer reactions by capability
+For each major capability shown:
+### {Capability}
+- **Reaction:** {Positive | Neutral | Negative | Confused}
+- **Stated feedback:** verbatim or close paraphrase
+- **Follow-up questions:** {list}
+- **Concerns:** {list}
+
+## Objections raised
+For each objection:
+- **Objection:** in their words
+- **Underlying concern:** what they're really worried about
+- **How we responded:** summary
+- **Resolved?** {Yes | Partially | No}
+- **If not resolved:** follow-up commitment
+
+## Fit read
+- **Capabilities that landed:** {list}
+- **Capabilities that fell flat:** {list}
+- **Missing capabilities they asked about:** {list — flag gaps}
+```
+
+Keep everything else from the discovery template (champion update, competition update, single next step, risk signals, CRM update). The deal context carries forward.
+
+### Win/loss debrief
+
+After a deal closes — won or lost — run this on the post-decision call with the buyer. A 15-minute call one to two weeks after the decision is the highest-fidelity source of information about what actually drove it. Most prospects will take this call if you frame it neutrally.
+
+```md
+Produce a win/loss debrief for this deal. The audience is internal —
+sales, product, and leadership use this to update the playbook.
+
+# Deal: {Company}
+**Outcome:** {Won | Lost to competitor | Lost to no-decision | Churned}
+**Final ACV:** {if won}
+**Decision date:** {date}
+
+## Decision-making reconstruction
+- **Who actually decided:** name and role
+- **What ultimately drove the decision:** in their words if possible
+- **When the decision crystallized:** what call or moment
+
+## What worked (or would have worked)
+Specific moments, behaviors, or moves that landed. Quote-backed where possible.
+
+## What didn't work (or contributed to loss)
+Specific moments, behaviors, or moves that hurt. Quote-backed where possible.
+
+## What we missed
+- Information we did not have but should have
+- Stakeholders we did not engage
+- Signals we read wrong
+- Objections we did not surface
+
+## Competitive read (if lost to competitor)
+- Who they chose, and why in their words
+- What they got from the competitor we did not offer
+- What we could have done differently
+
+## No-decision read (if lost to no-decision)
+- Why they decided not to act
+- Was the pain real?
+- Did we have a critical event?
+- What would have unstuck this?
+
+## Playbook implications
+- Discovery question updates: {list}
+- Objection-handling updates: {list}
+- Qualification criteria updates: {list}
+- ICP flag: did this deal even fit our ICP?
+
+## Quotes worth keeping
+The most useful verbatim moments — for enablement, marketing, case
+studies (if won).
+```
+
+Lost deals contain more useful information than won deals. The team that systematically debriefs losses improves faster than the team that does not.
+
+## What this workflow doesn't do
+
+Earmark generates and refines artifacts within a single call. The two natural next things a sales team wants — **deal-level synthesis across all calls in an opportunity** and **manager-level pipeline aggregation** — are not one-click actions inside Earmark today.
+
+Practical workarounds:
+
+- **Manual deal-level rollup before major moments.** Before an executive sponsor meeting, a pricing conversation, or a forecast call, the rep pastes the **CRM update** and **Risk signals** sections from the last three or four call artifacts into a single Customize-context block, then runs a synthesis prompt that produces a current state-of-deal view. Fifteen minutes of work; produces an artifact comparable to what the original "Template C" would have produced automatically.
+- **Use the [command menu](/earmark-basics/command-menu)** (`Cmd+K` / `Ctrl+K`) to find prior calls with the same account when assembling the rollup.
+- **Export [local transcript files](/earmark-basics/local-transcripts)** when you want to run an external agent across an entire deal's worth of calls and produce a true synthesized rollup.
+- **The CRM is the deal-level aggregator.** If every call's CRM-update block lands in the opportunity activity log, the CRM is the place to see the deal's history. The rep's job is to feed the CRM faithfully; the manager's filters in the CRM are what produce pipeline visibility.
+
+Manager-level forecasting based on champion strength or MEDDPICC scores requires those fields to be queryable in your CRM, not in Earmark. The workflow above produces the values; your CRM is where the team filter happens.
+
+## Common pitfalls
+
+- **Skipping the cleanup on hard calls.** The calls where reps skip cleanup are the calls where the artifact is most valuable — hard calls contain the signals that predict deal risk. Run the cleanup harder on hard calls.
+- **Champion overestimation.** A champion is not someone who is nice to you. If you cannot point to specific advocacy behaviors, downgrade the strength read.
+- **Inventing next steps.** "We'll circle back" is not a next step. If no real next step was agreed, write that. A deal with no agreed next step is a deal in trouble.
+- **Hearing what you want to hear.** Buyers say "interesting" and "we'll think about it" because it's easier than saying no. The Risk Signals section is where you catch yourself.
+- **Treating discovery as a one-call event.** MEDDPICC dimensions get filled in over multiple calls. "Unknown" on call one and still Unknown on call four is a different problem than "Unknown" → "Strong read" by call four. Track the trajectory by using Customize context to carry prior reads into the next call.
+- **Single-threading.** A deal with one contact at the buyer is a deal at high risk regardless of how strong that contact is. The multi-threading section forces you to confront this.
+- **Logging only the good news.** Reps reflexively log deals going well and skip deals going badly. The opposite is correct. Hard deals are where the artifact most needs to exist.
+- **Letting deals age in stage without a fresh rollup.** A deal in "Demo" for five weeks needs a fresh deal-level synthesis (the manual workaround above). Otherwise it's running on stale signal.
+- **Skipping win/loss on lost deals.** Lost deals contain more useful information than won deals. Default Template D on every closed deal above a low ACV threshold.
+- **Pasting the full artifact into the CRM.** The CRM gets the curated **CRM update** block. The full artifact lives in Earmark, linked from the CRM entry. Pasting transcripts into CRMs is what makes nobody read them.
+- **Wrong framework dogma.** If your team uses BANT and the template says MEDDPICC, swap the labels. The workflow does not care which framework — only that you use one consistently across every deal.
+
+## Where to go next
+
+- [Workflows](/workflows) — the general shape this is an instance of
+- [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
+- [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding and using Customize context for prior-call carryover
+- [Action items workflow](/workflows/action-items-workflow) — the next-step extraction this workflow specializes; useful for non-sales calls too
+- [Email follow-up workflow](/workflows/email-follow-up-workflow) — for the external customer follow-up email that goes out after a call
+- [Customer research workflow](/workflows/customer-research-workflow) — for the pain-points and verbatim-quotes side of customer conversations

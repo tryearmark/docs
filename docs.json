@@ -97,6 +97,71 @@
         ]
       },
       {
+        "tab": "Workflows",
+        "groups": [
+          {
+            "group": "Overview",
+            "icon": "book-open",
+            "pages": [
+              "workflows/index"
+            ]
+          },
+          {
+            "group": "Essentials",
+            "icon": "list-check",
+            "pages": [
+              "workflows/generic-recaps-workflow",
+              "workflows/action-items-workflow",
+              "workflows/structured-meeting-notes-workflow",
+              "workflows/ad-hoc-qa-workflow",
+              "workflows/pre-meeting-prep-workflow"
+            ]
+          },
+          {
+            "group": "Product and engineering",
+            "icon": "code",
+            "pages": [
+              "workflows/meeting-to-prototype-workflow",
+              "workflows/ai-tool-orchestration-workflow",
+              "workflows/meeting-to-prd-workflow",
+              "workflows/roadmap-synthesis-workflow",
+              "workflows/meeting-to-tickets-workflow",
+              "workflows/architecture-documentation-workflow"
+            ]
+          },
+          {
+            "group": "Communication and leadership",
+            "icon": "megaphone",
+            "pages": [
+              "workflows/shareable-summaries-workflow",
+              "workflows/slide-decks-workflow",
+              "workflows/email-follow-up-workflow",
+              "workflows/leadership-readouts-workflow"
+            ]
+          },
+          {
+            "group": "Go-to-market",
+            "icon": "chart-line",
+            "pages": [
+              "workflows/customer-research-workflow",
+              "workflows/customer-onboarding-and-training-workflow",
+              "workflows/marketing-collateral-workflow",
+              "workflows/sales-calls-workflow"
+            ]
+          },
+          {
+            "group": "People and operations",
+            "icon": "users",
+            "pages": [
+              "workflows/people-and-team-meetings-workflow",
+              "workflows/hiring-workflow",
+              "workflows/demo-and-facilitator-scripts-workflow",
+              "workflows/sops-and-playbooks-workflow"
+            ]
+          }
+        ]
+      },
+      {
         "tab": "Changelog",
         "groups": [
           {
@@ -136,6 +201,104 @@
       "vscode"
     ]
   },
+  "redirects": [
+    {
+      "source": "/using-earmark/workflows",
+      "destination": "/workflows"
+    },
+    {
+      "source": "/workflows/customer-research-extraction",
+      "destination": "/workflows/customer-research-workflow"
+    },
+    {
+      "source": "/using-earmark/structured-meeting-notes-workflow",
+      "destination": "/workflows/structured-meeting-notes-workflow"
+    },
+    {
+      "source": "/using-earmark/action-items-workflow",
+      "destination": "/workflows/action-items-workflow"
+    },
+    {
+      "source": "/using-earmark/shareable-summaries-workflow",
+      "destination": "/workflows/shareable-summaries-workflow"
+    },
+    {
+      "source": "/using-earmark/sales-calls-workflow",
+      "destination": "/workflows/sales-calls-workflow"
+    },
+    {
+      "source": "/using-earmark/people-and-team-meetings-workflow",
+      "destination": "/workflows/people-and-team-meetings-workflow"
+    },
+    {
+      "source": "/using-earmark/ad-hoc-qa",
+      "destination": "/workflows/ad-hoc-qa-workflow"
+    },
+    {
+      "source": "/using-earmark/hiring-workflow",
+      "destination": "/workflows/hiring-workflow"
+    },
+    {
+      "source": "/using-earmark/leadership-readouts-workflow",
+      "destination": "/workflows/leadership-readouts-workflow"
+    },
+    {
+      "source": "/using-earmark/generic-recaps-workflow",
+      "destination": "/workflows/generic-recaps-workflow"
+    },
+    {
+      "source": "/using-earmark/meeting-to-prototype-workflow",
+      "destination": "/workflows/meeting-to-prototype-workflow"
+    },
+    {
+      "source": "/using-earmark/meeting-to-tickets-workflow",
+      "destination": "/workflows/meeting-to-tickets-workflow"
+    },
+    {
+      "source": "/using-earmark/meeting-to-prd-workflow",
+      "destination": "/workflows/meeting-to-prd-workflow"
+    },
+    {
+      "source": "/using-earmark/email-follow-up-workflow",
+      "destination": "/workflows/email-follow-up-workflow"
+    },
+    {
+      "source": "/using-earmark/demo-and-facilitator-scripts-workflow",
+      "destination": "/workflows/demo-and-facilitator-scripts-workflow"
+    },
+    {
+      "source": "/using-earmark/sops-and-playbooks-workflow",
+      "destination": "/workflows/sops-and-playbooks-workflow"
+    },
+    {
+      "source": "/using-earmark/marketing-collateral-workflow",
+      "destination": "/workflows/marketing-collateral-workflow"
+    },
+    {
+      "source": "/using-earmark/architecture-documentation-workflow",
+      "destination": "/workflows/architecture-documentation-workflow"
+    },
+    {
+      "source": "/using-earmark/slide-decks-workflow",
+      "destination": "/workflows/slide-decks-workflow"
+    },
+    {
+      "source": "/using-earmark/ai-tool-orchestration-workflow",
+      "destination": "/workflows/ai-tool-orchestration-workflow"
+    },
+    {
+      "source": "/using-earmark/customer-onboarding-and-training-workflow",
+      "destination": "/workflows/customer-onboarding-and-training-workflow"
+    },
+    {
+      "source": "/using-earmark/pre-meeting-prep-workflow",
+      "destination": "/workflows/pre-meeting-prep-workflow"
+    },
+    {
+      "source": "/using-earmark/roadmap-synthesis-workflow",
+      "destination": "/workflows/roadmap-synthesis-workflow"
+    }
+  ],
   "seo": {
     "indexing": "all",
     "metatags": {

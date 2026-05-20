@@ -1,0 +1,340 @@
+---
+title: "People and team meetings"
+description: "Run 1:1s, skip-levels, interviews, and standups so the longest-horizon conversations in your company stop running on memory"
+keywords: ["1:1", "one-on-one", "skip-level", "candidate interview", "standup", "performance review", "promotion case", "workflow"]
+---
+
+The 1:1 between a manager and a direct report is the highest-leverage repeating conversation in a company. Done well over six months, it changes whether someone grows, stays, or leaves. Done well over two years, it changes whether someone becomes a top performer or burns out.
+
+And yet it runs on the same broken memory as every other meeting, with one cruelty added: the data point that matters is rarely from this week. It's the pattern across many weeks. A report's growth, a candidate's signal, a team's blockers — these compound across timescales human recall is not built for.
+
+This guide is a specific instance of the [workflows](/workflows) pattern, applied to the meetings where the *relationship* — not the project — is the unit of work.
+
+## Before anything else: consent and confidentiality
+
+<Warning>
+This workflow handles material the other workflows do not — performance concerns, personal struggles, compensation, plans to leave, candidate evaluations. Don't run it until you've handled consent and made the trust contract explicit.
+
+**Tell every direct report in writing**, before the first recorded 1:1:
+
+> *"I use Earmark to take notes on our 1:1s so I can be present in the conversation and keep continuity from week to week. The recording stays in my workspace and is private to me until I share it. I'll send you the structured notes after each meeting. If you ever want a moment off-record, tell me and I'll stop. If you want past artifacts deleted, ask and I will."*
+
+Then live by it. Honor "let's go off-record" immediately. For sessions you want captured without keeping long-term, use [temporary meetings](/earmark-basics/temporary-meetings) — the meeting auto-purges after the retention window. For some conversations, don't record at all: compensation delivery, terminations, mental health discussions. Presence matters more than artifact for these.
+</Warning>
+
+Two structural properties of Earmark make this workflow safer than it might otherwise be. Both are worth knowing before you start:
+
+- **Workspace isolation.** Meeting content is private per user — your 1:1 artifacts are not visible to anyone else in your workspace unless you share them. See [Security and privacy](/security-and-privacy).
+- **No training on your data.** Earmark does not use your transcripts to train models.
+
+The shareable artifact is one thing; your private observations are another. The artifact contains what's appropriate to share with the report. Your private read on someone's career trajectory, performance concerns you're forming, hypotheses you haven't tested — those live in a separate notes surface, not the shared artifact. The cleanup step below is where you enforce that boundary.
+
+## What the artifact looks like
+
+A worked example — a regular 1:1 partway through a quarter:
+
+```md
+# 1:1: Mark and Priya — 2026-03-04
+
+## Topics raised by Priya
+- **Topic:** Frustration with the cross-team review process on the auth migration.
+  - **Discussion:** Reviews taking 4–5 days; blocking three open PRs.
+  - **Outcome:** Mark will raise with the platform EM by Friday.
+  - **Quote:** "I don't mind the rigor, I mind the latency."
+
+- **Topic:** Wants to take on a stretch project in Q2.
+  - **Discussion:** Specifically the migration off the legacy queue.
+  - **Outcome:** Mark will think about scope and bring options next 1:1.
+
+## Topics raised by Mark
+- **Topic:** Feedback from the architecture review.
+  - **Discussion:** Two specific moments she did well; one where the design rationale wasn't visible.
+  - **Outcome:** Priya will write the rationale into the design doc before the next review.
+
+## Updates and status
+- Auth migration on track for end-of-month.
+- Stretch goal: likely ready to take on the queue migration in Q2 if Q1 lands clean.
+
+## Commitments
+- **Mark** — raise the review-latency issue with platform EM — by Friday
+- **Mark** — bring stretch-project scope options to next 1:1
+- **Priya** — write design rationale into the doc — before next architecture review
+
+## Open threads (carry to next 1:1)
+- Stretch project options
+- Cross-team review latency — follow-up after Friday conversation
+
+## Follow-up from last 1:1
+- Career conversation re: principal track — Priya wants to revisit in two weeks
+- The thing about pairing on Wednesdays — happening; working well
+
+## Career and development notes
+- Priya raised principal track aspirations two weeks ago; still on her mind.
+- Strong signal in the architecture review on technical depth.
+
+## What we're bringing to next 1:1
+- Mark: stretch project options, principal track conversation
+- Priya: outcome of platform EM conversation, scope feedback on the stretch project
+```
+
+Five things to notice in the structure: topics tagged by who raised them, explicit follow-up from last 1:1, separate sections for commitments and open threads, a career notes section that's optional but accumulates over time, and an explicit "what we're bringing next time" agenda for both sides.
+
+## The 1:1 template
+
+```md
+Capture this 1:1 conversation as a shared record both the manager and
+the report will read. Be faithful to what was said — do not infer
+emotional states, do not embellish, do not invent.
+
+No emojis. Be concise. The artifact should be readable in under two
+minutes.
+
+# 1:1: {Manager} and {Report} — YYYY-MM-DD
+
+## Topics raised by {Report}
+For each topic the report brought up:
+- **Topic:** one-line description
+- **Discussion:** two to three lines on what was discussed
+- **Outcome:** what we agreed, or "still open" if unresolved
+- **Quote (optional):** verbatim if it captures something important
+
+## Topics raised by {Manager}
+Same format. Things the manager brought up.
+
+## Updates and status
+Quick updates either side shared on ongoing work, blockers, or projects.
+
+## Commitments
+Soft commitments either side made. These are not tickets — they're
+relationship commitments to follow up on.
+- **{Owner}** — {what} — by {when, or "before next 1:1"}
+
+## Open threads (carry to next 1:1)
+Things raised but not resolved that should be revisited next time.
+
+## Follow-up from last 1:1
+If last 1:1's open threads were addressed this meeting, note their
+status:
+- {Thread from last time} — Resolved / Still open / Reframed as: {new framing}
+
+## Career and development notes
+Anything that touched on growth, skills, career goals, feedback received.
+Optional — only if relevant this conversation.
+
+## What we're bringing to next 1:1
+- Manager's space — what they want to revisit or address next time
+- Report's space — what they want to talk about next time
+```
+
+Three things in this prompt are load-bearing.
+
+**Topics tagged by who raised them.** This is what makes the continuity loop trackable. Across six weeks of artifacts you can see whether the report is bringing things up or whether you're driving the conversation. A report who used to bring three topics and now brings zero is a signal worth catching early.
+
+**Commitments as relationship commitments, not tickets.** "I'll think about your career path before next 1:1" does not belong in Linear. The 1:1 artifact holds it. Keeping these separate from project todos respects the different timescale of the work.
+
+**"Do not infer emotional states."** The model will read tone into the transcript and call someone "frustrated" or "enthusiastic" when the actual statement was neutral. Strip these on cleanup — the artifact records what was said, not what you (or the model) thought the report was feeling.
+
+## Save it as a private template
+
+<Steps>
+<Step title="Start in the Composer">
+There is no built-in 1:1 template, so the fastest path is to paste the prompt above into a new task on a real 1:1 and iterate in the [Composer](/using-earmark/composer) until the output lands.
+</Step>
+<Step title="Tune for your style">
+Some managers want a tighter Updates section; some want a more structured Career notes section. Adjust the headings to what you actually use. The shape matters more than the exact wording.
+</Step>
+<Step title="Save as Private, not Workspace">
+For 1:1s, save the template with **Private** visibility. Each manager runs their own 1:1s privately; the template does not need to be shared at the workspace level. See [Custom templates](/customization/custom-templates).
+</Step>
+</Steps>
+
+## Run it on a single 1:1
+
+<Steps>
+<Step title="Confirm consent before the first recorded 1:1">
+In writing. Standing consent applies after that, but honor any "let's go off-record" immediately — pause recording without friction.
+</Step>
+<Step title="Pre-seed the meeting">
+Add the saved 1:1 template as a task. For recurring 1:1s, attach it once to the calendar series. See [Before a meeting](/using-earmark/before-a-meeting).
+</Step>
+<Step title="Use Customize context for continuity">
+Before the call, paste the **Open threads** and **What we're bringing to next 1:1** sections from last week's artifact into the **Customize context** dialog. The template will use them to produce the **Follow-up from last 1:1** section automatically.
+</Step>
+<Step title="Be present in the conversation">
+Don't take notes manually. That's the point. If something feels off-record and shouldn't enter the artifact, say so — pause the recording and continue.
+</Step>
+<Step title="Three-minute cleanup">
+Within the hour:
+
+- **Move sensitive content out.** If anything in the artifact is too sensitive to share with the report (a performance concern you're forming, something confidential you mentioned in error), reframe it or move it to your private notes.
+- **Strip inferred emotional states.** "Priya seemed frustrated about X" is the model interpreting. If she said "this is frustrating," keep that as a quote. Otherwise, cut the editorial.
+- **Confirm the Open threads section.** This is what carries to next week. Add anything the model missed.
+- **Confirm commitments.** Each side's commitments are explicit, with deadlines.
+</Step>
+<Step title="Share with the report — same day">
+A Slack DM with the artifact pasted in, an email, or a link to a shared doc. Whichever the relationship has agreed on. Same-day delivery is what tells the report that the workflow is real and that their threads matter.
+</Step>
+</Steps>
+
+## The continuity loop
+
+The single highest-leverage habit, and the one most managers skip. The first 60 seconds of every 1:1 should be the manager reading the previous artifact's **Open threads** out loud:
+
+- "Last time you brought up the review latency. Where are we?"
+- "I said I'd think about your stretch project. Here's what I've been thinking."
+- "We agreed to revisit the principal track conversation. Should we do that today?"
+
+This habit does three things at once. It tells the report their threads did not evaporate. It forces resolution or explicit deferral rather than letting threads rot. It builds trust in the substrate — the report learns that raising things is worth doing because the raises persist.
+
+A thread open for more than three 1:1s is a signal in itself. Either it is not actually important — retire it explicitly — or it is important and being avoided, which is worth addressing directly.
+
+## Variations
+
+Same skeleton, three close relatives. Each is a saved private template.
+
+### Skip-level
+
+For senior leaders meeting with their direct reports' reports. The shape is similar to the 1:1 but tilts toward signal worth flagging for the senior leader.
+
+```md
+Capture this skip-level meeting between {Senior Leader} and {Skip}.
+
+# Skip-level: {Names} — YYYY-MM-DD
+
+## Topics discussed
+For each topic: brief, with each person's view.
+
+## Signal worth flagging
+Things the skip raised about their experience, their manager, the team,
+or the org that the senior leader should be aware of. Anonymized as
+appropriate.
+
+## Decisions or commitments
+- {Decision or commitment}
+
+## Open threads
+Things to revisit next time.
+```
+
+<Note>
+Skip-level artifacts stay private to the senior leader. Do not share with the skip's direct manager unless the skip explicitly consents. Skip-levels rely on confidentiality — using one to surface "feedback up the chain" without permission breaks the meeting type.
+</Note>
+
+### Candidate interview
+
+For evaluative interviews. Designed to push into your ATS scorecard. For a full hiring loop — rubrics, screens, reference checks, calibration debriefs — use the [hiring workflow](/workflows/hiring-workflow) instead; this section is the lighter version when interviews are one meeting type among several you run as a manager.
+
+```md
+Extract structured signal from this candidate interview. Be faithful to
+what the candidate actually said and demonstrated. Distinguish between:
+- Observed behaviors and stated experiences (cite specifics)
+- Your interpretation (flag as interpretation)
+- Unknowns (write "Unknown" — do not infer)
+
+Do not assess "fit" or use vague qualifiers like "smart" or "great." Use
+specific, evidence-grounded language tied to the competencies being
+evaluated.
+
+# Interview: {Candidate} — {Role} — YYYY-MM-DD
+**Interviewer:** {name}
+**Interview type:** {Behavioral | Technical | System design | Domain}
+
+## Competencies evaluated
+For each competency this interview was designed to assess:
+
+### {Competency}
+- **Specific evidence — positive:** what the candidate said or did,
+  with verbatim quotes where useful
+- **Specific evidence — concerns:** what raised concern
+- **Gaps:** what wasn't covered but probably should have been
+- **Rating:** Strong | Mixed | Weak | Insufficient signal
+
+## Questions asked
+List the questions, briefly, so the next interviewer can build on them
+rather than duplicate.
+
+## Candidate questions
+Questions the candidate asked us. Useful signal.
+
+## Risks / open questions for next interviewer
+Specific things the next interview should probe.
+
+## Hire recommendation
+Strong hire | Hire | No hire | Strong no hire
+
+**Reasoning:** three to five lines, evidence-grounded. Not "I liked
+them" but "in the system design question, they correctly identified
+X and Y but missed Z."
+
+## Scorecard-ready notes
+A five- to ten-line summary to paste directly into the ATS scorecard.
+Evidence-led, no vague language.
+```
+
+The "no vague qualifiers" rule is the most important constraint. "Smart," "great culture fit," "didn't vibe" — none of these are interview signal. Evidence-grounded language is what survives the calibration meeting. Push the **Scorecard-ready notes** to your ATS within 30 minutes of the interview — interview signal decays fast.
+
+### Standup
+
+For brief team-wide status meetings. Light touch — standups do not need elaborate artifacts.
+
+```md
+Produce a status snapshot from this standup. Brief. No filler.
+
+# {Team} Standup — YYYY-MM-DD
+
+## Updates by person
+- **{Name}:** what they did since last standup, what they're doing next,
+  what's blocking them
+
+## Active blockers
+- {Blocker} — {who's blocked} — {who could help}
+
+## Cross-team threads
+- {Thread} — {who needs to know}
+
+## Decisions or commitments
+- {Decision} — owner
+
+## Slack-postable summary
+A four- to six-line summary to post to the team channel. No emojis.
+Headline the most important update or blocker.
+```
+
+The Slack-postable summary is the part most teams actually use. Don't over-curate.
+
+## What this workflow doesn't do
+
+The biggest cross-meeting moves managers want — **performance review prep**, **promotion case building**, **interview calibration across a hiring loop**, **disengagement detection across a quarter of 1:1s** — all require synthesizing across many meetings. Earmark refines artifacts within a single meeting today; cross-meeting synthesis is not a one-click action.
+
+Workarounds:
+
+- **Performance review prep.** Manually compile the **Open threads**, **Commitments**, and **Career notes** sections from each 1:1 over the review period into a single context document. Run a synthesis task in Earmark using that document as input. Lower-effort than full transcript export; works.
+- **Promotion case building.** Same pattern as performance review prep, oriented to the competencies at the target level. The structure of the 1:1 template (specific moments, verbatim quotes, growth notes) gives you the raw material a defensible case needs.
+- **Interview calibration across a loop.** Paste each interviewer's **Scorecard-ready notes** into a single calibration document and run a synthesis prompt that highlights where interviewers aligned and where they diverged.
+- **Disengagement detection.** The hardest one to do today. Export [local transcript files](/earmark-basics/local-transcripts) for the report's 1:1s over the period and run external synthesis, or — and this works better than it sounds — manually scan the last quarter's artifacts. The structure of the template (topics tagged by who raised them, open threads carried forward) makes the patterns visible to a careful reader.
+- **Search across past 1:1s** with the [command menu](/earmark-basics/command-menu) (`Cmd+K` / `Ctrl+K`) when you want to find when a specific topic was first raised.
+
+## Common pitfalls
+
+- **Recording without consent.** Non-negotiable.
+- **Recording sensitive conversations that should not be recorded.** Comp delivery, terminations, mental health discussions. Hold the line. Use [temporary meetings](/earmark-basics/temporary-meetings) for sessions you want to capture without keeping.
+- **Sharing the artifact selectively.** The 1:1 artifact is a shared resource. Sometimes-sharing destroys trust faster than not-sharing at all. Pick one (always share) and commit.
+- **Private observations leaking into the shared artifact.** The model has no way to know what is private. The cleanup is where you enforce the boundary.
+- **Skipping the continuity loop.** Without reviewing open threads at the top of every 1:1, the workflow becomes a more efficient version of forgetfulness.
+- **Performance reviews written from recent memory anyway.** If you have six months of artifacts and still write the review from the past three weeks, you have defeated the purpose. Run the manual synthesis first.
+- **Vague interview scorecards.** "Smart, good fit" is not interview signal. Force evidence-grounded language.
+- **Sharing skip-level signal with the skip's manager.** Unless explicitly consented to. Skip-levels rely on confidentiality.
+- **Letting the workflow become surveillance.** The point is to support the relationship, not monitor the report. If you notice yourself using the artifacts for control rather than care, something has gone wrong.
+- **Forgetting that 1:1s are about presence.** The artifact is downstream of the conversation. If the workflow makes the conversation feel mediated or transactional, the conversation has to win.
+
+## Where to go next
+
+- [Workflows](/workflows) — the general shape this is an instance of
+- [Temporary meetings](/earmark-basics/temporary-meetings) — for sessions you want to capture without keeping
+- [Security and privacy](/security-and-privacy) — workspace isolation, no training on your data, retention controls
+- [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
+- [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding and using Customize context for prior-meeting carryover
+- [Composer](/using-earmark/composer) — for tuning a prompt before saving as a template
+- [Action items workflow](/workflows/action-items-workflow) — for the extraction layer this workflow lightly uses
+- [Shareable summaries workflow](/workflows/shareable-summaries-workflow) — for the audience-aware sharing pattern (different in tone for internal 1:1s)
+- [Structured meeting notes workflow](/workflows/structured-meeting-notes-workflow) — the workhorse skeleton this workflow specializes for relationship meetings

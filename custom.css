@@ -1,0 +1,24 @@
+/*
+ * Workflows sidebar hierarchy: group headers vs. child pages.
+ * Mintlify uses inline padding-left on nav items; these overrides add
+ * clearer separation when a group is expanded.
+ */
+
+#sidebar-content [data-title] > button[aria-label^="Toggle"] {
+  padding-left: 1rem !important;
+}
+
+#sidebar-content [data-title] > ul a[href],
+#sidebar-content [data-title] > ul li > a {
+  padding-left: 2.25rem !important;
+}
+
+/* Nested groups (if used elsewhere): indent one level deeper per depth */
+#sidebar-content [data-title] [data-title] > button[aria-label^="Toggle"] {
+  padding-left: 1.75rem !important;
+}
+
+#sidebar-content [data-title] [data-title] > ul a[href],
+#sidebar-content [data-title] [data-title] > ul li > a {
+  padding-left: 2.75rem !important;
+}

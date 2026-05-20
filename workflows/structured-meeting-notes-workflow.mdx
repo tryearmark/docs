@@ -1,0 +1,314 @@
+---
+title: "Structured meeting notes"
+description: "Turn every working meeting into a durable record of what was discussed, decided, committed to, and still open"
+keywords: ["meeting notes", "structured notes", "decision log", "action items", "open questions", "workflow", "agenda"]
+---
+
+Three failures show up everywhere meetings happen. Decisions get relitigated six months later because nobody captured the reasoning. Todos verbally agreed to in the room never make it onto a list with an owner and a date. Real questions get raised, set aside, and surface three meetings later as if they were new.
+
+None of these show up in any single meeting. They show up in the gap between meetings, which is the zone nobody owns.
+
+This is the workhorse Earmark workflow. If you only stand up one, stand up this one. The [customer research](/workflows/customer-research-workflow), [sales calls](/workflows/sales-calls-workflow), and [people and team meetings](/workflows/people-and-team-meetings-workflow) workflows are all variants of its skeleton.
+
+This guide is a specific instance of the [workflows](/workflows) pattern.
+
+## What the artifact looks like
+
+A worked example — a weekly leadership sync deciding launch readiness:
+
+```md
+# Weekly Leadership — 2026-03-04
+**Participants:** Jamie (CEO), Priya (Eng), Marco (Product), Lin (GTM)
+**Purpose:** Decide go/no-go on the March 18 launch.
+
+## Agenda 1: Launch readiness
+
+### Notes
+- Auth flow passed QA Friday; one enterprise SSO edge case remains.
+- Marketing site ready except pricing copy still under review.
+- Support not yet trained on the new flow.
+
+### Decisions
+- Launch date held at March 18.
+  > "We're not moving the date for a copy edit." — Jamie
+
+### Todos
+- [ ] Lin — finalize pricing copy — by 2026-03-11
+- [ ] Priya — close enterprise SSO edge case — by 2026-03-13
+- [ ] Marco — schedule support training — by 2026-03-10
+
+### Open questions
+- Soft-launch to existing customers Tuesday, or hold for public Wednesday?
+
+## Agenda 2: Q2 hiring
+[...]
+
+---
+
+## Shareable summary
+**Launch is March 18.** Pricing copy and SSO edge case close this week;
+support training Tuesday. Open: soft-launch vs. public-launch timing.
+```
+
+Five outputs in one artifact: per-item notes, decisions with verbatim reasoning, todos with owners and dates, open questions, and a Slack-postable summary at the bottom. Same shape, every meeting.
+
+## The template that produces it
+
+Earmark ships a `Real-Time Meeting Minutes and Action Items` built-in template ([see the library](/earmark-basics/templates)) that's the natural starting point. The version below is what you tune toward — copy this prompt into the [Composer](/using-earmark/composer), run it on a real meeting, refine, then save as a workspace template.
+
+```md
+Capture notes, todos, open questions, and decisions from this meeting.
+Include verbatim quotes from the transcript to support decisions and
+open questions. Organize notes by agenda items that were stated or
+that emerge organically. Be faithful to what was said — do not infer,
+embellish, or invent. If something is unclear, write "Unknown" rather
+than guessing.
+
+No emojis. No pleasantries, scheduling chatter, or filler. Favor
+brevity. Do not restate the same point in two sections.
+
+Spelling and naming conventions — do not reference these in the output:
+- {your product names, customer names, acronyms, common misspellings}
+
+Use this format:
+
+# {Meeting Name} — YYYY-MM-DD
+**Participants:** {list}
+**Purpose:** One sentence on why this meeting happened.
+
+## Agenda Item 1: {name}
+
+### Notes
+- Tight bullets on what was discussed. No filler.
+
+### Decisions
+- {Decision} — context: {one sentence on why}
+  > "Verbatim quote that captures the reasoning." — Speaker
+- If no decisions on this item, write "None."
+
+### Todos
+- [ ] {Owner} — {what} — by {deadline if stated; else "Unknown"}
+
+### Open questions
+- {Question} — raised by {speaker}
+  > "Quote with surrounding context if helpful."
+
+## Agenda Item 2: {name}
+[Same structure. Repeat for each item.]
+
+---
+
+## Shareable summary
+A 4–8 line summary I could post to Slack. No emojis. Lead with the
+headline — the most important decision or outcome. Then short bullets
+for the other decisions and todos. End with "Open questions to resolve
+before next meeting:" if any.
+```
+
+Four things in this prompt are load-bearing.
+
+**"Be faithful to what was said — do not infer."** This single instruction is the difference between an artifact people trust and one they quietly correct before sharing. The model will invent plausible structure unless told not to.
+
+**"If unclear, write 'Unknown' rather than guessing."** Specifically for owners and deadlines. A todo with a guessed deadline is worse than one marked Unknown — the guess looks authoritative and the team plans around it.
+
+**The vocabulary block.** Names, products, customers, acronyms, common misspellings the model will get wrong. This is the single most underrated piece of the template. List your terms and the model stops paraphrasing them into corporate-sounding alternatives.
+
+**The shareable summary as a separate section.** Most readers will only see this. The artifact has to produce it explicitly, with the headline promoted, or the team falls back to writing it manually every time.
+
+## Save it as a workspace template
+
+<Steps>
+<Step title="Run the built-in template on a real meeting">
+Add **Real-Time Meeting Minutes and Action Items** as a task from the [template library](/earmark-basics/templates). Run a real working meeting through it.
+</Step>
+<Step title="Rework the prompt in the Composer">
+Open the artifact in fullscreen. Use the [Composer](/using-earmark/composer) to iterate toward the shape above — add your vocabulary block, tighten the headings, require verbatim quotes on decisions. Watch the preview reshape until the artifact lands.
+</Step>
+<Step title="Save with Workspace visibility">
+Open the Composer menu and choose **Save as template**. Set visibility to **Workspace** so the team produces the same shape. See [Custom templates](/customization/custom-templates) for permissions and sharing.
+</Step>
+</Steps>
+
+<Tip>
+The vocabulary block lives in the template, not in each meeting's context. Update it monthly — new product names, new customer names, new acronyms — and every artifact downstream benefits from the same correction.
+</Tip>
+
+## Agenda hygiene is the highest-leverage habit
+
+The template works dramatically better when the meeting has named agenda items. Two habits cover it:
+
+- **Send the agenda in the calendar invite.** Three lines is enough. The template uses these as top-level headings.
+- **Name agenda transitions out loud.** "Moving to the staffing question." The model picks these up from the transcript and groups notes correctly.
+
+If there's no agenda, the template still produces a usable artifact — it'll find organic agenda items in the transcript — but the structure is noticeably looser. Thirty seconds in the calendar invite pays off compoundingly.
+
+## Run it on a single meeting
+
+<Steps>
+<Step title="Pre-seed the meeting">
+Open the meeting in Earmark before it starts and add your saved Structured Notes template as a task. See [Before a meeting](/using-earmark/before-a-meeting).
+</Step>
+<Step title="Customize context if needed">
+Use the **Customize context** dialog to add anything not obvious from the calendar invite — the decision the meeting needs to land, the people who couldn't attend, the constraint to keep in mind.
+</Step>
+<Step title="Run the meeting">
+Earmark generates the artifact live. Two habits help it be sharper:
+
+- Name decisions explicitly out loud ("OK, so we've decided X")
+- State todos with owners and dates ("Sam, you'll own the draft by Thursday")
+
+These are good meeting hygiene regardless of whether you're recording.
+</Step>
+<Step title="Spend five minutes on cleanup">
+This is the highest-leverage step in the whole workflow. The checklist:
+
+- **Cut hallucinated items.** If a todo or decision isn't grounded in the transcript, delete it.
+- **Confirm todo owners.** Ambiguous cases ("we should look into this") may get assigned to whoever spoke last. Fix.
+- **Confirm deadlines.** If one wasn't stated, leave it Unknown. Don't invent.
+- **Distinguish decided from discussed.** If it was discussed but not decided, move it to open questions.
+- **Sharpen the headline of the shareable summary.** Promote the most important thing from the body if the model didn't.
+</Step>
+<Step title="Route the outputs">
+Send the artifact to the destinations you picked when you set this up:
+
+- **Todos** → your task system. The [Linear integration](/integrations/linear) generates one ticket per todo with a link back to the artifact; for other task tools, paste.
+- **Decisions** → your decision log (a Notion page, a Confluence space, an internal wiki — whatever your team uses).
+- **Open questions** → the next meeting's calendar invite, as agenda items.
+- **Shareable summary** → the Slack channel or email list for that meeting series.
+- **Full artifact** → stays in Earmark as the source of truth.
+
+A good rule: do all of these in the same five-minute window as the cleanup. Splitting them across days is how things drop.
+</Step>
+</Steps>
+
+## Variations for recurring and high-stakes meetings
+
+The same workflow handles two adjacent cases with template tweaks.
+
+### Recurring team syncs
+
+For meetings that happen on a schedule — weekly leadership, project standups, business reviews. Add two sections to the universal template:
+
+```md
+## Status of last meeting's todos
+For each todo from the prior meeting (the artifact owner pastes them
+into the Customize context dialog before the call):
+- [x] / [ ] {Owner} — {what} — status from this conversation
+- If not mentioned this meeting, mark "Not discussed."
+
+## Open questions carried forward
+For each open question from last meeting:
+- Resolved: {how}  /  Still open  /  Reframed as: {new framing}
+```
+
+And at the bottom:
+
+```md
+## Rolling forward
+- Open questions for next meeting's agenda: {list}
+- Todos due before next meeting: {list, by owner}
+- Decisions to communicate broadly: {list, with channel}
+```
+
+<Note>
+Earmark refines artifacts within a single meeting — it doesn't automatically pull last meeting's todos into this one. The way to make the continuity loop work today is to paste last meeting's todos and open questions into the **Customize context** dialog before this meeting starts. The template instructs the model to use that context as the status section.
+</Note>
+
+### High-stakes decision meetings
+
+For meetings whose primary purpose is to make a decision — launch go/no-go, hiring decision, strategic bet, vendor selection. The decision becomes the centerpiece, not an item in a list. A separate template:
+
+```md
+Capture the decision-making process from this meeting. The primary
+artifact is a decision record. Notes, todos, and quotes support it.
+
+# Decision Record: {Title} — YYYY-MM-DD
+**Decision owner:** {who has the call}
+**Participants:** {list, with roles}
+**Context:** Two to three sentences on why this decision was needed now.
+
+## Options considered
+For each option discussed:
+
+### Option {N}: {name}
+- **What it is:** one to two sentences
+- **For:** bullets from the conversation
+- **Against:** bullets from the conversation
+- **Representative quote:** verbatim
+- **Outcome:** chosen | rejected | deferred
+
+## Decision
+{The decision in one to two sentences. Explicit and unambiguous.}
+
+## Reasoning
+Three to five bullets on why this option won, drawn from the conversation.
+
+## Dissents and reservations
+Anyone who pushed back, and what they said. Verbatim quotes.
+If everyone agreed, write "None recorded."
+
+## Reversibility
+Reversible | Hard to reverse — and what would trigger revisiting.
+
+## Todos to execute
+- [ ] {Owner} — {what} — by {deadline}
+
+## Communication plan
+- Who needs to know, through what channel.
+
+## Open questions
+- Anything still unresolved related to this decision.
+```
+
+Heavier than the universal template. Use it only when the decision is the point of the meeting. It pays off most when someone two years from now asks "why did we decide this?"
+
+## What this workflow doesn't do
+
+Earmark generates and refines artifacts inside a single meeting. Cross-meeting state — pulling last week's todos into this week's artifact automatically, or maintaining a running decision log inside Earmark — is not a one-click feature today.
+
+The way to make these work in practice:
+
+- **Continuity between recurring meetings:** the artifact owner pastes last meeting's todos and open questions into the **Customize context** dialog before the call. The template uses that context as the status section.
+- **A running decision log:** keep it as a separate page in your wiki of choice (Notion, Confluence, a single internal page). After each meeting, copy that meeting's decisions into the log with a link back to the artifact.
+- **Searching across meetings:** the [command menu](/earmark-basics/command-menu) (`Cmd+K` / `Ctrl+K`) is how you find "did we ever decide X" without spanning meetings.
+- **A team-wide rollup:** export [local transcript files](/earmark-basics/local-transcripts) and run external synthesis when you want a quarterly review.
+
+The repeatable template is what makes any of these durable. Without it, the destinations have nothing aggregateable to receive.
+
+## Common pitfalls
+
+- **No agenda.** The template degrades noticeably without named agenda items. Thirty seconds in the calendar invite is the fix.
+- **Skipping the five-minute cleanup.** Auto-generated artifacts have noise. Without curation, the noise compounds and trust in the artifact erodes.
+- **Todos that live only in the artifact.** Todos that don't make it to the task system don't get done. The artifact is the record, not the work surface.
+- **Treating discussion as decision.** "We talked about X" is not a decision. Be strict about what the Decisions section contains.
+- **Open questions accumulating.** A list of eighty indefinitely-open questions is a list nobody reads. Resolve, convert to todos, or retire — but don't let them sit.
+- **Vocabulary drift.** New product names, new customer names, new acronyms emerge constantly. Update the vocabulary block monthly.
+- **Template sprawl.** The universal template covers most meetings. The recurring and decision variants cover the rest. Three is enough.
+- **Posting the full notes everywhere.** Channels get noisy, people unsubscribe, the summary stops being read. Post the shareable summary; link the full artifact.
+- **No decision log.** The highest-regret omission. Start one in week one — even an empty Notion page is enough — and fill it in as you go.
+- **Owner change without handoff.** When the meeting owner changes, the cleanup discipline often lapses. Hand off the workflow explicitly — not only the meeting.
+
+## Quickstart checklist
+
+For a team standing this up from scratch:
+
+- Pick two or three meetings to start with — not all of them
+- Add a one-line agenda habit to those calendar invites
+- Write your vocabulary block (names, products, customers, acronyms)
+- Pick destinations: task system, decision log location, Slack channel
+- Assign a cleanup owner for each recurring meeting
+- Save the universal template as a workspace template with your vocabulary block inserted
+- Run it on the next three meetings, with the five-minute cleanup each time
+- Start the decision log — create the page, even if empty
+- After two weeks, add the recurring-sync variant for any meeting that happens on a schedule
+- After a month, review which meetings the workflow is paying off in and expand from there
+
+## Where to go next
+
+- [Workflows](/workflows) — the general shape this is an instance of
+- [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
+- [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding tasks and using Customize context for continuity
+- [After a meeting](/using-earmark/after-a-meeting) — producing audience-specific outputs from the same transcript
+- [Customer research workflow](/workflows/customer-research-workflow) — the same skeleton, specialized for discovery and user interviews
+- [People and team meetings workflow](/workflows/people-and-team-meetings-workflow) — the same skeleton, specialized for 1:1s, skip-levels, interviews, and standups
+- [Shareable summaries workflow](/workflows/shareable-summaries-workflow) — the communication layer for the shareable summary section
