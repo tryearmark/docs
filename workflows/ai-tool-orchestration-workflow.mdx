@@ -1,10 +1,10 @@
 ---
 title: "AI tool orchestration"
-description: "Use Earmark as the contextual substrate for your entire AI tool stack — converting meetings into well-shaped prompts for Claude Code, Cursor, v0, Perplexity, and the specialized AI tools your work depends on"
-keywords: ["AI prompts", "Claude Code", "Cursor", "v0", "Perplexity", "system prompt", "AI orchestration", "workflow"]
+description: "Use Earmark as the contextual substrate for your entire AI tool stack — converting meetings into well-shaped prompts for Claude Code, Cursor, v0, Perplexity, Obsidian, and the specialized AI tools your work depends on"
+keywords: ["AI prompts", "Claude Code", "Cursor", "v0", "Perplexity", "Obsidian", "system prompt", "AI orchestration", "workflow"]
 ---
 
-The AI tool landscape has fragmented. Where a year ago you had ChatGPT and Claude as general assistants, today you have a dozen specialized tools: Claude Code and Cursor for engineering, v0 for React components, Lovable and Bolt for full-stack apps, Figma Make for UI prototypes, Perplexity for research, Notebook LM for source-grounded analysis. Each tool is dramatically better at its specialty than a general assistant. Each, used well, can produce real artifacts that previously required a specialist.
+The AI tool landscape has fragmented. Where a year ago you had ChatGPT and Claude as general assistants, today you have a dozen specialized tools: Claude Code and Cursor for engineering, v0 for React components, Lovable and Bolt for full-stack apps, Figma Make for UI prototypes, Perplexity for research, Notebook LM for source-grounded analysis, and Obsidian for durable markdown notes and linked knowledge bases. Each tool is dramatically better at its specialty than a general assistant. Each, used well, can produce real artifacts that previously required a specialist.
 
 The catch is the same as the general-purpose case, amplified: these tools are starved of good context. They're excellent at producing artifacts from well-shaped prompts; they're mediocre at producing artifacts from thin prompts. The quality of what you get out is determined by what you put in. The marginal cost of producing an artifact has dropped to near-zero; the marginal cost of producing a *good* artifact is still dominated by the human time spent shaping the prompt.
 
@@ -40,6 +40,7 @@ Before standing this up, inventory what you actually use and what each tool is g
 | Web research | Perplexity | Web research with citations |
 | Source-grounded analysis | Notebook LM | Analysis across uploaded documents |
 | Slide deck generation | Gamma, Beautiful.ai | First-draft slide design from structured content |
+| Knowledge vault / linked notes | Obsidian | Meeting-derived notes, analyses, and prompt libraries in markdown; wikilinks and tags for retrieval |
 | Persistent assistants | Custom GPTs, Claude Projects | Persistent assistants for specific recurring tasks |
 
 Earmark has direct integrations with Cursor, v0, Codex, and Linear (linked above). The rest are paste targets — Earmark generates the prompt; you paste into the tool.
@@ -61,6 +62,8 @@ Each AI tool has prompt patterns that work better than others:
 **Perplexity** — a research question, not a search query; context for why you're asking; source quality preferences (academic, recent news, primary sources); output format.
 
 **Notebook LM** — pre-uploaded source documents; the question framed against the sources; citations expected.
+
+**Obsidian** — markdown-native output; `[[wikilinks]]` to related notes where cross-referencing helps; YAML frontmatter when metadata matters (meeting date, project, tags); folder or MOC structure the vault already uses. For AI plugins in the vault (Copilot, Smart Connections, and similar), paste shaped prompts the same way you would into Claude or ChatGPT — the vault is the context layer; Earmark supplies the meeting-grounded prompt.
 
 The templates below produce prompts that match these expectations. The accuracy of the match is what determines tool output quality.
 
@@ -103,7 +106,7 @@ Format:
 
 # Prompt for {Target Tool}
 **Target tool:** {Claude Code | Cursor | v0 | etc.}
-**Source meeting:** {Meeting name — date — Earmark link}
+**Source meeting:** {Meeting name — date}
 
 ---
 
@@ -176,7 +179,7 @@ Format:
 
 # Prompt for {Target Tool}
 **Target tool:** {tool name}
-**Source meeting:** {Meeting name — date — Earmark link}
+**Source meeting:** {Meeting name — date}
 **Purpose:** {What I want to do with the output}
 
 ---
@@ -252,7 +255,7 @@ Format:
 
 # Prompt for {Target Tool}
 **Target tool:** {tool name}
-**Source meeting:** {Meeting name — date — Earmark link}
+**Source meeting:** {Meeting name — date}
 **Document type:** {PRD | Email | Memo | Blog post | Report}
 
 ---
@@ -332,7 +335,7 @@ Format:
 # System Prompt for {Target Assistant}
 **Target:** {Claude Project / Custom GPT / other}
 **Purpose:** {What this assistant exists to help with}
-**Source:** {Meeting(s) — Earmark link(s)}
+**Source:** {Meeting(s)}
 
 ---
 
@@ -420,7 +423,7 @@ The curation is lighter than for most workflow artifacts because the artifact is
 - **Scrub for sensitive content.** The prompt goes to a third-party AI service. Customer names, financial data, confidential strategy — handle per your team's external-AI policy.
 </Step>
 <Step title="Paste into the downstream tool">
-The prompt is ready. Paste into Claude Code, Cursor, v0, Claude, Perplexity, or whichever tool the prompt was shaped for.
+The prompt is ready. Paste into Claude Code, Cursor, v0, Claude, Perplexity, Obsidian (or an Obsidian AI plugin), or whichever tool the prompt was shaped for.
 </Step>
 <Step title="Evaluate the output and iterate">
 Does it match what you wanted? If yes, use the artifact. If no, refine the prompt (see iteration section below). Real use is iterative; expect two to four rounds for substantive outputs.
@@ -476,7 +479,8 @@ The workflow has its own version of systems of record — different from documen
 
 **The prompt library.** A maintained library of prompts that have worked well. Tools:
 
-- Notion / Coda / Obsidian database — most flexible; tag-rich; supports both personal and team libraries
+- **Obsidian** — markdown vault with tags, wikilinks, and Dataview; strong for personal libraries and small teams syncing a shared vault
+- Notion / Coda database — flexible; tag-rich; supports both personal and team libraries
 - A dedicated prompts repo (Git) — for engineering teams; version-controlled; reviewable
 - Specialized prompt management tools (PromptHub, Latitude, PromptLayer) — for teams managing many prompts at scale
 - A simple Google Sheet or Airtable — sufficient for personal use
@@ -485,7 +489,7 @@ Per prompt, capture: the prompt itself, the target tool, the use case, a quality
 
 **The system prompt store.** For persistent system prompts (Template D), the destination is the tool itself. But maintain a backup in a doc repo so the prompts you've invested in are portable when you migrate between tools.
 
-**The artifact archive.** Outputs from downstream tools go to their normal destinations — code into the codebase, analyses into project docs, docs into the destination doc tool. Capture which prompts produced which artifacts. Tag the artifact with the prompt that generated it. When you want to *"do something like that again,"* you can find both.
+**The artifact archive.** Outputs from downstream tools go to their normal destinations — code into the codebase, analyses into project docs, long-form writing into Notion or Confluence, durable markdown into an **Obsidian** vault. Capture which prompts produced which artifacts. Tag the artifact with the prompt that generated it. When you want to *"do something like that again,"* you can find both.
 
 **The source link.** Every prompt should retain a link back to the source meeting in Earmark. The chain is: meeting → meta-prompt → tool output → artifact. Each step links backward; future you can trace any artifact back to the conversation that informed the prompt that produced it.
 
