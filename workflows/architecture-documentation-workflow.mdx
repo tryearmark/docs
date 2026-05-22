@@ -1,0 +1,601 @@
+---
+title: "Architecture documentation"
+description: "Convert architecture reviews, technical design sessions, and engineering debates into the ADRs, SDDs, sequence diagrams, and integration specs your codebase needs — preserving the reasoning future engineers will look for"
+keywords: ["architecture", "ADR", "SDD", "system design", "technical documentation", "engineering", "workflow"]
+---
+
+Engineering teams make consequential architectural decisions every week — in design reviews, technical deep-dives, incident retrospectives that surface design flaws, deliberate sessions that pick between competing approaches. The decisions are real. The trade-offs get debated. The team arrives at a choice and moves on to implementation.
+
+What doesn't happen, at most companies, is the corresponding documentation. The decision gets made in conversation; the conversation ends; implementation begins; the reasoning that drove the choice exists only in the heads of the people who were in the meeting, and only for a few weeks. By the time someone needs to understand why the system was built this way — usually six months later, usually because something has gone wrong or a debate has restarted — the reasoning is gone.
+
+A new engineer asks why a service is deployed unusually. Three teammates give three different answers, none confident. A design debate restarts a year after it was settled with the same trade-offs, the same opinions, the same conclusion — because no one wrote down why the original conclusion was reached. An incident reveals a brittle dependency; the team asks why it exists; the honest answer is *"I think someone added it because of X — let me find out."* Hours of archaeology to recover a decision that was made deliberately and well.
+
+The code preserves what was built. The documentation that should preserve *why* either doesn't exist or has decayed past usefulness.
+
+This guide is a specific instance of the [workflows](/workflows) pattern, applied to architectural and technical documentation. It pairs with the [meeting-to-tickets workflow](/workflows/meeting-to-tickets-workflow) (which captures what the team committed to build) and the [SOPs and playbooks workflow](/workflows/sops-and-playbooks-workflow) (which captures how the team operates the system). This workflow is for the design artifacts that explain how the system was conceived, what alternatives were considered, and why the chosen path was chosen.
+
+## Foundation
+
+### Pick your documentation taxonomy
+
+Architecture documentation comes in distinct types with distinct audiences and lifespans:
+
+| Type | Scope | Audience | Lifespan |
+| --- | --- | --- | --- |
+| **ADR** (Architecture Decision Record) | One decision | The team and future engineers | Permanent — even superseded ADRs stay as history |
+| **SDD** (System Design Document) | A system, service, or major component | Engineers building or operating the system | Living — updated as the system evolves |
+| **RFC** (Request for Comments) | A proposal under consideration | Engineers reviewing the proposal | Decision point — converted to ADR or rejected |
+| **Sequence / data flow doc** | How something flows through the system | Engineers debugging or modifying | Living |
+| **Integration / API design** | Interface between systems | Engineers on both sides | Living, versioned |
+| **Postmortem (architectural)** | What an incident revealed about design | The team and future engineers | Permanent |
+
+Most teams use three to five of these. Standardize the set; document what each is for; resist the urge to invent new categories. A small fixed taxonomy used consistently is more valuable than a perfect taxonomy the team can't remember.
+
+### Conventions worth being explicit about
+
+**ADR numbering and naming.** `ADR-0001` through `ADR-NNNN`, with consistent file naming. The number is permanent; the title can be human-readable.
+
+**Status field.** ADRs typically use: Proposed, Accepted, Deprecated, Superseded by ADR-XXXX. Communicates lifecycle without requiring readers to dig.
+
+**Diagram conventions.** Mermaid for in-doc; specific tooling for richer diagrams (Excalidraw, draw.io, Structurizr). Pick one primary tool; resist tool sprawl.
+
+**Code references.** When a doc references code, use stable identifiers (paths, function names) and a commit hash or version if the reference might decay.
+
+**Length expectations.** ADRs: 1–3 pages. SDDs: 3–10 pages. RFCs: 3–6 pages. Anything longer is a sign the doc is doing too much.
+
+### Source meetings
+
+Architecture documentation typically comes from one of five meeting types:
+
+| Source meeting | Likely artifact |
+| --- | --- |
+| Design review (early-stage) | RFC or SDD draft |
+| Design review (late-stage) | SDD, ADR finalization |
+| Architecture debate / trade-off discussion | ADR |
+| Technical deep-dive / explanation | SDD or sequence diagram |
+| Postmortem with architectural implications | Postmortem ADR or SDD update |
+
+A design review still exploring options produces an RFC; a design review where the decision is being finalized produces an ADR. Both are valuable; they're different artifacts.
+
+### Destination
+
+Architecture docs live in specific places:
+
+| Destination | Best for |
+| --- | --- |
+| In-repo `docs/architecture/` directory (MADR pattern) | Engineering-led teams; docs versioned with code; reviewed via PRs |
+| Dedicated ADR repository | Teams that want ADRs prominently versioned and reviewable |
+| Confluence with strict tagging | Enterprise teams; integrates with Jira |
+| Notion with database structure | Mid-size teams; flexible, navigable |
+| Backstage or similar developer portals | Scaled engineering orgs; integrates with service catalogs |
+| Internal wiki (MkDocs, Docusaurus, GitBook) | Engineering-led documentation, published as a navigable site |
+
+For ADRs specifically, the in-repo `docs/architecture/decisions/` pattern (MADR — Markdown ADRs) has the strongest track record. Code and decisions live together; both are versioned; both get reviewed via PR.
+
+### Ownership and review
+
+Each architecture document has an **author** (the person who writes it, usually whoever ran the discussion), **reviewers** (specific people whose technical review is required before the doc is accepted), and **status owners** (the people who maintain the doc as the system evolves — often the team that owns the related service).
+
+For ADRs: the review process should result in a clear Accepted or Rejected status. ADRs that stay in Proposed forever are functionally rejected — they don't govern anyone's work. Force closure.
+
+## The four templates
+
+### Template A — System Design Document
+
+For substantial designs: a new service, a major refactor, a system that warrants its own design doc.
+
+```md
+Based on this meeting transcript (a design review, system deep-dive,
+or architectural deep-dive), produce a system design document. Be
+technically rigorous. Do not invent design choices that weren't
+discussed. Where the meeting was vague, write "To be specified" and
+add the question to the open-questions section.
+
+Audience: engineering — current team and engineers joining the system
+later.
+
+No emojis. Length 1500–3000 words.
+
+Format:
+
+# SDD: {System / Feature Name}
+**Status:** Draft / Under Review / Accepted
+**Author:** {Name}
+**Reviewers:** {Names}
+**Source discussion(s):** {Meeting name(s) — date(s)}
+**Created:** {date}
+**Last updated:** {date}
+**Related:** {ADR numbers, related SDDs, PRDs that motivated this}
+
+## Summary
+Two to four sentences. What this design covers and the headline approach.
+
+## Context and motivation
+Two to four paragraphs.
+- The problem this system addresses
+- The current state and its limitations
+- The trigger for designing this now
+- What this design unlocks
+
+## Goals and non-goals
+**Goals:**
+- {Specific outcome the design must achieve}
+
+**Non-goals:**
+- {What this design explicitly does NOT address — to bound scope}
+
+## High-level architecture
+A diagram (Mermaid in-doc, or referenced from a separate tool). For
+each major component:
+
+### {Component name}
+- **Purpose:** what this component does
+- **Responsibility:** what it owns
+- **Dependencies:** what it depends on (upstream)
+- **Consumers:** what depends on it (downstream)
+- **State:** stateful / stateless; if stateful, what state and where
+
+## Data flow
+How data moves through the system. Reference a sequence diagram if
+the flow is complex.
+
+## Data model
+Key entities and their relationships. Link to schema definitions
+rather than inlining if schemas are large.
+
+## API surface
+External-facing interfaces. Or reference a separate integration doc
+(Template D) if substantial.
+
+## Non-functional requirements
+- **Performance:** target latency, throughput, scaling
+- **Reliability:** SLOs, failure modes, recovery
+- **Security:** authentication, authorization, data protection
+- **Cost:** infrastructure estimates, optimization considerations
+- **Observability:** logging, metrics, tracing requirements
+- **Compliance:** any regulatory considerations
+
+## Alternatives considered
+For each material alternative discussed:
+
+### Alternative: {name}
+- **Approach:** description
+- **Pros:** from the discussion
+- **Cons:** from the discussion
+- **Rejected because:** specific reasoning
+
+## Migration / rollout plan
+- Phasing, feature flags, backward compatibility, rollback
+
+## Testing strategy
+- Unit, integration, load, manual / exploratory
+
+## Risks
+- **Risk:** description — likelihood / impact — mitigation
+
+## Open questions
+- {Question} — owner — target resolution
+
+## Decisions deferred
+Choices that don't need to be made now but will:
+- {Decision} — when it needs to be made — what would trigger it
+
+## Glossary
+Terms specific to this design.
+
+## References
+- Related ADRs
+- Related SDDs
+- Code locations
+- External references
+```
+
+The **Alternatives considered** section is what separates SDDs that teach from SDDs that only describe. Future engineers reading *"we chose X"* learn the choice but not the reasoning. Future engineers reading *"we considered X, Y, and Z; X won because [specific reasoning]"* inherit the design judgment, not only the design.
+
+### Template B — Architecture Decision Record
+
+For a single decision. Smaller scope than an SDD; same rigor about reasoning.
+
+```md
+Based on this meeting transcript where an architectural decision was
+made, produce an ADR following the MADR (Markdown ADR) pattern. Be
+specific about what was decided, why, and what alternatives were
+rejected. Future engineers reading this should understand the
+trade-offs the team considered.
+
+Format:
+
+# ADR-{NNNN}: {Short, specific title — verb-led}
+
+**Status:** Proposed | Accepted | Deprecated | Superseded by ADR-XXXX
+**Date:** {decision date}
+**Authors:** {names}
+**Reviewers / approvers:** {names}
+**Source discussion:** {Meeting name — date}
+**Related ADRs:** {list}
+
+## Context
+What's the situation? Why do we need to make this decision now?
+
+Two to four paragraphs. Specific. Include:
+- The forces at play (technical, business, organizational)
+- Constraints we're operating within
+- What's at stake — what happens if we choose well vs. poorly
+
+## Decision
+We will {verb-led decision statement, specific and unambiguous}.
+
+Two to four sentences elaborating: what specifically is being adopted?
+How will it be implemented? Scope of the decision?
+
+## Consequences
+
+**Positive:**
+- {Specific outcome we expect}
+
+**Negative:**
+- {Specific cost or constraint we're accepting}
+
+**Neutral / mixed:**
+- {Trade-offs that aren't clearly good or bad}
+
+## Alternatives considered
+
+### {Alternative 1 name}
+- **What it was:** one to two sentences
+- **Why considered:** the appeal of this option
+- **Why rejected:** the specific reasoning that distinguished it from
+  the chosen path
+
+### {Alternative 2 name}
+[Same structure]
+
+### Doing nothing / status quo
+(Always include this one explicitly.)
+- **Why considered:** the appeal of not changing
+- **Why rejected:** why we needed to act
+
+## Implementation notes
+- {Specific implementation guidance}
+
+## Risks and mitigations
+- **Risk:** description — **Mitigation:** approach
+
+## Validation
+How we'll know if this decision turns out to have been right:
+- {Specific signal we'll watch for}
+- {Specific metric or behavior}
+- **When to revisit:** trigger or timeline
+
+## References
+- Code locations where this decision is materialized
+- Related ADRs
+- External references (docs, papers, prior art)
+```
+
+The **Validation** section is the part most ADRs omit and the part that most distinguishes ADRs that compound from ADRs that decay. A decision without a way to evaluate it later becomes lore. A decision with explicit validation criteria becomes evidence the team can revisit deliberately.
+
+The "Doing nothing / status quo" alternative is always included. Most ADRs skip it. Including it forces the team to articulate why the work is worth doing at all — the comparison case is *"we keep our current state,"* and surprisingly often that comparison is closer than the team realized.
+
+### Template C — Sequence or data flow document
+
+For documenting how requests, data, or control flow through the system. The artifact that answers *"how does X actually work?"* with specificity.
+
+```md
+Based on this meeting transcript (a technical deep-dive, debugging
+session, or system explanation), produce a sequence or data flow
+document. The goal is to make a specific flow concrete enough that
+an engineer unfamiliar with the system could trace it.
+
+Format:
+
+# {Flow Name}: How {X} Happens
+**Status:** Current as of {date}
+**Last verified:** {date}
+**Author:** {name}
+**Source discussion:** {Meeting name}
+**Related SDD:** {link}
+
+## What this flow does
+One to two sentences. The flow's purpose; user-visible outcome if any.
+
+## When this flow runs
+- **Trigger:** what initiates it
+- **Frequency:** how often it runs
+- **Variants:** common variations and when each applies
+
+## Participants
+Components / services / systems involved:
+- **{Component}:** its role in this flow
+
+## High-level sequence
+Mermaid sequence diagram (the model produces this directly from the
+discussion):
+
+```mermaid
+sequenceDiagram
+    participant A as {Component A}
+    participant B as {Component B}
+    participant C as {Component C}
+    A->>B: {request / message}
+    B->>C: {lookup / call}
+    C-->>B: {response}
+    B-->>A: {response}
+\```
+
+## Step-by-step detail
+
+### Step 1: {Component A receives X}
+- **Input:** what arrives, including format and source
+- **What happens:** specific operations
+- **Validation:** any checks performed
+- **Output:** what gets passed on, to where
+- **Failure modes:** what can go wrong, how it's handled
+
+### Step 2: {Next step}
+[Same structure]
+
+## Data shapes
+The structure of key data at each stage:
+- At {stage}: structure or schema reference
+
+## Alternative paths
+- If {condition}: how the flow differs
+- If {error condition}: error handling and recovery
+
+## Timing characteristics
+- Total latency (typical)
+- Bottleneck: where time is most spent
+- Variability: what affects timing
+
+## Observability
+- **Logs:** where to look, what to filter for
+- **Metrics:** relevant dashboards or queries
+- **Traces:** trace patterns specific to this flow
+
+## Common debugging scenarios
+- **Symptom:** observable problem → **Likely cause** → **How to verify**
+
+## Recent changes
+| Date | What changed | Why | Author |
+```
+
+The combination of high-level diagram and step-by-step detail is what makes this template useful. The diagram is for scanning; the detail is for debugging. Both audiences are served from the same artifact.
+
+### Template D — Integration / API design
+
+For documenting interfaces between systems. The audience includes the team(s) on the other side of the interface.
+
+```md
+Based on this meeting transcript (an integration design discussion
+or API design session), produce an integration / API design document.
+The document defines the contract between systems; both sides should
+be able to implement against it.
+
+Format:
+
+# Integration: {System A} ↔ {System B} — {Purpose}
+**Status:** Proposed / Accepted / Deprecated
+**Version:** v1.0
+**Authors:** {from both teams ideally}
+**Reviewers / approvers:** {tech leads from both sides}
+**Source discussion:** {Meeting name}
+
+## Purpose
+Two to three sentences. What this integration enables.
+
+## Scope
+- **In scope:** what this integration covers
+- **Out of scope:** what it doesn't
+
+## High-level architecture
+- Direction(s) of data flow: A→B, B→A, or bidirectional
+- Synchronous or asynchronous (and why)
+- Authentication model: how the systems authenticate to each other
+- Diagram: reference or inline
+
+## The contract
+
+### {Endpoint / Topic / Method Name}
+- **Owner:** which side owns the contract
+- **Operation:** HTTP method / queue topic / gRPC method
+- **Purpose:** what this operation does
+- **Request:** schema or example; required fields; validation rules
+- **Response:** schema or example; success cases; error responses with
+  codes, structure, and when each occurs
+- **Idempotency:** is this operation idempotent? If yes, how?
+- **Authentication / authorization:** requirements
+- **Rate limits:** if applicable
+- **SLOs:** target latency, availability
+
+[Repeat for each endpoint / operation]
+
+## Semantic notes
+Anything about the contract that isn't obvious from the schema:
+- {Semantic}: clarification
+
+## Versioning and compatibility
+- **Versioning scheme:** how versions are identified
+- **Breaking changes policy:** what counts as breaking; how handled
+- **Deprecation timeline:** how long old versions are supported
+- **Backward compatibility commitments:** what's promised
+
+## Error handling
+- Retry policy: recommended retries, backoff
+- Failure modes: what each side does when the other fails
+- Circuit breakers: if applicable
+
+## Observability
+- Tracing: trace context propagation
+- Logging: what each side logs at the boundary
+- Metrics: SLI metrics relevant to the contract
+
+## Security considerations
+- Data classification: what data crosses the boundary
+- Encryption: in-transit, at-rest
+- PII handling: if applicable
+- Audit trail: what's logged for compliance
+
+## Operational considerations
+- Deployment coordination: how changes are rolled out across both sides
+- Incident response: who's responsible when integration breaks
+- Onboarding new consumers / producers: process
+
+## Open questions
+- {Question requiring resolution before implementation}
+
+## References
+- Related contracts
+- Implementing services on each side
+- Code locations
+```
+
+The **Versioning and compatibility** section is the part teams skip in early-stage integration design and regret skipping later. Contracts that survive evolution need an explicit policy for how they evolve.
+
+## Save them as workspace templates
+
+<Steps>
+<Step title="Start with the format you need most">
+Most engineering teams start with Template B (ADR) since architectural decisions happen more often than full SDDs. Save ADR first; add SDD when you have a substantial system design coming up.
+</Step>
+<Step title="Tune to your team's conventions">
+ADR numbering, status field options, diagram tool choice — adjust to what your team uses. The template's structure should match your existing patterns rather than introducing new ones.
+</Step>
+<Step title="Save with Workspace visibility">
+Architecture documentation is a team standard. **Workspace** visibility means every tech lead produces docs in the same shape. See [Custom templates](/customization/custom-templates).
+</Step>
+</Steps>
+
+## Running the workflow on a single meeting
+
+<Steps>
+<Step title="Pre-seed the source meeting">
+Match the template to the meeting type. Substantial design review → SDD. Focused architectural debate → ADR. Technical deep-dive on how something works → sequence/data flow doc. Inter-system contract discussion → integration doc. For meetings that produce multiple artifacts, run multiple templates against the same source after the fact. See [Before a meeting](/using-earmark/before-a-meeting).
+</Step>
+<Step title="State the right things during the meeting">
+A few habits make the documentation noticeably sharper:
+
+- **Articulate alternatives explicitly.** *"We could do X, or Y, or Z."* Even if the team has converged, naming the alternatives out loud preserves them for the doc. Future readers learn from the alternatives more than from the chosen path.
+- **State trade-offs in terms of consequences.** *"If we go with X, we're accepting a specific cost in exchange for a specific benefit."*
+- **Name decisions explicitly.** *"OK, we've decided to go with X."* Decisions that get made implicitly are harder for the model to identify cleanly.
+- **Use specific component / service names.** *"The auth service"* and *"the gateway"* rather than *"this thing"* and *"that part."*
+- **Walk through flows concretely.** For sequence diagrams, narrate the actual flow at least once. The narration is what the diagram captures.
+</Step>
+<Step title="The 30-to-60-minute curation pass">
+For architecture docs, the curation is technical-rigor work, not voice work. The audience is engineers; accuracy, completeness, and technical clarity matter.
+
+- **Read the draft as an engineer who wasn't in the meeting.** Is the design clear? Could they implement against it?
+- **Verify technical accuracy.** The model can misunderstand technical claims, especially around specific frameworks, libraries, or systems. Read carefully.
+- **Confirm alternatives and rejection reasoning.** The model often captures alternatives but loses the reasoning for rejection. Strengthen this section — it's where the doc earns long-term value.
+- **Add diagrams.** Embed Mermaid where the model produced it; reference separately-created diagrams for richer cases (see the next section).
+- **Confirm code references are stable.** File paths, function names, version references. Code moves; the doc should reference things that will resolve in six months.
+- **Add validation criteria.** For ADRs especially, *"how will we know if this was right?"* often needs to be added — the meeting may not have surfaced it explicitly.
+- **Write the summary last.** The model produces a summary; rewrite it after the rest of the doc is finalized so it reflects the final document.
+</Step>
+<Step title="Review and force a decision">
+Architecture docs go through technical review. The pattern: author publishes Proposed; reviewers comment; revisions; explicit decision — Accepted, Rejected, or Needs Major Revision; status updated.
+
+For in-repo ADRs, this often happens via PR. Force a decision; don't let docs sit in "Proposed" indefinitely.
+</Step>
+<Step title="Cross-link and publish">
+Link from related code (often via `// See ADR-NNNN` comments in code that materializes the decision); link from related ADRs/SDDs (forward and backward references); index in your team's architecture directory; announce in the relevant engineering channel.
+
+This is what makes the doc findable when it's needed.
+</Step>
+</Steps>
+
+## Multi-meeting synthesis and the ADR chain
+
+Some architectural decisions emerge over multiple meetings — a design review surfaces options; a follow-up debate narrows them; a third session finalizes the choice. Earmark refines artifacts within a single meeting today; cross-meeting synthesis uses the standard manual workaround: tag the source meetings with a consistent identifier; paste the relevant artifacts from each into a Customize-context document; run the template against the assembled corpus. The output draws from all of them with attribution per section.
+
+**The ADR chain.** Architecture decisions build on each other. An ADR that says *"we'll use approach X"* gets superseded a year later by an ADR that says *"X didn't work as expected; we're moving to Y."* The chain matters. The convention:
+
+- Superseding ADRs reference the ADRs they replace explicitly
+- Superseded ADRs get their status updated to *"Superseded by ADR-NNNN"*
+- The original ADR is preserved (not deleted) — its reasoning is part of the team's history
+- The chain reads as a navigable record of the team's evolving understanding
+
+This is what makes ADRs compound. Each new decision references its predecessors; the architecture's history is traceable.
+
+**SDDs as living documents.** SDDs aren't one-meeting artifacts; they live for years as the system evolves. Each substantive change gets logged in the SDD's change log. Quarterly, the SDD owner audits the doc: does it still describe the system as it exists? Have components been renamed, added, or deprecated? Have flows changed? Are the non-functional characteristics still accurate? Without this audit, SDDs decay into historical fiction.
+
+## Diagrams: the special case
+
+Architecture docs need diagrams. Diagrams are the part the model can partially produce and the part that often needs human authorship.
+
+**What the model produces well.** Mermaid is the default for in-doc diagrams. The model generates Mermaid syntax directly from the meeting transcript for sequence diagrams, class / entity diagrams (Mermaid or PlantUML), state diagrams, simple flowcharts, and ASCII-art component diagrams for simple architectures. The diagram renders in most documentation tools that support Mermaid (Notion, Confluence, GitHub markdown, GitLab, MkDocs).
+
+**What requires human authorship.** More complex diagrams typically need a separate tool: C4 architecture diagrams (Structurizr, Lucidchart, draw.io); multi-service architecture diagrams with significant visual styling (Excalidraw, Figma, Miro); deployment diagrams (infrastructure, regions, network); detailed data-flow diagrams with annotations; diagrams for executive or external audiences where polish matters. The workflow's role is to extract the *content* of the diagram from the meeting (what components, what relationships, what flows); the human's role is to render it visually.
+
+**Keep diagrams current.** Diagrams decay faster than text. A six-month-old diagram of a system that's been refactored is worse than no diagram — it teaches a wrong model. Date every diagram. Re-verify during quarterly SDD audits. When a diagrammed flow changes materially, update the diagram in the same PR as the code change.
+
+## Routing into systems of record
+
+**In-repo `docs/architecture/`.** The MADR convention. ADRs as markdown files in `docs/architecture/decisions/`. Naming: `0001-decision-title.md`. SDDs in a parallel `docs/architecture/designs/` directory. Versioned with code; reviewable via PRs; engineers find docs where they already work. For most modern engineering teams, this is the right primary destination.
+
+**Architecture wiki / documentation site.** For docs that span repositories or that need to be discoverable beyond engineering. The principle: docs that govern multiple repos live separately and link into the relevant repos. Don't duplicate; cross-link.
+
+**Code-adjacent references.** For decisions that materialize in specific code locations, add a comment:
+
+```md
+// See ADR-0042 for the rationale behind this retry behavior
+```
+
+This makes the design intent visible at the line of code that implements it. New engineers reading the code can navigate to the rationale without knowing it exists.
+
+**Service catalog integration.** If your team uses Backstage, Cortex, or OpsLevel, link relevant ADRs and SDDs to the corresponding services. Engineers looking up *"what does the auth service do?"* see the SDD; engineers wondering *"why does it work this way?"* see the ADRs.
+
+**For engineering work that flows from architectural decisions**, the [Cursor](/integrations/cursor), [v0](/integrations/v0), and [Codex](/integrations/codex) integrations link the documented design to the prompts that implement it. The architectural doc explains *why*; the integration produces the code that realizes it.
+
+**Earmark as source.** The source meeting recordings stay in Earmark. Docs link back. When a future engineer reads an ADR and wants to understand a particular decision more deeply, the source meeting is one click away — including the debate, the alternatives that didn't make it into the doc, and the specific phrasings the team used.
+
+The architecture-doc library plus the paired source-meeting archive is more valuable than either alone. New engineers read the decisions and listen to the discussions that produced them.
+
+## Closing the loop
+
+**Architecture review cadence.** For teams with active architectural change: bi-weekly or monthly review. New ADRs and SDDs reviewed in batch. Outstanding "Proposed" docs forced to decision. SDDs flagged for currency review. The cadence is what prevents docs from sitting in Proposed forever and prevents SDDs from quietly going stale.
+
+**Post-implementation validation.** For every ADR, the Validation section specified what to watch to know if the decision was right. Six months after implementation, the ADR owner revisits: Did the predicted positive consequences materialize? Did the predicted negative consequences materialize? Did unanticipated consequences emerge? Should the decision be revised? The result: either the ADR stands as validated, or a new ADR supersedes it.
+
+This habit is the single most underrated part of architecture documentation. Most teams write ADRs and never revisit them. The teams that do revisit get measurably better at making future decisions because they're calibrating against real outcomes.
+
+**Incident-driven updates.** When an incident reveals an architectural gap or surfaces a misunderstood part of the system, the postmortem captures what was learned (use the [structured meeting notes workflow](/workflows/structured-meeting-notes-workflow)); the relevant ADRs and SDDs get updated to reflect the new understanding; if the incident revealed a wrong architectural assumption, a new ADR captures the lesson. Without incident-driven updates, the docs and the real system gradually diverge.
+
+## Common pitfalls
+
+- **ADRs without alternatives considered.** The most common omission and the one that most degrades long-term value.
+- **ADRs without validation criteria.** Without them, the ADR is a one-way document. Add them; revisit them.
+- **Stale SDDs.** The system evolves; the SDD doesn't. Within a year it describes a system that no longer exists. Quarterly currency reviews.
+- **Stale diagrams.** Worse than no diagrams. Teach a wrong mental model. Date them; verify them; update them.
+- **Docs in "Proposed" forever.** Force decisions. An ADR that never gets accepted is one that doesn't govern anyone's work but clutters the library.
+- **Inventing technical claims.** The model can produce plausible-sounding technical content that's wrong in subtle ways. The curation pass must verify technical accuracy.
+- **Skipping the consequences section.** Decisions without articulated consequences are decisions whose costs are unclaimed.
+- **No code-level references.** Architecture decisions implemented in code without code-level pointers to the ADR are decisions future engineers won't discover. Add `See ADR-NNNN` comments.
+- **One ADR for multiple decisions.** ADRs are atomic — one decision per ADR. Bundling makes the artifact harder to supersede later and harder to reference precisely.
+- **Vague decision language.** *"We should consider using X"* is not a decision. *"We will use X for all new services starting Q3"* is.
+- **Decisions made by committee, with no clear author.** Architecture docs need a single author. Group authorship dilutes accountability.
+- **Heavyweight RFC processes that produce few RFCs.** If your process takes weeks per doc, you're documenting only the largest decisions. Lower the cost; document more decisions. ADRs are deliberately lighter weight for this reason.
+- **No connection to the rest of the engineering workflow.** Architecture docs that aren't linked from code, service catalogs, or related docs become orphaned. Cross-link aggressively.
+- **Forgetting the meeting source.** Architecture docs without source-meeting links lose the deeper context. Always link.
+- **No post-implementation review.** The team writes ADRs but never revisits them. Future decisions don't benefit from past learning.
+
+## Where to go next
+
+- [Workflows](/workflows) — the general shape this is an instance of
+- [Meeting-to-tickets workflow](/workflows/meeting-to-tickets-workflow) — for the engineering work that flows from architectural decisions
+- [SOPs and playbooks workflow](/workflows/sops-and-playbooks-workflow) — for the operational procedures and runbooks that complement architecture docs
+- [Meeting-to-PRD workflow](/workflows/meeting-to-prd-workflow) — for product specs that motivate architectural work
+- [Structured meeting notes workflow](/workflows/structured-meeting-notes-workflow) — for capturing postmortems and process-design meetings
+- [Cursor integration](/integrations/cursor) — for coded implementation of architectural decisions
+- [v0 integration](/integrations/v0) — for UI components informed by architectural choices
+- [Codex integration](/integrations/codex) — for engineering tasks shaped by architecture docs
+- [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
+- [Composer](/using-earmark/composer) — for tuning the prompt before saving as a workspace template
+
+---
+
+The three highest-leverage parts of this workflow are the **Alternatives considered** section that distinguishes ADRs that teach from ADRs that only describe; the **Validation criteria** that turn each ADR into a testable claim about how the future will unfold; and the **post-implementation review cadence** that converts the ADR library from one-way documentation into a feedback loop the team learns from. The first preserves design judgment, not only design conclusions. The second forces explicit success criteria. The third is what makes the team's architecture-decision quality compound rather than plateau.
+
+Done well, this workflow makes the codebase's design intent legible. Future engineers don't have to reconstruct why decisions were made; they can read them. Architecture debates that previously took 90 minutes resolve in 30 seconds with a link. New hires ramp on the system meaningfully faster because the design history is navigable rather than oral. The team's most expensive class of decisions — the architectural ones — accumulates into a durable asset rather than evaporating after each meeting.
+
+The deeper effect is that engineering culture shifts. A team operating with documented architectural reasoning argues from evidence rather than from authority. Junior engineers can engage with senior engineers' decisions because the reasoning is visible. Disagreements get worked out on the merits because the merits are written down. The system's architecture stays coherent over years not because anyone is enforcing coherence top-down, but because each new decision is made in the context of a navigable history of prior ones.

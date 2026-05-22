@@ -1,0 +1,166 @@
+---
+title: "Customer research"
+description: "Turn customer calls into a structured record of pain, asks, and quotes — call by call"
+keywords: ["customer research", "user research", "discovery calls", "pain points", "feature requests", "verbatim quotes", "jobs to be done", "workflow"]
+---
+
+You ran a strong discovery call on Tuesday. By Friday, you can recall three things from it. By the time someone needs the quote for next quarter's roadmap argument, the call has dissolved into a vague impression. The conversation was valuable. The shape that would have kept it valuable wasn't there.
+
+A customer research workflow is that shape.
+
+This guide is a specific instance of the [workflows](/workflows) pattern. Same three pieces, applied to discovery, usability, and win/loss calls.
+
+## What the artifact looks like
+
+Every call you run through this workflow ends with the same kind of structured output. A worked example:
+
+```md
+# Customer Research — Acme Health (mid-market, healthcare)
+
+## Pain points
+- "We spend two hours every Monday reconciling vendor invoices by hand."
+  Severity: High
+- The current export breaks when more than 500 line items are selected.
+  Severity: Critical
+- Audit log shows that an invoice was approved, not who approved it.
+  Severity: Medium
+
+## Feature requests
+- Bulk export with a row-limit toggle (request — not a proposed solution)
+- Approver identity in audit log (request)
+
+## Verbatim quotes
+- "I trust the numbers. I just don't trust who signed off on them." — Jamie, Controller
+- "If you fix the export thing, we stay another year." — Jamie, Controller
+
+## Jobs to be done
+- Close the books on time without late-night cleanup
+- Pass internal audit without rebuilding the approval chain from memory
+
+## Open questions
+- How is Jamie's team currently handling the audit-log gap? Manual ledger?
+- Is the 500-row export limit specific to invoices or every report?
+
+## Notes for the team
+- Renewal due in Q3. Pricing was not raised; the product is the issue.
+```
+
+Same shape, every call. That's the property that makes 20 of these aggregate into something queryable when they land in a Notion table, an Airtable base, or a research repo.
+
+## The template that produces it
+
+The artifact above comes from running this prompt as a pre-seeded task in Earmark:
+
+```md
+Extract structured customer signal from this conversation. Use the format:
+
+# Customer Research — {Customer or segment}
+
+## Pain points
+- One per bullet. Use the user's words where possible.
+- Tag severity: Critical / High / Medium / Low.
+- If severity is unclear, write "Unknown" rather than guessing.
+
+## Feature requests
+- What the user asked for. Separate the request from any solution they proposed.
+
+## Verbatim quotes
+- Direct quotes worth keeping. Use quotation marks. Attribute the speaker.
+
+## Jobs to be done
+- The job the user is hiring our product to do.
+
+## Open questions
+- What we still don't know. Feeds the next interview.
+
+## Notes for the team
+- Anything that does not fit the categories above.
+```
+
+Three things in this prompt are load-bearing.
+
+**"Use the user's words where possible"** stops the model from smoothing distinctive language into corporate paraphrase. Verbatim is the asset. Paraphrase reads fine and aggregates into nothing.
+
+**Severity tags with an explicit "Unknown" option** stops the model from rating everything Critical. Without this instruction, every pain point looks like a five-alarm fire and the artifact is useless for triage. With it, the team gets something they can actually act on.
+
+**Separation of request from proposed solution** keeps you from chasing the feature the user named when the real problem is upstream. "I want a bulk export toggle" might be the right ask, or the right ask might be "I want closing the books not to take three days." The template makes you capture both layers.
+
+The rest of the wording is up to you. The headings are the load-bearing part.
+
+## Save it as a workspace template
+
+<Steps>
+<Step title="Run the closest built-in template on a real call">
+The `Client Call` template is the natural starting point. Add it as a task from the [template library](/earmark-basics/templates) and run a real customer conversation through it.
+</Step>
+<Step title="Rework it in the Composer until the shape is right">
+Open the artifact in fullscreen. In the [Composer](/using-earmark/composer), iterate the prompt toward the shape above — ask for severity tags, quoted verbatim, separated requests, open questions. Watch the preview reshape until the artifact lands.
+</Step>
+<Step title="Save with Workspace visibility">
+Open the Composer menu and choose **Save as template**. Set visibility to **Workspace** so the rest of the team produces the same shape. See [Custom templates](/customization/custom-templates) for who can edit and share.
+</Step>
+</Steps>
+
+<Tip>
+A prompt proven on a real meeting transfers to the next real meeting better than one written from scratch. Tune in the Composer, then save.
+</Tip>
+
+## Run it on a single call
+
+<Steps>
+<Step title="Pre-seed the meeting">
+Open the call in Earmark before it starts and add your saved Customer Research template as a task. See [Before a meeting](/using-earmark/before-a-meeting).
+</Step>
+<Step title="Add context">
+Use the **Customize context** dialog to note segment, stage, and what you want to learn. Sharper context produces sharper extraction.
+</Step>
+<Step title="Let it run live">
+Pain points, quotes, and open questions stream in as the conversation goes. You don't have to babysit it.
+</Step>
+<Step title="Curate for five minutes after">
+Fix misattributed quotes. Re-tag any severity the model called wrong. Promote anything important out of **Notes** into a real category. This is the entire human-in-the-loop step.
+</Step>
+<Step title="Send it to the destination">
+Copy the structured artifact into the tool where your team's customer record actually lives — a Notion table, an Airtable base, a research repo, or your CRM. See [Integrations](/integrations/overview) for direct copy targets if you also want Linear tickets from the same artifact.
+</Step>
+</Steps>
+
+## When the artifact is wrong
+
+The model gets things wrong. The workflow assumes a few minutes of curation, not none.
+
+- **Everything is Critical.** Re-tag in the artifact. After a few weeks of consistent curation, the model calibrates to the severity bar your team actually uses.
+- **A quote sounds smoothed-out.** The model paraphrased instead of quoted. Replace from the transcript before sending to the destination — the verbatim is the asset, the paraphrase isn't.
+- **Pain and feature request collapsed into one bullet.** Promote each to its own line. If this happens on every call, sharpen the separation instruction in the template.
+- **Severity drift across the team.** Three people each tweak the prompt for their own calls. Within a month the outputs no longer aggregate. Lock the template at the workspace level and update it deliberately.
+
+## What this workflow doesn't do
+
+Earmark refines artifacts inside a single meeting. Cross-call synthesis — "summarize every pain point from healthcare customers this quarter" — is not a one-click action in Earmark today.
+
+The workarounds:
+
+- **Search past meetings** with the [command menu](/earmark-basics/command-menu) (`Cmd+K` / `Ctrl+K`) for specific quotes or topics.
+- **Aggregate in the destination tool.** Twenty artifacts in the same Notion table is one filter away from a quarterly view. This is the payoff for the stable template shape.
+- **Run external synthesis on [local transcript files](/earmark-basics/local-transcripts)** if you want a rollup you control end-to-end.
+
+Without the repeatable template, none of these have anything aggregateable to work on. That's why the template comes first.
+
+## Variations
+
+Same workflow, three close relatives:
+
+| Variation | What to change |
+| --- | --- |
+| **Usability tests** | Replace **Pain points** with **Task observations** — what they tried, where they got stuck, what they said while stuck. Keep verbatim quotes. |
+| **Win/loss interviews** | Add **Decision factors** — what drove the choice, who else was involved, what tipped it. Drop severity; use "weight" or "primary / secondary." |
+| **Beta or design partner calls** | Add a **Commitments** section for what you promised and what they agreed to test. |
+
+Each is a separate custom template. Same shape muscle. Different output.
+
+## Where to go next
+
+- [Workflows](/workflows) — the general pattern this is an instance of
+- [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
+- [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding so the artifact runs live
+- [After a meeting](/using-earmark/after-a-meeting) — generating audience-specific outputs from the same transcript

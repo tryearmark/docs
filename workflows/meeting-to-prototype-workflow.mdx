@@ -1,0 +1,410 @@
+---
+title: "Meeting-to-prototype"
+description: "Turn a design or feature conversation into a working prototype the same day, by translating the meeting transcript directly into a high-fidelity prompt for an AI prototyping tool"
+keywords: ["prototype", "Figma Make", "v0", "Cursor", "Lovable", "Bolt", "design", "PRD", "workflow"]
+---
+
+A feature comes up in a discussion — a customer call, a brainstorm, a working session. Someone says something specific: *"We need a way for users to schedule jobs across multiple technicians without dragging them around individually."* The conversation gets richer. People riff. Edge cases come up. By the end of the meeting, the group has a surprisingly detailed shared picture of what the feature should be.
+
+Then the loop breaks. The designer who would build the prototype was in the meeting but doesn't remember the specifics by Wednesday — or wasn't in the meeting and gets a four-line spec written from memory — or is the PM running the meeting and now has to wait three days for design availability — or is a founder who can see the prototype in their head but can't make Figma do it.
+
+What gets built has lost something at every step of the human translation. The meeting → memory → spec → first prototype loop runs at the cadence of human translation, which is slow and lossy.
+
+This guide is a specific instance of the [workflows](/workflows) pattern, applied to the loop from feature conversation to working prototype. It builds on what the [v0](/integrations/v0), [Cursor](/integrations/cursor), and [Codex](/integrations/codex) integration pages each describe for one tool, generalized to the workflow shape.
+
+## What works today
+
+The Earmark capability this workflow leans on is the same one covered in those integration pages: run a task in the [Composer](/using-earmark/composer) that reads the meeting transcript and produces a prompt ready to paste into an AI prototyping tool. Real today and the central mechanism here.
+
+The prototyping tools are paste-based — Earmark generates the prompt; you paste it into the tool of your choice. The iteration loop is cycle-by-cycle: each new cycle is a single meeting (the review) plus the prior prompt pasted into Customize context. No cross-meeting synthesis required, which makes this one of the most tractable workflows in the series.
+
+## Pick your prototyping tool
+
+The workflow is tool-agnostic, but the prompt shape varies slightly per tool.
+
+| Tool | Best for | Output |
+| --- | --- | --- |
+| Figma Make | Web/mobile UI, design-system-aligned prototypes | Figma file |
+| [v0](/integrations/v0) | Web components, React, Tailwind-style UIs | React / Next.js code |
+| Lovable | Full-stack web apps with light backend | Working web app |
+| Bolt.new | Full-stack web apps, prototypes that run | Working web app |
+| [Cursor](/integrations/cursor) / [Codex](/integrations/codex) | Coded prototypes, technical exploration | Code in any framework |
+
+Pick one for your first iteration cycle and stick with it. Don't switch tools mid-loop — the prompt patterns differ enough that switching restarts your learning curve.
+
+The templates below are written for Figma Make as the default, with adaptation notes for v0, Lovable, Bolt, and Cursor.
+
+## The design system context block
+
+The same way the [structured meeting notes workflow](/workflows/structured-meeting-notes-workflow) uses a spelling-correction vocabulary block, this workflow benefits from a design-system context block that gets included in every prompt:
+
+```md
+Design system context (include in every prompt):
+- Use a clean, modern enterprise SaaS aesthetic — not consumer
+- Primary color: {hex} (used sparingly, for primary actions and key states)
+- Typography: {font family}; sans-serif; tight line height
+- Spacing: 8px base unit; generous whitespace
+- Components prefer: cards, inline status badges, side panels over modals
+- Iconography: minimal, line-weight icons (Lucide-style)
+- Tone: professional, clear, no marketing language in UI copy
+```
+
+If your team has an actual design system, reference it explicitly. Tools like Figma Make can sometimes pull from a connected library. If not, the description in the block is what shapes the output.
+
+The block is the difference between prototypes that look like a stock template and prototypes that look like your product. Build it once; reuse it forever.
+
+## The four templates
+
+### Template A — Single-feature prompt
+
+The workhorse. Translates a feature discussion into a prompt for any of the tools above.
+
+```md
+Based on this meeting transcript, produce a prompt I can paste into
+Figma Make to generate a working prototype of the feature discussed.
+The prompt should be self-contained — Figma Make will not see the
+transcript, so include all necessary context.
+
+Constraints:
+- 250–500 words
+- Written as instructions to Figma Make, not as a summary of the meeting
+- Include user context, the specific feature, key UI elements, key
+  states, and edge cases
+- Use design vocabulary (component types, layout, states), not
+  conversational description
+- Include the design system context block below
+- Do not invent details that weren't discussed; if something was vague,
+  leave it open or write "Designer's choice"
+
+Format:
+
+## Context
+One to two sentences on who the user is and what they're trying to do.
+Anchor in the user's job, not the feature's name.
+
+## The feature to prototype
+Two to four sentences on what the feature is. Specific. If the meeting
+discussed a concrete scenario or example, use it.
+
+## Primary screen / surface
+- **Layout:** describe the major regions
+- **Key components:** list specific UI elements (e.g., "A side panel
+  with a list of jobs, each showing technician name, time window, and
+  status badge")
+- **Primary action:** the most important thing the user does
+- **Secondary actions:** other things the user can do
+
+## States to include
+For each meaningful state:
+- **State name:** empty | loading | populated | error | success
+- **What it shows:** brief description
+
+## Interactions to show
+- {Interaction} — what triggers it, what happens
+
+## Edge cases mentioned in the meeting
+- {Edge case} — how the UI should handle it (if discussed)
+- If not discussed, omit.
+
+## Constraints / anti-patterns
+Anything explicitly ruled out in the meeting:
+- "Don't use a modal here"
+- "Should not require more than one click to..."
+
+## Design system context
+{Paste the block above}
+
+## Output
+Generate the prototype as a {single screen | small flow} with the
+above states accessible. Use the design system context throughout.
+Keep copy professional and specific, not placeholder Lorem Ipsum.
+```
+
+Three things in this prompt are load-bearing.
+
+**The prompt is instructions to a tool, not a summary for a human reader.** This is the part most users miss when they try to write prompts manually — they write summaries, and the prototype underperforms. The template forces the right voice.
+
+**"Do not invent details that weren't discussed."** Same Stated/Implied/Unknown discipline as the [sales calls workflow](/workflows/sales-calls-workflow). The model will fill in plausible UI choices unless told not to. Telling it to leave gaps as "Designer's choice" produces a prototype that's honest about what's been decided and what's open.
+
+**The design system context block.** Without it, every prototype looks like a stock template. With it, prototypes look like your product. Bake it in once; never write the workflow without it.
+
+**Adapting for other tools:** change only the **Output** section.
+
+- **v0:** "Generate as a React component using Tailwind and shadcn/ui. Include state management with React useState. Make the primary interaction work."
+- **Lovable / Bolt:** "Generate as a working web app with `{framework}`. Include backend mock data for the populated state."
+- **Cursor / Codex:** "Generate as a working coded prototype in `{language/framework}`. Include the primary interaction handler."
+
+### Template B — Multi-screen user flow
+
+For when the conversation discussed a multi-step flow ("user signs up, configures their team, invites colleagues, sees the dashboard").
+
+```md
+Based on this meeting transcript, produce a Figma Make prompt for a
+multi-screen user flow.
+
+Format:
+
+## Context
+{As in Template A}
+
+## The flow to prototype
+The user journey, in sentence form. "User does X, then Y, then Z,
+ending with W."
+
+## Screens in the flow
+### Screen 1: {Name}
+- Purpose
+- Key components
+- Primary action that advances to Screen 2
+
+[Continue for each screen]
+
+## Transitions between screens
+- Screen 1 → Screen 2 via {action}
+- Screen 2 → Screen 3 via {action}
+
+## States to include
+Across the flow, where mentioned:
+- {State on which screen}
+
+## Branching / alternative paths
+If the conversation discussed alternative paths:
+- {Path} — when it occurs — what screens it touches
+
+## Edge cases
+- {Edge case discussed}
+
+## Design system context
+{Block}
+
+## Output
+Generate as a multi-frame Figma file with the screens connected via
+the transitions described. Each screen should be a working layout.
+The primary path is the default; alternative paths can be secondary
+frames.
+```
+
+The flow template only works when the conversation actually walked through the steps. If the meeting was about a single screen or a vague flow, use Template A.
+
+### Template C — Variants for comparison
+
+For when the meeting discussed several possible approaches and you want to prototype them side by side.
+
+```md
+Based on this meeting transcript, produce a Figma Make prompt that
+generates two to four distinct prototype variants of the feature
+discussed. Each variant should explore a different approach mentioned
+in the conversation.
+
+Format:
+
+## Context
+{As in Template A}
+
+## The question we're exploring
+One to two sentences on the design question. "How should users do X?"
+The question, not the answer.
+
+## Variants to generate
+For each approach discussed:
+
+### Variant 1: {Name from the conversation}
+- **The approach:** as described in the meeting
+- **Arguments for (from the conversation):** what was said in favor
+- **Arguments against (from the conversation):** what was said against
+- **Key UI elements that distinguish this variant:** specific
+- **Quote if available:** verbatim from the meeting
+
+### Variant 2: {Name}
+{Same structure}
+
+[Continue for each variant — typically two to four]
+
+## Shared context
+Things that should be consistent across all variants:
+- {Shared element}
+
+## Design system context
+{Block}
+
+## Output
+Generate each variant as a separate Figma frame, labeled clearly,
+arranged side by side for direct comparison. Use the same sample data
+and user context across variants so the comparison is about the
+approach, not surface details.
+```
+
+The variant template is the highest-leverage one for design decisions where the team is uncertain about the right approach. Concrete options to compare are dramatically better than arguing in the abstract.
+
+### Template D — Iteration prompt
+
+For the second-and-onward cycle of the loop. The team reviewed v1; this template incorporates the review feedback into v2.
+
+```md
+This prompt is for iterating on an existing prototype based on a
+review meeting. The previous prompt is included below; the review
+transcript follows.
+
+Based on the review meeting transcript, produce an updated Figma Make
+prompt that:
+- Keeps what was working
+- Changes what was criticized
+- Adds what was missing
+- Resolves what was unclear
+
+Format:
+
+## Original prompt
+{Paste the v1 prompt here for context}
+
+## Review meeting feedback summary
+- **What worked (keep):** from the review
+- **What didn't work (change):** from the review
+  - For each: what specifically should change
+- **What was missing (add):** from the review
+- **What was unclear (resolve):** from the review
+  - For each: how to resolve
+
+## Updated prompt for v2
+Generate the updated Figma Make prompt, incorporating all the above.
+Self-contained — Figma Make will not see the original prompt or the
+review.
+```
+
+The iteration template is what makes this a real loop instead of a one-shot. Each review meeting feeds the next generation, and the prompt itself becomes a navigable record of how the design evolved.
+
+## Save them as workspace templates
+
+<Steps>
+<Step title="Start with Template A">
+For most teams, the single-feature prompt is the most-used template. Save it first. Add B, C, and D as you need them.
+</Step>
+<Step title="Embed your design system context block">
+Bake the block from the section above directly into the saved template so it's included in every generation. Don't rely on remembering to paste it manually.
+</Step>
+<Step title="Tune in the Composer, then save">
+Paste Template A into a new task on a real feature discussion. Open the artifact in fullscreen and use the [Composer](/using-earmark/composer) until the generated prompt is paste-ready. Open the Composer menu and choose **Save as template**.
+</Step>
+<Step title="Save with Workspace visibility">
+The prompt-generation template is usually a team standard. **Workspace** visibility means every PM, designer, and founder on the team produces prompts in the same shape. See [Custom templates](/customization/custom-templates).
+</Step>
+</Steps>
+
+## Run a single cycle
+
+<Steps>
+<Step title="Pre-seed the meeting">
+For meetings where you anticipate prototyping (feature brainstorms, customer discovery, design discussions), attach Template A. See [Before a meeting](/using-earmark/before-a-meeting).
+</Step>
+<Step title="Have a good meeting">
+The richer the conversation, the better the prototype. Habits that help:
+
+- **Describe UI in specifics.** "A side panel" beats "some kind of secondary surface."
+- **Use comparative examples.** "Like Linear's command palette" gives the model a clear reference.
+- **State user context out loud.** Anchor the feature in who the user is and what they're trying to do.
+- **Surface edge cases out loud.** Edge cases discussed in the meeting end up in the prototype; edge cases that stay in someone's head don't.
+- **Articulate constraints.** "No modals." "Should work on mobile." "Can't add a new menu item."
+
+These are useful conversational habits regardless of whether you're prototyping.
+</Step>
+<Step title="Generate the prompt">
+Run the template against the meeting transcript. The model produces a draft prompt.
+</Step>
+<Step title="Five-minute cleanup">
+Before pasting into the prototyping tool:
+
+- **Read it as if you were the tool.** Is it clear what to build? If something is ambiguous, sharpen it.
+- **Check for hallucinated details.** The model occasionally invents UI elements that weren't discussed. Cut them.
+- **Confirm the design system context block is included and accurate.**
+- **Scrub for sensitive content.** Customer names, internal financial data, confidential strategy. Replace with neutralized versions before pasting into a third-party tool.
+- **Tighten if it's too long.** Most tools work best with prompts under ~500 words. If yours is longer, cut the least essential context.
+</Step>
+<Step title="Paste into the tool and generate">
+Drop the prompt in. Wait. Look at what comes out. The first generation is rarely the final version — expect to nudge the tool: "make the side panel collapsible," "use a card layout instead of a table," "show the empty state."
+</Step>
+<Step title="Share with the team">
+Post the v1 prototype in the relevant channel. Schedule the review meeting. Pre-seed the review meeting with Template D so v2 generation is set up.
+</Step>
+</Steps>
+
+<Tip>
+The same-day turnaround — meeting → prompt → prototype → shared — is the entire point. The team is now reacting to a working artifact instead of recalling a conversation.
+</Tip>
+
+## The iteration loop
+
+The structure of a feature exploration using this workflow:
+
+1. **Discovery meeting** → transcript → Template A → v1 prototype
+2. **Review meeting on v1** → transcript → Template D iteration → v2 prototype
+3. **Review meeting on v2** → Template D → v3 prototype
+4. **Review meeting on v3** — if converged, graduate (next section); if not, continue
+
+Each cycle takes hours of human time, not days. The team can run three to five iterations in a week, which is several times the velocity of a traditional design loop.
+
+Habits that make iteration meetings sharp:
+
+- **Open by stating what's being decided.** "Today we're deciding whether the side-panel approach or the modal approach is right."
+- **Walk through the prototype together.** Don't have everyone look at it in isolation beforehand. Click through it as a group — the shared experience matters.
+- **Capture specifics, not vibes.** "The layout feels cluttered" doesn't help the next iteration. "There are too many actions in the side panel header; suggest moving secondary actions to an overflow menu" does. Push for the second form.
+- **Make decisions explicitly.** "We're going with the side-panel approach; we're killing the modal variant." The model picks these up from the transcript and incorporates them into Template D.
+
+The prompt itself, version over version, becomes the artifact. By v4, you have a navigable record of what the feature originally was, what changed at each iteration and why, the reasoning the team converged on, and the variants considered and rejected. Save the prompts in a Notion page, a Figma file's notes, or wherever your team documents design exploration. When the eventual spec gets written, the prompt history is half of it.
+
+## Knowing when to stop iterating
+
+Three signs you're done:
+
+- The team has stopped suggesting changes. The last review's todos are polish, not direction.
+- The prototype now describes a real design decision — not a sketch of an idea, but a near-final layout.
+- The disagreements left are about implementation, not design. "Can engineering build this?" is the next conversation, not "is this the right design?"
+
+When all three are true, graduate to spec.
+
+## Graduating to a spec
+
+The workflow doesn't end with a polished prototype. It ends with the prototype becoming engineering work.
+
+The graduation move:
+
+1. Run a final review meeting with the prototype and a proto-spec discussion together
+2. Generate the PRD using the converged prompt as the starting point, plus the review meeting's discussion — the converged prompt already articulates context, user goals, key screens, states, edge cases, and constraints. The spec writer's job is to add the engineering perspective (technical approach, scope, dependencies), success metrics, rollout plan, and risks.
+3. Hand off to engineering with: the Figma file, the PRD, the prompt history, and references to the source meetings
+
+Engineering teams who can see how the design evolved make better implementation decisions than teams who get only the final spec.
+
+## Sensitive-content discipline
+
+This workflow pastes content from your meetings into third-party AI prototyping tools. The cleanup step before pasting is non-negotiable:
+
+- **Don't include confidential customer names, employee names, or internal financial data** in the prompts unless your team has approved that for the tool in question
+- **Don't paste sensitive strategic discussions** into tools whose privacy posture you haven't confirmed
+- **Scrub the prompt before pasting** — the five-minute cleanup includes this step
+
+Same discipline as any external AI tool you feed company content into.
+
+## Common pitfalls
+
+- **Treating the prompt as a meeting summary.** The prompt is instructions to a tool, not a summary for a human reader. The voice is different.
+- **Skipping the design system context block.** Without it, prototypes look like stock templates. Bake the block into your template; don't skip it.
+- **Hallucinated UI elements.** The model sometimes invents components that weren't discussed. The cleanup pass catches them.
+- **Pasting sensitive content into prompts.** Scrub before pasting.
+- **Running one cycle and stopping.** The single cycle is interesting; the iteration loop is where the workflow earns its keep. Plan for three or more cycles.
+- **Iterating past the point of value.** The opposite failure. Stop when the team converges.
+- **Prototyping features the meeting didn't actually discuss specifically.** Vague conversation produces vague (or hallucinated) prototype. Either re-discuss the feature specifically, or accept that the first prototype is a starting point for sharper discussion.
+- **Wrong tool for the job.** Figma Make for UI; v0 for working React components; Bolt or Lovable for full-stack apps. Misalignment between need and tool produces underwhelming prototypes regardless of prompt quality.
+- **Losing the prompt history.** Without it, future spec-writing, retrospectives, and onboarding lose the most valuable artifact this workflow produces.
+- **Letting the prototype become the spec.** A prototype is a working artifact for design exploration, not an engineering spec. Graduate explicitly.
+- **Excluding designers from the loop.** Designers don't need to write every prompt, but the prototype quality improves when a designer reviews the prompt before generation. Pull them in at the prompt-review stage, not only the prototype-review stage.
+
+## Where to go next
+
+- [Workflows](/workflows) — the general shape this is an instance of
+- [v0 integration](/integrations/v0) — the single-tool version of this workflow for v0
+- [Cursor integration](/integrations/cursor) — the single-tool version for Cursor
+- [Codex integration](/integrations/codex) — the single-tool version for Codex
+- [Linear integration](/integrations/linear) — for spinning up tickets from the prototype review
+- [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
+- [Composer](/using-earmark/composer) — for tuning the prompt before saving as a template
+- [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding the template on design discussions
+- [Structured meeting notes workflow](/workflows/structured-meeting-notes-workflow) — for the design-review meetings that feed Template D

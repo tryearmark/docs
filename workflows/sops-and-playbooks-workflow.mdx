@@ -1,0 +1,507 @@
+---
+title: "SOPs and playbooks"
+description: "Convert operational discussions — process design, escalation handling, policy reviews, incident retrospectives — into the durable SOPs, playbooks, runbooks, and policies your team executes against"
+keywords: ["SOP", "playbook", "runbook", "policy", "operational procedure", "compliance", "GRC", "workflow"]
+---
+
+Walk into any team that does meaningful operational work — customer success, finance, on-call engineering, implementation, compliance, support — and ask how they handle a specific recurring situation. You'll get the same pattern every time: the most senior person gives a confident, specific answer; the second-most-senior gives a slightly different answer; newer team members give thinner answers, often citing what they "think Sarah does." Asked where the procedure is documented, everyone hesitates. The doc exists somewhere. It was written two years ago. Nobody has read it in months.
+
+The cost is paid in inconsistency, slow ramps, audit findings, key-person risk, and the slow drift of quality nobody attributes to documentation gaps. A customer hits a billing escalation; three CSMs handle it three ways the same week. A payment authorization needs to go out; Karen has the procedure in her head and Karen is on vacation. A service goes down at 2am; the runbook is 18 months old and skips the new dependency that's the actual cause.
+
+This guide is a specific instance of the [workflows](/workflows) pattern, applied to operational procedure documentation. It pairs with the [demo and facilitator scripts workflow](/workflows/demo-and-facilitator-scripts-workflow) — that workflow captures how one person runs an activity well (transferable individual excellence); this workflow captures how a team operates a recurring procedure consistently (team operational discipline).
+
+The single-meeting capture is fully tractable today. Multi-meeting synthesis — procedures that emerge from many discussions, runbooks that update from accumulated incident retrospectives, cross-team procedures — uses the standard workaround documented across the workflow series. The maintenance discipline is the part that separates SOP libraries that work from those that decay.
+
+## Foundation
+
+### Pick the procedures worth documenting
+
+Not every operational activity needs an SOP. Worth documenting:
+
+- **Procedures executed by multiple people.** If only one person does it, document anyway for key-person risk — but the cost-benefit is sharper when several execute it.
+- **Procedures executed repeatedly.** Once-a-year activities can sometimes be a checklist rather than a full SOP.
+- **Procedures with compliance, regulatory, or audit implications.** Documentation is mandatory; doing it well rather than badly is the choice.
+- **Procedures whose quality varies materially across the team.** If different people do it differently with different outcomes, documentation closes the variance.
+- **Procedures whose mistakes are costly.** Incident response, financial controls, customer data handling. Documentation is worth the investment.
+
+Not worth documenting in this format: one-off projects (use a [PRD](/workflows/meeting-to-prd-workflow) instead); activities that depend heavily on in-the-moment judgment (document principles, not steps); activities that change weekly (maintenance cost will exceed benefit); activities where one excellent practitioner is the entire team (use the [demo and facilitator scripts workflow](/workflows/demo-and-facilitator-scripts-workflow) instead).
+
+Start with two or three high-leverage procedures, not twenty. The library grows over time.
+
+### Identify the right source meetings
+
+SOPs are typically captured from one of four meeting types:
+
+| Meeting type | What it produces |
+| --- | --- |
+| Process design discussion | A new procedure for something the team hasn't been handling consistently |
+| Process refinement discussion | Updates to an existing procedure based on what's changed |
+| Process explanation / handoff | Capturing what one person does so the team can do it |
+| Incident retrospective | A runbook update or new escalation playbook based on what went wrong |
+
+The capture is incidental to the meeting — you don't change how the meeting runs. The template goes on; the meeting happens normally; the artifact comes out.
+
+### Format, destination, governance
+
+**Format.** Linear procedures with defined steps → SOP. Situation-driven with branching → playbook. Technical / incident-response → runbook. Authority levels and thresholds → policy. The four templates below cover each.
+
+**Destination.** Pick one durable home. Common patterns: Confluence for enterprise teams; Notion for mid-size; internal wikis (GitBook, MkDocs) for engineering-led docs; GRC platforms (Drata, Vanta, Sprinto) for compliance-relevant SOPs feeding audit. Don't put SOPs in three places — they drift, and the team stops trusting which version is canonical.
+
+**Naming.** Include procedure name, version, and last-updated date: *"Payment Authorization SOP — v3.2 — Updated 2026-04-15"* is searchable, sortable, and auditable. *"Payment SOP"* is none of those.
+
+**Governance.** Three roles: an **owner** (single person responsible for keeping it current — usually the team lead for the function the SOP governs); **reviewers** (whose sign-off is required for material changes — compliance, peer team leads, sometimes legal); the **audience** (everyone who executes against the SOP).
+
+Plus a review cadence: standard SOPs quarterly with annual deep refresh; compliance-critical SOPs quarterly with sign-off; runbooks updated after every applicable incident; high-change procedures monthly. A doc with no owner, no review cadence, and no approval pattern decays predictably.
+
+## The four templates
+
+### Template A — Operational SOP
+
+The canonical format. For linear procedures executed the same way every time.
+
+```md
+Based on this meeting transcript where a procedure was defined,
+refined, or explained, produce an operational SOP. Be faithful to what
+the team actually agreed; do not invent steps or decision criteria
+that weren't discussed.
+
+Where details were vague, write "[Confirm with owner — not specified
+in source discussion]" rather than inventing.
+
+Format:
+
+# SOP: {Procedure name}
+**Owner:** {Name and role}
+**Version:** v1.0 (draft)
+**Effective date:** {date}
+**Last updated:** {date}
+**Review cadence:** Quarterly | Monthly | After-event
+**Source discussion:** {Meeting name — date}
+**Reviewers required for changes:** {list}
+**Audience:** {who executes this SOP}
+
+## Purpose
+One to two sentences on what this SOP accomplishes and why it exists.
+
+## When to use this SOP
+Triggers, situations, or signals that initiate this procedure.
+- {Trigger}
+
+## When NOT to use this SOP
+Situations that look similar but require a different procedure.
+- {Situation} → use {other SOP} instead
+
+## Prerequisites
+- [ ] Access to {systems / tools / records}
+- [ ] Permissions or approvals: {list}
+- [ ] Inputs in hand: {what you should have}
+
+## Roles and responsibilities
+- **{Role 1}:** what they do in this procedure
+- **{Role 2}:** what they do
+- **Escalation contact:** who and when to escalate
+
+## Procedure
+
+### Step 1: {Action-verb step name}
+**What to do:** specific action
+**How to do it:**
+1. {Substep}
+2. {Substep}
+
+**Why this step matters:** the reasoning — gives the executor context
+to handle variations intelligently.
+
+**Verification:** how to confirm this step completed correctly.
+
+**Common mistakes at this step:** the things people get wrong.
+
+**Time expected:** rough duration.
+
+### Step 2: {Step name}
+[Same structure. Repeat for each step.]
+
+## Verification (overall)
+- [ ] {Check}
+- [ ] {Check}
+- [ ] Documentation completed: log entry, ticket, audit trail
+
+## Exceptions and edge cases
+- **{Situation}:** how to handle
+
+## Escalation
+- **Stop point:** conditions that should halt execution
+- **Who to escalate to:** name / role / channel
+- **What to provide them:** information needed to act
+- **Expected response time:** based on severity
+
+## Records and audit trail
+- {Record type} → logged in {system} by {role}
+- {Record type} → retained for {duration} per {policy / regulation}
+
+## Related procedures
+- {SOP that this depends on or that depends on this}
+
+## Change log
+| Version | Date | Author | Change |
+|---------|------|--------|--------|
+| v1.0 | YYYY-MM-DD | {Name} | Initial version, from {source meeting} |
+```
+
+Three things distinguish a usable SOP from a checkbox-compliance one.
+
+**"Why this step matters."** Steps without context get followed mechanically and break when reality varies slightly. Steps with context get adapted intelligently. The reasoning is the part that makes the SOP usable in real situations, not only ideal ones.
+
+**"Common mistakes at this step."** The accumulated wisdom about what trips people up. Often more valuable than the steps themselves. Comes from the owner's experience, not from the transcript — add it deliberately in the curation pass.
+
+**Explicit verification and records sections.** These make the SOP usable in audit, and make *"we ran the procedure"* provable.
+
+### Template B — Situation playbook
+
+For procedures with branching logic — *if X, do Y; if X', do Y'*. Common for customer escalations, support response, incident triage.
+
+```md
+Based on this meeting transcript where a team discussed how to handle
+a recurring situation, produce a situation playbook. Capture the
+branching logic and the decision criteria the team agreed on.
+
+Format:
+
+# Playbook: {Situation name}
+**Owner:** {Name}
+**Version:** v1.0
+**Last updated:** {date}
+**Source discussion:** {Meeting name}
+**Audience:** {who uses this playbook}
+
+## When this playbook applies
+Triggers and signals that initiate the playbook.
+- {Trigger}
+
+## Quick reference (most common path)
+The most common version of the situation, summarized for fast reference.
+1. {Step}
+2. {Step}
+3. {Step}
+
+## Decision tree
+
+### First triage question: {Question that determines path}
+- **If {Answer A}:** Proceed to Path A.
+- **If {Answer B}:** Proceed to Path B.
+- **If {Answer C}:** Proceed to Path C.
+- **If none of the above:** Escalate per the Escalation section.
+
+### Path A: {Name of path}
+**When this path applies:** specific conditions
+**Steps:**
+1. {Step} — why: reasoning
+2. {Step}
+
+**Outcome:** what should be true when this path completes
+**Next decision point:** question that determines what happens next, if any
+
+### Path B: {Name}
+[Same structure]
+
+### Path C: {Name}
+[Same structure]
+
+## Severity escalation matrix
+| Severity | Definition | Response time | Who's involved | Communication |
+|----------|------------|---------------|----------------|---------------|
+| P0 / Critical | {definition} | {time} | {roles} | {channels} |
+| P1 / High | {definition} | {time} | {roles} | {channels} |
+| P2 / Medium | {definition} | {time} | {roles} | {channels} |
+| P3 / Low | {definition} | {time} | {roles} | {channels} |
+
+## Edge cases not in the main paths
+- **{Edge case}:** how to handle, who to involve
+
+## Templates and resources
+- {Customer communication template}
+- {Internal escalation message template}
+- {Related dashboards / docs}
+
+## Records
+- {Record type} in {system}
+
+## Change log
+[Same as Template A]
+```
+
+The decision-tree structure is what distinguishes playbooks from linear SOPs. A linear SOP forces sequential steps; a playbook acknowledges that real operational situations branch. The branching has to be explicit, or the team improvises and the playbook stops being useful.
+
+### Template C — Runbook
+
+For technical and operational procedures, often related to incident response. Different from an SOP because the audience is usually engineering, the procedure is executed under time pressure, and the trust threshold is high — a stale runbook during an incident is dangerous.
+
+```md
+Based on this meeting transcript (typically an incident retrospective,
+post-mortem, or technical procedure design discussion), produce a
+runbook. Optimize for clarity under pressure — the runbook may be
+opened at 2am during an incident.
+
+Format:
+
+# Runbook: {System / Symptom / Procedure}
+**Owner:** {Team or on-call rotation}
+**Version:** v1.0
+**Last verified working:** {date — runbooks decay; verification matters}
+**Source:** {Meeting name}
+**Related runbooks:** {list with links}
+
+## When to use this runbook
+Specific symptoms, alerts, or triggers.
+- {Symptom} — {alert name if applicable}
+
+## Pre-execution check
+- [ ] Symptom matches — not a different incident
+- [ ] You have the required access
+- [ ] Incident is declared / not declared per your protocol
+
+## Quick context
+What this system or component does, in two to three sentences. For
+engineers who aren't on this system's team day-to-day.
+
+## Most common cause and immediate response
+80% of the time, {symptom} is caused by {common cause}. Try this first:
+1. {Action}
+2. {Action}
+3. Verification: does symptom persist?
+
+If symptom resolves: skip to Cleanup.
+If symptom persists: continue to Diagnostic.
+
+## Diagnostic procedure
+
+### Check 1: {What to verify}
+- **Command / query / dashboard:** {exact command or link}
+- **Expected:** {what should be true}
+- **If not:** {interpretation + next step}
+
+### Check 2: {What to verify}
+[Same structure]
+
+[Repeat in order from most to least likely]
+
+## Remediation procedures
+
+### If Check N indicated {condition}:
+1. {Remediation step} — command: `{exact command}`
+2. {Remediation step}
+3. Verification
+
+[Repeat for each remediation path]
+
+## When to escalate
+- {Condition} — to {team / role} via {channel}
+- Symptom persists after {time} of executing this runbook
+- You hit a step you can't safely execute
+
+## Communication during incident
+- **Status page:** who updates, what to say
+- **Internal Slack:** channel, frequency
+- **Customer comms:** who decides, what template
+
+## Cleanup and post-incident
+- [ ] Confirm symptom resolved (specific check)
+- [ ] Reset / clear {whatever needs clearing}
+- [ ] Log incident: where, what to capture
+- [ ] Schedule post-mortem if {criteria}
+- [ ] Update this runbook if anything was missing
+
+## Risks and watch-outs
+- {Risk} — what to do / avoid
+```
+
+The **"Last verified working"** date is the part runbooks need most and have least. A runbook that says *"verified 14 months ago"* gets appropriate skepticism from the on-call engineer. A runbook with no verification date gets none — engineers fall back to first principles, and the incident lasts longer than it should.
+
+### Template D — Decision rule / policy
+
+For codifying authority levels, approval thresholds, and policy decisions. Often shorter than the other templates but with stricter governance.
+
+```md
+Based on this meeting transcript where the team established a policy
+or decision rule, produce a decision rule document.
+
+Format:
+
+# Policy: {Policy name}
+**Owner:** {Name and role}
+**Version:** v1.0
+**Effective date:** {date}
+**Approved by:** {Required approvers and dates}
+**Source discussion:** {Meeting name}
+**Review cadence:** Annual | Quarterly
+
+## Purpose
+One to two sentences on what this policy governs and why.
+
+## Scope
+- **Applies to:** people, roles, systems
+- **Does not apply to:** explicit carve-outs
+
+## The rule
+| Condition | Authority required | Process |
+|-----------|-------------------|---------|
+| {Scenario / threshold} | {Who can approve} | {How it's done} |
+| {Scenario / threshold} | {Who can approve} | {How it's done} |
+
+## Examples
+- **Example 1:** {Scenario} → resolution under this policy
+- **Example 2:** {Scenario} → resolution
+- **Edge case:** {Tricky scenario} → resolution
+
+## What's NOT covered by this policy
+- {Situation} → governed by {other policy}
+
+## Exceptions
+- **Who can grant an exception:** role
+- **How to request:** process
+- **Documentation required:** what to capture
+
+## Reasoning
+The rationale for the policy. Why is the threshold set here? Why this
+authority structure? Future readers (and future owners) need the
+reasoning, not only the rule.
+
+## Compliance and audit
+- **Records to keep:** what gets logged when this policy is invoked
+- **Retention:** how long
+- **Audit triggers:** when this policy gets reviewed
+```
+
+The **Reasoning** section is what prevents policies from becoming cargo-cult artifacts. Policies without their rationale get followed mechanically or quietly ignored; policies with their rationale survive leadership changes and get updated thoughtfully.
+
+## Save them as workspace templates
+
+<Steps>
+<Step title="Start with the format you need most">
+Most operational teams start with Template A (SOP). Engineering teams often start with Template C (runbook). Compliance-heavy work starts with Template D (policy). Save the most-used template first; add others as you encounter the cases.
+</Step>
+<Step title="Tune to your team's conventions">
+Adjust section headers to match what your team actually uses. If your team uses different severity levels (S1/S2/S3 vs P0/P1/P2), update the playbook template. If your compliance regime requires specific record types, build them in.
+</Step>
+<Step title="Save with Workspace visibility">
+SOP creation is a team standard. **Workspace** visibility means every team lead produces docs in the same shape. See [Custom templates](/customization/custom-templates).
+</Step>
+</Steps>
+
+## Capturing from a single operational discussion
+
+<Steps>
+<Step title="Identify the source meeting">
+A process design session, refinement session, handoff/explanation, incident retrospective, or compliance review. Attach the right template before the meeting. Multi-meeting cases use the synthesis section below.
+</Step>
+<Step title="State the right things during the meeting">
+- **Name the trigger explicitly.** *"This procedure starts when {event} happens."* Without this, the SOP exists but nobody knows when to execute it.
+- **State steps in order out loud.** *"First we'd do X, then Y, then Z."* Vague discussion produces vague steps.
+- **Articulate decision points.** *"If the amount is over $5,000, we need approval from Y."* Decision criteria are the part vague conversations leave unresolved.
+- **Name the edge cases.** *"What about when `{edge case}`?"* These often only come up if someone asks. Surface them; the SOP captures them.
+- **Confirm authority and ownership.** *"Who has to approve this? Who can execute it?"* Easy to assume; should be made explicit.
+</Step>
+<Step title="The 30-to-45-minute curation pass">
+SOPs need heavier curation than most workflow artifacts because the document will govern future behavior — accuracy is non-negotiable.
+
+- **Read the draft as someone who's never run this procedure.** Is it executable? If a step assumes knowledge the reader won't have, fill in.
+- **Verify every step matches what the team actually agreed.** The model can occasionally infer plausible-sounding steps that weren't discussed. Cut anything not grounded.
+- **Add the "why this step matters" reasoning.** This requires the owner's judgment about what context the future executor will need. Doesn't come from the transcript; add it deliberately.
+- **Add the "common mistakes" content.** Same — this comes from the owner's experience. Spend five minutes brainstorming what trips people up.
+- **Confirm decision criteria are specific.** *"Approve if the amount is large"* is not a criterion; *"approve if the amount is over $5,000"* is. Force specificity.
+- **Confirm escalation paths are real and current.** Names, roles, channels, response times. If anything's vague, fix.
+- **Verify the records section matches what your team actually does.** What gets logged where, by whom, for how long. Audit-relevant SOPs need this section precise.
+- **Add the change log entry.** Version, date, author, source.
+
+The curation is often done with the owner and one other team member who runs the procedure. The second person catches assumptions the owner makes implicitly.
+</Step>
+<Step title="Review, approve, publish, notify">
+For non-compliance-critical SOPs, the owner can publish after a peer review. For compliance-critical ones, formal sign-off from required reviewers (legal, compliance, security) before publication.
+
+After publication, notify the audience. A brief Slack message with a link to the team channel. New SOPs need announcement; material updates need a one-line description of what changed. A published but unannounced SOP gets ignored.
+</Step>
+</Steps>
+
+<Tip>
+The curation pass is what makes the difference between a checkbox-compliance SOP and a usable one. Reasoning, common mistakes, and specific decision criteria are what the future executor needs — and they're what comes from the owner's judgment, not from the transcript.
+</Tip>
+
+## Multi-meeting synthesis
+
+Many SOPs don't emerge from a single discussion. They develop over weeks — a process gets discussed in one meeting, refined in another, an edge case comes up in a third. Earmark refines artifacts within a single meeting today; cross-meeting synthesis uses the standard manual workaround.
+
+**The "tag and accumulate" pattern.** When you know an SOP is brewing across multiple meetings: tag the relevant meetings with a consistent identifier (e.g., *"billing-escalation-sop"*); each meeting contributes; when the procedure feels settled, paste the relevant artifacts from each tagged meeting into a Customize-context document and run the template against the assembled corpus. The output combines decisions from all of them, with attribution per section.
+
+**Synthesizing from incident retrospectives.** Runbooks especially benefit. An incident retrospective produces one set of runbook updates; a related incident a month later produces more. Quarterly, the runbook owner pastes the relevant retrospective artifacts into Customize context and runs a synthesis prompt: *"Across these incident retrospectives, identify diagnostic checks that have proven useful, remediation steps that have worked, failure modes the current runbook doesn't cover, and steps in the current runbook that have proven misleading or stale. Produce an updated runbook draft."* This pattern is what makes runbooks improve over time rather than decay.
+
+**Cross-team procedures.** Some procedures span multiple teams — a customer escalation that involves CS, support, and engineering, for example. Each team has a piece of the procedure; the full procedure requires synthesis across discussions in each team. Each team captures their portion; a cross-functional process owner (chief of staff, ops lead, or function head) pastes the team-level artifacts into Customize context and synthesizes the full procedure. The handoff points between teams are the part that single-team capture misses — they're where most cross-functional procedures break in practice.
+
+For very large multi-meeting corpora, [exporting local transcripts](/earmark-basics/local-transcripts) and running an external agent is the alternative.
+
+## The maintenance discipline
+
+SOPs decay faster than any other artifact in this guide series. Procedures change; the world changes; the team changes. An SOP that was accurate in January is partially wrong by June and substantially wrong by December unless it's actively maintained. The maintenance discipline is what separates SOP libraries that work from those that don't.
+
+**The quarterly review.** Every quarter, the SOP owner reviews their portfolio. For each SOP: Is the procedure still accurate? Have any steps changed? Have edge cases come up that aren't captured? Have escalation paths or authorities shifted? Is the reasoning still valid? For most SOPs, the review takes 5–15 minutes and produces small updates. For some, it surfaces material drift and triggers a real revision. Run the review on a calendar — not *"when I remember."* Quarter ends are natural triggers.
+
+**The "last verified" date.** Every SOP (especially every runbook) carries a *"last verified working"* date. The owner revisits it on the review cadence. If the date is more than a quarter old, the SOP is presumed stale; users should treat it with appropriate skepticism. When you verify it works, update the date. When you can't verify, mark it as needing verification.
+
+**Real-execution feedback.** The team executes against the SOP daily, weekly, monthly. They encounter situations the SOP doesn't quite cover, steps that are unclear, edge cases nobody anticipated. Capture this feedback two ways: inline comments on the doc (the owner reviews comments monthly), or post-execution notes (a lightweight habit — when someone executes the SOP and notices a gap, they note it in a shared channel or via Slack DM to the owner). Real-execution feedback is the highest-fidelity source of SOP improvements.
+
+**Post-incident runbook updates.** Runbooks get updated after every incident the runbook applies to. This is the rule that distinguishes useful runbooks from theatrical ones. The pattern: incident closes; post-mortem happens (capture with the [structured meeting notes workflow](/workflows/structured-meeting-notes-workflow)); within a week, the runbook owner updates the runbook with the new diagnostic steps, remediation paths, or failure modes that emerged. A runbook that doesn't get updated after the incident it failed to predict is a runbook that will continue failing.
+
+**The annual deep refresh.** Once a year, every SOP gets a substantial refresh. Walk through the entire procedure end-to-end with the team. Update everything that's drifted. Cut sections no longer relevant. Add sections that have emerged. Re-validate reasoning, authorities, escalation paths, and reviewers. Bump the version; refresh the dates; log the change. The annual refresh is the discipline that keeps the SOP library from accumulating decay over years.
+
+## Routing into systems of record
+
+**Primary documentation home.** Whichever tool you use, maintain a clear hierarchy (SOPs grouped by team or procedure type), searchable tags (compliance, escalation, finance, security), version history (auditors need to see which version was in effect when), and cross-links (the *"Related procedures"* section gets read).
+
+**GRC and compliance platforms** (Drata, Vanta, Sprinto, Hyperproof, OneTrust). For SOC 2, ISO 27001, HIPAA and similar regimes. The SOP lives in the documentation home (single source of truth); the GRC platform links to it and tags it to the relevant control; compliance reviewers see the linked SOP when verifying the control; updates to the SOP automatically refresh the control coverage. **Don't duplicate the SOP into the GRC platform.** Link from there to the source. Duplication leads to drift; one version goes stale; the auditor finds the divergence.
+
+**PagerDuty / Opsgenie / incident management.** For runbooks that respond to alerts, paste the runbook URL into the alert definition's runbook field. The on-call engineer who pages out has the runbook one click from the alert. This integration is the difference between a runbook that helps during an incident and one the engineer has to dig for.
+
+**LMS and onboarding** (Lessonly, Workramp, Sana). New hires read the relevant SOPs as part of structured onboarding. A natural progression: week one read; week two shadow; week three execute with peer observing; week four execute independently. This is how SOPs become onboarding infrastructure rather than tribal-knowledge replacement.
+
+**The Earmark archive as source.** Source meetings stay in Earmark. SOPs link back. When a future owner wants to know *"why was this step added?"*, the source meeting is one click away. The pair — current SOP plus source recordings of the discussions that defined it — is more valuable than either alone.
+
+## Closing the loop
+
+Three habits.
+
+**Connect SOPs to outcomes.** Periodically, validate that the SOP is producing the outcomes it was designed to produce. Are escalations resolving within the response times the playbook specifies? Are payment authorizations conforming to the policy? Are incidents getting resolved faster since the runbook was updated? Are audit findings reduced relative to the prior period? If the SOP exists but the outcomes don't match, either the SOP isn't being followed or it doesn't actually produce the intended outcomes. Both are problems worth diagnosing.
+
+**Audit findings feed back.** When a compliance audit produces findings related to your SOPs: capture the audit debrief with Earmark; update the relevant SOPs to address findings; log the audit-driven updates explicitly in the change log; notify reviewers and audience. This habit turns audits from recurring pain into a forcing function for SOP quality. Audit findings stop being surprises if the SOPs are kept current proactively.
+
+**Retire SOPs that no longer apply.** The hardest part of SOP maintenance is retirement. Procedures change; some get replaced by automation; some become obsolete. A retired SOP is better than a stale SOP. Mark obsolete SOPs explicitly as retired (with a note pointing to the replacement, if any). Don't leave them in the library quietly misleading users. A library that accumulates SOPs without retiring any becomes noise within a few years.
+
+## Common pitfalls
+
+- **Writing SOPs from scratch instead of from the discussion.** The point of the workflow is to convert the existing discussion into the artifact. Solo writing reintroduces the slowness that makes documentation skip.
+- **Skipping the "why this step matters" content.** Steps without context get followed mechanically. The context is what makes the SOP usable in real situations.
+- **Vague decision criteria.** *"Approve large amounts"* is not a criterion; *"approve amounts over $5,000"* is. Force specificity.
+- **No owner.** Shared-ownership SOPs decay. Single owner per SOP, every time.
+- **No review cadence.** SOPs without a review cadence get stale within a year. Calendar the reviews.
+- **Stale "last verified" dates.** A runbook that hasn't been verified in 18 months is a runbook the on-call engineer doesn't trust. The verification habit is not optional.
+- **No notification when SOPs change.** Updates that ship without notification don't get adopted. The team continues running the old procedure.
+- **SOPs that are too long.** A 12-page SOP for a 5-minute procedure doesn't get used. Match length to complexity.
+- **SOPs that are too short.** *"Policy: be careful"* isn't a policy. Real procedures require real specificity.
+- **No edge cases section.** Real operational situations have edge cases. SOPs without them break the moment reality deviates from the happy path.
+- **Compliance documentation that doesn't match practice.** The doc says one thing; the team does another. The auditor catches this. Either fix the doc or fix the practice; don't let them diverge.
+- **Treating SOPs as immutable.** A doc that doesn't change isn't current. Iteration is the discipline.
+- **No retirement.** Library accumulates dead SOPs; trust collapses because users can't tell what's current. Be willing to delete.
+- **No source link.** Future owners need to know why decisions were made. Always link to the source discussion.
+- **Documenting procedures that don't need documenting.** Not everything needs an SOP. Focus on the high-leverage procedures.
+- **Ignoring real-execution feedback.** The team running the procedure is the highest-fidelity source of feedback. Capture and act on it.
+- **Skipping the records and audit-trail section.** When the auditor asks *"how do you prove this happened?"*, an SOP without a records section can't answer.
+- **Duplicating SOPs into multiple tools.** Drift follows. Link from secondary tools to the canonical source.
+
+## Where to go next
+
+- [Workflows](/workflows) — the general shape this is an instance of
+- [Demo and facilitator scripts workflow](/workflows/demo-and-facilitator-scripts-workflow) — the sibling workflow for capturing individual execution excellence (this one captures team operational discipline)
+- [Structured meeting notes workflow](/workflows/structured-meeting-notes-workflow) — for capturing incident retrospectives and process-design meetings that feed SOPs
+- [Meeting-to-PRD workflow](/workflows/meeting-to-prd-workflow) — for projects that need a PRD instead of an SOP
+- [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
+- [Composer](/using-earmark/composer) — for tuning the prompt before saving as a workspace template
+- [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding the template on operational discussions
+- [Local transcripts](/earmark-basics/local-transcripts) — for external synthesis on very large multi-meeting corpora

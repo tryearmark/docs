@@ -1,0 +1,247 @@
+---
+title: "Action items"
+description: "Turn every conversation into a clean list of what needs to happen next, who owns it, and when"
+keywords: ["action items", "next steps", "todos", "task extraction", "follow-ups", "sales next steps", "workflow"]
+---
+
+People are usually fine at hearing "Sam, can you draft this by Thursday?" The failure shows up in the gap between the meeting ending and the work starting — the verbal commitment never gets written down with an owner and a date, or it gets recorded somewhere ad-hoc the owner doesn't open, or it lands with ambiguous ownership and nobody feels responsible.
+
+Across a team running 50 to 200 meetings a week, those gaps compound into a substantial difference between what people thought was happening and what was happening.
+
+This is the entry-level Earmark workflow. If you're not ready to stand up [structured meeting notes](/workflows/structured-meeting-notes-workflow), [customer research](/workflows/customer-research-workflow), or the [sales calls workflow](/workflows/sales-calls-workflow) yet, start here. It produces value on the first call, and it lives inside every heavier workflow — the action items section of the structured-notes template is this same extraction.
+
+This guide is a specific instance of the [workflows](/workflows) pattern.
+
+## What the artifact looks like
+
+A working session, three people, twenty minutes:
+
+```md
+# Action items — 2026-03-04
+
+## Action items
+- [ ] **Marco** — finalize PRD section on auth — by 2026-03-07
+- [ ] **Priya** — confirm rate limits with infra — by 2026-03-06
+- [ ] **Marco + Lin** — align on launch comms — by 2026-03-10
+
+## Unassigned — needs an owner before next meeting
+- Decide who owns the security review request.
+
+## Decisions that imply future action
+- Going with option B for auth — requires comms to existing API users;
+  owner not yet assigned.
+
+## Things discussed but not committed
+- Pricing change for the SMB tier — discussed; no owner or commitment.
+- Possible partnership with vendor X — flagged; no commitment.
+
+## Open questions blocking action
+- Do we need legal review for the comms? — blocks "align on launch comms."
+```
+
+Five sections, one artifact. The action items are the core. The other four are scaffolding that keeps the action items honest — they catch what the model would otherwise either inflate into a todo or quietly drop.
+
+## The template that produces it
+
+The `Real-Time Meeting Minutes and Action Items` built-in template ([see the library](/earmark-basics/templates)) covers the basics. The version below is what to tune toward and save as a workspace template:
+
+```md
+Extract action items and next steps from this conversation. Be faithful
+to what was said — include only items that were actually committed to,
+not items merely mentioned or speculated about. If ownership or timing
+is unclear, mark it explicitly rather than guessing.
+
+No emojis. No pleasantries, scheduling chatter, or filler. Be concise.
+
+# Action items
+For each commitment made in the meeting:
+- [ ] **{Owner}** — {what, specifically} — by {deadline if stated; else "Unknown"}
+  *Context:* one sentence only if the action item would not make sense
+  without it.
+
+If multiple owners share an item, list each. If ownership was discussed
+but not assigned, list under:
+
+## Unassigned — needs an owner before next meeting
+- {item}
+
+# Decisions that imply future action
+Decisions made in the meeting that will require follow-through but where
+no specific action item was named:
+- {Decision} — likely needs {type of follow-up}; owner not yet assigned.
+
+# Things discussed but not committed
+Important — do NOT include these as action items. Briefly list things
+that were discussed but where no commitment was made. This section helps
+the reviewer catch missed commitments without polluting the todo list.
+- {Topic} — discussed; no owner or commitment.
+
+# Open questions blocking action
+Questions that need to be answered before any of the above can move:
+- {Question} — blocks {which action item, if applicable}
+```
+
+Three things in this prompt are load-bearing.
+
+**"Only include items that were actually committed to."** The model's strongest failure mode is promoting "we should think about this" into a Critical todo with a guessed owner. This instruction is the brake.
+
+**The "Things discussed but not committed" section.** This is what distinguishes the template from naive extraction. The model gets a place to put aspirational language honestly, and the todo list stays clean. On every cleanup, this is the section to read first — sometimes one of those items is a real commitment the model missed.
+
+**"Unknown" as a legitimate value for deadlines.** A guessed deadline is worse than a missing one. It looks authoritative and the team plans around it. The explicit option lets the model resist the temptation to invent.
+
+## Save it as a workspace template
+
+<Steps>
+<Step title="Run the built-in template on a real call">
+Add **Real-Time Meeting Minutes and Action Items** as a task from the [template library](/earmark-basics/templates) and run a real meeting through it.
+</Step>
+<Step title="Refine in the Composer">
+Open the artifact in fullscreen. Use the [Composer](/using-earmark/composer) to add the four scaffolding sections (Unassigned, Decisions that imply action, Things discussed but not committed, Open questions blocking action). Watch the preview reshape until it matches the example above.
+</Step>
+<Step title="Save with Workspace visibility">
+Open the Composer menu and choose **Save as template**. Set visibility to **Workspace** so the team produces the same shape. See [Custom templates](/customization/custom-templates) for permissions.
+</Step>
+</Steps>
+
+## Run it on a single call
+
+<Steps>
+<Step title="Pre-seed the meeting">
+Add the saved Action Items template as a task before the call. See [Before a meeting](/using-earmark/before-a-meeting).
+</Step>
+<Step title="State commitments out loud">
+Two habits sharpen the extraction dramatically:
+
+- State action items with owners and dates ("Sam, you'll send the spec by Thursday")
+- Name decisions when you make them ("OK, we've decided to go with option B")
+
+These are good meeting hygiene regardless of recording. They convert ambiguous extractions into clean ones.
+</Step>
+<Step title="Two-minute cleanup">
+This is the entire human-in-the-loop step. The checklist:
+
+- **Read "Things discussed but not committed" first.** If something there is a real commitment the model missed, promote it. More common than expected.
+- **Cut over-generated items.** If a todo does not reflect a real commitment, delete it.
+- **Confirm owners.** Especially for items the model flagged as unassigned. If you don't know who owns it, the workflow is telling you something — assign it before the next meeting.
+- **Confirm deadlines.** "Unknown" is a valid value. A guessed deadline is worse.
+</Step>
+<Step title="Push to your destination">
+Send the action items to the task system you actually open. The fewer steps between cleanup and "in my task system," the more reliable this workflow becomes. The [Linear integration](/integrations/linear) generates one ticket per action item; for other task tools, the structured format is designed to paste cleanly.
+</Step>
+</Steps>
+
+<Tip>
+The destination has to be the surface where you actually plan your day. Routing todos to a tool you don't open is functionally the same as not routing them. Match the destination to where work happens, not to where it should happen.
+</Tip>
+
+## What this workflow doesn't do
+
+The big one for this workflow: there is no cross-meeting rollup inside Earmark. A "weekly view of every action item I committed to this week across every meeting" is a real productivity payoff, but it's not a one-click feature today.
+
+Practical workarounds:
+
+- **Push every action item to your task system as you clean up.** Your task system already gives you the weekly view — that's what task systems are for. Earmark's job is to feed it accurately. Planning happens in the surface you use to plan.
+- **Search past meetings** with the [command menu](/earmark-basics/command-menu) (`Cmd+K` / `Ctrl+K`) when you need to find "did I commit to something this week that I forgot?"
+- **Export [local transcript files](/earmark-basics/local-transcripts)** if you want to run an external agent across a week's worth of artifacts and produce your own personal rollup.
+
+The repeatable template plus a destination that's actually your working surface is what makes this useful. Without the destination, the artifacts pile up in Earmark and the action items never reach your day.
+
+## Variations
+
+Same skeleton, two close relatives.
+
+### Personal — only my commitments
+
+For pulling your own commitments out of a busy meeting and leaving everyone else's:
+
+```md
+Extract action items where the owner is {YOUR NAME} specifically.
+Ignore commitments made by other participants.
+
+# My action items
+- [ ] {what} — by {deadline; else "Unknown"}
+
+# Things I implicitly owe but was not explicitly assigned
+Items where I was the most likely owner based on context, but no
+explicit handoff was made. Flag for confirmation.
+- {item} — likely mine because {reason from conversation}
+
+# Things others owe me
+Commitments other people made to me that I should track and chase
+if they slip.
+- **{Owner}** — {what they owe} — by {when}
+
+# Decisions I need to communicate
+- {Decision} — who I should tell.
+```
+
+Most useful for managers and senior ICs in many-person meetings: you get a personal action list directly, without scanning a fuller artifact to find your items. The **Things others owe me** section is the part most people don't realize they want until they have it.
+
+### Sales and customer deal next steps
+
+For external calls where the next step belongs to a deal, not to an individual:
+
+```md
+Extract next steps from this sales or customer conversation. The output
+is ready to paste into a CRM record for this opportunity.
+
+# Deal: {Prospect or Company}
+**Date:** YYYY-MM-DD
+**Stage:** {if mentioned; else "Unknown"}
+**Participants on customer side:** {list with roles if known}
+
+# Next step — single most important
+- **Owner:** me / customer / shared
+- **What:** {exact action}
+- **By when:** {date, or soonest reasonable target — flagged if not
+  explicitly agreed}
+- **Why this is the next step:** one sentence
+
+# My side
+- [ ] {what} — by {when}
+
+# Customer side
+- [ ] **{Their owner}** — {what they committed to} — by {when}
+
+# Open questions / information gaps
+- {Question}
+
+# Risks and signals to watch
+- {Signal} — verbatim quote if possible.
+
+# Recommended CRM notes
+A three- to five-line summary to paste into the opportunity record.
+Lead with stage, next step, owner, and date.
+```
+
+The **single most important next step** framing is deliberate. Deals stall when a rep walks away with three vague next steps and no priority. Forcing the model to pick one keeps the deal honest. After the call, the **Recommended CRM notes** section is what gets pasted into Salesforce, HubSpot, or whichever record holds the opportunity.
+
+## Common pitfalls
+
+- **Skipping the two-minute cleanup.** The model over-generates action items. Without curation, the task system fills with phantom todos and trust in the list erodes.
+- **Vague ownership.** "Someone should look at this" is not an action item. Assign it or move it to open questions. The workflow tolerates "Unknown" deadlines; it does not tolerate unknown owners.
+- **Todos that live only in Earmark.** Items that don't make it to a working surface don't get done. The artifact is the record, not the work surface.
+- **Routing to a tool you don't open.** Sending todos to Notion when you actually work out of Things means the todos may as well not exist.
+- **Promoting discussion to commitment.** The "Things discussed but not committed" section exists to prevent this. Read it on every cleanup.
+- **Mixing personal and team destinations.** Personal todos in the team board create noise; team todos in your personal manager create invisibility. Keep them separate by destination.
+- **Letting "Unknown" deadlines pile up.** A handful is normal. A list where 40% have no date is a list you can't plan from. Periodically force the decision: commit a date, defer explicitly, or kill it.
+- **Sales reps treating "next steps" as plural.** A deal has one next step. If a rep walks away with three, the deal stalls while everyone waits to see which is real.
+- **Treating extraction as fire-and-forget.** Extraction is automatic; the workflow is not. The two-minute cleanup is what makes this work.
+
+## When to graduate to a heavier workflow
+
+This workflow is the on-ramp. Two signals it's time to add something on top:
+
+- You're running the same kind of meeting weekly and want decisions and open questions captured too — graduate to [structured meeting notes](/workflows/structured-meeting-notes-workflow).
+- You're running customer calls and want pain points, feature asks, and verbatim quotes alongside the action items — graduate to the [customer research workflow](/workflows/customer-research-workflow).
+
+Both heavier workflows include action items extraction as a section, so the habit you build here carries forward.
+
+## Where to go next
+
+- [Workflows](/workflows) — the general shape this is an instance of
+- [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
+- [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding tasks so extraction runs live
+- [After a meeting](/using-earmark/after-a-meeting) — producing audience-specific outputs from the same transcript
+- [Structured meeting notes](/workflows/structured-meeting-notes-workflow) — the heavier workflow this one nests inside
+- [Customer research workflow](/workflows/customer-research-workflow) — the variant specialized for discovery calls

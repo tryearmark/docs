@@ -1,0 +1,358 @@
+---
+title: "Hiring"
+description: "Turn interview conversations into structured, evidence-grounded artifacts your loop can calibrate on and your future hires can learn from"
+keywords: ["interview", "hiring", "candidate evaluation", "scorecard", "rubric", "reference check", "calibration", "ATS"]
+---
+
+The single most consequential decision most companies make — who joins the team — is also one of the most poorly instrumented. The data underneath nearly every hiring call is some version of the same thing: an interviewer's impression of a 45-minute conversation, written down an hour later, from memory, in language that drifts toward vague qualifiers ("smart," "good energy," "didn't quite vibe").
+
+The unit of work — the hire — plays out over twelve to twenty-four months. The signal that should predict it gets captured in a sixty-second scorecard written from memory.
+
+This guide is a specific instance of the [workflows](/workflows) pattern, applied to hiring loops. It is the comprehensive version of the candidate-interview variation covered in the [people and team meetings workflow](/workflows/people-and-team-meetings-workflow) — pick this page when hiring is the workflow, that page when interviews are one of several manager-relationship meetings you're running.
+
+## Before anything else: candidate data
+
+<Warning>
+This workflow handles data about people who don't work at your company yet, and may never. That changes the obligations.
+
+- **Consent.** Always tell candidates the conversation is being recorded for note-taking, who has access, and how long it's retained. The recruiter typically handles this in the interview kit. Confirm at the start of every interview regardless: *"I'll be using Earmark to take notes so I can be present. Is that okay?"* If the candidate declines, take handwritten notes and skip the workflow for that interview.
+- **Retention has limits.** Don't keep candidate transcripts longer than your stated policy. For hired candidates, transfer relevant content to the employee record on a defined schedule and delete the originals. For non-hired candidates, delete on the same schedule (commonly 6–24 months depending on jurisdiction).
+- **Access is narrow.** Artifacts are for the hiring loop, the recruiter, and the hiring manager. Not part of company-wide ad-hoc Q&A. See the [ad-hoc Q&A workflow](/workflows/ad-hoc-qa-workflow) on the privacy discipline.
+- **Candidates may request access.** In many jurisdictions, candidates can request the records used to make hiring decisions about them. Write your artifacts in language you'd be comfortable showing the candidate.
+
+Use [temporary meetings](/earmark-basics/temporary-meetings) for sessions where retention should be tighter than the workspace default. Earmark's [workspace isolation](/security-and-privacy) keeps interview artifacts private to the interviewer until they're shared.
+</Warning>
+
+## Sharpen your rubric first
+
+Every interview is implicitly evaluating something. The "something" needs to be explicit, written down, and shared across the loop. If your team doesn't have a rubric, write one before running this workflow — the artifacts depend on it.
+
+A minimum-viable rubric has four parts:
+
+| Element | What it is |
+| --- | --- |
+| **Competencies** | Four to eight dimensions the role requires (engineer: technical depth, system design, code quality, collaboration, ownership; PM: customer empathy, prioritization, communication, technical fluency, leadership) |
+| **Levels** | What each competency looks like at the target level (e.g., "senior engineer technical depth = can independently design and lead the implementation of systems serving X load") |
+| **Required vs preferred** | Which competencies are non-negotiable vs which are nice-to-have |
+| **Coachable vs barrier** | For each likely gap: does it close on the job, or doesn't it? |
+
+The last row is the most underrated and the highest-leverage. A gap that closes in three months on the job is a different hiring decision from a gap that doesn't close at all — and most loops conflate them. Be explicit: *"weak system design at senior level = barrier. Weak presentation skill = coachable in role."* Force the distinction.
+
+Also decide before opening the role: **which competencies each interview probes**. Don't have five interviewers all asking behavioral questions about ownership. Allocate competencies so each is probed by at least two interviewers (for calibration) but not all of them (for efficiency).
+
+## What the artifact looks like
+
+A worked example of one competency from a competency interview — a senior engineer being evaluated on system design:
+
+```md
+### System design — Target level: Senior
+
+**Specific evidence — positive:**
+On the URL shortener question, the candidate independently raised the
+hot-key problem before being prompted ("the long tail is fine, but
+viral links will hit one shard hard"). Proposed consistent hashing
+with virtual nodes; sketched the rebalancing trade-off correctly.
+Asked clarifying questions on traffic shape before committing to a
+design.
+
+**Specific evidence — concerns:**
+When pushed on cross-region failover, the candidate hedged
+("there are a few options here") without committing to one. Three
+follow-ups did not surface a specific design. Did not raise
+consistency vs availability trade-offs unprompted.
+
+**Gaps observed:**
+- Cross-region resilience — **Coachable.** First-time exposure based on
+  past role; the reasoning instincts were correct, lacking only the
+  vocabulary. Pairing with the platform team in the first 90 days
+  closes this.
+- Operational rigor (incident response, oncall design) — **Insufficient
+  signal.** Did not come up in this interview; flag for the next.
+
+**Read at target level:** Solid — with a gap to watch on cross-region.
+```
+
+Same shape, every competency, every interview. The vocabulary stays evidence-grounded; "smart" never appears.
+
+## The competency interview template
+
+```md
+Extract structured signal from this candidate interview. Be faithful to
+what the candidate actually said and demonstrated. Distinguish between:
+- Observed behaviors and stated experiences (cite specifics, quote
+  where useful)
+- Your interpretation (flag as interpretation)
+- Unknowns (write "Unknown" — do not infer)
+
+Do not use vague qualifiers ("smart," "great," "didn't vibe"). Use
+specific, evidence-grounded language tied to the competencies being
+evaluated. If a response was strong, say specifically why. If weak,
+say specifically why.
+
+# Interview: {Candidate} — {Role} — YYYY-MM-DD
+**Interviewer:** {name and role}
+**Interview type:** {Behavioral | Technical | System design | Domain | Leadership}
+**Duration:** {time}
+**Competencies evaluated:** {list from rubric}
+
+## Per-competency assessment
+For each competency this interview was designed to evaluate:
+
+### {Competency} — Target level: {from rubric}
+
+**Specific evidence — positive:** what the candidate said or did that
+supports strength at the target level. Reference the question or
+scenario that elicited it. Quote where useful.
+
+**Specific evidence — concerns:** what raised concern at the target
+level. Same specificity. If they ducked a follow-up, say so.
+
+**Gaps observed:**
+- {Gap} — **Coachable / Barrier?** with reasoning.
+  - "Coachable" = closes within the first six months in role given
+    normal coaching and reps.
+  - "Barrier" = doesn't close, or closes too slowly to justify hiring
+    at this level.
+
+**Read at target level:** Strong | Solid | Mixed | Below | Insufficient signal
+
+[Repeat for each competency this interview evaluated]
+
+## Questions I asked
+Brief list of the questions used. Helps the next interviewer avoid
+duplication and build on what was probed.
+
+## How the candidate engaged
+Observations about *how* they showed up — not "good energy" but
+specifics: did they ask clarifying questions? Did they think out loud?
+Did they get defensive on follow-up probes? Did they take ownership of
+weak past projects or deflect?
+
+## Candidate questions
+What did the candidate ask us? Quote the most revealing ones.
+
+## Risks / open questions for next interviewer
+Specific things the next interview should probe, with why.
+
+## Hire recommendation
+Strong hire | Hire | No hire | Strong no hire
+
+**Reasoning:** Four to eight lines. Lead with the strongest piece of
+evidence supporting the recommendation. Then the most important
+counterevidence. Then the read. Evidence-grounded throughout.
+
+## Scorecard-ready notes
+A six- to ten-line summary to paste into the ATS scorecard.
+Per-competency reads, hire recommendation, key risks. No vague
+language.
+```
+
+Three things in this prompt are load-bearing.
+
+**The Stated / Interpretation / Unknown discipline.** Same shape as the [sales calls workflow](/workflows/sales-calls-workflow). "Unknown" is a required answer — guessing pollutes the artifact and makes calibration impossible. The model will fill in plausible-sounding details unless told not to.
+
+**"No vague qualifiers." Force evidence-grounded language.** "Smart, great culture fit, didn't vibe" — none of these are interview signal. The discipline is non-negotiable. If the artifact contains those words without specific behavioral evidence, the workflow has failed.
+
+**The Coachable / Barrier distinction on every gap.** This is the most underrated piece of hiring prompt engineering. Some gaps close in three months on the job. Others don't close at all. The hiring decision depends on knowing which kind of gap you're looking at. Without this explicit call, loops reject strong candidates with coachable gaps and hire weak candidates with non-coachable ones.
+
+## Save it as a workspace template
+
+<Steps>
+<Step title="Start from the people-and-team interview template, or write from scratch">
+There is no built-in interview template, so the fastest path is to paste the prompt above into a new task on a real interview and iterate in the [Composer](/using-earmark/composer) until the output lands.
+</Step>
+<Step title="Customize per interview type">
+A behavioral interview probes different competencies than a system design interview. Save a separate workspace template for each interview type in your loop, with the competency list pre-filled.
+</Step>
+<Step title="Save with Workspace visibility">
+Set visibility to **Workspace** so every interviewer in the loop produces the same shape. See [Custom templates](/customization/custom-templates). Calibration depends on shared structure.
+</Step>
+</Steps>
+
+## Run it on a single interview
+
+<Steps>
+<Step title="Confirm consent at the start of the call">
+"I'm using Earmark to take notes so I can be present. Is that okay?" If the candidate declines, switch to handwritten notes for this interview.
+</Step>
+<Step title="Pre-seed with the right template">
+For the interview type and the specific competencies being evaluated. See [Before a meeting](/using-earmark/before-a-meeting).
+</Step>
+<Step title="Be present">
+The point of the workflow is to preserve presence during the interview. Take no manual notes. Engage. Probe follow-ups. Ask the questions a real conversation produces.
+</Step>
+<Step title="Five-minute cleanup">
+Within 30 minutes — interview signal decays fast:
+
+- **Strip vague language.** "Candidate seemed engaged" → "candidate asked clarifying questions on three of the five scenarios." If the model wrote "good energy," cut it.
+- **Sharpen the Coachable/Barrier reads.** For every gap the model flagged, confirm the call yourself. This is your judgment, not the model's.
+- **Write the hire recommendation yourself.** Don't let the model write this. The model can summarize evidence; the recommendation is your call. Letting the model write it moves the most important judgment in hiring to a system that wasn't in the room.
+- **Tighten the scorecard-ready notes.** This is what lands in the ATS.
+</Step>
+<Step title="Push to ATS — same day">
+Within 24 hours at the outermost; ideally within the hour. The longer the gap between interview and ATS push, the more memory bias creeps in. Paste the **Scorecard-ready notes** into the ATS scorecard, ratings into the competency fields, risks into the notes-for-next-interviewer field. Earmark does not write to ATS systems directly — the artifact is structured so it pastes cleanly.
+</Step>
+</Steps>
+
+## Variations
+
+Same skeleton, two close relatives that handle the bookends of the loop.
+
+### Recruiter or hiring-manager screen
+
+For the 30–45 minute conversation that decides whether to invest the full loop. Lighter than a competency interview, broader in scope.
+
+```md
+Capture this candidate screen. Use the same evidence-grounded discipline
+as a competency interview — no vague qualifiers.
+
+# Screen: {Candidate} — {Role} — YYYY-MM-DD
+**Screener:** {name and role}
+
+## Background and trajectory
+- Current role and company
+- Years of relevant experience
+- Notable past experience tied to this role
+- **Trajectory:** accelerating | steady | flat | declining — with evidence
+
+## Motivation
+Why are they exploring? What's drawing them to this role specifically?
+- **Signal read:** active job seeker | passive but interested | window shopping | reluctant
+
+## Compensation expectations
+- Range they shared, if any
+- Flag any mismatch with the role's posted range
+
+## Logistics
+- Timeline / start date
+- Location / remote preferences
+- Work authorization (only if they offered)
+- Notice period
+
+## Surface-level competency read
+Without going deep — that's for later interviews — what's the high-level
+read on each required competency?
+- **{Competency}:** Promising | Mixed | Concern | No signal yet
+  Brief evidence.
+
+## Candidate questions
+Useful signal about what they care about.
+
+## Red flags
+"None to flag" is fine.
+
+## Recommendation
+Advance to next stage | Hold | Reject
+**Reasoning:** evidence-grounded.
+
+## Notes for the loop
+What should later interviewers probe based on what surfaced here?
+```
+
+The screen's job is not to make the hiring decision. It's to filter clear mismatches and brief the loop on what's worth probing.
+
+### Reference check
+
+Reference checks are underutilized and underdeveloped at most companies. A structured one is often the single highest-signal artifact in the loop.
+
+```md
+Capture this reference check. The reference is talking about a candidate
+we are considering for {role}.
+
+# Reference: {Reference} on {Candidate} — {Role} — YYYY-MM-DD
+**Reference's relationship:** direct manager | skip-level | peer | direct report | other
+**Period worked together:** {dates / duration}
+**How reference was sourced:** candidate provided | back-channel | both
+
+## Working relationship context
+- Reference's role at the time
+- Candidate's role at the time
+- Nature and frequency of the working relationship
+
+## Strengths confirmed
+For each: what specifically does the reference cite?
+- {Strength} — specific examples from reference's experience
+- Quote: "..."
+
+## Concerns / development areas
+References frequently soft-pedal weaknesses. Probe for specifics.
+- {Area} — what specifically? Was it addressed? Resolved or open?
+
+## "Would you hire them again" probe
+Quote the answer.
+
+## Comparison to peers
+"How did they compare to other {role} you've worked with?" — captures
+the reference's calibrated read.
+
+## Reference's hesitations
+Where did the reference pause, hedge, choose words carefully? These
+moments often contain the most signal. Note them specifically with quotes.
+
+## Read on the reference itself
+Was the reference candid? Did they seem to be reading from a script?
+Enthusiastic, muted, willing to take the call? All are signal.
+
+## Net read
+Strong endorsement | Solid | Mixed | Concerning | Red flag
+**Reasoning:** evidence-grounded.
+
+## Notes for hiring decision
+What does this reference shift about the hiring read?
+```
+
+The **hesitations** section is the most valuable part. References usually want to be helpful and rarely say outright negative things — but the things they pause before saying, the words they choose carefully, the questions they don't quite answer, are often the most revealing signal in the entire loop. The template forces the interviewer to record those moments rather than smooth them into a clean narrative.
+
+## The calibration debrief
+
+The debrief is where decisions actually get made. It is also one of the most underutilized meetings in hiring — typically run on fading memories, dominated by whoever speaks first or loudest.
+
+The structure that works:
+
+1. **Hiring manager frames briefly** — 60 seconds on the candidate and the loop's coverage. Not the recommendation yet.
+2. **Each interviewer offers their independent recommendation before discussion.** The single most important debiasing move. Some panels do this in writing simultaneously. Without it, the first speaker anchors the room.
+3. **Walk through the divergences.** Where the loop disagreed, dig in. What did the dissenting interviewer see? What did they probe that others didn't?
+4. **Probe every Coachable/Barrier read.** For each gap the loop flagged, the panel discusses: do we agree it's coachable? Coachable by whom, and on what timeline?
+5. **Hiring manager makes the call** with the loop's input weighted appropriately. Calls that contradict the loop's aggregate read are fine — sometimes the hiring manager sees something the loop doesn't — but they should be made explicitly and with reasoning, not implicitly.
+
+A debrief run this way converges in 25–30 minutes instead of the usual 60. Most of the work has already been done by the structured artifacts; the debrief converges on the divergences and the decision.
+
+## What this workflow doesn't do
+
+Earmark refines artifacts within a single interview. Three things hiring teams want — **loop-level synthesis across multiple interviewers**, **post-hire retrospectives comparing interview reads to actual performance**, and **rubric refinement based on patterns across past loops** — all require synthesis across many meetings. Not a one-click action today.
+
+Workarounds:
+
+- **Loop-level synthesis before a calibration debrief.** Paste each interviewer's **Scorecard-ready notes** and gap reads into a single Customize-context document. Run a synthesis task that surfaces per-competency aggregate reads, divergences across interviewers, and remaining open questions. Fifteen minutes; produces the substrate the debrief actually needs.
+- **Post-hire retrospectives at 6 and 12 months.** The structured original artifacts are still in the workspace. Pair them with the new hire's actual performance reads — compiled manually from recent 1:1 artifacts using the [people and team meetings workflow](/workflows/people-and-team-meetings-workflow) — and run an external synthesis on the pair. What did the loop predict? What's actually happening? Which coachable gaps closed?
+- **Rubric refinement.** Quarterly, the talent lead or hiring manager reviews the post-hire retrospectives by hand and updates the rubric, the question bank, and the coachable-vs-barrier list. The rubric becomes a living document over years.
+- **ATS push** is paste-based, not integrated. The structured **Scorecard-ready notes** section is designed to drop into Greenhouse, Lever, Ashby, or Workable cleanly. Workspace templates ensure every interviewer produces the same shape.
+
+The compounding payoff — measurably more accurate rubrics, calibrated interviewers, question banks that correlate with performance — requires this manual loop to be run. Most companies never realize it because the artifacts to support it never exist. With this workflow, they do.
+
+## Common pitfalls
+
+- **Vague qualifiers in scorecards.** "Smart, good fit, didn't vibe." If the artifact contains these without specific behavioral evidence, the workflow has failed. Non-negotiable: evidence, not impression.
+- **Filling out the scorecard the next day.** Memory decay starts immediately. Same-day push, ideally same-hour. The longer the gap, the more bias creeps in.
+- **Letting the model write the hire recommendation.** The model can summarize evidence. The recommendation is your judgment.
+- **Conflating coachable gap with barrier.** The most common hiring mistake. Force the explicit call.
+- **No calibration across the loop.** Different interviewers using different competencies and different language. The loop's value depends on shared structure. Fix the rubric before standing up the workflow.
+- **Skipping loop-level synthesis before the debrief.** A debrief without the synthesis is the same debrief everyone's been running for decades, with a recording added. Run the synthesis first, every time.
+- **Anchoring in the debrief.** The first speaker tends to anchor the room. Mitigate by collecting individual recommendations before discussion — in writing if possible.
+- **Reference checks as box-checking.** A poorly-run reference check is worse than no reference check — it generates false confidence. Probe for specifics; pay attention to hesitations.
+- **No close-the-loop habit.** Without post-hire retrospectives, the rubric never improves. Calendar them; do them.
+- **Treating interview signal as homogeneous.** Different competencies are observable to different degrees in interview settings. Technical depth: very observable. Long-term resilience: barely observable. Weight the synthesis accordingly.
+- **Querying interview artifacts for ad-hoc Q&A.** Interview artifacts are restricted access. Not part of company-wide [ad-hoc Q&A](/workflows/ad-hoc-qa-workflow) corpora. Keep them inside the hiring loop.
+- **Retention drift.** It's easy to keep candidate artifacts longer than your retention policy. Audit annually. Delete what should be deleted.
+- **"Culture fit" as a competency.** If your rubric has "culture fit" as a dimension with no specific behavioral definition, it's a vector for bias. Replace with specific behaviors ("communicates disagreement directly," "shares credit," "asks for help when stuck") that match what you actually mean.
+
+## Where to go next
+
+- [Workflows](/workflows) — the general shape this is an instance of
+- [People and team meetings workflow](/workflows/people-and-team-meetings-workflow) — for the broader manager-relationship workflows including 1:1s and skip-levels
+- [Temporary meetings](/earmark-basics/temporary-meetings) — for sessions with tighter retention than the workspace default
+- [Security and privacy](/security-and-privacy) — workspace isolation, no training on your data, retention controls
+- [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
+- [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding the right template for the interview type
+- [Composer](/using-earmark/composer) — for tuning the prompt before saving as a workspace template
+- [Ad-hoc Q&A workflow](/workflows/ad-hoc-qa-workflow) — for the privacy discipline around restricted-access corpora like interviews

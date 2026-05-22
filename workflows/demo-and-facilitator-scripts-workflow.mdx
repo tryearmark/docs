@@ -1,0 +1,486 @@
+---
+title: "Demo and facilitator scripts"
+description: "Turn the meetings where someone runs something well — a product demo, a training session, a workshop, a research interview — into a replicable script the whole team can use"
+keywords: ["demo script", "facilitator guide", "SOP", "presentation prep", "training", "onboarding", "workflow"]
+---
+
+Most companies have a quiet but expensive pattern. The things that get done excellently get done by specific people. Those people's excellence is locked in their heads. The senior CSM runs a customer onboarding that customers rave about; her colleagues run the same session and the response is muted. The founder gives a sales demo that wins deals; the AE giving the same demo loses them. The head of product runs research interviews that surface real insight; the PM running the next round gets surface-level answers.
+
+The cost is invisible because nobody connects it to the right cause. The team thinks the senior people are "naturally better." Sometimes that's true. Far more often, the senior people have built up a tacit script — a sequence of beats, transitions, questions, recovery moves — that they don't think of as a script at all, because they've internalized it. The script exists; it's not written down.
+
+This guide is a specific instance of the [workflows](/workflows) pattern, applied to the conversion of tacit execution excellence into transferable written form. Done well, it's how "Sarah always crushes the demo" becomes "everyone runs Sarah's demo" — without Sarah having to shadow every new hire for six months.
+
+The workflow is unusually tractable today: each script comes from a single source session captured in a normal Earmark recording. No cross-meeting synthesis required for the core flow. The "cross-team synthesis" enhancement (combining moves from multiple sources) is covered as an optional manual step toward the end.
+
+## Foundation
+
+### Pick the source session carefully
+
+The most important variable in script quality is which session you capture from. The principle: capture from a session that went well, run by someone who runs it well.
+
+Capture options:
+
+- **A senior team member running the activity** — most common; the script encodes their excellence
+- **You running the activity yourself** — for capturing your own pattern to give to others
+- **Multiple sessions across the team** — synthesize the best moves from each (manual workaround, see the iteration section)
+- **A session that didn't go well, deliberately** — to capture what *not* to do as an "avoid" companion script
+
+The most common capture pattern: a senior person runs their normal session with Earmark recording. The session is unremarkable in their experience; they did what they always do. The template extracts what was unique about it. The senior person is often surprised by the quality of their own intuitive pattern when it's written down.
+
+<Note>
+If the source session is not normally recorded (internal workshops, research sessions where recording would change dynamics), get consent explicitly before running the workflow. For sessions where recording isn't appropriate, use [temporary meetings](/earmark-basics/temporary-meetings).
+</Note>
+
+### Identify who will use the script
+
+Different audiences need different shapes:
+
+| Audience | What they need |
+| --- | --- |
+| New hire learning the activity | Detailed script; verbatim phrasing; timing markers; facilitator notes; "watch out for" moments |
+| Experienced team member needing a refresher | Lighter script; key beats; transitions; the parts that get forgotten |
+| Peer running the activity for the first time | Full script plus context on why each move matters |
+| You yourself, mid-execution | A glanceable artifact — beats, transitions, key questions, but nothing to read in full |
+| Team you're handing off to | Script plus rationale plus common pitfalls — they need to maintain and evolve it |
+
+A single source session can produce different versions for different audiences. The capture is the same; the template adapts.
+
+### Pick the artifact type
+
+Four shapes cover most cases:
+
+| Type | When to use |
+| --- | --- |
+| **Demo script** | Repeatable product / sales / CS demos; structured around showing capabilities and landing specific points |
+| **Facilitator guide** | Group sessions — workshops, training, research, retros — where the facilitator is leading others through a process |
+| **Step-by-step process (SOP)** | Linear processes that need to be executed in order — "how to demo product X end-to-end," "how to run weekly business review prep" |
+| **Presentation / webinar prep** | One-time event delivery — talks, webinars, panel discussions |
+
+### Destination and ownership
+
+Scripts live somewhere durable. Common patterns: Notion or Confluence wiki for team-wide scripts; sales enablement platforms (Highspot, Showpad, Seismic) for sales-specific work; LMS (Lessonly, Workramp, Sana) for training-specific. Pick one and stick with it. Scripts in three places drift and the team stops trusting which version is canonical.
+
+Each script has one owner — the sales enablement lead for demo scripts, the head of CS or training lead for trainings, the head of research or senior PM for research scripts, the function lead for internal facilitator guides. Single owner; quarterly review. Shared ownership produces drift; no ownership produces staleness within a quarter.
+
+## The four templates
+
+### Template A — Demo script
+
+For repeatable product demos. The workhorse for sales and CS teams.
+
+```md
+Based on this meeting transcript of a product demo, produce a demo
+script that another team member could use to run the same demo. The
+script should encode what the demo presenter actually did — the
+sequence of moves, the specific phrasings that landed, the questions
+they asked, the transitions between sections.
+
+Be faithful to the source session. Do not invent demo moves that
+weren't shown. If something was improvised, mark it as
+"Improvised — confirm if this should be standard."
+
+Format:
+
+# Demo Script: {Product / Feature / Use Case}
+**Source session:** {Meeting name — date}
+**Demo length (source):** {duration}
+**Audience profile (from source):** {who was in the room, role, context}
+
+## Demo overview
+Two to three sentences on what this demo accomplishes. The single core
+point this demo lands.
+
+## Pre-demo setup
+- [ ] Demo environment / sample data / accounts loaded
+- [ ] Tabs / windows / contexts pre-arranged
+- [ ] Materials at hand (one-pagers, pricing sheets, references)
+- [ ] Customer context reviewed (notes from prior calls, CRM data)
+
+## Opening (target: {N} minutes)
+**Goal:** {what this segment accomplishes}
+**Beats:**
+1. {Opening beat — what to say or do}
+   - Sample phrasing: "{verbatim from the source session if it landed}"
+2. {Next beat}
+
+**Facilitator note:** {anything important about how to do this segment}
+**Transition into next section:** "{verbatim transition}"
+
+## {Section name} (target: {N} minutes)
+**Goal:** {what this segment accomplishes}
+**Key point to land:** {the single most important takeaway}
+**Beats:**
+1. {Beat} — sample phrasing: "..."
+2. {Beat}
+
+**Questions to ask the audience:**
+- {Question that was asked in source session}
+- {Question that drew good engagement}
+
+**If they ask...** (anticipated questions and responses)
+- **Q:** "{question}" → **A:** "{answer}"
+- **Q:** "{question}" → **A:** "{answer}"
+
+**Compression option:** If running short on time, {what to cut and what
+to preserve}
+
+**Transition:** "{verbatim transition}"
+
+[Repeat for each section]
+
+## Closing (target: {N} minutes)
+**Goal:** {Define next step; create commitment}
+**Beats:**
+1. {Beat}
+
+**Asks of the audience:**
+- {Specific commitment to seek}
+
+## Common adjustments
+- **For technical buyers:** {adjustments}
+- **For executive buyers:** {adjustments}
+- **For champions running internal demos:** {adjustments}
+
+## Recovery moves
+If you lose your place or the audience disengages:
+- {Move the source presenter used}
+
+## What NOT to do
+Anti-patterns this demo deliberately avoids:
+- {Anti-pattern} — why
+```
+
+Three things in this prompt are load-bearing.
+
+**Timing markers per section.** Demos that run long lose the audience. Sections with explicit target durations help the presenter pace.
+
+**Compression options.** Real demos rarely have the full time allocated. Each section flags what to cut if you're short — which is what experienced demoers do intuitively and new ones miss.
+
+**The "If they ask" pattern.** The part most demo scripts skip and the part experienced demoers do best. Anticipated questions with prepared responses make a junior demoer feel prepared. The model extracts these from questions the audience actually asked in the source session.
+
+### Template B — Facilitator guide
+
+For group sessions — workshops, trainings, research interviews, retros, design sprints. Different from a demo: the facilitator is leading the audience through an activity, not showing them something.
+
+```md
+Based on this meeting transcript of a workshop / training / research
+session / retro, produce a facilitator guide that another person could
+use to run the same session.
+
+Be faithful to the source. Do not invent facilitation moves that
+weren't used.
+
+Format:
+
+# Facilitator Guide: {Session name}
+**Source session:** {Meeting name — date}
+**Source facilitator:** {Name}
+**Session length:** {duration}
+**Audience type:** {who attends and why}
+**Stated goal:** {what the session accomplishes}
+
+## Pre-session setup
+- [ ] Materials needed
+- [ ] Room setup (or virtual setup — Miro board, breakout rooms)
+- [ ] Pre-reads sent to participants
+- [ ] Facilitator's own prep
+
+## Session arc (overview)
+1. {Phase 1} ({N} min)
+2. {Phase 2} ({N} min)
+3. {Phase 3} ({N} min)
+
+## Phase 1: {Name} ({N} minutes)
+**Purpose:** {what this phase accomplishes in the arc}
+
+**Facilitator opens with:**
+"{Verbatim or close paraphrase of the actual opening}"
+
+**Activity / prompts:**
+1. {Activity} — {N} minutes
+   - What you say: "{specific phrasing}"
+   - What the group does: {their activity}
+
+**Facilitator moves to watch for:**
+- {Move that worked — e.g., "When silence lasts more than 10 seconds,
+  {source facilitator} reframes with..."}
+- {Engagement-checking move}
+- {How to handle the dominant voice}
+- {How to draw out quiet participants}
+
+**Transition into next phase:**
+"{Phrasing the source facilitator used}"
+
+[Repeat for each phase]
+
+## Facilitator presence notes
+How {source facilitator} showed up that's worth replicating:
+- {Specific behavior — e.g., "Repeats participant statements back to
+  confirm understanding before moving on"}
+
+## Common failure modes and recovery
+- **If the group goes off-topic:** {recovery move}
+- **If energy drops in the middle:** {recovery move}
+- **If one participant dominates:** {recovery move}
+- **If you're running over time:** {what to cut, what to preserve}
+
+## Closing
+**The close (verbatim from source):** "{closing language}"
+
+## What NOT to do
+- {Anti-pattern}
+
+## Materials and references
+- {Link to slide deck, Miro template, doc template}
+- {Link to source recording}
+```
+
+The **facilitator moves to watch for** section is what separates a basic outline from a useful facilitator guide. It captures the specific behaviors — drawing out quiet people, handling dominant voices, breaking silence productively — that distinguish a well-facilitated session from a poorly-facilitated one.
+
+### Template C — Step-by-step process / SOP
+
+For linear processes that need to be done the same way every time. Less about delivery, more about execution.
+
+```md
+Based on this meeting transcript where someone is explaining or
+demonstrating a process, produce a step-by-step process document. The
+document should let someone unfamiliar with the process execute it
+correctly.
+
+Be faithful to what was shown. If the source person skipped a step
+(because it was obvious to them) but the step is needed, flag it as
+"Inferred — confirm with {source person}."
+
+Format:
+
+# Process: {Process name}
+**Source:** {Meeting name — date}
+**Process owner:** {Name}
+**When to use:** {what triggers this process}
+**Outcome:** {what this process produces when done correctly}
+**Estimated time to complete:** {duration}
+
+## Prerequisites
+- [ ] Access to {systems, tools, accounts}
+- [ ] Permissions: {list}
+- [ ] Inputs: {what you should have in hand}
+
+## Steps
+
+### Step 1: {Verb-led step name}
+**What to do:** {Specific action}
+
+**How to do it:**
+1. {Substep}
+2. {Substep}
+
+**Why this step matters:** {One sentence — gives the executor context
+to do it intelligently rather than mechanically}
+
+**Common mistakes at this step:**
+- {Mistake} — {what happens if you make it}
+
+**Output of this step:** {What you should have after completing}
+
+### Step 2: {Step name}
+[Same structure]
+
+[Repeat for each step]
+
+## Verification
+How to confirm the process completed correctly:
+- [ ] {Check}
+
+## Recovery
+If something goes wrong:
+- **Symptom:** {problem} → **Action:** {how to recover}
+
+## When NOT to use this process
+Situations that look similar but require different handling:
+- {Situation} → {use this other process instead}
+```
+
+The **Why this step matters** and **Common mistakes at this step** sections are what make an SOP usable. SOPs that only list steps get followed mechanically and break when reality doesn't match. SOPs with context get adapted intelligently.
+
+### Template D — Presentation or webinar prep
+
+For one-time event delivery — a talk, a webinar, a panel, an exec presentation. Different from a demo: less repeatable, more about polish for a specific audience.
+
+```md
+Based on this meeting transcript (a prep session, a rehearsal, or a
+source presentation by someone else), produce a prep document for the
+upcoming event.
+
+Format:
+
+# Presentation: {Event name}
+**Date:** {Event date}
+**Audience:** {Who, size, context}
+**Duration:** {target length}
+**Source:** {Meeting name — date}
+
+## The single message
+The one thing the audience should remember if they remember nothing
+else. One sentence.
+
+## Audience analysis
+- **What they know coming in:** {baseline}
+- **What they care about:** {interests, motivations}
+- **What they're skeptical of:** {pushbacks to anticipate}
+- **What they want from this presentation:** {stated or implied}
+
+## Presentation structure
+
+### Opening (target: {N} minutes)
+**Goal:** Hook + frame
+**Sample opening:** "{one to three sentences}"
+
+### Main arc
+
+**Beat 1: {Title} (target: {N} minutes)**
+- Point to land: {single point}
+- Supporting material: {data, story, demo, quote}
+- Sample phrasing: "{language that worked or fits}"
+
+[Repeat for each beat]
+
+### Closing (target: {N} minutes)
+**Goal:** {Specific call to action or memorable close}
+**Sample closing:** "{language}"
+
+## Anticipated Q&A
+- **Q:** "{question}" → **A:** "{response, anchored in your message}"
+
+## What NOT to say
+Topics to avoid, language that doesn't serve the message:
+- {Item}
+
+## Logistics
+- [ ] Slides ready
+- [ ] Demo working
+- [ ] Backup plan if tech fails
+- [ ] Time to review before going live
+- [ ] Pre-event materials sent
+- [ ] Post-event follow-up plan
+
+## Rehearsal notes
+If the source was a rehearsal, what to refine before the live event:
+- {Refinement}
+```
+
+The **What NOT to say** section is what differentiates a real prep doc from a generic outline. Knowing what to avoid is often more useful than knowing what to include.
+
+## Save them as workspace templates
+
+<Steps>
+<Step title="Identify the most common activity first">
+Most teams start with one template. Demo script for sales teams; facilitator guide for CS or research teams; SOP for ops teams. Save the most-used one first.
+</Step>
+<Step title="Tune to your team's activities">
+Adjust the section headers to match what you actually do. If your demos don't have a "Closing" section because the close happens in a separate call, drop it. Don't force your work into a generic shape.
+</Step>
+<Step title="Save with Workspace visibility">
+Scripts are team standards. **Workspace** visibility means anyone on the team can produce the same shape. See [Custom templates](/customization/custom-templates).
+</Step>
+</Steps>
+
+## Capture mode: running the workflow on a single source session
+
+<Steps>
+<Step title="Confirm the source is worth capturing">
+Did the session go well? Will this activity recur? Is the facilitator's pattern actually distinctive? Is the facilitator willing to share? If all four are yes, the session is a capture candidate. Capturing from mediocre sessions produces mediocre scripts.
+</Step>
+<Step title="Pre-seed the source session with the right template">
+Demo → Template A. Workshop / training / research / retro → Template B. SOP / process → Template C. Presentation → Template D. See [Before a meeting](/using-earmark/before-a-meeting).
+</Step>
+<Step title="Run the source session as it would normally be run">
+Don't change anything about how the session happens. The point is to capture what actually works, not what the source person thinks they do.
+</Step>
+<Step title="The 20-minute curation pass">
+Heavier than for most workflows because the output is meant to be used by other people who weren't in the source session.
+
+- **Read it as someone who wasn't there.** Is the flow clear? Are the transitions logical? If something seems to skip a beat, fill it in.
+- **Confirm the verbatim phrasings.** The model extracts specific language from the source; verify these landed because the language was good, not because the audience was polite.
+- **Add facilitator notes the model couldn't capture.** Things the source person knows about *why* a particular move works. The "watch for this" notes. These aren't in the transcript; they're in the source person's head. Get them out.
+- **Confirm timing markers are realistic.** Source sessions sometimes run long or short due to specific audience dynamics; the script's timings should reflect what the activity *should* take.
+- **Add the "what NOT to do" section.** This comes from the source person's accumulated experience, not the transcript. Sit with them for 10 minutes and capture the anti-patterns.
+- **Verify prerequisites and setup.** The source person did this without thinking; the script needs to make it explicit.
+
+If the source person is different from the script's author, the curation pass usually involves both — a working session walking through the draft together.
+</Step>
+<Step title="Test the script">
+Before publishing as canonical, have someone else use it. The first user is the highest-fidelity quality check you'll get. They'll find steps the source person skipped because they were obvious; transitions that aren't actually transitions for someone new; phrasings that work in the source person's voice but feel wrong for someone else. Iterate based on the first use.
+</Step>
+<Step title="Publish to the durable home">
+Once tested, put it in the destination from Foundation. Cross-link from related materials (the product page, the team's playbook, the onboarding curriculum).
+</Step>
+</Steps>
+
+## Use mode: the script during execution
+
+A unique aspect of this workflow versus others in the series: the artifact gets used *during* the activity, not only before it. The script is a live tool.
+
+**Pre-session reading.** Before running a session, the user reads the script. For a familiar activity, a five-minute refresher. For a new activity, thirty minutes of prep, ideally combined with watching the source recording.
+
+**The glanceable artifact during execution.** Live, the script should be glanceable — not read in full. A demo script should fit on one screen so the presenter can scan it between beats. A facilitator guide can be longer but should be navigable. The bold beats, section headers, and short bullets in the templates above support this — mid-demo, scanning a wall of text is impossible; scanning bolded section names and beat numbers is easy.
+
+For some teams, a **compressed version** of the script — beats and transitions only, no detail — is worth maintaining alongside the full version. Full for pre-session prep; compressed for live use.
+
+**The "where am I" recovery pattern.** A presenter loses their place mid-demo or mid-workshop. They glance at the script, find their location, and recover. This is only possible if the script is open on a second screen, on paper, or in a pinned tab; the beats are clearly labeled; the current section is unambiguously identifiable. The template's structure supports this by default; the user's habit of keeping the script open during the activity makes recovery possible.
+
+**Note-taking during live use.** While running the activity, the user notes what they wished the script said. After the activity, those notes feed the next revision. A few jots in the margin or a Slack DM to yourself. The discipline is capturing friction in the moment, when it's clear what the script missed, rather than trying to remember later.
+
+## The iteration loop
+
+Scripts that don't get updated decay. Scripts that get updated every time they're used improve continuously.
+
+**The post-session note.** After running an activity from a script, the user spends two minutes noting: what worked from the script (which beats landed, which phrasings drew engagement); what didn't work (what felt off, what got skipped, what the audience reacted poorly to); what was missing (what came up that the script didn't address); what's worth adding (moves the user made that worked and should be in the script).
+
+**The monthly refresh.** Once a month, the script owner reviews accumulated notes and updates the script. Adds the new beats that have been working. Refines the phrasings. Cuts sections nobody uses. Updates timing markers based on real session durations. The monthly cadence is what keeps the script alive.
+
+**Cross-team synthesis.** When multiple team members are running the same activity from the same script, the script becomes a substrate for cross-team learning. Quarterly, the script owner runs a 30-minute session where everyone shares what's been working. The notes feed a major revision. The team converges on a best version that's sometimes meaningfully better than what the original source person was doing.
+
+This cross-team synthesis is the part of the workflow that benefits from cross-meeting context. Earmark refines artifacts within a single meeting today; combining moves from multiple sources is a manual workaround — paste the relevant sections from each source artifact into Customize context, then run a synthesis pass against the assembled document.
+
+**Versioning.** Treat scripts as living documents, not sacred texts. Major versions when the activity structure changes; minor versions for refinements; date the last update so users can see how fresh the script is. Keep old versions accessible but mark them as historical.
+
+## Routing and the paired recording archive
+
+The destinations and how they fit together.
+
+**The script library.** A single central location organized by activity type (sales demos, customer success workshops, internal trainings, research methods, facilitation playbooks, process SOPs). Scripts get found via search and navigation. Cross-link related scripts.
+
+**The onboarding curriculum.** Scripts are the backbone of any structured onboarding. A natural progression: week one — read scripts for activities you'll be doing, watch source recordings. Week two — run the activity once with the script open and a senior person observing. Week three — run twice with the script open but no observer. Week four — run from the script with no support. Month two — start contributing to the iteration loop. This compresses ramp time materially compared to "shadow Sarah for six months."
+
+**Sales enablement platforms** (Highspot, Showpad, Seismic): the demo scripts and presentation prep docs go in. The platform handles version control and viewer analytics. The Earmark capture is the input; the platform is the distribution. Don't duplicate.
+
+**LMS / training platforms** (Lessonly, Workramp, Sana): for customer-facing training scripts. New CSMs and implementation engineers read them as part of their training.
+
+**The paired recording archive.** Whatever the destination, the source recording stays in Earmark. Scripts link back. When a user reads a script and wants to see the original — to understand a beat that doesn't quite make sense in writing — the link is one click away. This is the part of the workflow that compounds most over time. The team accumulates not only a script library but a paired recording library. New hires learn by reading scripts and watching the source.
+
+## Common pitfalls
+
+- **Capturing from mediocre sessions.** Garbage in, garbage out. Capture from sessions that actually went well.
+- **Skipping the curation pass.** The template output is a draft, not a script. Without curation, the script reads as transcript-y outline rather than executable artifact.
+- **Skipping the "what NOT to do" section.** The anti-patterns are often more valuable than the patterns. Force the section.
+- **Source person not in the loop.** Capturing from someone else's session without involving them in the curation produces a script missing the *why* behind the moves. Get the source person in for the curation pass.
+- **Scripts that are too long.** A 12-page demo script doesn't get used live. Compress. The full version can be long for prep; the live version should be glanceable.
+- **Scripts that are too short.** A one-paragraph "demo outline" isn't a script. It's an outline. Detail is the point.
+- **No timing markers.** Sections without target durations produce demos that run long.
+- **Treating the script as sacred.** A script is a working document; it should change every month. Teams that treat scripts as immutable end up with playbooks nobody trusts.
+- **No owner.** Shared ownership produces drift. Single owner per script.
+- **No iteration loop.** Scripts that don't get refined after each use decay. The post-session note is the cheap habit that keeps them alive.
+- **Library bloat.** Scripts accumulate; they don't get pruned. Audit quarterly; retire ruthlessly.
+- **Forgetting the source recording.** The script and the recording together are more valuable than either alone. Always cross-link.
+- **Senior people resisting scripting their work.** Sometimes senior people feel that writing down their pattern commoditizes them. Reframe: the script makes their excellence transferable, which makes them more valuable as the team scales, not less.
+
+## Where to go next
+
+- [Workflows](/workflows) — the general shape this is an instance of
+- [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
+- [Composer](/using-earmark/composer) — for tuning the prompt before saving as a workspace template
+- [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding the template on the source session
+- [Sales calls workflow](/workflows/sales-calls-workflow) — for the deal-context that informs demo scripts
+- [People and team meetings workflow](/workflows/people-and-team-meetings-workflow) — for the candidate-interview script that's the same shape applied to hiring
+- [Hiring workflow](/workflows/hiring-workflow) — the systematic hiring-loop version where interview scripts compound
+- [Structured meeting notes workflow](/workflows/structured-meeting-notes-workflow) — for capturing the iteration notes from each script use

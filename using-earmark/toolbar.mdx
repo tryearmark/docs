@@ -1,0 +1,158 @@
+---
+title: "Earmark toolbar"
+description: "Use the menu bar or system tray to start Quick Capture, stop recording, see upcoming meetings, and open the app without bringing the window forward"
+keywords: ["toolbar", "menu bar", "system tray", "Quick Capture", "macOS", "Windows", "calendar", "countdown"]
+---
+
+The Earmark toolbar lives in your **menu bar** on macOS or the **taskbar** on Windows. Click the Earmark icon to open it. From there you can start or stop a recording in one click, jump into your next meeting, and manage capture without bringing the main app to the front.
+
+<Frame caption="Open the Earmark toolbar from the menu bar or taskbar">
+  <div
+    style={{
+      width: '100%',
+      borderRadius: '0.875rem',
+      overflow: 'hidden',
+      boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
+    }}
+  >
+    <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      src="https://bwopjpjsyqjaz3ty.public.blob.vercel-storage.com/toolbar/toolbar-open.mp4"
+      title="Earmark toolbar menu opening from the system menu bar."
+      style={{ width: '100%', display: 'block' }}
+    />
+  </div>
+</Frame>
+
+## Quick Capture
+
+Quick Capture starts an ad-hoc recording right away, even when the conversation isn't tied to a calendar event. Use it for hallway chats, impromptu calls, brainstorms, or any moment you want captured.
+
+<Steps>
+  <Step title="Open the toolbar">
+    Click the Earmark icon in the menu bar (macOS) or taskbar (Windows).
+  </Step>
+  <Step title="Choose Quick Capture">
+    Recording starts immediately — no calendar event required.
+  </Step>
+  <Step title="Stop when you're done">
+    Open the toolbar again and choose **Stop Capture** to end the session and save your transcript.
+  </Step>
+</Steps>
+
+<Note>
+  **Quick Capture** is hidden from the menu while a recording is already active, so you can't accidentally start a second one. Stop the active capture first and it will reappear.
+</Note>
+
+If you're using [Temporary mode](/earmark-basics/temporary-meetings), Quick Capture opens in a separate window so it doesn't cover what you're already working on.
+
+<Frame caption="Start a recording with Quick Capture from the toolbar">
+  <div
+    style={{
+      width: '100%',
+      borderRadius: '0.875rem',
+      overflow: 'hidden',
+      boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
+    }}
+  >
+    <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      src="https://bwopjpjsyqjaz3ty.public.blob.vercel-storage.com/toolbar/toolbar-start.mp4"
+      title="Quick Capture started from the Earmark toolbar menu."
+      style={{ width: '100%', display: 'block' }}
+    />
+  </div>
+</Frame>
+
+## Stop Capture
+
+While a recording is running, **Stop Capture** appears at the top of the toolbar menu. Choose it to end the session and save your transcript. You'll see **Stopping Capture…** briefly while Earmark finalizes the recording.
+
+## Coming up
+
+The **Coming up** section lists today's remaining calendar events. Each entry shows the time range and meeting title, for example:
+
+`2:00 PM – 3:00 PM • Weekly standup`
+
+Click any meeting to **open the video link** (Google Meet, Zoom, or Microsoft Teams) **and automatically start recording** the call.
+
+### What you'll see
+
+| State | What appears |
+| --- | --- |
+| Signed out | "Sign in to view meetings" |
+| Signed in, no calendar connected | **Connect Calendar…** button |
+| Calendar connected, no meetings left today | "All done today!" |
+| Calendar connected with meetings | List of today's events |
+
+If the list looks stale, choose **Refresh** at the bottom of the menu to pull the latest events from your calendar. For linking a calendar in the main app, see [Calendar](/getting-started/calendar).
+
+## Menu bar countdown (macOS only)
+
+On macOS, Earmark can show a **live countdown** in the menu bar so you know when the next meeting starts — or how long you have left in the current one.
+
+| Example | Meaning |
+| --- | --- |
+| `Weekly standup • 12m left` | You're in a meeting with 12 minutes remaining |
+| `Design review • in 30m` | Your next meeting starts in 30 minutes |
+
+Toggle **Show Events in Menu Bar** in the toolbar. When it's off, you only see the Earmark icon for a cleaner menu bar.
+
+The countdown updates at the top of each minute and re-syncs when your Mac wakes from sleep or you unlock the screen, so times stay current.
+
+<Frame caption="Menu bar countdown for your next or current meeting on macOS">
+  <div
+    style={{
+      width: '100%',
+      borderRadius: '0.875rem',
+      overflow: 'hidden',
+      boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
+    }}
+  >
+    <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      src="https://bwopjpjsyqjaz3ty.public.blob.vercel-storage.com/toolbar/toolbar_upcoming.mp4"
+      title="macOS menu bar showing Earmark meeting title and live countdown."
+      style={{ width: '100%', display: 'block' }}
+    />
+  </div>
+</Frame>
+
+<Tip>
+  On Windows, upcoming meetings still appear in the toolbar menu — only the inline menu bar countdown is macOS-specific, since the Windows taskbar doesn't support custom title text like the macOS menu bar.
+</Tip>
+
+## Other toolbar actions
+
+- **Open Earmark** — Brings the main Earmark window to the front.
+- **Refresh** — Reloads calendar events from your provider (for example after you accept a new invite).
+- **Quit Completely** — Exits Earmark entirely. Closing only the main window leaves the toolbar running in the background.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="I don't see the Earmark icon in my menu bar or taskbar">
+    Make sure the **desktop app is running**. On macOS, the icon sits with other menu bar items at the top right — if your menu bar is crowded, widen the active window or hide other icons to make room.
+  </Accordion>
+  <Accordion title="Quick Capture is missing from the menu">
+    Quick Capture is hidden while a recording is active. Stop the current capture first; **Quick Capture** will show again.
+  </Accordion>
+  <Accordion title="The countdown shows the wrong time after I close my laptop">
+    Earmark listens for sleep and screen-lock events and re-syncs the countdown automatically. If the time still looks wrong, open the toolbar and choose **Refresh**.
+  </Accordion>
+  <Accordion title="Clicking a Coming up meeting doesn't open the video call">
+    The calendar event needs a **video conference URL** for Google Meet, Zoom, or Teams. If there's no join link on the event, clicking won't launch a call — open the event in your calendar app to find or add the URL.
+  </Accordion>
+  <Accordion title="I'm signed in but I see Connect Calendar…">
+    Your account isn't linked to a calendar yet. Choose **Connect Calendar…** from the toolbar to connect Google Calendar or another supported provider; meetings will then show under **Coming up**.
+  </Accordion>
+</AccordionGroup>

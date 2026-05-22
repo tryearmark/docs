@@ -1,0 +1,245 @@
+---
+title: "Shareable summaries"
+description: "Turn meeting outputs into audience-tuned messages the people who weren't in the room can read and act on"
+keywords: ["meeting summary", "Slack update", "executive summary", "customer follow-up", "shareable summary", "audience", "workflow"]
+---
+
+Every meeting has two costs. The first is obvious — the hour times the number of attendees. The second is invisible and larger: the cost of every person who needed to know what got decided but didn't.
+
+That second cost shows up in specific ways. An exec reacts late to a decision they would have weighed in on. A partner gets surprised by a launch they could have helped with. A customer feels forgotten between calls. An engineer rebuilds something a different team deprecated last quarter. Each is small in isolation. Across a year, the difference between an org that operates coherently and one that operates in silos is mostly the difference between these gaps being filled and these gaps being normal.
+
+The problem isn't the meetings. It's the gap between the meeting ending and the right people outside the room finding out what happened. This workflow closes that gap.
+
+This guide is a specific instance of the [workflows](/workflows) pattern. It pairs with every other workflow — the summary is the communication layer on top of [structured meeting notes](/workflows/structured-meeting-notes-workflow), [customer research](/workflows/customer-research-workflow), and [action items](/workflows/action-items-workflow).
+
+<Note>
+[After a meeting](/using-earmark/after-a-meeting) already covers which built-in template maps to which audience (Slack Update Post Generator, Executive Summary, Email Update Generator, etc.). This guide is the systematic version: saved custom templates with stronger constraints, a 90-second cleanup discipline, and the operating habits that make it stick.
+</Note>
+
+## What the artifacts look like
+
+The same meeting — a launch-readiness sync — produces different summaries for different readers. Two of the three audiences, from one transcript:
+
+**Slack post to the team channel:**
+
+```md
+**Launch is March 18.**
+What we discussed: Final gates ahead of next week's launch.
+
+Decisions:
+- Hold the March 18 date despite pricing copy still in review
+
+Todos:
+- Lin — finalize pricing copy — by 3/11
+- Priya — close enterprise SSO edge case — by 3/13
+- Marco — schedule support training — by 3/10
+
+Open questions:
+- Soft-launch existing customers Tuesday, or hold for public Wednesday?
+```
+
+**Executive readout (email or exec channel):**
+
+```md
+**Weekly Leadership — March 4**
+
+Launch readiness sync ahead of March 18. All major gates clearing.
+
+**Outcome:** Launch date held at March 18.
+**Decisions:** Hold the date despite pricing copy review.
+**Risks:** One enterprise SSO edge case open; support training not yet scheduled.
+**Asks:** None.
+```
+
+Same transcript. Same hour of work. Two artifacts shaped for two readers. The third — an external customer follow-up — uses a different tone; the short version is below, and the [email follow-up workflow](/workflows/email-follow-up-workflow) is the full treatment.
+
+## The templates
+
+Three audiences cover most of what teams ship. The built-in `Slack Update Post Generator`, `Executive Summary`, and `Email Update Generator` ([see the library](/earmark-basics/templates)) are the starting points. The custom versions below are what to tune toward — more opinionated structure, explicit no-emoji constraint, headline discipline.
+
+### Internal team summary (Slack)
+
+```md
+Produce a Slack-postable summary of this meeting for the team channel.
+
+Constraints:
+- 6 to 12 lines total
+- Headline on the first line, bolded — the single most important outcome
+- No emojis. No pleasantries, no filler
+- Conversational tone; short bullets fine
+
+Format:
+**{Headline — the most important outcome in one line}**
+What we discussed: one line of context for readers who were not there.
+
+Decisions:
+- {Decision} — one phrase of reasoning
+- {Decision}
+
+Todos:
+- {Owner} — {what} — by {when}
+
+Open questions / what's next:
+- {Question or next step}
+```
+
+### Executive readout (email or exec channel)
+
+```md
+Produce an executive readout of this meeting.
+
+Constraints:
+- Under 8 lines
+- Two-sentence context paragraph, then four labeled lines:
+  Outcome | Decisions | Risks | Asks
+- Plain prose preferred; bullets only for explicit lists
+- No emojis, no filler, no hedging
+
+Format:
+**{Meeting purpose} — {date}**
+{Two-sentence context: what this meeting was for and why.}
+
+**Outcome:** {The one thing leadership should take away.}
+**Decisions:** {Decisions made, comma-separated if multiple.}
+**Risks:** {Anything that should be on leadership's radar. "None to flag" is fine.}
+**Asks:** {Anything we need from leadership. "None" is fine.}
+```
+
+### External customer follow-up email
+
+```md
+Produce a follow-up email to send to the customer or partner after this call.
+
+Constraints:
+- Warm but professional tone
+- Under 200 words
+- No emojis
+- Address the recipient by name if known from the conversation
+- Lead with thanks; close with explicit next step
+- Mention only what was actually said — do not invent commitments or
+  paraphrase the customer in ways they would not recognize
+- Leave sign-off blank for me to add
+
+Format:
+Subject: {Concrete subject line referencing what was discussed}
+
+Hi {Name},
+
+Thanks for the time today. Quick recap of what we covered:
+- {Topic 1 — one line}
+- {Topic 2 — one line}
+- {Topic 3 if applicable}
+
+What we agreed on next:
+- {My commitment} — by {date}
+- {Their commitment if any} — by {date}
+
+{One line of warmth or forward-looking sentiment — optional.}
+{Open questions, if any, framed as a polite ask.}
+
+—
+{Sign-off placeholder}
+```
+
+Three things in these templates are load-bearing across all of them.
+
+**The headline rule.** Reading rate on Slack and email is mostly determined by line one. "We had our weekly sync" is not a headline. "Decision to delay launch by two weeks" is. The template requires it, bolded, on top. The 90-second cleanup is mostly about confirming this line earns its position.
+
+**The no-emoji constraint, repeated explicitly.** Most teams running this workflow want summaries without emojis — they read as more professional and age better in archives. The model will slip emojis in unless the constraint is in the prompt. State it. Re-check after generation.
+
+**"Do not invent commitments or warmth."** Specifically for the external follow-up. The model will occasionally embellish what a customer said into commitments they didn't make. Customer follow-ups that misrepresent the customer destroy trust faster than late follow-ups do. The cleanup step is what catches this.
+
+## Save them as workspace templates
+
+<Steps>
+<Step title="Pick the audience you summarize most often">
+For most teams that's the internal Slack post. For sales, it's the external customer follow-up. Start with one — add the others as they earn their place.
+</Step>
+<Step title="Run the closest built-in template on a real meeting">
+**Slack Update Post Generator**, **Executive Summary**, or **Email Update Generator** — whichever matches. See the [template library](/earmark-basics/templates).
+</Step>
+<Step title="Tighten the prompt in the Composer">
+Open the artifact in fullscreen. In the [Composer](/using-earmark/composer), add the explicit constraints from the template above — headline rule, no-emoji, length cap, the "do not invent" instruction for external. Iterate until the output ships without manual rewriting.
+</Step>
+<Step title="Save with Workspace visibility">
+Open the Composer menu and choose **Save as template**. Set visibility to **Workspace** so everyone produces the same shape. See [Custom templates](/customization/custom-templates) for permissions.
+</Step>
+</Steps>
+
+<Tip>
+One meeting can have multiple summary tasks. If the same call needs both a Slack post and an exec readout, attach both templates — Earmark generates each from the same transcript. These are two separate communication artifacts, not one.
+</Tip>
+
+## Run it on a single meeting
+
+<Steps>
+<Step title="Pre-seed the meeting with the right summary template(s)">
+Pick the audience before the call and attach the matching template. If two audiences need it, attach two. See [Before a meeting](/using-earmark/before-a-meeting).
+</Step>
+<Step title="State outcomes out loud during the call">
+"So we've decided X." "This will affect the platform team." The headline writes itself when the meeting names its own outcome. Good meeting hygiene regardless.
+</Step>
+<Step title="The 90-second cleanup">
+Within the hour, before the day rolls on:
+
+- **Confirm the headline.** Is it the most important thing in the meeting? If not, promote whichever line is. Single highest-impact part of the cleanup.
+- **Cut anything you would not want to leak.** Internal disagreements, half-formed thoughts, sensitive context. The summary is functionally public within its audience — write it that way.
+- **Check tone against the audience.** A tone that works in a casual team channel reads differently in a formal exec email.
+- **For external summaries, verify quotes and commitments.** The model can embellish. Reading once for accuracy is not optional.
+- **Strip emojis** if the model slipped any in against the constraint.
+</Step>
+<Step title="Post or send the same day">
+Ideally within two hours of the meeting ending. The value of a meeting summary degrades by the hour — a summary that lands the next morning is worth meaningfully less than one that lands the same afternoon. This is the part of the workflow most people compromise on and most regret compromising on.
+</Step>
+</Steps>
+
+## Channel and audience match
+
+Different channels have different norms. A short, conversational note dropped into a formal customer email reads as careless; a three-paragraph memo dropped into Slack does not get read. The pairings most teams use:
+
+| Audience | Template | Channel | Notes |
+| --- | --- | --- | --- |
+| Project team | Internal Slack summary | Project Slack channel | Threaded follow-ups stay in the thread; channel stays scannable |
+| Exec / leadership | Executive readout | Leadership channel or email | Predictable cadence matters more than frequency |
+| Cross-functional partner | Internal Slack summary, trimmed | DM or partner team channel | Only the parts that affect them |
+| External customer | External customer follow-up | Direct email + log in CRM | Same-day. Read once for accuracy before sending |
+| Vendor or partner (external) | External customer follow-up | Direct email | Include both sides' commitments |
+| Whole company | Internal Slack summary | Broad channel | Used sparingly; reserve for decisions with broad impact |
+
+A summary in the wrong channel is wasted. Match deliberately.
+
+## What this workflow doesn't do
+
+A weekly cross-meeting digest — "everything the team decided, shipped, and is working on this week" rolled up from five separate meetings — is the natural next thing readers ask for. It's not a one-click action inside Earmark today; cross-meeting state isn't there yet.
+
+Practical workarounds:
+
+- **Hand-assemble the weekly digest from the per-meeting summaries.** If you've been running this workflow on every team meeting for a week, you have five Slack-postable summaries. Paste their headlines and key bullets into a sixth document, tighten, post. Fifteen minutes once a week.
+- **Use the [command menu](/earmark-basics/command-menu)** (`Cmd+K` / `Ctrl+K`) to find specific decisions or commitments across past meetings when assembling the digest.
+- **Export [local transcript files](/earmark-basics/local-transcripts)** and run external synthesis if you want the weekly digest generated rather than assembled.
+
+Per-meeting summaries done well are most of the value. The weekly digest is a layer on top that some teams find worth the assembly effort and many never need.
+
+## Common pitfalls
+
+- **Skipping the 90-second cleanup.** The model can promote a minor point to the headline, smooth over disagreement, or invent warmth. Without the review, the summary ships with errors that quietly erode trust.
+- **Posting the full meeting notes instead of a summary.** Different artifacts. Channels designed for summaries collapse under the weight of full notes; readers mute; the workflow dies.
+- **Wrong audience, wrong channel.** A formal exec summary in a casual team channel reads as cold. A casual recap in an external customer email reads as careless. Audience and channel are coupled — match deliberately.
+- **Weak headlines.** Line one is most of whether the summary gets read. Promote the real outcome to the top during cleanup.
+- **Inventing commitments or warmth.** Especially in external follow-ups. Read every external send for accuracy before clicking send.
+- **Leaving emojis in.** The constraint is real. Default no-emoji; restore them deliberately if you want them in a particular channel.
+- **One summary for multiple audiences.** A summary for the team is not the summary for leadership is not the summary for the customer. If two audiences need it, generate two — Earmark produces each in seconds from the same transcript.
+- **Letting sensitive content ship.** Run the "would I be okay if this leaked outside the intended audience?" test on every summary before sending. The cost of a careless line is much higher than the cost of cutting it.
+- **Sending late.** A summary the morning after lands at maybe a third of the value of one sent the same afternoon. Same-day, or it does not matter.
+- **Treating the summary as the durable record.** It is not — the Earmark artifact is. The summary is the communication layer that points back. Don't ask it to do both jobs.
+
+## Where to go next
+
+- [Workflows](/workflows) — the general shape this is an instance of
+- [After a meeting](/using-earmark/after-a-meeting) — the feature page covering built-in audience-output templates
+- [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
+- [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding so the summary runs live
+- [Composer](/using-earmark/composer) — refining a prompt until it ships without manual rewriting
+- [Action items workflow](/workflows/action-items-workflow) — extracts what to communicate; this workflow communicates it
+- [Email follow-up workflow](/workflows/email-follow-up-workflow) — deeper treatment of external customer follow-up emails
+- [Structured meeting notes](/workflows/structured-meeting-notes-workflow) — the heavier workflow whose shareable summary section is this workflow

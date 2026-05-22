@@ -1,0 +1,431 @@
+---
+title: "Meeting-to-tickets"
+description: "Convert engineering discussions, customer escalations, and design reviews into structured, tracker-ready tickets — with the context downstream refinement and sprint planning need"
+keywords: ["tickets", "user story", "spike", "bug report", "epic", "Linear", "Jira", "Productboard", "workflow"]
+---
+
+A meeting happens: a design review, sprint refinement, bug triage, customer escalation, tech-debt discussion. Real work gets identified — *"we should add validation to the import flow," "we need a spike on whether the auth library handles X," "Maria's bug is reproducible and we know why."* Everyone leaves on the same page.
+
+Then the bridge breaks. The PM or EM is the bottleneck. They translate the discussion into tickets from memory, an hour or three later, between two other meetings. Predictably: some tickets never get created. The tickets that do are vaguer than the discussion was. Acceptance criteria get skipped because writing them takes the time and feels least urgent. Bug reports lose the precise reproduction steps that the triage call established. Spikes — the time-boxed investigation work — fall through entirely because they feel optional.
+
+The cost compounds. Backlog health degrades. Refinement meetings get longer because they're doing the work the original meeting should have produced. Engineers ramp slower on tickets because the context that would have helped them isn't there.
+
+This guide is a specific instance of the [workflows](/workflows) pattern, applied to the meeting → tracker bridge. It builds on the [Linear integration](/integrations/linear) and the built-in `Ticket Generator` template — generalizing to multiple ticket types (story, spike, bug report, epic) for any tracker your team works out of.
+
+## Foundation
+
+### Confirm your tracker's ticket types
+
+The templates below are written to drop into your tracker's conventions. Walk through your tracker first:
+
+| Tracker | Common ticket types |
+| --- | --- |
+| [Linear](/integrations/linear) | Issue (default), with labels for type — feature, bug, spike, chore, improvement |
+| Jira | Story, Task, Spike, Bug, Epic, Sub-task |
+| GitHub Issues | Issue with labels for type; PR templates for code-tied work |
+| Productboard | Insight (research/discovery), Feature, Component, Note |
+| Jira Product Discovery | Discovery item with custom fields |
+| Shortcut / Asana / ClickUp | Story / Task variants per tool |
+
+Linear is the only formal Earmark integration in this list; the rest are paste targets. The templates produce paste-ready markdown that renders cleanly in all of them.
+
+For each ticket type your team uses, confirm: what fields are required (title, description, assignee, priority, labels), what the description template looks like, and what the acceptance-criteria convention is (checkbox list, Gherkin / Given-When-Then, or free-form). The templates below should map directly.
+
+### Which meetings produce tickets
+
+A small set of recurring meetings should reliably produce tickets:
+
+| Meeting type | Likely ticket types |
+| --- | --- |
+| Sprint planning | Stories, tasks, sub-tasks |
+| Backlog refinement | Stories with acceptance criteria; epics broken into stories |
+| Bug triage | Bug reports |
+| Customer escalation calls | Bug reports, occasional feature requests |
+| Design review | Stories for design changes; spikes for open questions |
+| Architecture review | Spikes; sometimes epics |
+| Tech-debt discussions | Chores; tech-debt items |
+| Customer discovery (early) | Productboard insights; discovery items |
+| Customer discovery (validated) | Stories or epics |
+| Retros | Chores, process improvements; sometimes spikes |
+
+Default the template attachment to these meetings. Use [advanced meeting recaps](/workflows/generic-recaps-workflow) for meetings that don't fit.
+
+### Ownership
+
+The meeting owner owns ticket creation. Always. Even if multiple people will work on the tickets, one person — usually the PM running the meeting, the EM convening the triage, or the tech lead in the design review — is accountable for the meeting → tracker conversion. For customer escalation calls: the CSM or implementation engineer on the call owns it.
+
+## The four templates
+
+### Template A — User story with acceptance criteria
+
+The workhorse. For feature work, improvements, and any committable engineering work that has a user-visible outcome.
+
+```md
+Based on this meeting transcript, produce one or more user stories for
+the engineering work that was discussed and committed to. Be faithful
+to the conversation — include only items that were actually agreed,
+not items that were speculative or set aside.
+
+Do not invent acceptance criteria that weren't grounded in the
+conversation. If a detail was unclear, write "Unknown — needs
+refinement" rather than guessing.
+
+No emojis. Be concise. Output is paste-ready for the tracker.
+
+For each story, use this format:
+
+---
+## {Concise, action-oriented title — under 80 chars}
+
+**Type:** Story
+**Priority:** {from conversation; otherwise "Unknown"}
+**Labels:** {relevant area tags from the conversation}
+**Source:** {Meeting name — date}
+
+### User story
+As a {user or persona discussed in the meeting},
+I want {capability — specific},
+so that {outcome — the underlying job, not the feature name}.
+
+### Context
+One to three sentences on why this work is being done. Include any
+background from the meeting that an engineer picking this up would
+need.
+
+### Acceptance criteria
+- [ ] {Specific, testable behavior}
+- [ ] {Specific, testable behavior}
+
+If acceptance criteria were not specifically discussed, write a minimum
+viable set and flag with "(inferred — confirm in refinement)".
+
+### Out of scope (explicit)
+What was discussed but explicitly excluded from this story.
+- {Item}
+
+### Edge cases mentioned
+- {Edge case} — how it should be handled (if discussed)
+
+### Open questions
+Items raised in the meeting that need to be answered before this can
+be built.
+- {Question}
+
+### Notes
+Alternative approaches considered, related work, dependencies.
+---
+```
+
+Three things in this prompt are load-bearing.
+
+**Out of scope is explicit.** Most user stories don't include this section, and it's a real loss — ambiguity about what isn't in scope is the single most common source of refinement friction. Keeping it forces the meeting's exclusions into the ticket.
+
+**Open questions are preserved, not hidden.** A story with open questions is more useful than one that pretends to be complete. The questions feed refinement; refinement resolves them.
+
+**Provenance via the Source line.** Every ticket links back to the Earmark artifact. When the inevitable "why did we decide this?" question arises later, the answer is one click away. Bake the source link into the template; do not leave it optional.
+
+The model will often produce multiple stories from a single meeting — that's correct. Don't try to merge them.
+
+### Template B — Spike (investigation ticket)
+
+For time-boxed exploratory work. The most underutilized ticket type at most companies. The most common engineering failure pattern is *"we needed to investigate X first, but never did, and now we're blocked."* Spikes prevent that.
+
+```md
+Based on this meeting transcript, produce a spike ticket for an open
+question or unknown that was identified but not resolved.
+
+A spike is appropriate when:
+- The team needs to learn something before they can build
+- The right approach is uncertain
+- A technical risk needs to be retired
+
+A spike is NOT appropriate for:
+- Work where the path is known (use a story)
+- Speculation that wasn't actually committed to
+
+Format:
+
+---
+## Spike: {Question being investigated — phrased as a question}
+
+**Type:** Spike
+**Time box:** {from conversation; otherwise suggest a starting point}
+**Priority:** {from conversation; otherwise "Unknown"}
+**Source:** {Meeting name — date}
+
+### The question
+State the specific question. One sentence.
+
+### Context
+Two to four sentences on why this matters now, what it blocks, what
+we currently know or assume.
+
+### Deliverable
+What this spike should produce — a document, a working prototype, a
+recommendation between three options, a go/no-go on a technical
+approach.
+
+### Approach (if discussed)
+How the spike should go about answering the question. If not discussed,
+leave open.
+
+### Definition of done
+- [ ] The question above is answered with evidence
+- [ ] The deliverable exists and has been shared with {audience}
+- [ ] Findings are documented in {destination}
+- [ ] A follow-up ticket exists if implementation work is the natural
+  next step
+
+### What this spike is NOT
+What was discussed that this spike does NOT cover. Keeps the assignee
+focused.
+
+### Time box
+{X} hours / days. If the spike exceeds the time box, the assignee
+brings findings back for a re-scope conversation rather than
+continuing indefinitely.
+
+### Notes
+Background, links, references mentioned.
+---
+```
+
+The time box is the discipline that makes spikes work. A spike without one becomes indefinite investigation. A spike with a time box becomes a structured way to retire risk.
+
+### Template C — Bug report
+
+For bug triage calls, customer escalations, and incident discussions. Different shape than a user story — the priority is reproducibility and clarity, not user-value framing.
+
+```md
+Based on this meeting transcript, produce a bug report ticket for the
+defect that was identified. Be faithful to the steps to reproduce —
+do not invent steps that weren't described.
+
+If the customer's verbatim description is useful, include it as a
+quote. If reproduction steps are unclear, write "Repro steps
+incomplete — follow up needed" rather than guessing.
+
+Format:
+
+---
+## Bug: {Specific symptom description — under 80 chars}
+
+**Type:** Bug
+**Severity:** {from conversation; map to your team's severity scale}
+**Priority:** {from conversation}
+**Affected area:** {component or feature}
+**Reporter:** {name from the meeting — customer name if external}
+**Source:** {Meeting name — date}
+
+### Summary
+One to two sentences on what's broken.
+
+### Steps to reproduce
+1. {Step}
+2. {Step}
+3. {Step}
+
+### Expected behavior
+What should happen.
+
+### Actual behavior
+What actually happens.
+
+### Environment
+- Browser / OS / version / device, if mentioned
+- User type / permissions, if relevant
+- Tenant / account, if escalation from a specific customer
+
+### Frequency
+Always | Sometimes | Once | Unknown
+
+### Customer impact
+If this came from a customer escalation:
+- Who is affected
+- What workflow is blocked
+- Workaround the customer is using, if any
+- Verbatim quote if useful
+
+### Workaround
+If a workaround was discussed:
+- {Workaround}
+- Trade-offs
+
+### Hypothesis (if discussed)
+If engineering had an initial hypothesis about the cause, capture it.
+Mark as hypothesis, not diagnosis.
+
+### Acceptance criteria for fix
+- [ ] Symptom no longer reproduces using the steps above
+- [ ] Regression test added covering this case
+- [ ] Customer notified that the fix has shipped, if external bug
+
+### Open questions
+- {Question}
+---
+```
+
+The **acceptance criteria for fix** is the part most bug reports skip. Without it, "fixed" becomes ambiguous and the bug re-opens because the fix didn't actually address the symptom that was reported. The "verbatim customer quote" is the second underrated detail — it's what makes the bug feel real to the engineer picking it up.
+
+### Template D — Epic + story breakdown
+
+For meetings that discussed a larger piece of work — a feature, an initiative, an architectural change — that needs to be broken into multiple stories.
+
+```md
+Based on this meeting transcript, produce an epic and the constituent
+stories needed to deliver it. The epic captures the big picture; the
+stories are the deliverable units of work.
+
+Format:
+
+---
+## Epic: {Initiative name}
+
+**Type:** Epic
+**Priority:** {from conversation}
+**Source:** {Meeting name — date}
+
+### Goal
+Two to three sentences on what this epic accomplishes and for whom.
+
+### Why now
+Why is this work being done in this period? What's the trigger or
+opportunity? (From the conversation.)
+
+### Success criteria
+How will we know this epic is done? Outcome-oriented, not output.
+- {Criterion}
+
+### Constituent stories
+The stories that make up this epic, in suggested implementation order.
+1. {Story title 1} — {one-sentence description} — {rough size if discussed}
+2. {Story title 2} — {...}
+
+### Dependencies
+- Dependencies on other teams, systems, or epics
+- Things this epic depends on being done first
+
+### Risks
+- {Risk} — {mitigation in flight or proposed}
+
+### Open questions
+- {Question that needs resolution before or during}
+
+### Out of scope
+What was discussed but explicitly excluded.
+- {Item}
+---
+
+For each constituent story listed above, generate a full user story
+using the Template A format. Each story should be paste-ready into the
+tracker with the epic linked as parent.
+
+{Output the full set of Template A stories here}
+```
+
+This template produces a lot of output — an epic plus N stories. That's the point. A meeting that discussed an initiative shouldn't produce only an epic; the stories should be created at the same time so the work is fully scoped in the tracker.
+
+## Save them as workspace templates
+
+<Steps>
+<Step title="Start with the built-in Ticket Generator, then customize">
+The built-in `Ticket Generator` template ([see the library](/earmark-basics/templates)) is the natural starting point. Run it on a real refinement meeting, then iterate the prompt in the [Composer](/using-earmark/composer) toward Template A above — adding the out-of-scope section, the open-questions section, and the provenance line.
+</Step>
+<Step title="Save Template A first; add the others as they're needed">
+Most teams need user stories on every refinement. Bugs are second most common. Save Story and Bug first; add Spike and Epic as you encounter the cases.
+</Step>
+<Step title="Save with Workspace visibility">
+Ticket creation is a team standard. **Workspace** visibility means every PM, EM, and tech lead produces tickets in the same shape — which materially helps engineering. See [Custom templates](/customization/custom-templates).
+</Step>
+</Steps>
+
+## Run it on a single meeting
+
+<Steps>
+<Step title="Pre-seed the meeting with the right template">
+Match the template to the meeting type:
+
+- Refinement or design review → Template A (user story)
+- Architecture review or open-question discussion → Template B (spike)
+- Bug triage or customer escalation → Template C (bug report)
+- Feature kickoff or initiative discussion → Template D (epic + stories)
+
+For meetings that produce multiple types, attach Template A and run additional templates after the meeting as needed. See [Before a meeting](/using-earmark/before-a-meeting).
+</Step>
+<Step title="State the right things during the meeting">
+Four habits sharpen output dramatically:
+
+- **State acceptance criteria out loud.** "We'd consider this done when X, Y, and Z."
+- **Name what's out of scope explicitly.** "We're not going to handle Z in this work." The single most valuable habit in refinement-shaped meetings.
+- **Confirm priority and rough size.** "P1, probably 3 days." Even rough sizing helps.
+- **For bugs, walk through reproduction steps in the meeting.** Don't summarize — actually walk through the steps. The model captures them in the order they happened.
+</Step>
+<Step title="Three-minute-per-ticket cleanup">
+For each ticket the template produced:
+
+- **Read it as if you were the engineer who will pick it up.** Is the work clear?
+- **Confirm acceptance criteria are grounded.** Anything the template inferred should be either confirmed (and the "inferred" flag removed) or kicked to refinement.
+- **Tighten the title.** Tickets live in lists; titles need to be scannable. Under 80 characters; lead with the verb or symptom.
+- **Confirm labels and priority.**
+- **Verify the source link.** Provenance only works if the link does.
+
+For meetings that produced 5–8 tickets, the per-ticket cleanup totals 10–15 minutes.
+</Step>
+<Step title="Paste into the tracker — same day">
+The longer the gap between meeting and tracker, the more drift happens. For [Linear](/integrations/linear), the keyboard flow (C to create, paste, save, repeat) makes rapid ticket creation easy — a meeting that produced six tickets becomes six minutes of ticket creation. For other trackers, the markdown output pastes cleanly.
+</Step>
+<Step title="Post the ticket list in the team channel">
+"From today's design review on the import flow — created 4 stories and 1 spike: {links}. Refinement on Thursday." This is the lightest possible coordination artifact and it materially improves the team's sense that meetings produce real work.
+</Step>
+</Steps>
+
+## Handling meetings that produce many tickets
+
+Some meetings — particularly customer escalation calls and large refinements — produce 6–12 tickets in a single session. Three rules for handling the volume cleanly.
+
+**Generate first, prune second.** Let the template generate every plausible ticket, even borderline ones. Then in the cleanup, decide what's a real ticket and what isn't. The cleanup question for each item: *"Is this committed engineering work, or is it something we discussed?"* Committed work keeps; discussed-but-no-commitment either gets downgraded to an open question on a related ticket, or dropped.
+
+**Merge what should be one; split what should be two.** The model sometimes produces two tickets that are really one (same goal, different implementation detail — merge them). The opposite failure is more common: a single ticket whose acceptance-criteria checklist is 12 items long is almost always two stories pretending to be one. Distinct tickets should have distinct user outcomes.
+
+**Sequence the output.** For Template D's epic + stories output especially, the cleanup should add a suggested sequence: which story is the spine that everything else depends on, which stories are parallel, which require something to be learned first (implying a spike before them). The model often picks this up from the meeting; if not, add it.
+
+## Refinement runs in half the time when the tickets already exist
+
+The single largest downstream effect of this workflow is on refinement meetings. Refinement exists to sharpen tickets that already exist — to estimate, identify dependencies, surface technical risks. When refinement starts with already-shaped tickets that have context, acceptance criteria, out-of-scope, and open questions, it focuses on engineering specifics rather than reconstructing what tickets mean.
+
+Audit your refinement meetings monthly. If they're still spending the first fifteen minutes clarifying what tickets mean, the tickets aren't being created with enough context. Tighten the templates or the meeting habits.
+
+For customer escalations specifically, the closing loop is:
+
+- Tickets created same-day
+- Ticket links sent to the customer or CSM with status: *"we've logged this; here's the link"*
+- When the fix ships, the engineer or PM updates the customer-facing status
+
+This three-step loop is what makes customers feel heard. The escalation call alone isn't enough; the tracker visibility and the close-out are what convert a frustrated customer back into a healthy one.
+
+## Common pitfalls
+
+- **Skipping the cleanup pass.** The model occasionally produces tickets that aren't real work, or merges what should be two distinct tickets, or invents acceptance criteria. The cleanup catches these.
+- **Over-ticket creation.** Not every "we should think about" deserves a ticket. The bar is "committed engineering work." Speculative items belong as open questions on existing tickets.
+- **Vague titles.** Tickets live in lists; lists get scanned. Lead with verbs or symptoms; cap at 80 characters.
+- **Skipping out-of-scope sections.** Most tickets omit this. Most refinement friction comes from ambiguity about scope. Keep the out-of-scope section in every story.
+- **Inventing acceptance criteria.** The model can synthesize plausible-sounding criteria that weren't discussed. Either ground them in the conversation or flag as "(inferred — confirm in refinement)" and leave them open.
+- **No provenance linking.** Tickets without a link back to source meetings lose context within weeks. Bake the source line into every template.
+- **Treating spike tickets as optional.** Spikes that don't get filed become future blockers. File them with the same discipline as stories.
+- **Bug reports without repro steps.** A bug ticket without reproduction is functionally useless. If repro is unclear, write "Repro steps incomplete — follow up needed" and create a task to clarify before the bug enters refinement.
+- **Pasting the entire template output into the wrong field.** Most trackers have separate fields for description, acceptance criteria, and notes. Take the thirty seconds to put each section in the right field.
+- **Letting tickets age in newly-created status.** A ticket created and never triaged effectively doesn't exist. Either move into the next refinement cycle or kill explicitly.
+- **Creating tickets for work that should go to another team.** Don't file it in yours; route it to theirs with a brief note. Keep your backlog honest about your team's work.
+
+## Where to go next
+
+- [Workflows](/workflows) — the general shape this is an instance of
+- [Linear integration](/integrations/linear) — the single-tool version of this workflow for Linear
+- [Cursor integration](/integrations/cursor) — for tickets that flow into coded prototypes
+- [Templates](/earmark-basics/templates) — the built-in `Ticket Generator` and other engineering-output templates
+- [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
+- [Composer](/using-earmark/composer) — for tuning the prompt before saving as a workspace template
+- [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding the template on refinement, design reviews, escalations
+- [Action items workflow](/workflows/action-items-workflow) — for the lighter case where you only need todos, not full tickets
+- [Structured meeting notes workflow](/workflows/structured-meeting-notes-workflow) — when you want decisions and open questions captured alongside the engineering work
+- [Meeting-to-prototype workflow](/workflows/meeting-to-prototype-workflow) — for the case where the next step is a prototype before tickets get cut

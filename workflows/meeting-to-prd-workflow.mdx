@@ -1,0 +1,470 @@
+---
+title: "Meeting-to-PRD"
+description: "Convert customer discovery, feature kickoffs, design reviews, and technical discussions into the document engineering actually builds from — one-pager, full PRD, or technical spec"
+keywords: ["PRD", "spec", "one-pager", "product requirements", "technical spec", "design doc", "workflow"]
+---
+
+PRDs sit in a uniquely important spot in product development. They convert conversation into committed work. Engineering builds from them, design references them, leadership signs off on them, and the team comes back to them six months later to remember what they originally meant.
+
+PRDs are also the artifact PMs are most likely to skip or write badly. Writing one from scratch is a two-to-six-hour task. Across a portfolio of four to eight active projects, that's most of a week. So the PRD either doesn't exist, exists in a degraded form, or exists for a different version of the project than the team is currently working on.
+
+The pattern is familiar. A PM holds a clear customer discovery meeting; the PRD doesn't get written for two weeks; by then half the specificity has faded. A leadership review sets a strategic direction; the PRD reflects what the PM remembers, not what the exec was actually focused on. Engineering writes its own spec because no PM document existed; the spec is technically excellent and product-poor.
+
+This guide is a specific instance of the [workflows](/workflows) pattern. It sits between the [customer research workflow](/workflows/customer-research-workflow) (which captures the signal) and the [meeting-to-tickets workflow](/workflows/meeting-to-tickets-workflow) (which operationalizes the build). PRDs are the document layer that connects the two.
+
+## Foundation
+
+### Confirm your team's PRD format
+
+If your team has one, use it — the template should mirror your required sections, not introduce a new structure. If your team doesn't have one, the working starting point:
+
+**One-pager:** Problem → Proposed solution → Success criteria → Out of scope → Open questions
+
+**Full PRD:** Summary → Background → Problem → Personas → Goals & non-goals → Solution → Scenarios → Functional requirements → Non-functional requirements → Success metrics → Risks → Dependencies → Timeline → Out of scope → Open questions → Alternatives considered
+
+**Technical spec:** Problem & goals → Current state → Proposed approach → Alternatives → Data model → API surface → Migration plan → Rollout → Testing → Risks → Open questions
+
+If your team uses Amazon-style six-pagers, FAQ-led PRDs, or an RFC format, substitute the sections. The workflow doesn't care which structure, only that one is consistent.
+
+### Which meetings feed PRDs
+
+| Meeting type | Likely output |
+| --- | --- |
+| Customer discovery / user research | Problem statement, personas, pain quotes |
+| Feature kickoff | One-pager → full PRD |
+| Design review (early) | One-pager refinement; alternatives considered |
+| Design review (late) | PRD sections on flows, edge cases |
+| Architecture review | Technical spec |
+| Strategy / roadmap discussion | One-pager for the bet being made |
+| Leadership review / sponsor meeting | Updates to existing PRDs |
+
+A full PRD frequently draws from multiple meetings. The synthesis section below covers how to handle that today.
+
+### Audiences and destination
+
+A single PRD usually has three to five audiences — engineering wants requirements and edge cases; design wants scenarios and flows; leadership reads the first page; GTM wants the story; legal scans for specific sections. A good PRD serves all of them without being structured around any one.
+
+PRDs live in document tools, not trackers: Notion, Confluence, Coda, Google Docs, or markdown in your code repo. Pick one durable home. Cross-link from the tracker (the [tickets](/workflows/meeting-to-tickets-workflow) that operationalize the PRD link back to it), but the doc itself lives in one place.
+
+### Ownership
+
+The PM running the meeting owns the PRD. Always. For technical specs, the tech lead or senior engineer owns it — PMs may contribute the problem framing; the technical content is engineering-owned. For cross-functional PRDs, the PM owns the doc; specialists contribute to their sections. Single ownership is non-negotiable — shared ownership produces drift.
+
+## The four templates
+
+### Template A — One-pager / 10-minute PRD
+
+The opening artifact for most product work. Written quickly after a productive meeting, read in five minutes, designed to force a decision.
+
+```md
+Based on this meeting transcript, produce a product one-pager. The
+goal is a decision-forcing document a reader can react to in five
+minutes.
+
+Be faithful to the conversation — include only problems, solutions,
+and scope decisions that were actually discussed. If something is
+unclear, write "Unknown — needs decision" rather than guessing.
+
+No emojis. Be concise. Total length under 500 words.
+
+Format:
+
+# {Project / Feature Name}
+**Status:** Draft (one-pager)
+**Author:** {Name from meeting}
+**Source meetings:** {Meeting name — date}
+**Last updated:** YYYY-MM-DD
+
+## Problem
+Two to four sentences. Who is affected, what's broken, what the
+cost of the problem is. Use the user's framing if available —
+verbatim if useful.
+
+## Proposed solution
+Two to four sentences. The shape of what we'd build, not the
+implementation. Specific enough to react to; not so specific that it
+pre-empts design.
+
+## Why now
+One to two sentences on the trigger. Why are we addressing this in
+this period? What's the strategic context?
+
+## Success criteria
+How we'll know this worked. Outcome-oriented, not output-oriented.
+- {Criterion}
+
+## Out of scope (explicit)
+What was discussed but is NOT part of this work.
+- {Item}
+
+## Alternatives considered
+Other approaches the conversation surfaced. For each: one sentence on
+the approach, one sentence on why we're not doing it.
+- **{Alternative 1}:** rejected because {reason}
+- **{Alternative 2}:** rejected because {reason}
+- **Do nothing:** rejected because {reason} (always include this one)
+
+## Open questions
+Things we need to answer before scaling to a full PRD or starting work.
+- {Question}
+
+## Asks
+What is the author asking the reader to do?
+- {Approval to proceed | Feedback on direction | Decision on a specific question}
+```
+
+Three things in this prompt are load-bearing.
+
+**"Do nothing" is always an alternative.** Most one-pagers skip this. Including it forces the team to articulate why the work is worth doing at all — the comparison case is "we keep our current state," and surprisingly often that comparison is closer than the team realized.
+
+**Out of scope is sharp.** This is the single highest-leverage section of a one-pager. It cuts the most refinement and disagreement downstream.
+
+**The "Asks" line.** A one-pager is a decision tool. Without an explicit ask, it's a document people read and don't act on. The template forces the author to name what they want from the reader.
+
+The one-pager is meant to be shared and reacted to within 24 hours of the meeting. It is not the final PRD; it's the artifact that decides whether a full PRD is worth writing.
+
+### Template B — Full PRD
+
+For projects that have passed the one-pager stage and are real enough to invest in scoping properly.
+
+```md
+Based on the meeting transcript(s) provided, produce a full PRD for
+the project. Be faithful to the conversation. Distinguish between
+things explicitly decided, things proposed but not decided, and things
+still open. Mark each accordingly.
+
+If a section can't be filled in from the source meetings, write "To
+be determined — see open questions" and add the relevant open question.
+
+No emojis. Length 800–1500 words depending on scope.
+
+Format:
+
+# PRD: {Project Name}
+**Status:** Draft
+**Author:** {Name}
+**Reviewers:** {Stakeholders who need to sign off}
+**Source meetings:** {List of source meetings}
+**Last updated:** YYYY-MM-DD
+**Target ship date:** {from meeting or "TBD"}
+
+## Summary
+Three to five sentences. The problem, the solution, the expected
+outcome. Written so a reader who reads only this paragraph has the
+picture.
+
+## Background and context
+Two to four sentences on why this work is happening now.
+
+## Problem statement
+One paragraph. The specific user problem. Cite customer quotes where
+useful. Quantify if quantification came up.
+
+## Users / personas
+Specific personas — not "users."
+
+## Goals (and non-goals)
+- **Goals:** outcome-oriented, measurable
+- **Non-goals:** what this work does NOT aim to do
+
+## Proposed solution
+Two to four paragraphs on the approach. Description, not pixel-detail.
+
+## Key scenarios / user flows
+Two to five scenarios the solution supports. For each:
+- User, trigger, flow, outcome
+
+## Functional requirements
+Numbered or bulleted; testable; specific.
+
+## Non-functional requirements
+Performance, security, accessibility — only the ones that materially
+apply or that the meeting discussed.
+
+## Success metrics
+- **Primary metric:** value, target
+- **Secondary metrics:**
+- **Counter-metrics (what should NOT degrade):**
+
+## Risks and mitigations
+For each material risk: likelihood, impact, mitigation.
+
+## Dependencies
+- Internal: other teams, systems, or projects
+- External: third parties, customer commitments, vendors
+
+## Timeline / phasing
+If discussed; otherwise "To be sized in refinement."
+
+## Out of scope (explicit)
+- {Item}
+
+## Alternatives considered
+- **{Alternative}:** description — why rejected
+
+## Open questions
+Items raised but not resolved. Should converge to zero before build.
+- {Question} — owner — target resolution
+
+## Stakeholder sign-offs
+- {Role / Name} — Approved / Pending / Concerned
+
+## Appendix
+- Customer quotes, research links, related PRDs
+```
+
+The **Stakeholder sign-offs** section is the part most PRDs skip and most teams quietly regret skipping. When ambiguity later emerges about who agreed to what, the section is the answer. Treat it as load-bearing.
+
+The PRD usually draws from multiple meetings. See the multi-meeting synthesis section below for how to do that today.
+
+### Template C — Technical spec / engineering design doc
+
+For technical design discussions, architecture reviews, and engineering-led work. Different audience than the product PRD.
+
+```md
+Based on the meeting transcript, produce a technical design document.
+Audience: engineering — current team and future engineers picking up
+the codebase.
+
+If multiple approaches were discussed, capture each with the evaluation
+that was performed. Mark each architectural decision as decided /
+proposed / open.
+
+Format:
+
+# Technical Design: {System / Feature Name}
+**Status:** Draft
+**Author:** {Name}
+**Reviewers:** {Tech lead, architecture council, relevant team leads}
+**Source meetings:** {List of source meetings}
+**Related PRD:** {Link if applicable}
+
+## Problem and goals
+One to two paragraphs.
+
+## Current state
+- Relevant existing architecture
+- Existing data models / APIs being touched
+- Current limitations or constraints
+
+## Proposed approach
+- High-level architecture
+- Key components: new, modified, deprecated
+- Data flow
+
+## Alternatives considered
+For each:
+- Approach, pros, cons, rejected because
+
+## Data model changes
+- New entities, modified entities, migrations required
+
+## API surface changes
+- New endpoints, modified endpoints (breaking flagged), deprecated
+  endpoints (with sunset)
+- Backward compatibility
+
+## Non-functional considerations
+- Performance: load, latency targets
+- Security: auth, data protection, threat model
+- Reliability: failure modes, recovery, SLOs
+- Cost: infrastructure implications
+
+## Migration / rollout plan
+- Phasing, feature flags, canary, rollback
+
+## Testing approach
+- Unit, integration, load, manual QA
+
+## Risks
+- Risk: likelihood/impact: mitigation
+
+## Dependencies
+- Other systems, teams, services
+
+## Open questions
+- Question — owner — target resolution
+
+## Appendix
+- Sequence diagrams, ERDs, references
+```
+
+Technical specs are usually written by engineers, not PMs — but the template structure works regardless of who's writing it.
+
+### Template D — PRD update
+
+For incorporating a new meeting's decisions into an existing PRD without rewriting from scratch. This one runs cleanly today: paste the existing PRD into Customize context, run the template on the new meeting.
+
+```md
+This prompt updates an existing PRD based on a new meeting that
+contained additional decisions, refinements, or shifts in direction.
+
+Inputs:
+- The existing PRD (paste below)
+- The new meeting transcript (the Earmark artifact this task runs on)
+
+Produce an updated version of the PRD that:
+- Preserves the existing structure
+- Incorporates the new decisions and changes from the meeting
+- Flags what changed so reviewers can see deltas
+- Resolves open questions that were addressed
+- Adds any new open questions raised
+
+Output the updated PRD using the original structure, then append:
+
+## Change log — YYYY-MM-DD
+**Source meeting:** {Meeting name — date}
+
+**Changes:**
+- {Section} — {what changed}: {brief description}
+- {Section} — {what was added}
+- {Section} — {what was removed and why}
+
+**Open questions resolved:**
+- {Question} — resolution
+
+**Open questions added:**
+- {Question}
+
+**Decisions made:**
+- {Decision} — by {whom in the meeting}
+```
+
+The change log is the discipline that makes iterative PRDs work. Without it, readers can't tell what changed between revisions, and the document becomes hard to track. With it, the PRD becomes a living artifact whose history is navigable.
+
+## Save them as workspace templates
+
+<Steps>
+<Step title="Start with Template A">
+For most teams, the one-pager is the most-used template. Save it first. Add B, C, and D as you encounter the cases.
+</Step>
+<Step title="Tune to your team's format">
+If your team has an existing PRD shape, adapt the template prompt to mirror those exact sections. Don't introduce a new structure when an existing one is working.
+</Step>
+<Step title="Save with Workspace visibility">
+PRD creation is a team standard. **Workspace** visibility means every PM produces docs in the same shape. See [Custom templates](/customization/custom-templates).
+</Step>
+</Steps>
+
+## Run it on a single meeting
+
+The flow for a one-pager. PRDs and specs follow the same shape with more curation time.
+
+<Steps>
+<Step title="Pre-seed the meeting with Template A">
+For feature kickoffs and customer discovery, attach the one-pager template by default. See [Before a meeting](/using-earmark/before-a-meeting).
+</Step>
+<Step title="State the right things during the meeting">
+A few habits sharpen the output dramatically:
+
+- **Articulate the problem before discussing solutions.** "Here's the problem we're solving" before "here's what we should build."
+- **Name what's out of scope out loud.** "We're not going to solve X in this work." The single most valuable habit in feature kickoffs.
+- **Articulate alternatives and why they were rejected.** Even briefly. "We considered Y instead; we're not because Z."
+- **Define success in outcome terms.** "We'll know this worked when user behavior changes." Not "when we ship feature X."
+</Step>
+<Step title="The 20-minute curation pass">
+For a one-pager. For a full PRD, plan 45–60 minutes.
+
+- **Read the problem statement first.** Is it specific? Grounded in user reality? If vague, sharpen.
+- **Check the proposed solution against the problem.** Surprisingly often, the solution drifts from the stated problem during the meeting. Catch this here.
+- **Make the explicit decisions the document requires.** Out of scope, non-goals, alternatives rejected. These are PM judgment calls; the model produces drafts but you make the calls.
+- **Confirm or write success criteria.** Outcome-oriented; specific; measurable if possible. If the meeting didn't discuss them, flag what you add as inferred.
+- **Sharpen the open questions.** What does the document not yet resolve? These are the inputs to the next meeting or iteration.
+- **Write the ask.** What are you asking the reader to do? Approval? Feedback? A decision on a specific question? Be explicit.
+</Step>
+<Step title="Share and route to feedback">
+Same-day or next-morning share. Common pattern: post in the team's project channel, tag specific reviewers (eng lead, design lead, sponsor) with explicit asks, set a feedback deadline (typically 48 hours for a one-pager).
+</Step>
+<Step title="Decide the next step">
+After feedback on the one-pager:
+
+- **Approved as-is** → graduate to full PRD (Template B)
+- **Approved with changes** → update the one-pager (Template D), then graduate
+- **Rejected or paused** → archive; the one-pager was the decision tool
+- **Major rework needed** → re-discuss; new meeting; new one-pager
+
+The one-pager has done its job either way — it either becomes the seed of a full PRD or it kills a project early before more investment goes in.
+</Step>
+</Steps>
+
+## The two-phase rhythm
+
+This rhythm distinguishes high-functioning PM teams from struggling ones, and it's the one most often skipped.
+
+**Phase one — the one-pager.** Written quickly after the source meeting. Not trying to be the final document. Trying to be the decision-forcing function that determines whether full investment is warranted. The one-pager asks *"should we do this?"* The full PRD asks *"how exactly will we do this?"* Confusing the two produces either thin PRDs or bloated one-pagers.
+
+**The feedback window.** Forty-eight hours typically. Surfaces the major issues — is the problem framed correctly, is the proposed solution the right shape, did we miss alternatives, did we miss out-of-scope items, are the success criteria the right ones. Feedback at this stage is dramatically cheaper than feedback on a full PRD.
+
+**Phase two — the full PRD.** After the one-pager has been reviewed and direction approved, the PRD gets written. It builds on the one-pager — the problem statement gets longer, the solution expands into scenarios and requirements, metrics get quantified, dependencies and timeline get added. The PRD draws from additional meetings — design reviews, technical scoping, customer follow-ups. See the multi-meeting section below.
+
+Teams that skip the one-pager get full PRDs written for projects that shouldn't happen at all. Teams that skip the PRD work against the one-pager's level of specificity, which isn't enough. The two-phase rhythm avoids both failure modes.
+
+## Multi-meeting synthesis
+
+A full PRD rarely comes from a single meeting. It typically draws from one to three customer discovery meetings, one to two feature kickoffs, one to two design reviews, a technical scoping meeting, and a stakeholder review.
+
+The challenge: producing a coherent PRD from a corpus of conversations spread across weeks. Earmark refines artifacts within a single meeting today; cross-meeting generative synthesis is not a one-click action.
+
+The workaround:
+
+- **Tag the source meetings.** Either with a project name in their Earmark titles, or in a running list. The synthesis will work against a defined corpus.
+- **Manual context assembly.** Pull the relevant artifacts (or transcript excerpts) from each source meeting into a single Customize-context document. Run Template B against the assembled document. The output draws from all of them with attribution per section.
+- **Use the [command menu](/earmark-basics/command-menu)** (`Cmd+K` / `Ctrl+K`) to surface the right source meetings when assembling the corpus.
+- **Local transcript export** if you want to run an external agent across many meetings for the synthesis ([local transcript files](/earmark-basics/local-transcripts)).
+
+The most useful signal from multi-meeting synthesis is **contradiction**. The customer described the problem one way; the internal kickoff framed it differently. The design review proposed a solution shape the technical scoping says is infeasible. The stakeholder review approved a direction that customer follow-ups have since complicated. These contradictions are the most important content the PRD can surface. Either they get resolved (and the resolution is captured) or they remain open (and the PRD makes the openness explicit). A PRD that papers over real contradictions ships a project that runs into them later, more expensively.
+
+Use Template D after every meaningful project-related meeting to keep the PRD current. The PRD becomes a living artifact — v1 from the one-pager, v2 incorporating design review feedback, v3 incorporating technical scoping, and so on, each with a change log.
+
+## Doc tool conventions and the PRD → tickets bridge
+
+PRDs live in document tools; the work they drive lives in a tracker. The handoff matters.
+
+**Doc tool conventions.** One PRD per page with a consistent URL pattern. Title format that's searchable (`PRD: {Project Name}`). Status badge at the top (Draft, In Review, Approved, Building, Shipped, Archived). Link to source meetings in the appendix. Link to the tickets/epic in the tracker once they exist. Link to design files if applicable. These conventions seem mechanical; they're the difference between a PRD library that compounds and one lost in document chaos.
+
+**The PRD → tickets handoff.** Once the PRD is approved and engineering is ready to start, the natural next step is ticket creation. This is the handoff to the [meeting-to-tickets workflow](/workflows/meeting-to-tickets-workflow). The clean pattern:
+
+- Create an epic in the tracker for the project; link to the PRD
+- Use the PRD's **Key scenarios** and **Functional requirements** sections as source material for stories
+- Each story links back to the PRD section that informs it
+- Open questions on the PRD map to spike tickets
+- The PRD's **Out of scope** section informs which proposed tickets to not create
+
+A meeting where the PM and tech lead walk through the PRD and create the tickets together is itself a workflow worth capturing — Template A from the [tickets workflow](/workflows/meeting-to-tickets-workflow) works for it.
+
+**The reverse link.** Update the PRD with the epic/tickets link once they exist. This makes the PRD navigable forward into the build, not only backward into the source meetings.
+
+## PRDs are living documents
+
+Don't treat the PRD as a write-once artifact. As the project moves through design, build, and ship, update it with the decisions made along the way. Use Template D after every meaningful project meeting. The change log captures the project's evolution.
+
+At ship, the PRD should reflect what actually shipped — not the original proposal. This is the artifact future readers will need.
+
+Within a month of shipping, run a brief retrospective using the PRD as the substrate: Did we ship what the PRD specified? Where did we drift, and why? Did the success metrics move? Were the risks accurate? What did we learn that should update our future PRDs?
+
+## Common pitfalls
+
+- **Confusing the one-pager with the PRD.** Different artifacts with different jobs. The one-pager is a decision tool; the PRD is a build spec. Use both.
+- **Skipping the one-pager.** Going straight to a full PRD means full investment before direction has been validated.
+- **Writing a PRD that's actually a meeting recap.** PRDs make decisions; recaps describe discussions. If the document doesn't pick a direction, name what's out of scope, or define success, it's not a PRD.
+- **Skipping out-of-scope and non-goals.** The most common omission and the single biggest source of scope creep later. Bake these sections in; never skip them.
+- **Inventing customer quotes or requirements.** The model can fabricate plausible-sounding content. Ground everything in source meetings.
+- **PRDs that never get updated.** A PRD from week one doesn't match what's being built by week six. Use Template D after every meaningful meeting.
+- **No change log on updates.** Without it, reviewers can't tell what changed between versions.
+- **Shared ownership of the PRD.** Drift follows. Single owner per PRD, every time.
+- **Skipping stakeholder sign-offs.** When ambiguity later emerges, the sign-off section is the answer.
+- **No provenance to source meetings.** Future readers will want to know what was actually said. Link the meetings.
+- **Heavy PRDs for small work.** Not every project needs a full PRD. The one-pager is enough for many things; some things only need a ticket.
+- **Letting the PRD become a vanity artifact.** PRDs exist to inform engineering work. Engineering should be the primary audience, not executive review.
+- **PRDs that don't connect to tickets.** The handoff from PRD to tracker is where many projects lose fidelity. The [meeting-to-tickets workflow](/workflows/meeting-to-tickets-workflow) paired with this one closes the gap.
+
+## Where to go next
+
+- [Workflows](/workflows) — the general shape this is an instance of
+- [Customer research workflow](/workflows/customer-research-workflow) — for the discovery meetings that feed PRDs
+- [Meeting-to-tickets workflow](/workflows/meeting-to-tickets-workflow) — for the handoff from PRD to tracker
+- [Meeting-to-prototype workflow](/workflows/meeting-to-prototype-workflow) — for visual prototyping that often happens between one-pager and PRD
+- [Structured meeting notes workflow](/workflows/structured-meeting-notes-workflow) — for the design reviews and scoping meetings that update PRDs
+- [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
+- [Composer](/using-earmark/composer) — for tuning the prompt before saving as a workspace template
+- [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding the template on kickoffs and discovery

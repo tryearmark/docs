@@ -1,0 +1,223 @@
+---
+title: "Ad-hoc Q&A"
+description: "Ask any meeting a question and get a grounded answer — what works today, what's still manual, and how to verify"
+keywords: ["Q&A", "ask your meetings", "search", "question patterns", "Composer", "verification", "ad-hoc"]
+---
+
+Every team that uses Earmark accumulates a substantial archive of recorded conversations. The transcripts exist. The structured artifacts exist. The knowledge is captured.
+
+Captured is not the same as askable. The gap between "we have it" and "I can retrieve it" is wider than most teams admit — until someone asks "did we ever talk about pricing for the SMB tier?" and the only honest answer is "probably, somewhere."
+
+This guide is about how to close that gap. It is unlike the other workflow guides in this set: there is no template, no recurring cadence, no destination per artifact. It is about the capability itself, what works today, and how to use it well. For the templated patterns this capability supports, see [Workflows](/workflows).
+
+## What works today and what doesn't
+
+Worth being precise about up front.
+
+**Single-meeting Q&A is the real capability.** You can ask any question of any single recorded call — "what did Adi say about prep agent settings?", "did I commit to anything?", "what was the customer's main objection?" — and get an answer grounded in that call's transcript. Mechanically, this is a prompt task in the [Composer](/using-earmark/composer): you write the question, the model answers from the source. This is the most-used capability in Earmark for good reason. The rest of this guide is built around using it well.
+
+**Cross-meeting search is real, but it is search, not Q&A.** The [command menu](/earmark-basics/command-menu) (`Cmd+K` / `Ctrl+K`) does full-text search across every meeting, artifact, and task in your workspace. You'll find relevant calls quickly. You still have to open them and read them — the command menu retrieves; it does not summarize or compare.
+
+**Cross-meeting generative Q&A — where you pick a corpus of many calls and ask a natural-language question — is not a one-click action today.** "What did this customer say across our last three calls?" or "What objections have come up most often in the last quarter of sales calls?" require either manual context assembly (paste relevant prior artifacts into the Customize context dialog, then ask the question on the next call) or external processing of [local transcript files](/earmark-basics/local-transcripts) with an agent of your choice. The workaround section below covers both.
+
+## Verification matters more here than anywhere else
+
+Every other workflow has a template-driven cleanup step where the human reviews the artifact before it goes anywhere. Ad-hoc Q&A does not. The user often acts on the answer immediately.
+
+The model is good. It is not infallible. It can:
+
+- Fabricate a quote that sounds plausible
+- Conflate two speakers
+- Get a date or detail wrong while getting the substance right
+- Confidently answer a question the transcript does not actually support
+
+For low-stakes questions ("what was that thing Adi said about settings?"), the cost of an occasional wrong answer is low. For high-stakes questions — legal, HR, contractual, commitments to customers, board-level reporting — always verify against the source.
+
+The verification habit:
+
+1. Ask the model to **quote the verbatim moment** it's drawing from.
+2. Read the quote.
+3. If the model cannot produce a quote, treat the answer as unverified.
+
+Thirty seconds. Not optional for anything you'll act on or share.
+
+## Question patterns
+
+Q&A does not have templates. It has patterns — shapes of questions that work well, with good and bad versions.
+
+### Catch-up
+
+For when you missed a meeting or want to refresh on one.
+
+| Good | Bad |
+| --- | --- |
+| "Summarize this meeting in 5 lines. Lead with the most important decision or outcome." | "Summarize." |
+| "What did I miss? Focus on decisions and any todos assigned to me." | "Tell me everything that happened." |
+
+Why the good versions work: scoped output length, told what to prioritize.
+
+### "Did we" verification
+
+For checking whether something specific happened.
+
+| Good | Bad |
+| --- | --- |
+| "Did we discuss the security review timeline? If so, what was agreed?" | "What about security?" |
+| "Did anyone commit to sending the pricing sheet, and by when?" | "Any todos around pricing?" |
+
+For these especially: ask the model to produce the verbatim quote. If it cannot, the answer is unverified.
+
+### Person-specific recall
+
+| Good | Bad |
+| --- | --- |
+| "What did Adi say about how he envisions the prep agent settings working?" | "What did people say about prep agents?" |
+| "What were Sam's main concerns about the launch timeline?" | "What concerns came up?" |
+
+Name a person and a topic. People misremember who said what; the model occasionally does too. Ask for the moment.
+
+### Open questions
+
+For finding what was not resolved. Especially useful as input to the next meeting's agenda.
+
+| Good |
+| --- |
+| "What questions were raised that didn't get answered?" |
+| "What did we discuss without deciding?" |
+
+These ask for absence of resolution, which is harder for the model to fabricate — there is no positive thing to invent.
+
+### Pre-meeting prep
+
+For the single most recent call with this customer or person.
+
+| Good |
+| --- |
+| "I have a call with this customer in 30 minutes. Summarize what we discussed, what's open, and any commitments either side made." |
+| "What did this customer push back on most strongly?" |
+| "What's the most useful thing for me to bring into this meeting based on the last conversation?" |
+
+For prep across multiple prior calls, see the cross-call workaround section below.
+
+### Self-coaching
+
+For reviewing your own performance on a call.
+
+| Good |
+| --- |
+| "Where in this call did the conversation lose momentum, and why?" |
+| "What did the customer say that I didn't follow up on?" |
+| "What signals of hesitation did the buyer give that I might have missed?" |
+
+Especially valuable for sales reps and managers reviewing their own conversations. The model can flag things you didn't catch in the moment.
+
+### Comparison
+
+For comparing two meetings or two people — when both are in the corpus.
+
+| Good |
+| --- |
+| "Compare what the customer said in this call to what they said in our discovery. Has their stated pain shifted?" |
+| "How was this candidate's response to the system design question different from the previous candidate's?" |
+
+Technically cross-call, but the corpus is two calls, not many — assemble both into context manually using the workaround below.
+
+## Running single-call Q&A
+
+<Steps>
+<Step title="Open the recorded meeting">
+Navigate to the call you want to query.
+</Step>
+<Step title="Add a task with your question">
+Write the question as a task prompt. Reference the patterns above. Specificity controls answer quality.
+</Step>
+<Step title="Read the answer; iterate if it's thin">
+The first answer is rarely the final one. Push back:
+
+- "Be more specific about what was decided."
+- "What was the exact phrasing the customer used?"
+- "What didn't get resolved?"
+- "Show me the quote or moment this is drawn from."
+
+Two minutes of dialog with the model usually beats one perfect question.
+</Step>
+<Step title="Verify if it matters">
+For anything you'll act on or share, ask for the verbatim quote and check it against the transcript. For low-stakes questions, the answer is usually enough.
+</Step>
+</Steps>
+
+<Tip>
+Specificity of question controls quality of answer. "Summarize" produces generic output. "Summarize in five lines, focused on decisions and todos" produces useful output. The work is in writing the question, not in reading the answer.
+</Tip>
+
+## Cross-call workarounds
+
+When you need to ask a question that spans many calls, three options. None is a one-click feature today; the trade-offs differ.
+
+**Cmd+K plus manual reading.** Use the [command menu](/earmark-basics/command-menu) to find relevant calls by keyword. Open the strongest matches. Run single-call Q&A on each. Compile the answers yourself. Useful when the question is fact-shaped ("when did we first discuss X?") and a handful of calls is enough.
+
+**Manual context assembly.** Pick the calls you want the corpus to be. Paste the relevant artifacts or transcript excerpts from each into the **Customize context** dialog on a new task. Ask the question against that document. Works well for moderate corpora (three to ten calls). Same workaround the other workflow guides use for cross-meeting synthesis.
+
+**Local transcript export.** [Export the transcripts](/earmark-basics/local-transcripts) for the corpus and run an external agent across them. Highest effort, most flexibility, best for true large-scale synthesis like "across last quarter's customer interviews, what objections came up most often?" The agent you use is your call.
+
+The patterns from the previous section still apply across all three: be specific about scope, name dimensions precisely, ask for citations, ask for frequency, ask for what's missing as well as what's there.
+
+## Graduating an answer into a durable artifact
+
+Most ad-hoc answers are ephemeral — you wanted the answer, you got it, you moved on. Some are worth keeping. An answer is worth graduating when any of these are true:
+
+- **Others will need it.** "When did we decide X?" belongs in the decision log.
+- **It will be relitigated.** If it'll be asked again, the answer should live somewhere durable.
+- **It's evidence.** Customer pain, feature requests, verbatim quotes — belong in the research repo.
+- **It changes the playbook.** Patterns of objections, repeated questions — feed enablement and sales.
+
+The "ask then write" loop is the right shape: ask the model the question, get the answer, write the durable version of the answer in your own words, paste it into the destination. The Q&A surfaces substance; the writing forces ownership of the claim. The combination produces better artifacts than either pure model output or pure manual writing.
+
+Match the graduated answer to its destination:
+
+| Answer type | Destination |
+| --- | --- |
+| A decision or its reasoning | Decision log (Notion page, Confluence, wiki) |
+| Customer pain points, quotes | Research repo — see the [customer research workflow](/workflows/customer-research-workflow) |
+| Customer commitments, contract terms | CRM opportunity record — see the [sales calls workflow](/workflows/sales-calls-workflow) |
+| Patterns across customer calls (FAQ, objections) | Sales enablement repo |
+| A novel insight worth sharing broadly | Run it through the [shareable summaries workflow](/workflows/shareable-summaries-workflow) |
+| Verification of a personal commitment | Your task system |
+
+Verification answers usually don't need a destination at all. "Did I commit to that?" — the answer is for you, in the moment. If the answer is yes and you need to act on it, push the action to your task system; the Q&A itself does not need to be preserved.
+
+## Privacy
+
+Q&A inherits the privacy model of the meetings themselves. Earmark's workspace isolation keeps each user's meetings private by default — see [Security and privacy](/security-and-privacy). Some categories worth handling deliberately:
+
+- **1:1s** — queryable only by the two participants, or with explicit consent. See the [people and team meetings workflow](/workflows/people-and-team-meetings-workflow).
+- **Candidate interviews** — within the hiring loop, fine. Outside, no.
+- **Skip-levels** — confidential to the participants.
+- **Comp, performance, termination conversations** — should not be in the corpus at all. Use [temporary meetings](/earmark-basics/temporary-meetings) for sensitive sessions you want captured without keeping.
+
+If you're not sure whether you should be querying something, you shouldn't.
+
+## Common pitfalls
+
+- **Vague questions, vague answers.** Specificity of the question controls quality of the answer. Always tell the model the desired length, audience, and what to prioritize.
+- **Acting on unverified high-stakes answers.** The verification habit is not optional for anything you'll act on. Build it from day one.
+- **Treating Cmd+K as Q&A.** It is search. You still have to open the matches and read them.
+- **Scope mismatch on cross-call workarounds.** Too narrow misses context; too broad produces mush. Pick the smallest corpus that could plausibly contain the answer.
+- **Querying meetings you shouldn't.** 1:1s, skip-levels, candidate interviews outside the loop, comp conversations. Know the lines and respect them.
+- **Treating ephemeral answers as durable.** Not every answer needs a destination. Capture the ones that matter; let the rest go.
+- **Letting answers replace conversation.** "What does Sam think about X?" is a fine question to ask the model. It is a better question to ask Sam.
+- **Skipping iteration.** The first answer is rarely the final answer. Push back, refine scope, ask for sources.
+- **Asking the model to judge sensitive things about people.** "Is Sam disengaged?" is the kind of question the model can help you investigate. It is not the kind it should answer outright. Use it to surface patterns; interpret the patterns yourself, in conversation with Sam.
+- **Confirmation bias.** You'll occasionally ask questions where you already think you know the answer. The model will sometimes confirm what you wanted to hear. This is the easiest moment to skip verification.
+- **Over-reliance for memory tasks.** Some recall is your job. If you outsource every verification to the model, your engagement with your own meetings degrades.
+
+## Where to go next
+
+- [Composer](/using-earmark/composer) — the surface where single-call Q&A actually runs
+- [Command menu](/earmark-basics/command-menu) — for full-text search across meetings
+- [Local transcripts](/earmark-basics/local-transcripts) — for export when you need external synthesis
+- [Temporary meetings](/earmark-basics/temporary-meetings) — for sensitive sessions you want captured without keeping
+- [Workflows](/workflows) — the templated patterns this capability supports
+- [Customer research workflow](/workflows/customer-research-workflow) — for the systematic version of "what did customers say"
+- [Sales calls workflow](/workflows/sales-calls-workflow) — for the systematic version of "what's the state of this deal"
+- [People and team meetings workflow](/workflows/people-and-team-meetings-workflow) — for the privacy discipline around 1:1s and interviews

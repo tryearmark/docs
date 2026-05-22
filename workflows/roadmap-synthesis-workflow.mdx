@@ -1,0 +1,542 @@
+---
+title: "Roadmap synthesis"
+description: "Convert customer research, strategic discussions, capacity reviews, and competitive intelligence into the roadmap document your team actually executes against — sequenced by priority, justified by reasoning, and maintained as the world changes"
+keywords: ["roadmap", "product roadmap", "strategy", "synthesis", "Now Next Later", "prioritization", "workflow"]
+---
+
+Walk into any product organization and ask to see the roadmap. You'll get one of a few characteristic responses. A PM pulls up a Productboard or Notion page that hasn't been updated in eight weeks; items on it are aspirational and items being actively built aren't on it. Or a PM shows you a slide from a quarterly review that's a beautiful wish list — everyone's priorities, arranged neatly, with no actual prioritization. Or there are multiple roadmaps — engineering's, sales's, marketing's, the CEO's — none aligned.
+
+The connection between strategy and execution lives in the senior PM's head. The inputs that should produce a real roadmap — customer signal, strategic discussion, technical constraints, capacity reality — sit in meetings that nobody synthesizes systematically. The roadmap that gets produced is built from whoever happens to remember the most context at the moment of writing, which is rarely a complete picture.
+
+This guide is a specific instance of the [workflows](/workflows) pattern, applied to the synthesis layer between strategic input and execution. It sits between the inputs ([customer research](/workflows/customer-research-workflow), strategy, constraints) and the outputs ([PRDs](/workflows/meeting-to-prd-workflow), [tickets](/workflows/meeting-to-tickets-workflow), shipped product).
+
+## A note on cross-meeting dependency
+
+Roadmap synthesis is the most cross-meeting-dependent workflow in this guide series. By definition, it draws across customer research from many calls, strategy discussions from leadership meetings, capacity reviews from engineering syncs, and competitive intelligence from market discussions. Earmark refines artifacts within a single meeting today; cross-meeting generative synthesis uses the manual workaround pattern this series documents.
+
+What works today: each focused source-layer synthesis (customer signal across recent calls, strategy across recent leadership meetings, capacity across engineering reviews) runs via the standard pattern — tag the source meetings, paste relevant artifacts into a **Customize context** document, run a focused synthesis prompt. The integrated roadmap is then built from the four layered outputs.
+
+This is substantial work — 2–4 hours for an initial build, 30–60 minutes for monthly refreshes. The workaround is light enough to be practical for teams whose roadmap-quality investment is worth that level of effort. For most product organizations, it is. The cost of doing this work badly across a year of mis-prioritized execution is much larger than the cost of doing it well across a few hours of synthesis per refresh.
+
+For very large corpora (a year of customer research across hundreds of calls), [exporting local transcripts](/earmark-basics/local-transcripts) and running an external agent is the alternative.
+
+## Foundation
+
+### Identify the inputs
+
+A real roadmap synthesizes across distinct sources:
+
+| Input source | What it contributes |
+| --- | --- |
+| Customer research calls | What customers are asking for; their language; frequency of requests; segment patterns |
+| Sales discovery and win/loss interviews | What's blocking deals; competitor emphases; recurring objections |
+| Customer success / renewal conversations | What drives churn risk; what unlocks expansion |
+| Strategy discussions (exec, founder, leadership) | Strategic direction; bets being made; customers prioritized |
+| Engineering capacity reviews | What's realistic to build in what timeframe; technical dependencies; debt limiting velocity |
+| Competitive intelligence | Competitor moves; differentiation gaps; threats to counter |
+| Support escalations and incidents | Recurring pain points; quality issues |
+| Industry conferences, analyst calls | Market context; emerging trends |
+
+A roadmap built from a single source has predictable blind spots. The synthesis is what gives the roadmap legitimacy across audiences. Identify which of these sources are captured in Earmark — those become queryable substrate. Sources that aren't captured need explicit notes in the roadmap about where the signal came from.
+
+### Choose your time-horizon framework
+
+**Now / Next / Later** is the dominant modern model and the default this workflow assumes. *Now* = in progress or starting imminently; *Next* = committed to start within ~3 months; *Later* = on the radar, considered in the next planning cycle.
+
+**Quarterly (Q1/Q2/Q3/Q4)** assigns items to specific quarters with milestone dates. More precise; more brittle when reality shifts; encourages overcommitment.
+
+**Hybrid:** Current quarter precise; next quarter as themes with rough timing; beyond as a *Later* bucket. Works for many teams.
+
+Pick one and commit. Mixing them within a single roadmap creates confusion.
+
+### Pick a prioritization framework
+
+A roadmap is a sequence; the sequence requires logic. Pick a framework for justifying the order: customer impact / pain frequency; strategic fit; revenue impact; engineering investment ROI; RICE (Reach × Impact × Confidence ÷ Effort); strategic theme buckets; OKR-driven. Different frameworks produce different roadmaps from the same inputs.
+
+Most companies benefit from a hybrid — RICE-like scoring for items within a strategic theme, theme prioritization driven by exec strategy.
+
+### Destination and ownership
+
+**Internal destination:** Productboard, Aha, Linear, Notion, Coda — pick where the source-of-truth lives. **Customer-facing destination** is usually different: a public roadmap page, a customer portal, a newsletter. Maintain the internal as canonical; derive external from it. Earmark integrates with Linear directly; all other tools are paste targets.
+
+**Ownership:** Each roadmap has one owner. Single product → PM. Multi-product → VP/CPO owns portfolio; PMs own areas. Small / founder-led → founder until a product leader is hired. Shared ownership produces drift; the synthesis is too consequential for committee work.
+
+## The four templates
+
+### Template A — Strategic roadmap synthesis
+
+The comprehensive internal version. The primary artifact.
+
+```md
+Across the meetings provided (customer research calls, strategy
+discussions, engineering capacity reviews, sales/CS calls, competitive
+intelligence), produce a strategic product roadmap.
+
+The roadmap should:
+- Reflect actual customer signal — quote verbatim where useful, cite
+  frequency of requests
+- Align with strategic direction articulated in leadership meetings
+- Be grounded in realistic capacity from engineering reviews
+- Surface trade-offs explicitly, not hide them
+- Distinguish "what we'll build" from "why we'll build it" from "when"
+
+Do not invent customer signal or strategic direction that wasn't in
+the source meetings. If something is thin or contested, write
+"Limited signal — confirm with {source}" or "Contested in source —
+decision needed."
+
+No emojis. Length 2000–4000 words depending on portfolio scope.
+
+Format:
+
+# Product Roadmap — {Area / Product / Portfolio Name}
+**Status:** Draft v1.0
+**Owner:** {Name}
+**Reviewers:** {Required for sign-off}
+**Period covered:** {date range}
+**Source discussions:** {List of source meetings}
+**Last updated:** {date}
+**Next review:** {date}
+
+## Strategic context
+Two to three paragraphs. The strategic direction the roadmap operates
+within. What's the company trying to accomplish? What customers are
+we focused on? What positions are we taking? Cite from leadership /
+strategy discussions where useful.
+
+## Themes
+The three to six strategic themes the roadmap operates against.
+Themes are broader than features; they're the categories of investment.
+
+### Theme 1: {Name}
+- **What it covers:** scope
+- **Why it matters strategically:** reasoning from source
+- **Customer signal:** evidence from research that this theme
+  addresses real pain
+- **Success looks like:** outcome
+- **Investment level:** Heavy | Moderate | Selective
+
+[Repeat for each theme]
+
+## Now (in progress or starting imminently)
+For each item:
+### {Item name}
+- **What it is:** one to two sentences
+- **Theme:** which theme this belongs to
+- **Why now:** the specific reasoning for this timing
+- **Customer signal:** evidence — quote if useful, frequency if relevant
+- **Strategic fit:** how this aligns with strategic direction
+- **Owner:** PM / team
+- **Engineering team:** team
+- **Target ship:** date or "this quarter"
+- **Success criteria:** how we'll measure
+- **Status:** In discovery | In build | In test
+- **Dependencies:** list
+- **Risks:** list
+
+## Next (committed to start within ~3 months)
+For each item:
+### {Item name}
+- **What it is:** description
+- **Theme:** which theme
+- **Why this is Next and not Now:** reasoning
+- **Customer signal:** evidence
+- **Strategic fit:** alignment
+- **Owner-to-be:** tentative
+- **Target start:** period
+- **Open questions:** things needing resolution before this becomes Now
+
+## Later (on the radar; will be considered next planning cycle)
+Items in Later are NOT commitments. They're signals being tracked.
+
+For each:
+- **Item:** brief
+- **Theme:** which theme, or "doesn't fit current themes"
+- **What we're tracking:** the signal that put this on the radar
+- **What would need to be true to move this to Next:** the trigger
+- **Source:** source meeting if applicable
+
+## Considered and not pursuing (currently)
+Items that came up in source meetings but that we're deliberately not
+prioritizing. This is the most underrated section.
+
+For each:
+- **Item:** description
+- **Why considered:** the signal that surfaced it
+- **Why not pursuing:** the specific reasoning — strategic fit,
+  capacity, timing
+- **What would change our mind:** the conditions for reconsideration
+
+## Customer signal summary
+Quantified view of what customers have been asking for:
+- **{Pain point / request}:** mentioned in {N} customer calls —
+  segment pattern: {which customers} — quote: "{verbatim}"
+
+## Strategic signal summary
+Key strategic decisions and direction from leadership / strategy
+discussions:
+- {Strategic point} — articulated in {meeting} — quote if useful
+
+## Capacity reality
+What engineering capacity looks like for the period:
+- Teams and their committed capacity
+- Major debt items consuming capacity
+- Realistic shipping volume in the period
+
+## Risks and watch-outs
+- **Risk:** description — **Mitigation:** approach
+
+## Open questions to resolve before next refresh
+- {Question}
+
+## Cross-references
+- Related PRDs
+- Related ADRs
+- Source customer corpus
+- Source strategy discussions
+```
+
+Three things in this template are load-bearing.
+
+**"Considered and not pursuing" is explicit.** Most roadmaps omit this. The omission is what allows the same items to keep coming back as *"have we thought about X?"* Documenting deliberate non-pursuit saves enormous cycle time over a quarter.
+
+**Customer signal is quantified.** *"N customers requested this"* is more useful than *"customers want this."* The roadmap's prioritization becomes defensible when the signal is countable. The frequency-weighted view changes which items get priority.
+
+**Strategic signal is cited.** When the roadmap says *"this aligns with our strategy of X,"* it links to the strategic discussion where X was articulated. The strategy stays auditable.
+
+### Template B — Now / Next / Later (lightweight, scannable)
+
+For ongoing reference. Derived from Template A but scannable in 5 minutes.
+
+```md
+Based on the comprehensive roadmap synthesis, produce a lightweight
+Now / Next / Later roadmap. Audience can be internal team members,
+leadership, or close partners. Communicates direction without
+overcommitting.
+
+Constraints:
+- Under 1000 words
+- Scannable — bullets, not paragraphs
+- Each item has a brief "why" so the prioritization is legible
+- No internal-only or confidential content
+- Clear hedging on Later (this is not a commitment)
+
+Format:
+
+# {Area / Product} Roadmap — Now / Next / Later
+**Updated:** {date}
+**Owner:** {Name}
+
+## What we're focused on right now
+The strategic frame for this period — two to three sentences.
+
+## Now (active work, expected to ship in {period})
+- **{Item name}:** one-line description
+  - **Why now:** one-phrase reasoning
+  - **Target:** when
+
+## Next (planned to start within ~3 months)
+- **{Item name}:** one-line description
+  - **Why next:** one phrase
+  - **Expected start:** period
+
+## Later (on our radar; not yet committed)
+- **{Item name}:** one line
+  - **What we're tracking:** brief context
+
+Items here are signals, not commitments.
+
+## Themes shaping this roadmap
+- **{Theme}:** one line on what this theme is and why it matters
+
+## What we're explicitly NOT doing right now
+- **{Item}:** brief reason for non-pursuit
+- **{Item}:** brief reason
+
+Naming non-pursuit explicitly prevents these items from being
+relitigated repeatedly.
+```
+
+The Now/Next/Later format hedges appropriately. Now items are real commitments; Next items are real plans; Later items are signals being tracked. Audiences understand the gradient without confusing it.
+
+### Template C — Customer-facing roadmap
+
+For external audiences. Honest about uncertainty, careful about commitments.
+
+```md
+Based on the strategic roadmap synthesis, produce a customer-facing
+roadmap. The audience is external — customers, prospects, partners.
+The communication must be honest, useful for their planning, and
+appropriately hedged.
+
+Constraints:
+- Under 800 words
+- Lead with themes and outcomes, not feature names
+- Be specific where you can be reliable; be vague where you can't
+  yet commit
+- Never use phrasing that creates a commitment you can't deliver
+- No internal jargon, no code names, no strategic confidential content
+- Tone: confident about direction, honest about timing uncertainty
+
+Format:
+
+# {Product Name} Product Direction — Updated {date}
+
+## What we're building toward
+Two to three sentences on the direction of the product.
+
+## Recently shipped
+- **{Capability name}:** what it does for them, in their language
+
+## Currently building
+- **{Capability name}:** what it will do for them, why we're building it
+  - **When:** conservative target — "later this quarter" / "by end of
+    year" / "early next year"
+
+Avoid specific date promises unless very confident. Customers remember
+missed dates.
+
+## Planned for next period
+- **{Capability name}:** what it will do for them
+  - **When:** period or "next few months"
+
+## On the horizon
+Areas we're investing in but not yet ready to specify timing for.
+- **{Theme or capability area}:** what we're exploring and why
+
+## Themes for this period
+- **{Theme}:** what this means for our customers
+
+## What we're not doing right now
+(Optional, but builds trust when included.)
+
+We're regularly asked about {topics}. Here's our honest read on each:
+- **{Topic}:** honest framing — "we hear this; not in our near-term
+  plans because {brief reasoning}" or "this is on our radar but won't
+  come in this period"
+
+## Our process
+- We update this roadmap {cadence}
+- It's informed by {customer research / advisory board / product council}
+- If you want to influence it: {process}
+
+---
+
+**Important:** This roadmap reflects our current direction and is
+subject to change as we learn more from customers and as priorities
+evolve. Specific dates are targets, not commitments, unless explicitly
+indicated.
+```
+
+The closing disclaimer matters legally and reputationally. Customer-facing roadmaps that don't include it create implicit commitments your team will inevitably miss.
+
+### Template D — Roadmap update / revision
+
+For the recurring refresh. The roadmap is a living document; this template generates the next version from the current one plus new source material.
+
+```md
+This prompt updates the roadmap based on new source material — recent
+customer calls, recent strategy discussions, recent engineering
+reviews, any other developments since the last roadmap version.
+
+Inputs:
+- The current roadmap (paste below)
+- New source meetings since the last update (paste artifacts
+  below)
+
+Produce an updated version of the roadmap that:
+- Preserves the structure of the current roadmap
+- Incorporates new customer signal (with frequency updates if items
+  have come up again)
+- Reflects strategic direction shifts if any
+- Updates Now / Next / Later assignments based on what's changed
+- Adds items that have emerged
+- Moves or removes items based on what's been learned
+- Flags what changed in this update so reviewers can see deltas
+
+Format:
+
+[Output the updated roadmap using the same structure as Template A]
+
+## Change log — {Date}
+**Source:** New meetings since {previous update date}
+
+**What moved from Next to Now:**
+- {Item} — why it moved
+
+**What moved from Later to Next:**
+- {Item} — why it moved
+
+**What's newly added:**
+- {Item} — to which bucket — source
+
+**What moved backward (Now to Next, Next to Later):**
+- {Item} — why it moved back
+
+**What was removed:**
+- {Item} — why removed (deprioritized / completed / no longer relevant)
+
+**Strategic shifts:**
+- {Shift} — what discussion prompted it
+
+**New customer signal:**
+- {Signal} — frequency change or new pattern
+
+**Capacity changes:**
+- {Change} — how it affects the roadmap
+
+**Items still being debated (not yet decided):**
+- {Item} — what's open
+```
+
+The change log is the discipline that makes iterative roadmaps work. Stakeholders see what changed between versions and why. The roadmap stays trustworthy because the changes are auditable.
+
+## Save them as workspace templates
+
+<Steps>
+<Step title="Start with Template A">
+The strategic synthesis is the source of truth. Save it first; B and C derive from it.
+</Step>
+<Step title="Customize for your team's framework">
+If you use RICE, theme buckets, or OKR-driven prioritization, build that into the template prompt. Same with your time-horizon framework — adjust if you use quarterly rather than Now/Next/Later.
+</Step>
+<Step title="Save with Workspace visibility">
+Roadmap construction is a team standard. **Workspace** visibility means PMs across the team produce roadmaps in the same shape. See [Custom templates](/customization/custom-templates).
+</Step>
+</Steps>
+
+## Building the initial roadmap
+
+<Steps>
+<Step title="Tag the source meeting corpus">
+Customer research calls from the last one to three months; strategy / leadership discussions from the last one to two quarters; engineering capacity reviews from the last quarter; sales win/loss interviews; CS / renewal calls; competitive intelligence sessions. Tag them with a common identifier (e.g., "roadmap-Q2-2026").
+</Step>
+<Step title="Run the four-layer focused synthesis">
+The four-layer pattern (covered below) — run each layer's focused synthesis first. Each produces a section that feeds Template A.
+</Step>
+<Step title="Run Template A against the integrated input">
+Paste the four layered outputs into a **Customize context** document along with key source artifacts. Run Template A. First draft will be long and rough — that's expected.
+</Step>
+<Step title="The 2-to-4-hour curation pass">
+Substantial work; the output is the operating document for your team for the next month or quarter.
+
+- **Read the strategic context.** Does it accurately reflect the strategic direction? Sharpen.
+- **Verify themes.** Right ones? Right level of abstraction (not too broad, not too narrow)?
+- **Verify customer signal claims.** For each *"this came up in N customer calls"* claim, spot-check at least a few. The model occasionally over- or under-counts.
+- **Verify strategic fit claims.** Each item's reasoning should be defensible.
+- **Pressure-test Now items.** Real commitments. Capacity actually allocated? Dependencies real?
+- **Pressure-test Next items.** Realistically next given Now's load?
+- **Pressure-test Later items.** Worth tracking, or cluttering?
+- **Sharpen "Considered and not pursuing."** Be specific about why each isn't being pursued.
+- **Quantify customer signal.** *"12 of 45 customer calls last quarter mentioned this"* beats *"many customers asked for this."*
+- **Write the open questions.** Make what's not decided explicit.
+</Step>
+<Step title="Reviewer pass">
+- **Engineering lead:** Is capacity reality accurate? Dependencies right?
+- **Sales / CS lead:** Does this address what customers and the field are asking for?
+- **Exec sponsor:** Does this align with strategy?
+- **Adjacent product leads:** Cross-product dependencies?
+
+Each reviewer is asked specific questions. Generic *"thoughts?"* produces generic feedback.
+</Step>
+<Step title="Publish to destination and derive lightweight + customer-facing versions">
+Templates B and C derive from A after A is finalized. Land in the appropriate destinations. Cross-link from related PRDs and OKRs.
+</Step>
+<Step title="Calendar the refresh cadence">
+Monthly light refresh (Template D) — 30–60 minutes. Quarterly substantial review — half-day. Annual deep rebuild — full Template A re-run. Calendar these now.
+</Step>
+</Steps>
+
+<Tip>
+The 2–4 hour curation pass is genuine senior product work, not a checklist. Treat it like the highest-leverage product activity of the month — because it is.
+</Tip>
+
+## The four-layer synthesis pattern
+
+The most distinctive technique in this workflow. Each layer is a focused synthesis run independently, then integrated.
+
+**Layer 1: Customer signal.** Across the customer research and CS calls provided, extract the pain points, feature requests, and unmet needs that came up most often. For each: the specific pain or request in customer language, how many calls it appeared in, which segments mentioned it, representative quotes, severity as customers framed it, whether existing capabilities address it. The output is the customer signal section of the roadmap and the input to prioritization. *Do not infer signals not present in the source.*
+
+**Layer 2: Strategy.** Across the strategy and leadership meetings provided, capture: the strategic direction articulated; the bets being made; the customer segments being prioritized; the competitive positions being taken; the metrics that matter to leadership; the areas explicitly de-prioritized. The output is the strategic context section. Cite verbatim phrasings — the roadmap should be defensible by pointing to source.
+
+**Layer 3: Capacity reality.** Across engineering / capacity discussions, capture: team sizes and dedicated capacity; major in-flight commitments consuming capacity; technical debt limiting velocity; dependencies between teams; realistic shipping volume estimates for the next one to two quarters. Engineering should read this and agree it reflects their stated capacity. The output is the capacity reality section and the brake on overcommitment.
+
+**Layer 4: Competitive context.** Across competitive intelligence and market discussions: competitor moves observed; customer-mentioned competitor strengths and weaknesses (from customer calls); win/loss patterns; emerging market trends; differentiation opportunities. The output informs which items have competitive urgency.
+
+**Integrating the layers.** Items in the roadmap need customer signal (Layer 1), strategic fit (Layer 2), capacity allocation (Layer 3), and may need competitive justification (Layer 4). The integrated synthesis is what makes the roadmap defensible across audiences — engineering sees capacity respected, leadership sees strategy executed, customer-facing teams see signal addressed.
+
+Each audience finds their concern reflected. That's the legitimacy property the four-layer pattern produces and the reason it's worth the effort.
+
+## The maintenance discipline
+
+A roadmap that doesn't get updated decays. The maintenance discipline separates roadmaps that work from roadmaps that exist on paper.
+
+**Monthly light refresh.** Once a month, the roadmap owner reviews the past month's customer calls for new signal, strategy discussions for shifts, engineering reviews for capacity changes. Run Template D. Review the change log honestly — what actually changed? Thirty to sixty minutes when the discipline is in place; hours when neglected for two months.
+
+**Quarterly substantial review.** Once a quarter, a heavier review: Are the themes still right? Are the prioritization criteria still right? What did we ship, and how does that change the next quarter's view? Have any items moved between buckets multiple times? The quarterly review is the moment to make structural changes — new themes, retired themes, shifts in time horizons.
+
+**Trigger-based refresh.** Some events should trigger out-of-cycle refresh: a major strategy change (acquisition, pivot, new market); a customer signal shock (a wave of churn pointing to a specific cause, a new segment emerging strongly); a capacity shock (team additions, departures, reorg); a competitive move (competitor launch); a major incident or quality issue that forces re-prioritization. The monthly cadence handles continuous evolution; trigger-based refresh handles discontinuities.
+
+**Annual deep rebuild.** Once a year, rebuild from scratch rather than iterating. Re-tag the corpus for the full year; run Template A fresh; compare against the current incremental roadmap. The annual rebuild prevents the slow drift that monthly iteration produces. Sometimes the current roadmap is what fresh synthesis would have built; more often, fresh synthesis surfaces themes or items the iterative version has lost.
+
+## Routing into systems of record
+
+**Primary roadmap tool.** Strategic roadmap synthesis becomes source of truth. For tools with item-level structure (Productboard, Aha, [Linear](/integrations/linear)), each Now and Next item becomes a feature/initiative in the tool. The roadmap is the document; the tool is the operational view.
+
+**Customer-facing version.** Template C lands in a customer-facing destination — public roadmap page, customer portal, customer newsletter, customer advisory board materials. Maintain the link between internal source-of-truth and external derivation. When internal changes, external updates too.
+
+**Integration with PRDs.** Items moving to Now generate PRDs via the [meeting-to-PRD workflow](/workflows/meeting-to-prd-workflow). The PRD references the roadmap item; the roadmap links to the PRD. Bidirectional reference keeps strategic and tactical layers aligned.
+
+**Integration with tickets.** PRDs spawn epics; epics spawn tickets via the [meeting-to-tickets workflow](/workflows/meeting-to-tickets-workflow). The chain — roadmap → PRD → epic → ticket — converts strategic intent into shipped work.
+
+**Integration with OKRs.** If your team uses OKRs, roadmap items map to specific objectives.
+
+**Integration with exec readouts.** Roadmap updates feed the [leadership readouts workflow](/workflows/leadership-readouts-workflow). The exec readout reports on roadmap progress; the roadmap is the source of what's being reported on.
+
+**Earmark archive as source.** Source meetings stay in Earmark. The roadmap links back. When someone asks *"why is this on the roadmap?"*, the answer is traceable to the customer calls and strategy discussions that informed it.
+
+## Closing the loop
+
+Three retrospective habits.
+
+**What shipped vs. what was planned.** Quarterly, compare what actually shipped against what the roadmap said would ship. Which Now items shipped on time? Which slipped? Why? Which Next items got promoted to Now? Which Later items emerged unexpectedly? Which items got dropped without shipping? The pattern is your team's roadmap accuracy. Some slippage is normal; consistent under-delivery signals capacity assumptions are wrong or scope is consistently expanding. Address the pattern honestly — pretending the roadmap was accurate when it wasn't erodes trust in the next roadmap.
+
+**Customer signal validation.** For items that shipped, validate the customer signal that drove them. Did the customers who asked for this actually adopt it? Did it move the metrics we expected? Did the customer language we used in framing it land? This is the closing-the-loop habit that calibrates your team's reading of customer signal. Items shipped based on misread signal get retrospected explicitly; the next round of signal interpretation gets sharper.
+
+**Strategic alignment retrospective.** Annually, look at what shipped against what the strategy at the start of the year said you'd build. Did the roadmap execute the strategy? Where did execution drift from strategy, and why? Where did the strategy itself shift mid-year? Did the roadmap respond? Teams whose execution consistently drifts from stated strategy have either a strategy problem, a roadmap problem, or a discipline problem. The retrospective surfaces which.
+
+## Common pitfalls
+
+- **Roadmap as a wish list.** Everyone's priorities, no prioritization. Force the prioritization framework; cut what doesn't earn a slot.
+- **Roadmap as a feature list without strategic logic.** The *why* sections aren't optional. Without them, the roadmap can't survive debate.
+- **Roadmap that ignores capacity.** Items added without engineering input produce roadmaps that overcommit. Always have engineering review Now and Next.
+- **Roadmap that ignores customer signal.** Items added based on internal intuition without customer evidence produce features customers don't adopt.
+- **Roadmap that doesn't reflect strategy.** Items added without strategic logic produce incoherent product direction.
+- **Customer-facing roadmap that overcommits.** Specific date promises the team can't keep erode trust. Hedge appropriately.
+- **No "considered and not pursuing" section.** The same items keep coming back as *"have we thought about?"* Document deliberate non-pursuit explicitly.
+- **Stale roadmap.** A roadmap last updated three months ago is wrong. Monthly refresh discipline is non-negotiable.
+- **No change log on updates.** Stakeholders can't see what changed between versions. Always log changes.
+- **Multiple parallel roadmaps.** Sales, marketing, engineering, and product each operating from different roadmaps is a strategic risk. Single source of truth; derivations for specific audiences.
+- **Shared ownership.** Roadmap committees produce roadmap committees. Single owner; multiple reviewers; clear accountability.
+- **Inventing customer signal.** The model can produce plausible-sounding signal that wasn't in the source. The curation pass must verify.
+- **Inventing strategic direction.** Strategic claims need to trace to source meetings.
+- **Roadmap that ignores what's already in flight.** Now items should reflect actual current work, not aspirations.
+- **No connection to PRDs and tickets.** A roadmap floating disconnected from execution has no force. Wire the chain: roadmap → PRD → tickets.
+- **No retrospective on accuracy.** Without retrospecting, the team's roadmap-craft doesn't improve.
+- **Customer-facing roadmap that doesn't get updated.** External roadmaps that go stale create implicit broken promises.
+- **Roadmap that conflates themes and items.** Themes are categories of investment; items are specific things to build. Keep them separate.
+
+## Where to go next
+
+- [Workflows](/workflows) — the general shape this is an instance of
+- [Customer research workflow](/workflows/customer-research-workflow) — for the customer signal layer
+- [Sales calls workflow](/workflows/sales-calls-workflow) — for win/loss and competitive context
+- [Leadership readouts workflow](/workflows/leadership-readouts-workflow) — for the strategic context and the exec readout integration
+- [Meeting-to-PRD workflow](/workflows/meeting-to-prd-workflow) — for the projects the roadmap commits to
+- [Meeting-to-tickets workflow](/workflows/meeting-to-tickets-workflow) — for the engineering work the PRDs produce
+- [Architecture documentation workflow](/workflows/architecture-documentation-workflow) — for the technical context that shapes capacity
+- [Ad-hoc Q&A](/workflows/ad-hoc-qa-workflow) — for the cross-meeting workaround pattern this workflow depends on
+- [Linear integration](/integrations/linear) — for engineering tickets that flow from the roadmap
+- [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
+- [Composer](/using-earmark/composer) — for tuning the prompt before saving as a workspace template
+- [Local transcripts](/earmark-basics/local-transcripts) — for external synthesis on very large corpora
