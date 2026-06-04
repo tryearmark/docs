@@ -1,0 +1,73 @@
+---
+title: "Capture"
+sidebarTitle: "Capture"
+description: "Configure desktop capture helpers like the Live Widget and related recording options"
+keywords: ["capture settings", "live widget", "recording", "desktop capture", "floating control"]
+---
+
+Open **Settings > Capture** in the Earmark desktop app to configure how capture helpers behave on your machine. These settings shape your in-meeting experience — especially when you want confirmation that recording is active or quick access to [pins](/earmark-basics/pins) without switching windows.
+
+<Frame caption="Settings > Capture">
+  <div
+    style={{
+      backgroundImage: 'url(/images/background-blue.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      borderRadius: '1rem',
+      padding: '4%',
+    }}
+  >
+    <div
+      style={{
+        borderRadius: '0.875rem',
+        overflow: 'hidden',
+        boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
+      }}
+    >
+      {/* TODO: Replace with screenshot of the full Settings > Capture page */}
+      <img
+        src="/images/settings-capture.png"
+        alt="Settings Capture page showing Live Widget and related capture options."
+        style={{ width: '100%', display: 'block' }}
+      />
+    </div>
+  </div>
+</Frame>
+
+## Live Widget
+
+The [Live Widget](/earmark-basics/live-widget) is a floating pill that appears during an active desktop recording. Use it to see that capture is running and to drop pins from anywhere on screen.
+
+| Setting | What it controls |
+| --- | --- |
+| **Live Widget** | Show or hide the floating control during recordings |
+
+<Note>
+Capture settings on this page apply **per machine**. Enabling the Live Widget on your laptop does not enable it on your desktop.
+</Note>
+
+<Tip>
+If you live in Zoom, Teams, or Google Meet during calls, keep the widget on screen over your video window. You get a visible recording indicator and one-click pinning without alt-tabbing back to Earmark.
+</Tip>
+
+<Warning>
+The Live Widget appears for recordings started from the **main Earmark window**. If you start capture from a secondary window, Earmark shows a toast instead of the floating control — main-window recordings still get the widget when the setting is on.
+</Warning>
+
+## Keyboard shortcuts for pins
+
+Pinning also works via a global desktop shortcut (default `Alt + P`), independent of the Live Widget. Customize shortcuts in **Settings > Keyboard shortcuts**.
+
+<Info>
+The pin shortcut is desktop-only. On web, use the **Pin** button in the meeting command bar. See [Pins](/earmark-basics/pins) for full pinning behavior, limits, and privacy.
+</Info>
+
+## Web and desktop differences
+
+| Capability | Desktop | Web |
+| --- | --- | --- |
+| Live Widget | Yes, when enabled in **Settings > Capture** | Not available |
+| Global pin shortcut | Yes, configurable | Not available |
+| Pin button in meeting UI | Yes | Yes |
+
+For platform-level capture behavior (system audio, calendar, toolbar), see [Platforms](/getting-started/platforms) and [Earmark toolbar](/using-earmark/toolbar).
