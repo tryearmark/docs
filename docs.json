@@ -43,6 +43,8 @@
               "earmark-basics/transcription",
               "earmark-basics/transcript-import",
               "earmark-basics/artifacts",
+              "earmark-basics/pins",
+              "earmark-basics/live-widget",
               "earmark-basics/templates",
               "earmark-basics/command-menu",
               "earmark-basics/meeting-history",
@@ -78,6 +80,7 @@
             "icon": "sliders",
             "pages": [
               "customization/personalization",
+              "customization/capture",
               "customization/custom-templates",
               "customization/multilingual"
             ]
