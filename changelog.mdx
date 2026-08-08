@@ -5,6 +5,12 @@ rss: true
 ---
 
 <Update label="August 7, 2026">
+## Earmark now recovers from a stuck client
+
+If Earmark loses a healthy connection after your computer wakes, comes back online, or has been in the background for a while, it now detects the stuck state and safely reloads once. That keeps the sidebar and app from sitting in an endless loading state.
+
+Automatic recovery waits until meeting capture and final transcript flushing finish. If Earmark is still unhealthy after the reload, it asks you to refresh manually instead of reloading again. Waking from a long sleep also gets a fresh check, so sleep time is not mistaken for a failed connection.
+
 ## Bug fixes
 
 - Fixed **Mute microphone** on desktop muting system audio too. Other participants can now keep flowing into transcription while your microphone is muted.
@@ -18,6 +24,8 @@ rss: true
       backgroundPosition: "center",
       borderRadius: "1rem",
       padding: "4%",
+      width: "100%",
+      boxSizing: "border-box",
     }}
   >
     <div
@@ -39,37 +47,37 @@ rss: true
 </Update>
 
 <Update label="July 31, 2026">
-## No broadly available changes this week
+## Polishing what comes next
 
-No broadly available product changes shipped this week.
+We spent this week pressure-testing and refining the next set of Earmark improvements. There is nothing broadly available to announce yet, but we’re excited to share more when the experience is ready for everyone.
 
 </Update>
 
 <Update label="July 24, 2026">
-## No broadly available changes this week
+## Getting the foundations ready
 
-No broadly available product changes shipped this week.
+This week was about careful groundwork, testing, and rollout safeguards for what comes next. We’re keeping the details under wraps until the experience is ready for everyone.
 
 </Update>
 
 <Update label="July 17, 2026">
-## No broadly available changes this week
+## Testing the edges
 
-No broadly available product changes shipped this week.
+No broad release this week. We used the time to test tricky edge cases, simplify rough spots, and make sure the next things we ship feel dependable from day one.
 
 </Update>
 
 <Update label="July 10, 2026">
-## No broadly available changes this week
+## A longer build cycle
 
-No broadly available product changes shipped this week.
+We’re in the middle of a longer build-and-test cycle. Nothing new is broadly available this week, but the work is moving and we’re excited about where it’s headed.
 
 </Update>
 
 <Update label="July 3, 2026">
-## No broadly available changes this week
+## Quiet release week, busy workshop
 
-No broadly available product changes shipped this week.
+This week was focused on groundwork and testing rather than a public release. We’ll share the result when it’s ready for everyone.
 
 </Update>
 
@@ -86,6 +94,8 @@ Desktop meeting notifications now clean up their native windows more defensively
       backgroundPosition: "center",
       borderRadius: "1rem",
       padding: "4%",
+      width: "100%",
+      boxSizing: "border-box",
     }}
   >
     <div
@@ -128,6 +138,8 @@ Desktop capture now keeps microphone and system audio as separate transcription 
       backgroundPosition: "center",
       borderRadius: "1rem",
       padding: "4%",
+      width: "100%",
+      boxSizing: "border-box",
     }}
   >
     <div
@@ -149,6 +161,7 @@ Desktop capture now keeps microphone and system audio as separate transcription 
 ## Improvements
 
 - Transcript flushing now preserves late-finalized and overlapping turns more reliably.
+- Copied transcripts, local meeting files, and exported meeting Markdown now use readable paragraph breaks while preserving `Me:` and `Them:` speaker labels.
 
 </Update>
 
@@ -165,6 +178,8 @@ The desktop app can now play a sound with the reminder shown one minute before a
       backgroundPosition: "center",
       borderRadius: "1rem",
       padding: "4%",
+      width: "100%",
+      boxSizing: "border-box",
     }}
   >
     <div
@@ -198,6 +213,8 @@ You can now mark an important moment while a meeting is live, then use that mome
       backgroundPosition: "center",
       borderRadius: "1rem",
       padding: "4%",
+      width: "100%",
+      boxSizing: "border-box",
     }}
   >
     <div
@@ -250,6 +267,8 @@ Recent meetings now have a hover menu for **Rename meeting** and **Delete meetin
       backgroundPosition: "center",
       borderRadius: "1rem",
       padding: "4%",
+      width: "100%",
+      boxSizing: "border-box",
     }}
   >
     <div
@@ -271,9 +290,9 @@ Recent meetings now have a hover menu for **Rename meeting** and **Delete meetin
 </Update>
 
 <Update label="May 15, 2026">
-## No broadly available changes this week
+## Getting the next round ready
 
-No broadly available product changes shipped this week.
+We’re working on quicker ways to organize meeting history and a round of under-the-hood upgrades. Nothing new is broadly available this week, but there is more to share soon.
 
 </Update>
 
