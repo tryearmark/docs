@@ -5,68 +5,45 @@ rss: true
 ---
 
 <Update label="August 7, 2026">
-## Earmark can recover from a stuck session
-
-Earmark can now detect the rare case where a long-lived desktop or browser session stops loading authenticated data and refresh once to recover. Checks run after events such as waking a laptop, returning after a long time in the background, or reconnecting to the internet. Recovery waits until capture is fully finished, so it does not interrupt an active meeting.
-
 ## Bug fixes
 
 - Fixed **Mute microphone** on desktop muting system audio too. Other participants can now keep flowing into transcription while your microphone is muted.
 - Fixed Stop and Resume disagreeing about microphone mute state, which could leave a resumed meeting silently muted even though the control looked unmuted.
-- Fixed health recovery treating time spent asleep as a failed connection. Waking from a long suspension now starts a fresh check instead of immediately reloading or showing a recovery message.
 
 </Update>
 
 <Update label="July 31, 2026">
-## Agentic Search has more context
+## No broadly available changes this week
 
-Early-access Agentic Search can now look ahead to live Google Calendar or Microsoft Outlook events for the next 14 days and combine them with authorized meeting history for preparation questions. Meetings can also be added to projects before, during, or after capture, so project context stays useful across the full meeting lifecycle.
-
-## Share and reuse answers
-
-Use **Copy as screenshot** on a completed response to capture the question, visible research steps, citations, and answer as a shareable image. Regular copy now preserves lists, links, emphasis, and tables when you paste into document editors. Answers with tables also offer separate **Copy for documents** and **Copy for chat** formats.
-
-## More precise answers and sources
-
-- Agentic Search now shows meeting citations as source chips instead of raw markers or internal IDs.
-- Speaker-aware retrieval uses the right person's authorized recording when a project contains more than one capture of the same meeting, making questions such as “What did I say?” more reliable.
-- Broad searches can continue through more meeting history and finish with a clearer statement of how much material was reviewed.
-- Sending a chat message now shows an immediate **Thinking** state. You can keep drafting your next message while the answer runs, and a failed message keeps the newer draft intact while offering **Retry**.
-
-## Bug fixes
-
-- Fixed some paginated meeting searches failing when a relative date range changed by a few milliseconds between pages.
-- Fixed copied Agentic Search answers including citation labels or internal source identifiers.
+No broadly available product changes shipped this week.
 
 </Update>
 
 <Update label="July 24, 2026">
-## Agentic Search enters early access
+## No broadly available changes this week
 
-Earmark's new Agentic Search experience is now in production for a limited rollout. It can answer broader questions across your authorized meetings, show the retrieval work behind an answer, and link evidence back to its source.
-
-Projects add a shared place to group meetings, keep useful context, and ask questions within a focused body of work. The existing Earmark experience remains unchanged for workspaces that are not part of the early-access rollout.
+No broadly available product changes shipped this week.
 
 </Update>
 
 <Update label="July 17, 2026">
-## No customer-facing changes this week
+## No broadly available changes this week
 
-No customer-facing product changes reached production this week.
+No broadly available product changes shipped this week.
 
 </Update>
 
 <Update label="July 10, 2026">
-## No customer-facing changes this week
+## No broadly available changes this week
 
-No customer-facing product changes reached production this week.
+No broadly available product changes shipped this week.
 
 </Update>
 
 <Update label="July 3, 2026">
-## No customer-facing changes this week
+## No broadly available changes this week
 
-No customer-facing product changes reached production this week.
+No broadly available product changes shipped this week.
 
 </Update>
 
@@ -77,7 +54,7 @@ Desktop meeting notifications now clean up their native windows more defensively
 
 ## Improvements
 
-- Maximized source-attributed transcripts now show each turn in a distinct message bubble while preserving the existing **Me** and **Them** colors.
+- Maximized source-attributed transcripts now show each turn in a distinct message bubble while preserving the speaker colors and alignment.
 - Capture attempts now record a clearer diagnostic summary, helping support distinguish device, audio-signal, system-audio, network, and transcription failures without retaining raw audio.
 
 ## Bug fixes
@@ -89,12 +66,10 @@ Desktop meeting notifications now clean up their native windows more defensively
 <Update label="June 19, 2026">
 ## Source-attributed transcripts are live on desktop
 
-Desktop capture now keeps microphone and system audio as separate transcription sources, so the transcript can distinguish what you said from what other meeting participants said with **Me** and **Them** labels. Search and AI retrieval use the same attribution, making questions such as “What did I say?” more reliable. Web and mobile capture continue to use a mixed transcript. See [Live transcription](/earmark-basics/transcription).
+Desktop capture now keeps microphone and system audio as separate transcription sources. In the expanded transcript, color and alignment distinguish what you said from what other meeting participants said. Search and AI retrieval preserve the same attribution, making questions such as “What did I say?” more reliable. Web and mobile capture continue to use a mixed transcript. See [Live transcription](/earmark-basics/transcription).
 
-## Capture reliability improvements
+## Improvements
 
-- Desktop notification and toolbar starts now reconcile through the main app more reliably instead of depending on a single handoff arriving at exactly the right moment.
-- Microphone transcription stays required while system-audio transcription can recover independently, so an optional system-audio problem is less likely to stop the entire capture.
 - Transcript flushing now preserves late-finalized and overlapping turns more reliably.
 
 </Update>
@@ -103,10 +78,6 @@ Desktop capture now keeps microphone and system audio as separate transcription 
 ## Add sound to meeting notifications
 
 The desktop app can now play a sound with the reminder shown one minute before a calendar meeting. Choose a sound in **Settings > Calendar**, hear a preview as you select it, or use **Show example** to test the full notification. The default remains **None**, so Earmark stays silent until you choose a sound. See [Connect your calendar](/getting-started/calendar).
-
-## Meeting capture starts more reliably
-
-Starting capture from a desktop notification or toolbar item now has a stateful handoff that can recover when the primary window is hidden, suspended, or slow to respond. The transcription path also detects startup failures and connected-but-silent stalls, then makes bounded recovery attempts instead of leaving capture in an ambiguous state.
 
 </Update>
 
@@ -144,9 +115,9 @@ Recent meetings now have a hover menu for **Rename meeting** and **Delete meetin
 </Update>
 
 <Update label="May 15, 2026">
-## No customer-facing changes this week
+## No broadly available changes this week
 
-No customer-facing product changes reached production this week.
+No broadly available product changes shipped this week.
 
 </Update>
 
