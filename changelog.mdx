@@ -4,6 +4,279 @@ description: "Stay up to date with Earmark product updates, improvements, and bu
 rss: true
 ---
 
+<Update label="August 7, 2026">
+## Bug fixes
+
+- Fixed **Mute microphone** on desktop muting system audio too. Other participants can now keep flowing into transcription while your microphone is muted.
+- Fixed Stop and Resume disagreeing about microphone mute state, which could leave a resumed meeting silently muted even though the control looked unmuted.
+
+<Frame>
+  <div
+    style={{
+      backgroundImage: "url(/images/background-blue.png)",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      borderRadius: "1rem",
+      padding: "4%",
+    }}
+  >
+    <div
+      style={{
+        borderRadius: "0.875rem",
+        overflow: "hidden",
+        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
+      }}
+    >
+      <img
+        src="/images/changelog/2026-08-07/mute-microphone.png"
+        alt="A live Earmark meeting with the microphone control in its muted state."
+        style={{ width: "100%", display: "block" }}
+      />
+    </div>
+  </div>
+</Frame>
+
+</Update>
+
+<Update label="July 31, 2026">
+## No broadly available changes this week
+
+No broadly available product changes shipped this week.
+
+</Update>
+
+<Update label="July 24, 2026">
+## No broadly available changes this week
+
+No broadly available product changes shipped this week.
+
+</Update>
+
+<Update label="July 17, 2026">
+## No broadly available changes this week
+
+No broadly available product changes shipped this week.
+
+</Update>
+
+<Update label="July 10, 2026">
+## No broadly available changes this week
+
+No broadly available product changes shipped this week.
+
+</Update>
+
+<Update label="July 3, 2026">
+## No broadly available changes this week
+
+No broadly available product changes shipped this week.
+
+</Update>
+
+<Update label="June 26, 2026">
+## Desktop notifications no longer get stuck
+
+Desktop meeting notifications now clean up their native windows more defensively. Dismissing a notification, letting it time out, or replacing it with a newer one should no longer leave an invisible surface over the upper-right corner of the screen that intercepts clicks.
+
+<Frame>
+  <div
+    style={{
+      backgroundImage: "url(/images/background-blue.png)",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      borderRadius: "1rem",
+      padding: "4%",
+    }}
+  >
+    <div
+      style={{
+        borderRadius: "0.875rem",
+        overflow: "hidden",
+        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
+      }}
+    >
+      <img
+        src="/images/changelog/2026-06-26/meeting-notification.png"
+        alt="An Earmark desktop meeting notification with Join and capture and Dismiss actions."
+        style={{ width: "100%", display: "block" }}
+      />
+    </div>
+  </div>
+</Frame>
+
+## Improvements
+
+- Maximized source-attributed transcripts now show each turn in a distinct message bubble while preserving the speaker colors and alignment.
+- Capture attempts now record a clearer diagnostic summary, helping support distinguish device, audio-signal, system-audio, network, and transcription failures without retaining raw audio.
+
+## Bug fixes
+
+- Fixed a runtime conflict that could break scrollable areas or popovers after interface component updates.
+
+</Update>
+
+<Update label="June 19, 2026">
+## Source-attributed transcripts are live on desktop
+
+Desktop capture now keeps microphone and system audio as separate transcription sources. In the expanded transcript, color and alignment distinguish what you said from what other meeting participants said. The attribution remains available after capture, making follow-up questions such as “What did I say?” more reliable. Web and mobile capture continue to use a mixed transcript. See [Live transcription](/earmark-basics/transcription).
+
+<Frame>
+  <div
+    style={{
+      backgroundImage: "url(/images/background-blue.png)",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      borderRadius: "1rem",
+      padding: "4%",
+    }}
+  >
+    <div
+      style={{
+        borderRadius: "0.875rem",
+        overflow: "hidden",
+        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
+      }}
+    >
+      <img
+        src="/images/changelog/2026-06-19/source-attributed-transcript.png"
+        alt="An expanded Earmark transcript showing a source-attributed participant bubble from an Initech meeting."
+        style={{ width: "100%", display: "block" }}
+      />
+    </div>
+  </div>
+</Frame>
+
+## Improvements
+
+- Transcript flushing now preserves late-finalized and overlapping turns more reliably.
+
+</Update>
+
+<Update label="June 12, 2026">
+## Add sound to meeting notifications
+
+The desktop app can now play a sound with the reminder shown one minute before a calendar meeting. Choose a sound in **Settings > Calendar**, hear a preview as you select it, or use **Show example** to test the full notification. The default remains **None**, so Earmark stays silent until you choose a sound. See [Connect your calendar](/getting-started/calendar).
+
+<Frame>
+  <div
+    style={{
+      backgroundImage: "url(/images/background-blue.png)",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      borderRadius: "1rem",
+      padding: "4%",
+    }}
+  >
+    <div
+      style={{
+        borderRadius: "0.875rem",
+        overflow: "hidden",
+        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
+      }}
+    >
+      <img
+        src="/images/changelog/2026-06-12/notification-sound.png"
+        alt="Calendar notification settings with Show example and a reminder sound selector."
+        style={{ width: "100%", display: "block" }}
+      />
+    </div>
+  </div>
+</Frame>
+
+</Update>
+
+<Update label="June 5, 2026">
+## Pin the moments that matter
+
+You can now mark an important moment while a meeting is live, then use that moment as priority context for a focused artifact. Drop a pin from the meeting command bar, a global desktop shortcut, or the new floating Live Widget. See [Pins](/earmark-basics/pins) and [Live Widget](/earmark-basics/live-widget).
+
+<Frame>
+  <div
+    style={{
+      backgroundImage: "url(/images/background-blue.png)",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      borderRadius: "1rem",
+      padding: "4%",
+    }}
+  >
+    <div
+      style={{
+        borderRadius: "0.875rem",
+        overflow: "hidden",
+        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
+      }}
+    >
+      <img
+        src="/images/changelog/2026-06-05/live-widget.png"
+        alt="Capture settings showing the floating Live Widget and its pin control."
+        style={{ width: "100%", display: "block" }}
+      />
+    </div>
+  </div>
+</Frame>
+
+## Browse your full meeting history
+
+The **Meetings** page now keeps loading older meetings as you scroll instead of stopping at a finite history limit. A date filter lets you jump to a specific day, and the calendar marks dates that contain meetings. See [Past meetings](/earmark-basics/meeting-history).
+
+## Bug fixes
+
+- Fixed a rare workspace membership sync issue that could block transcript loading, title generation, or default summaries even though the signed-in user still belonged to the workspace.
+
+</Update>
+
+<Update label="May 29, 2026">
+## Platform upgrades with no workflow changes
+
+Earmark moved its web application to Next.js 16 and its AI features to AI SDK 6. Existing generation, streaming, and artifact workflows keep the same behavior while the underlying platform stays current.
+
+## Bug fixes
+
+- Fixed a rare identity-cache mismatch that could leave a valid workspace member unable to load transcripts, generate meeting titles, or create the default meeting summary. Earmark now detects the missing membership state and repairs it from the signed-in session.
+
+</Update>
+
+<Update label="May 22, 2026">
+## Manage meetings from the sidebar
+
+Recent meetings now have a hover menu for **Rename meeting** and **Delete meeting**, so you can clean up history without opening each meeting first. Upcoming calendar meetings have **Rename meeting** and, when the calendar provider supplies the event link, **Open in calendar** for edits or deletion at the source.
+
+<Frame>
+  <div
+    style={{
+      backgroundImage: "url(/images/background-blue.png)",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      borderRadius: "1rem",
+      padding: "4%",
+    }}
+  >
+    <div
+      style={{
+        borderRadius: "0.875rem",
+        overflow: "hidden",
+        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
+      }}
+    >
+      <img
+        src="/images/changelog/2026-05-22/sidebar-meeting-actions.png"
+        alt="A recent meeting menu in the sidebar with Rename meeting and Delete meeting actions."
+        style={{ width: "100%", display: "block" }}
+      />
+    </div>
+  </div>
+</Frame>
+
+</Update>
+
+<Update label="May 15, 2026">
+## No broadly available changes this week
+
+No broadly available product changes shipped this week.
+
+</Update>
+
 <Update label="May 8, 2026">
 ## Import transcripts you already have
 
