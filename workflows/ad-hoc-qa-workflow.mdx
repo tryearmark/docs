@@ -1,7 +1,7 @@
 ---
 title: "Ad-hoc Q&A"
-description: "Ask any meeting a question and get a grounded answer — what works today, what's still manual, and how to verify"
-keywords: ["Q&A", "ask your meetings", "search", "question patterns", "Composer", "verification", "ad-hoc"]
+description: "Ask one meeting or all of them a question with Earmark Chat, get answers with sources, and learn how to ask well and verify what you get back."
+keywords: ["Q&A", "ask your meetings", "Chat", "cross-meeting", "projects", "search", "question patterns", "Composer", "verification", "sources", "ad-hoc"]
 ---
 
 Every team that uses Earmark accumulates a substantial archive of recorded conversations. The transcripts exist. The structured artifacts exist. The knowledge is captured.
@@ -14,11 +14,23 @@ This guide is about how to close that gap. It is unlike the other workflow guide
 
 Worth being precise about up front.
 
-**Single-meeting Q&A is the real capability.** You can ask any question of any single recorded call — "what did Adi say about prep agent settings?", "did I commit to anything?", "what was the customer's main objection?" — and get an answer grounded in that call's transcript. Mechanically, this is a prompt task in the [Composer](/using-earmark/composer): you write the question, the model answers from the source. This is the most-used capability in Earmark for good reason. The rest of this guide is built around using it well.
+**Cross-meeting Q&A is [Chat](/earmark-basics/chat).** Open **Chat** from the sidebar and ask in plain language: "What did this customer say across our last three calls?", "What objections came up most often in sales calls this quarter?", "When did we first discuss the SSO requirement?" Chat searches your meetings, shows its research as it works (**Searching Earmark**, reading transcripts), and answers with source chips that point back to the meetings it drew from. Every answer about your meetings ends with a **Coverage** line: the date range it searched and how many meetings it reviewed.
 
-**Cross-meeting search is real, but it is search, not Q&A.** The [command menu](/earmark-basics/command-menu) (`Cmd+K` / `Ctrl+K`) does full-text search across every meeting, artifact, and task in your workspace. You'll find relevant calls quickly. You still have to open them and read them — the command menu retrieves; it does not summarize or compare.
+**Say how far back to look.** Most questions are about recent work. For anything older, ask for it: "across all my meetings", "ever", or name the period ("in Q1", "since January"). If an answer looks thin, read the Coverage line before you conclude the topic never came up.
 
-**Cross-meeting generative Q&A — where you pick a corpus of many calls and ask a natural-language question — is not a one-click action today.** "What did this customer say across our last three calls?" or "What objections have come up most often in the last quarter of sales calls?" require either manual context assembly (paste relevant prior artifacts into the Customize context dialog, then ask the question on the next call) or external processing of [local transcript files](/earmark-basics/local-transcripts) with an agent of your choice. The workaround section below covers both.
+**Single-meeting Q&A starts from the meeting.** Open a live or finished meeting and click **Chat** in its header to ask about that call — "what did Adi say about prep agent settings?", "did I commit to anything?", "what was the customer's main objection?" — or reach back with "Did this come up in the previous meeting?" During a live meeting, it reads the conversation so far. When you want the answer kept on the meeting, ask meeting chat for "an artifact", or write the question as a task in the [Composer](/using-earmark/composer).
+
+**Projects narrow the corpus.** Put a customer's calls, a hiring loop, or a launch's meetings in a [project](/earmark-basics/projects) and ask from the project page. Chat focuses on that project's meetings, including ones teammates shared with it, and follows the project's **Instructions**. This is the cleanest way to ask "what's the latest status?" of one account without other calls leaking in.
+
+**Search is still search.** The [command menu](/earmark-basics/meeting-history#search-with-the-command-menu) (`Cmd+K` / `Ctrl+K`) finds a meeting, artifact, or task by title or keyword. Use it when you know what you're looking for and want to open it. Use Chat when you want an answer.
+
+What Chat can't do:
+
+- **See meetings nobody shared with you.** Chat uses meetings you recorded, plus meetings shared with you through projects. A teammate's unshared calls stay private to them.
+- **Use temporary meetings.** They aren't saved, so there's nothing to search later.
+- **Always know who said what.** On desktop recordings your mic is kept separate from everyone else, so "what did I say?" works well. Other speakers aren't identified by name with certainty, and Chat says when it's guessing.
+
+The rest of this guide is about using this well: asking good questions, and checking the answers.
 
 ## Verification matters more here than anywhere else
 
@@ -30,14 +42,15 @@ The model is good. It is not infallible. It can:
 - Conflate two speakers
 - Get a date or detail wrong while getting the substance right
 - Confidently answer a question the transcript does not actually support
+- Answer from fewer meetings than you assumed, and read as complete when it isn't
 
 For low-stakes questions ("what was that thing Adi said about settings?"), the cost of an occasional wrong answer is low. For high-stakes questions — legal, HR, contractual, commitments to customers, board-level reporting — always verify against the source.
 
 The verification habit:
 
-1. Ask the model to **quote the verbatim moment** it's drawing from.
-2. Read the quote.
-3. If the model cannot produce a quote, treat the answer as unverified.
+1. **Check the source chips.** Hover a chip to read the excerpt behind the claim. For meetings you recorded, click it to jump to that moment and hear it in context.
+2. **Read the Coverage line.** "Never came up" across four meetings last month is a different answer from "never came up" across sixty meetings over a year. If the range or count is smaller than you expected, widen the question and ask again.
+3. **Ask for the verbatim moment** when a claim has no source, or when you're asking in a Composer task. If the model cannot produce a quote, treat the answer as unverified.
 
 Thirty seconds. Not optional for anything you'll act on or share.
 
@@ -65,7 +78,7 @@ For checking whether something specific happened.
 | "Did we discuss the security review timeline? If so, what was agreed?" | "What about security?" |
 | "Did anyone commit to sending the pricing sheet, and by when?" | "Any todos around pricing?" |
 
-For these especially: ask the model to produce the verbatim quote. If it cannot, the answer is unverified.
+For these especially: check the source chip, or ask for the verbatim quote. If there's no source, the answer is unverified.
 
 ### Person-specific recall
 
@@ -74,7 +87,7 @@ For these especially: ask the model to produce the verbatim quote. If it cannot,
 | "What did Adi say about how he envisions the prep agent settings working?" | "What did people say about prep agents?" |
 | "What were Sam's main concerns about the launch timeline?" | "What concerns came up?" |
 
-Name a person and a topic. People misremember who said what; the model occasionally does too. Ask for the moment.
+Name a person and a topic. People misremember who said what; the model occasionally does too, and Chat tells you when it's guessing at a speaker. Ask for the moment.
 
 ### Open questions
 
@@ -89,7 +102,7 @@ These ask for absence of resolution, which is harder for the model to fabricate 
 
 ### Pre-meeting prep
 
-For the single most recent call with this customer or person.
+For the next call with a customer or person you've met before.
 
 | Good |
 | --- |
@@ -97,7 +110,7 @@ For the single most recent call with this customer or person.
 | "What did this customer push back on most strongly?" |
 | "What's the most useful thing for me to bring into this meeting based on the last conversation?" |
 
-For prep across multiple prior calls, see the cross-call workaround section below.
+Ask these in Chat and name the customer, and it draws on every prior call it can find, not only the last one. With your calendar connected, "Help me prepare for tomorrow using my past meetings" pairs each upcoming event with related past meetings. For the templated version, see the [pre-meeting prep workflow](/workflows/pre-meeting-prep-workflow).
 
 ### Self-coaching
 
@@ -120,7 +133,18 @@ For comparing two meetings or two people — when both are in the corpus.
 | "Compare what the customer said in this call to what they said in our discovery. Has their stated pain shifted?" |
 | "How was this candidate's response to the system design question different from the previous candidate's?" |
 
-Technically cross-call, but the corpus is two calls, not many — assemble both into context manually using the workaround below.
+Ask these in Chat and name both meetings, or ask from meeting chat on the newer one. Before you trust the comparison, check that both meetings show up as sources.
+
+### Across many meetings
+
+For rollups: recurring themes, frequency, first mentions, how a position shifted over time.
+
+| Good | Bad |
+| --- | --- |
+| "Across our sales calls since January, what objections came up? Group them by theme and say how many calls raised each." | "What do customers think?" |
+| "When did we first discuss annual billing with Acme, and how has their position changed since?" | "Tell me about billing." |
+
+Name the set of meetings (a customer, a series, a period), the dimension you care about, and the shape you want back. Ask for frequency, and for what's missing as well as what's there.
 
 ## Running single-call Q&A
 
@@ -128,8 +152,8 @@ Technically cross-call, but the corpus is two calls, not many — assemble both 
 <Step title="Open the recorded meeting">
 Navigate to the call you want to query.
 </Step>
-<Step title="Add a task with your question">
-Write the question as a task prompt. Reference the patterns above. Specificity controls answer quality.
+<Step title="Ask your question">
+Click **Chat** in the meeting header for a quick answer. When you want the answer saved on the meeting, write the question as a task in the [Composer](/using-earmark/composer) instead. Reference the patterns above. Specificity controls answer quality.
 </Step>
 <Step title="Read the answer; iterate if it's thin">
 The first answer is rarely the final one. Push back:
@@ -142,7 +166,7 @@ The first answer is rarely the final one. Push back:
 Two minutes of dialog with the model usually beats one perfect question.
 </Step>
 <Step title="Verify if it matters">
-For anything you'll act on or share, ask for the verbatim quote and check it against the transcript. For low-stakes questions, the answer is usually enough.
+For anything you'll act on or share, check the source or ask for the verbatim quote, and read it against the transcript. For low-stakes questions, the answer is usually enough.
 </Step>
 </Steps>
 
@@ -150,17 +174,26 @@ For anything you'll act on or share, ask for the verbatim quote and check it aga
 Specificity of question controls quality of answer. "Summarize" produces generic output. "Summarize in five lines, focused on decisions and todos" produces useful output. The work is in writing the question, not in reading the answer.
 </Tip>
 
-## Cross-call workarounds
+## Asking across meetings
 
-When you need to ask a question that spans many calls, three options. None is a one-click feature today; the trade-offs differ.
+<Steps>
+<Step title="Pick where to ask">
+For a question about all your work, open **Chat** from the sidebar. For a question about one customer, hiring loop, or launch, open that [project](/earmark-basics/projects) and ask from its page, so only the project's meetings are in play.
+</Step>
+<Step title="Scope the question">
+Name who, what, and when. "What did Acme push back on across our calls since March?" beats "What are customers worried about?" If the answer could sit further back, say so: "all my meetings", "ever", or the month or quarter you mean.
+</Step>
+<Step title="Read the Coverage line">
+When the answer lands, check the date range and meeting count. If Chat reviewed fewer meetings than you expected, widen the range or name the meetings you had in mind, and ask again.
+</Step>
+<Step title="Verify through the sources">
+Hover the source chips for the excerpts behind each claim, and click through for meetings you recorded. Use **More detail** when you need the answer expanded, and push back the same way you would on a single call.
+</Step>
+</Steps>
 
-**Cmd+K plus manual reading.** Use the [command menu](/earmark-basics/command-menu) to find relevant calls by keyword. Open the strongest matches. Run single-call Q&A on each. Compile the answers yourself. Useful when the question is fact-shaped ("when did we first discuss X?") and a handful of calls is enough.
+The patterns from the previous section still apply: be specific about scope, name dimensions precisely, ask for citations, ask for frequency, ask for what's missing as well as what's there.
 
-**Manual context assembly.** Pick the calls you want the corpus to be. Paste the relevant artifacts or transcript excerpts from each into the **Customize context** dialog on a new task. Ask the question against that document. Works well for moderate corpora (three to ten calls). Same workaround the other workflow guides use for cross-meeting synthesis.
-
-**Local transcript export.** [Export the transcripts](/earmark-basics/local-transcripts) for the corpus and run an external agent across them. Highest effort, most flexibility, best for true large-scale synthesis like "across last quarter's customer interviews, what objections came up most often?" The agent you use is your call.
-
-The patterns from the previous section still apply across all three: be specific about scope, name dimensions precisely, ask for citations, ask for frequency, ask for what's missing as well as what's there.
+**If you want to run your own analysis.** Some jobs call for a method you control end-to-end, like a custom scoring pass over a year of interviews, or output that feeds another system on a schedule. For those, [export the transcripts](/earmark-basics/local-transcripts) and run an external agent across them. The agent you use is your call.
 
 ## Graduating an answer into a durable artifact
 
@@ -172,6 +205,8 @@ Most ad-hoc answers are ephemeral — you wanted the answer, you got it, you mov
 - **It changes the playbook.** Patterns of objections, repeated questions — feed enablement and sales.
 
 The "ask then write" loop is the right shape: ask the model the question, get the answer, write the durable version of the answer in your own words, paste it into the destination. The Q&A surfaces substance; the writing forces ownership of the claim. The combination produces better artifacts than either pure model output or pure manual writing.
+
+When the answer comes from Chat, **Copy** keeps its formatting but drops the source chips. Wherever the claim has to hold up later, name the meeting and date yourself. **Copy as image** is the quick option when you want your question and the answer posted as-is.
 
 Match the graduated answer to its destination:
 
@@ -188,7 +223,9 @@ Verification answers usually don't need a destination at all. "Did I commit to t
 
 ## Privacy
 
-Q&A inherits the privacy model of the meetings themselves. Earmark's workspace isolation keeps each user's meetings private by default — see [Security and privacy](/security-and-privacy). Some categories worth handling deliberately:
+Q&A inherits the privacy model of the meetings themselves. Earmark's workspace isolation keeps each user's meetings private by default — see [Security and privacy](/security-and-privacy). Your chats are private to you. Chat only draws on meetings you recorded and meetings shared with you through projects.
+
+The line that matters is the project. Once you add a meeting to a shared project, everyone in that project can ask Chat about it and see short excerpts as sources, even though they can't open the meeting. Keep sensitive meetings out of shared projects. Some categories worth handling deliberately:
 
 - **1:1s** — queryable only by the two participants, or with explicit consent. See the [people and team meetings workflow](/workflows/people-and-team-meetings-workflow).
 - **Candidate interviews** — within the hiring loop, fine. Outside, no.
@@ -201,8 +238,9 @@ If you're not sure whether you should be querying something, you shouldn't.
 
 - **Vague questions, vague answers.** Specificity of the question controls quality of the answer. Always tell the model the desired length, audience, and what to prioritize.
 - **Acting on unverified high-stakes answers.** The verification habit is not optional for anything you'll act on. Build it from day one.
-- **Treating Cmd+K as Q&A.** It is search. You still have to open the matches and read them.
-- **Scope mismatch on cross-call workarounds.** Too narrow misses context; too broad produces mush. Pick the smallest corpus that could plausibly contain the answer.
+- **Treating Cmd+K as Q&A.** It is search. It finds the meeting; Chat answers the question.
+- **Scope mismatch across meetings.** Too narrow misses context; too broad produces mush. Pick the smallest corpus that could plausibly contain the answer — name the customer, series, or period, or ask from a project.
+- **Skipping the Coverage line.** An answer drawn from three meetings when you expected thirty usually means the date range was too short. Widen it before you trust "it never came up."
 - **Querying meetings you shouldn't.** 1:1s, skip-levels, candidate interviews outside the loop, comp conversations. Know the lines and respect them.
 - **Treating ephemeral answers as durable.** Not every answer needs a destination. Capture the ones that matter; let the rest go.
 - **Letting answers replace conversation.** "What does Sam think about X?" is a fine question to ask the model. It is a better question to ask Sam.
@@ -213,9 +251,11 @@ If you're not sure whether you should be querying something, you shouldn't.
 
 ## Where to go next
 
-- [Composer](/using-earmark/composer) — the surface where single-call Q&A actually runs
-- [Command menu](/earmark-basics/command-menu) — for full-text search across meetings
-- [Local transcripts](/earmark-basics/local-transcripts) — for export when you need external synthesis
+- [Chat](/earmark-basics/chat) — asking across your meetings, sources, and the Coverage line
+- [Projects](/earmark-basics/projects) — grouping meetings so Chat answers from a focused set
+- [Composer](/using-earmark/composer) — for single-call Q&A you want saved as an artifact
+- [Command menu](/earmark-basics/meeting-history#search-with-the-command-menu) — for finding a meeting by title or keyword
+- [Local transcripts](/earmark-basics/local-transcripts) — if you want to run your own analysis
 - [Temporary meetings](/earmark-basics/temporary-meetings) — for sensitive sessions you want captured without keeping
 - [Workflows](/workflows) — the templated patterns this capability supports
 - [Customer research workflow](/workflows/customer-research-workflow) — for the systematic version of "what did customers say"

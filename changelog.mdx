@@ -1,971 +1,576 @@
 ---
-title: "Product updates"
-description: "Stay up to date with Earmark product updates, improvements, and bug fixes."
+title: "What's new in Earmark"
+sidebarTitle: "What's new"
+description: "See what's new in Earmark: new features, improvements, and bug fixes, rounded up every Friday. Subscribe with RSS to follow each release as it ships."
+keywords: ["Earmark changelog", "release notes", "product updates", "new features", "what's new"]
 rss: true
 ---
 
-<Update label="August 7, 2026">
-## Earmark now recovers from a stuck client
+import { Showcase } from "/snippets/showcase.jsx";
 
-If Earmark loses a healthy connection after your computer wakes, comes back online, or has been in the background for a while, it now detects the stuck state and safely reloads once. That keeps the sidebar and app from sitting in an endless loading state.
+<Update label="September 25, 2026" description="Little flourishes">
+## Artifacts move to GPT-6 Sol
 
-Automatic recovery waits until meeting capture and final transcript flushing finish. If Earmark is still unhealthy after the reload, it asks you to refresh manually instead of reloading again. Waking from a long sleep also gets a fresh check, so sleep time is not mistaken for a failed connection.
+New artifacts are now written by GPT-6 Sol, a month after the move to GPT-5.6 Terra. Expect artifacts that stay concise and to the point while being noticeably smarter about what matters. It scored higher than GPT-5.6 Terra in our side-by-side evals across a range of meeting formats. As before, artifacts you've already created keep the model they were made with when you regenerate them.
 
-## Bug fixes
+## Projects suggest their own look
 
-- Fixed **Mute microphone** on desktop muting system audio too. Other participants can now keep flowing into transcription while your microphone is muted.
-- Fixed Stop and Resume disagreeing about microphone mute state, which could leave a resumed meeting silently muted even though the control looked unmuted.
+Start typing a project name and Earmark suggests a matching icon and color, so "Hiring loop" and "Q4 launch" look different at a glance. Keep the suggestion or pick your own. Your choice always wins.
 
-<Frame>
-  <div
-    style={{
-      backgroundImage: "url(/images/background-blue.png)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      borderRadius: "1rem",
-      padding: "4%",
-      width: "100%",
-      boxSizing: "border-box",
-    }}
-  >
-    <div
-      style={{
-        borderRadius: "0.875rem",
-        overflow: "hidden",
-        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
-      }}
-    >
-      <img
-        src="/images/changelog/2026-08-07/mute-microphone.png"
-        alt="A live Earmark meeting with the microphone control in its muted state."
-        style={{ width: "100%", display: "block" }}
-      />
-    </div>
-  </div>
-</Frame>
-
-</Update>
-
-<Update label="July 31, 2026">
-## Polishing what comes next
-
-We spent this week pressure-testing and refining the next set of Earmark improvements. There is nothing broadly available to announce yet, but we’re excited to share more when the experience is ready for everyone.
-
-</Update>
-
-<Update label="July 24, 2026">
-## Getting the foundations ready
-
-This week was about careful groundwork, testing, and rollout safeguards for what comes next. We’re keeping the details under wraps until the experience is ready for everyone.
-
-</Update>
-
-<Update label="July 17, 2026">
-## Testing the edges
-
-No broad release this week. We used the time to test tricky edge cases, simplify rough spots, and make sure the next things we ship feel dependable from day one.
-
-</Update>
-
-<Update label="July 10, 2026">
-## A longer build cycle
-
-We’re in the middle of a longer build-and-test cycle. Nothing new is broadly available this week, but the work is moving and we’re excited about where it’s headed.
-
-</Update>
-
-<Update label="July 3, 2026">
-## Quiet release week, busy workshop
-
-This week was focused on groundwork and testing rather than a public release. We’ll share the result when it’s ready for everyone.
-
-</Update>
-
-<Update label="June 26, 2026">
-## Desktop notifications no longer get stuck
-
-Desktop meeting notifications now clean up their native windows more defensively. Dismissing a notification, letting it time out, or replacing it with a newer one should no longer leave an invisible surface over the upper-right corner of the screen that intercepts clicks.
-
-<Frame>
-  <div
-    style={{
-      backgroundImage: "url(/images/background-blue.png)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      borderRadius: "1rem",
-      padding: "4%",
-      width: "100%",
-      boxSizing: "border-box",
-    }}
-  >
-    <div
-      style={{
-        borderRadius: "0.875rem",
-        overflow: "hidden",
-        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
-      }}
-    >
-      <img
-        src="/images/changelog/2026-06-26/meeting-notification.png"
-        alt="An Earmark desktop meeting notification with Join and capture and Dismiss actions."
-        style={{ width: "100%", display: "block" }}
-      />
-    </div>
-  </div>
-</Frame>
+<Showcase
+  src="/images/projects/create-project.png"
+  maxWidth="460px"
+  alt="The Create project dialog with the name Chotchkie's launch and a suggested rocket icon."
+/>
 
 ## Improvements
 
-- Maximized source-attributed transcripts now show each turn in a distinct message bubble while preserving the speaker colors and alignment.
-- Capture attempts now record a clearer diagnostic summary, helping support distinguish device, audio-signal, system-audio, network, and transcription failures without retaining raw audio.
+- The sign-in page has a new animated pixel-art wallpaper. You can pause it, and it holds still if your system is set to reduce motion.
 
 ## Bug fixes
 
-- Fixed a runtime conflict that could break scrollable areas or popovers after interface component updates.
+- Fixed quitting the desktop app sometimes hanging while a background helper shut down. Update to desktop 1.8.1 to get the fix.
 
 </Update>
 
-<Update label="June 19, 2026">
-## Source-attributed transcripts are live on desktop
+<Update label="September 18, 2026" description="Auto-end arrives">
+## Recordings now end when your meeting does
 
-Desktop capture now keeps microphone and system audio as separate transcription sources. In the expanded transcript, color and alignment distinguish what you said from what other meeting participants said. The attribution remains available after capture, making follow-up questions such as “What did I say?” more reliable. Web and mobile capture continue to use a mixed transcript. See [Live transcription](/earmark-basics/transcription).
+Forgot to hit stop? The desktop app now ends a recording on its own once the meeting is over, so it doesn't keep capturing the next meeting or the hallway chat after it. It works with Zoom, Google Meet, Microsoft Teams, and many others.
 
-<Frame>
-  <div
-    style={{
-      backgroundImage: "url(/images/background-blue.png)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      borderRadius: "1rem",
-      padding: "4%",
-      width: "100%",
-      boxSizing: "border-box",
-    }}
-  >
-    <div
-      style={{
-        borderRadius: "0.875rem",
-        overflow: "hidden",
-        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
-      }}
-    >
-      <img
-        src="/images/changelog/2026-06-19/source-attributed-transcript.png"
-        alt="An expanded Earmark transcript showing a source-attributed participant bubble from an Initech meeting."
-        style={{ width: "100%", display: "block" }}
-      />
-    </div>
-  </div>
-</Frame>
+Earmark follows your calendar to know when a meeting should wrap up, and it pays attention to the conversation too, so a meeting that runs long keeps recording until you're actually done. A recording also stops after 15 minutes without new speech, or when your computer goes to sleep.
+
+Auto-end works on Mac and Windows with desktop app 1.8.0 or later, and needs macOS 14.2 or later on a Mac.
+
+## The Live Widget is now opt-in
+
+The floating Live Widget now starts turned off. If you like having pins one click away during meetings, turn it on in **Settings > Capture**. If you already chose on or off yourself, your choice stays as it was. If you never picked, the widget now starts off. See [Live Widget](/earmark-basics/live-widget).
+
+<Showcase
+  src="/images/changelog/2026-06-05/live-widget.png"
+  alt="Capture settings showing the Live Widget toggle and a preview of the floating widget."
+/>
+
+## Bug fixes
+
+- Fixed clicking **Pin** or dragging the Live Widget on the newest version of macOS bringing the main Earmark window forward and hiding the widget. The main window now stays in the background.
+
+</Update>
+
+<Update label="September 11, 2026" description="A quiet week">
+## Heads-down on desktop
+
+No release this week. We spent it getting [auto-end](#september-18-2026) ready for everyone, making sure the desktop helper behind it starts, recovers, and shuts down cleanly. It landed the following week.
+
+</Update>
+
+<Update label="September 4, 2026" description="Longer sessions">
+## Record for up to three hours
+
+Long workshop? Marathon planning session? A capture session can now run for up to **three hours**, up from two. Earmark still warns you 30 minutes before the limit, so the end never catches you by surprise.
 
 ## Improvements
 
-- Transcript flushing now preserves late-finalized and overlapping turns more reliably.
-- Copied transcripts, local meeting files, and exported meeting Markdown now use readable paragraph breaks while preserving `Me:` and `Them:` speaker labels.
+- The sidebar now fades softly at the top and bottom when there's more to scroll, so long lists of projects and chats no longer end abruptly.
 
 </Update>
 
-<Update label="June 12, 2026">
-## Add sound to meeting notifications
+<Update label="August 28, 2026" description="Sharper, steadier">
+## Artifacts get a model upgrade
 
-The desktop app can now play a sound with the reminder shown one minute before a calendar meeting. Choose a sound in **Settings > Calendar**, hear a preview as you select it, or use **Show example** to test the full notification. The default remains **None**, so Earmark stays silent until you choose a sound. See [Connect your calendar](/getting-started/calendar).
+New artifacts are now written by GPT-5.6 Terra instead of GPT-4.1. It picks up more of the nuance in a conversation, like caveats, disagreements, and open questions, and keeps artifacts grounded in what was actually said. We ran evals against GPT-4.1 across a range of meeting formats before switching the default. Artifacts you've already created keep the model they were made with when you regenerate them, so nothing changes under your feet.
 
-<Frame>
-  <div
-    style={{
-      backgroundImage: "url(/images/background-blue.png)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      borderRadius: "1rem",
-      padding: "4%",
-      width: "100%",
-      boxSizing: "border-box",
-    }}
-  >
-    <div
-      style={{
-        borderRadius: "0.875rem",
-        overflow: "hidden",
-        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
-      }}
-    >
-      <img
-        src="/images/changelog/2026-06-12/notification-sound.png"
-        alt="Calendar notification settings with Show example and a reminder sound selector."
-        style={{ width: "100%", display: "block" }}
-      />
-    </div>
-  </div>
-</Frame>
+## Pick up where you left off in Chat
+
+The Chat home page now lists your five most recent conversations below the composer, with **More** for the rest of your history. **New chat** is always one click away in the header.
+
+<Showcase
+  src="/images/chat/chat-home.png"
+  alt="The Chat home page with suggestions and a list of recent chats."
+/>
+
+## Improvements
+
+- A new **Stop generating** button ends a response whenever you like, and a stopped answer stays stopped, even after you reload.
+- If an answer stalls before it gets going, Earmark now retries it automatically instead of leaving you watching a spinner.
+
+## Bug fixes
+
+- Fixed failed responses sometimes hiding the **Retry** option.
 
 </Update>
 
-<Update label="June 5, 2026">
+<Update label="August 21, 2026" description="The big one">
+## Meet Chat: ask anything about your meetings
+
+Chat is now available to everyone. Ask a question and Earmark searches your meeting history, shows its research steps as it works, and answers with source chips that link back to the meetings it drew from.
+
+<Showcase
+  src="/images/chat/answer-with-sources.png"
+  alt="A Chat answer listing Chotchkie's rollout requirements, with source chips after each point and a Coverage line."
+/>
+
+A few things to try:
+
+- **"What did we decide about pricing last month?"** Chat searches across all your meetings, not just the one you're in.
+- **"Help me prep for tomorrow's meetings."** Chat can look ahead two weeks in your Google or Outlook calendar and pair upcoming events with what was said before.
+- **"What did I say about the launch date?"** Desktop recordings keep track of who said what, so first-person questions find your words, not someone else's.
+- **Open Chat inside a meeting** to ask about just that conversation, live or after it ends, or to have Chat create an artifact for you.
+
+## Organize work with Projects
+
+Projects group related meetings, like a customer, a launch, or a hiring loop, so their context lives in one place. Add a meeting to a project before, during, or after it happens, share the project with teammates, and start a chat that stays focused on just that project.
+
+To sort your history quickly, hover over meetings on the **Meetings** page to select them (Shift-click selects a range), then add the whole batch to a project at once.
+
+<Showcase
+  src="/images/projects/add-to-project.png"
+  alt="The Meetings page with three meetings selected and the Add to project menu open."
+/>
+
+## Share answers anywhere
+
+- **Copy as image** turns a response, including your question, the research steps, and the sources, into an image you can drop into Slack or a slide.
+- Regular copy now keeps lists, links, and formatting intact. Answers with tables offer **Copy for documents** for Docs and Word, and **Copy for chat** for tools like Slack.
+
+## Your week in Earmark
+
+Once you've been using Earmark for a week, the home page offers a recap of your past seven days: work patterns, favorite phrases, your communication style, and a light roast. Don't worry, it's gentle. Dismiss it anytime.
+
+## Improvements
+
+- New **Show events with no attendees** setting in **Settings > Calendar**. Turn it off to hide placeholder events that no one else is invited to from Coming up, the toolbar, notifications, and Chat. It's on by default, so nothing changes unless you opt out, and meetings you've recorded always stay visible.
+- The macOS menu bar countdown is now on by default. Turn it off with **Show countdown** in **Settings > Calendar**.
+- Copy your own questions in Chat with one click.
+- Workspace admins can check single sign-on status in **Settings > Workspace**, and contact us from there to set it up.
+
+## Bug fixes
+
+- Fixed desktop sign-in sometimes showing the "Signing in" progress screen twice.
+- Fixed the Live Widget showing a full sign-in screen after you signed out. Signing out now closes it.
+
+</Update>
+
+<Update label="August 14, 2026" description="Find it fast">
+## Search your meeting history
+
+The **Meetings** page now has its own search. Type part of a meeting title to search your entire history, and keep scrolling for more matches. Results stay in place while they refresh, so nothing jumps around as you type. See [Meetings and search](/earmark-basics/meeting-history).
+
+<Showcase
+  src="/images/meeting-search.png"
+  alt="The Meetings page searching for Chotchkie, with three matching meetings."
+/>
+
+## Bug fixes
+
+- Fixed a desktop crash that could show a "This page couldn't load" screen right after you clicked **Update**.
+
+</Update>
+
+<Update label="August 7, 2026" description="Self-healing app">
+## Earmark unsticks itself
+
+If Earmark loses its connection after your computer wakes up, reconnects to the internet, or sits in the background for a while, it now notices and reloads itself once, so you're not left staring at a loading sidebar. It waits for any recording to finish saving first. If a reload doesn't fix things, it asks you to refresh instead of trying again, and waking from a long sleep counts as a fresh start, not a failure.
+
+## Bug fixes
+
+- Fixed **Mute microphone** on desktop muting system audio too. Everyone else keeps flowing into the transcript while you're muted.
+- Fixed Stop and Resume disagreeing about mute state, which could leave a resumed meeting silently muted even though the button looked unmuted.
+
+<Showcase
+  src="/images/changelog/2026-08-07/mute-microphone.png"
+  alt="A live Earmark meeting with the microphone control in its muted state."
+/>
+
+</Update>
+
+<Update label="July 2026" description="Building mode">
+## Heads-down in July
+
+We spent July building instead of shipping. The payoff landed on August 21, when [Chat and Projects](#august-21-2026) became available to everyone.
+
+</Update>
+
+<Update label="June 26, 2026" description="No ghost windows">
+## Notifications that clean up after themselves
+
+Dismiss a desktop meeting notification, let it time out, or get a newer one, and it now fully goes away. No more invisible window lingering in the top-right corner and swallowing your clicks.
+
+<Showcase
+  src="/images/changelog/2026-06-26/meeting-notification.png"
+  alt="An Earmark desktop meeting notification with Join and capture and Dismiss actions."
+/>
+
+## Improvements
+
+- The expanded transcript now shows each turn in its own message bubble, keeping the speaker colors and alignment.
+- When capture runs into trouble, Earmark now records a clearer diagnostic summary so our support team can tell whether the device, audio signal, system audio, network, or transcription was at fault. Raw audio is never kept.
+
+## Bug fixes
+
+- Fixed scrollable areas and popovers sometimes breaking after an interface update.
+
+</Update>
+
+<Update label="June 19, 2026" description="Me vs. them">
+## Know who said what
+
+The desktop app now transcribes your microphone and the meeting audio as separate sources. In the expanded transcript, color and alignment show what you said and what everyone else said. That attribution sticks around after the meeting, so questions like "What did I say?" get sharper answers. Web and mobile capture still use a single mixed transcript. See [Live transcription](/earmark-basics/transcription).
+
+<Showcase
+  src="/images/changelog/2026-06-19/source-attributed-transcript.png"
+  alt="An expanded Earmark transcript showing a source-attributed participant bubble from an Initech meeting."
+/>
+
+## Improvements
+
+- Late or overlapping transcript turns are less likely to go missing when a recording finishes saving.
+- Copied transcripts, local meeting files, and Markdown exports now have readable paragraph breaks and keep the `Me:` and `Them:` speaker labels.
+
+</Update>
+
+<Update label="June 12, 2026" description="Ding!">
+## Give your meeting reminders a sound
+
+The desktop app can now play a sound with the reminder that pops up a minute before a calendar meeting. Pick one in **Settings > Calendar** (you'll hear a preview as you choose), or click **Show example** to test the whole notification. The default is **None**, so Earmark stays quiet until you pick a sound. See [Connect your calendar](/getting-started/calendar).
+
+<Showcase
+  src="/images/changelog/2026-06-12/notification-sound.png"
+  alt="Calendar notification settings with Show example and a reminder sound selector."
+/>
+
+</Update>
+
+<Update label="June 5, 2026" description="Live Widget debut">
 ## Pin the moments that matter
 
-You can now mark an important moment while a meeting is live, then use that moment as priority context for a focused artifact. Drop a pin from the meeting command bar, a global desktop shortcut, or the new floating Live Widget. See [Pins](/earmark-basics/pins) and [Live Widget](/earmark-basics/live-widget).
+Something important just happened in the meeting? Drop a pin. Pins mark the moment while you're live, and Earmark uses them as priority context when you create an artifact. Pin from the meeting command bar, a global desktop shortcut, or the new floating Live Widget. See [Pins](/earmark-basics/pins) and [Live Widget](/earmark-basics/live-widget).
 
-<Frame>
-  <div
-    style={{
-      backgroundImage: "url(/images/background-blue.png)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      borderRadius: "1rem",
-      padding: "4%",
-      width: "100%",
-      boxSizing: "border-box",
-    }}
-  >
-    <div
-      style={{
-        borderRadius: "0.875rem",
-        overflow: "hidden",
-        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
-      }}
-    >
-      <img
-        src="/images/changelog/2026-06-05/live-widget.png"
-        alt="Capture settings showing the floating Live Widget and its pin control."
-        style={{ width: "100%", display: "block" }}
-      />
-    </div>
-  </div>
-</Frame>
+<Showcase
+  src="/images/changelog/2026-06-05/live-widget.png"
+  alt="Capture settings showing the floating Live Widget and its pin control."
+/>
 
-## Browse your full meeting history
+## Scroll back through every meeting
 
-The **Meetings** page now keeps loading older meetings as you scroll instead of stopping at a finite history limit. A date filter lets you jump to a specific day, and the calendar marks dates that contain meetings. See [Past meetings](/earmark-basics/meeting-history).
+The **Meetings** page now keeps loading as you scroll, all the way back to your first meeting. Use the date filter to jump to a specific day. The calendar highlights the days that have meetings. See [Past meetings](/earmark-basics/meeting-history).
 
 ## Bug fixes
 
-- Fixed a rare workspace membership sync issue that could block transcript loading, title generation, or default summaries even though the signed-in user still belonged to the workspace.
+- Fixed a rare workspace sync issue that could stop transcripts, meeting titles, or default summaries from loading, even though you were still a member of the workspace.
 
 </Update>
 
-<Update label="May 29, 2026">
-## Platform upgrades with no workflow changes
+<Update label="May 29, 2026" description="Under the hood">
+## Fresh foundations, same Earmark
 
-Earmark moved its web application to Next.js 16 and its AI features to AI SDK 6. Existing generation, streaming, and artifact workflows keep the same behavior while the underlying platform stays current.
+We upgraded the platform under the hood. You shouldn't notice a thing. Generation, streaming, and artifacts work just like before, on a more current foundation.
 
 ## Bug fixes
 
-- Fixed a rare identity-cache mismatch that could leave a valid workspace member unable to load transcripts, generate meeting titles, or create the default meeting summary. Earmark now detects the missing membership state and repairs it from the signed-in session.
+- Fixed a rare mismatch that could stop a valid workspace member from loading transcripts, generating meeting titles, or creating the default summary. Earmark now spots the problem and repairs it automatically from your signed-in session.
 
 </Update>
 
-<Update label="May 22, 2026">
+<Update label="May 22, 2026" description="Quick cleanup">
 ## Manage meetings from the sidebar
 
-Recent meetings now have a hover menu for **Rename meeting** and **Delete meeting**, so you can clean up history without opening each meeting first. Upcoming calendar meetings have **Rename meeting** and, when the calendar provider supplies the event link, **Open in calendar** for edits or deletion at the source.
+Hover over a recent meeting in the sidebar to **Rename meeting** or **Delete meeting**, no need to open it first. You can rename upcoming calendar meetings too, and when your calendar provides a link, **Open in calendar** takes you straight to the event to edit or delete it at the source.
 
-<Frame>
-  <div
-    style={{
-      backgroundImage: "url(/images/background-blue.png)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      borderRadius: "1rem",
-      padding: "4%",
-      width: "100%",
-      boxSizing: "border-box",
-    }}
-  >
-    <div
-      style={{
-        borderRadius: "0.875rem",
-        overflow: "hidden",
-        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
-      }}
-    >
-      <img
-        src="/images/changelog/2026-05-22/sidebar-meeting-actions.png"
-        alt="A recent meeting menu in the sidebar with Rename meeting and Delete meeting actions."
-        style={{ width: "100%", display: "block" }}
-      />
-    </div>
-  </div>
-</Frame>
+<Showcase
+  src="/images/changelog/2026-05-22/sidebar-meeting-actions.png"
+  alt="A recent meeting menu in the sidebar with Rename meeting and Delete meeting actions."
+/>
 
 </Update>
 
-<Update label="May 15, 2026">
-## Getting the next round ready
+<Update label="May 15, 2026" description="Between releases">
+## Setting up the next round
 
-We’re working on quicker ways to organize meeting history and a round of under-the-hood upgrades. Nothing new is broadly available this week, but there is more to share soon.
+No release this week. We were working on faster ways to organize your meeting history, plus a round of under-the-hood upgrades. Both landed over the next two weeks.
 
 </Update>
 
-<Update label="May 8, 2026">
+<Update label="May 8, 2026" description="Three new tricks">
 ## Import transcripts you already have
 
-You can now create an Earmark meeting from a transcript captured somewhere else. Open the header menu, choose `Import transcript`, add a title, set when the meeting happened, and paste the transcript. The imported meeting lands in your history at the date you picked, works with search, and accepts templates and artifacts like a recorded meeting. See [Import a transcript](/earmark-basics/transcript-import).
+Got a transcript from another tool? Bring it into Earmark. Open the header menu, choose **Import transcript**, add a title and meeting date, and paste it in. The meeting lands in your history on the date you chose, shows up in search, and works with templates and artifacts like any recorded meeting. See [Import a transcript](/earmark-basics/transcript-import).
 
-<Frame>
-  <div
-    style={{
-      backgroundImage: "url(/images/background-blue.png)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      borderRadius: "1rem",
-      padding: "4%",
-    }}
-  >
-    <div
-      style={{
-        borderRadius: "0.875rem",
-        overflow: "hidden",
-        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
-      }}
-    >
-      <img
-        src="/images/import-transcript.png"
-        alt="Import transcript dialog with fields for meeting title, date, time, and transcript text."
-        style={{ width: "100%", display: "block" }}
-      />
-    </div>
-  </div>
-</Frame>
+<Showcase
+  src="/images/import-transcript.png"
+  alt="Import transcript dialog with fields for meeting title, date, time, and transcript text."
+/>
 
-## Composer is easier to discover
+## Composer is easier to find
 
-New artifact cards can now point you toward Composer when a generated document is ready to refine. Inside Composer, a `Show me` tip types a practical example prompt, the preview updates as you type, and you can save a working prompt as a reusable template. See [Composer](/using-earmark/composer).
+When a new artifact is ready to refine, its card now points you to Composer. Inside Composer, **Show me** types out an example prompt for you, the preview updates as you type, and you can save a prompt that works as a reusable template. See [Composer](/using-earmark/composer).
 
-<Frame>
-  <div
-    style={{
-      backgroundImage: "url(/images/background-blue.png)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      borderRadius: "1rem",
-      padding: "4%",
-    }}
-  >
-    <div
-      style={{
-        borderRadius: "0.875rem",
-        overflow: "hidden",
-        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
-      }}
-    >
-      <img
-        src="/images/composer-view.png"
-        alt="Composer view with prompt editing on the left and a live meeting-minutes preview on the right."
-        style={{ width: "100%", display: "block" }}
-      />
-    </div>
-  </div>
-</Frame>
+<Showcase
+  src="/images/composer-view.png"
+  alt="Composer view with prompt editing on the left and a live meeting-minutes preview on the right."
+/>
 
-## Toolbar capture controls
+## Capture from the toolbar
 
-The desktop toolbar can now do more without bringing the main window forward. Use `Quick Capture` for an ad-hoc recording, use `Stop Capture` while a recording is active, and click a `Coming up` meeting to open the call and start recording. On macOS, the menu bar countdown still shows what is next or currently running; on Windows, the tray icon now switches between idle and recording states. See [Earmark toolbar](/using-earmark/toolbar).
+The desktop toolbar now does more without bringing up the main window. Use **Quick Capture** for an ad hoc recording, **Stop Capture** to end one, and click a **Coming up** meeting to open the call and start recording in one step. On macOS, the menu bar countdown still shows what's next or in progress. On Windows, the tray icon now switches between idle and recording. See [Earmark toolbar](/using-earmark/toolbar).
 
-<Frame caption="Start a recording with Quick Capture from the toolbar">
-  <div
-    style={{
-      backgroundImage: "url(/images/background-blue.png)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      borderRadius: "1rem",
-      padding: "4%",
-    }}
-  >
-    <div
-      style={{
-        borderRadius: "0.875rem",
-        overflow: "hidden",
-        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
-      }}
-    >
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        src="https://bwopjpjsyqjaz3ty.public.blob.vercel-storage.com/toolbar/toolbar-start.mp4"
-        title="Quick Capture started from the Earmark toolbar menu."
-        style={{ width: "100%", display: "block" }}
-      />
-    </div>
-  </div>
-</Frame>
+<Showcase
+  video
+  src="https://bwopjpjsyqjaz3ty.public.blob.vercel-storage.com/toolbar/toolbar-start.mp4"
+  alt="Quick Capture started from the Earmark toolbar menu."
+  caption="Start a recording with Quick Capture from the toolbar"
+/>
 
 ## Improvements
 
-- Desktop update checks now run quietly when the app opens or comes back into focus, so the sidebar `Update` badge is less likely to miss an available desktop update.
-- Delete confirmations now look consistent in dark mode.
+- Desktop update checks now run quietly when the app opens or regains focus, so the sidebar **Update** badge is less likely to miss a new version.
+- Delete confirmations look consistent in dark mode.
 
 ## Bug fixes
 
-- Fixed Windows tray icons sometimes failing to switch into the right recording state after capture started or stopped.
-- Fixed cases where Windows could keep showing an older tray icon after an update.
+- Fixed Windows tray icons sometimes not switching to the recording state when capture started or stopped.
+- Fixed Windows sometimes showing an older tray icon after an update.
 
 </Update>
 
-<Update label="May 1, 2026">
-## Visual refresh across the app
+<Update label="May 1, 2026" description="New look">
+## A fresh coat of paint
 
-Earmark got a visual refresh! Buttons, cards, dialogs, and more all picked up refreshed styling, along with updated colors for better contrast and readability. Dark mode and high-density layouts get the same refresh.
+Earmark got a visual refresh. Buttons, cards, dialogs, and more picked up new styling, with updated colors for better contrast and readability. Dark mode and dense layouts got the same treatment.
 
-<Frame>
-  <div
-    style={{
-      backgroundImage: "url(/images/background-blue.png)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      borderRadius: "1rem",
-      padding: "4%",
-    }}
-  >
-    <div
-      style={{
-        borderRadius: "0.875rem",
-        overflow: "hidden",
-        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
-      }}
-    >
-      <img
-        src="/images/ui-refresh.png"
-        alt="Refreshed Earmark interface showing updated buttons, cards, and dialog styling with improved contrast."
-        style={{ width: "100%", display: "block" }}
-      />
-    </div>
-  </div>
-</Frame>
+<Showcase
+  src="/images/ui-refresh.png"
+  alt="Refreshed Earmark interface showing updated buttons, cards, and dialog styling with improved contrast."
+/>
 
-## Onboarding got an overhaul
+## A friendlier first run
 
-The first-run flow now shows a live visual preview of the app alongside each step, so you can see Earmark take shape as you fill in your profile, workspace, and calendar. Forward navigation is also faster: each step prefetches only the next route you are likely to take instead of warming the whole flow up front.
+Onboarding now shows a live preview of the app next to each step, so you can watch Earmark take shape as you set up your profile, workspace, and calendar. Each step also loads faster.
 
 ## Improvements
 
-- The template picker empty state can now turn a missed search into a starting point: type a name that does not match anything and create a custom template draft seeded from your query.
-- Members settings role handling, action-menu states, and invite controls stay coherent after role edits and destructive actions, so the row you just acted on does not lag behind the change.
-- External documentation and marketing links now go through a shared component, so they consistently open in the system browser on desktop instead of inside the app window.
+- Searched for a template that doesn't exist? The template picker now offers to start a custom template draft from your search.
+- Changing roles, sending invites, and removing people in Members settings now updates the right row immediately.
+- Documentation and website links in the desktop app now open in your browser instead of inside the app window.
 
 ## Bug fixes
 
-- Fixed image cropping for profile photos and workspace logos so a failed upload rolls the preview back instead of leaving an unsaved image visible. Cropped output is also validated before replacing the avatar or logo, and oversized files are rejected before they overwrite the current one.
+- Fixed a failed profile photo or workspace logo upload leaving the unsaved image on screen. The preview now rolls back, and oversized files are rejected before they replace your current image.
+
 </Update>
 
-<Update label="April 24, 2026">
-## Meetings now generate a summary by default
+<Update label="April 24, 2026" description="Autopilot notes">
+## Every meeting ends with a summary
 
-When you stop a meeting for the first time, Earmark automatically creates a `Real-Time Meeting Summary and Action Items` task instead of leaving you to set one up by hand. Temporary meetings get the same default task locally, so meetings that stay off the record still produce a usable artifact. If you already added a summary task yourself, the automatic one is skipped. See [AI artifacts](/earmark-basics/artifacts).
+The first time you stop a meeting, Earmark now creates a **Real-Time Meeting Summary and Action Items** task for you. Temporary meetings get the same default task, kept locally. If you've already added a summary task, Earmark skips this one. See [AI artifacts](/earmark-basics/artifacts).
 
-<Frame>
-  <div
-    style={{
-      backgroundImage: "url(/images/background-blue.png)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      borderRadius: "1rem",
-      padding: "4%",
-    }}
-  >
-    <div
-      style={{
-        borderRadius: "0.875rem",
-        overflow: "hidden",
-        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
-      }}
-    >
-      <img
-        src="/images/meeting-summary.png"
-        alt="Meeting workspace showing the auto-created Real-Time Meeting Summary and Action Items task after a meeting ends."
-        style={{ width: "100%", display: "block" }}
-      />
-    </div>
-  </div>
-</Frame>
+<Showcase
+  src="/images/meeting-summary.png"
+  alt="Meeting workspace showing the auto-created Real-Time Meeting Summary and Action Items task after a meeting ends."
+/>
 
-## Mobile fullscreen composer
+## Edit prompts in fullscreen on mobile
 
-Tapping fullscreen on a task on mobile or smaller screen widths no longer hides the composer. The composer now lives in a left-side sheet that you can pull over the artifact to edit your prompt without leaving fullscreen. Drafts and update-as-you-type edits survive opening and closing the sheet, so a quick review does not cost you the prompt you were writing.
+On phones and narrow screens, fullscreen tasks no longer hide the composer. It now lives in a side sheet you can pull over the artifact to edit your prompt without leaving fullscreen. Drafts survive opening and closing the sheet, so a quick look never costs you what you were writing.
 
 ## Bug fixes
 
-- Fixed an intermittent issue where dismissing a desktop meeting notification could leave a transparent native window alive in the upper-right of the screen, intercepting clicks meant for other apps. Restarting Earmark used to be the only way to clear it; now the close path starts a one-second native teardown watchdog and immediately stops the window from receiving mouse events.
-- Fixed duplicate desktop update prompts. Shell updates and web client refreshes now share a single in-app `Update` badge in the sidebar, so you no longer see two competing prompts. If you are recording or in temporary mode, the action confirms before refreshing or restarting.
+- Fixed dismissing a desktop meeting notification sometimes leaving an invisible window in the top-right corner that blocked clicks to other apps. Before, restarting Earmark was the only way out.
+- Fixed duplicate update prompts on desktop. App updates and web refreshes now share one **Update** badge in the sidebar, and Earmark asks before restarting if you're recording or in temporary mode.
 
 </Update>
 
-<Update label="April 17, 2026">
+<Update label="April 17, 2026" description="Fix-it week">
+## Cleaner copy and paste
+
+- Fixed copying part of a table (a single cell, a row, or a range) producing blank or broken text. Copying a whole table still gives you the Slack-friendly format.
+- Fixed copied headings and short snippets sometimes picking up extra blank lines.
+
+</Update>
+
+<Update label="April 10, 2026" description="Instant reconnect">
+## Calendar connections show up right away
+
+Connecting or reconnecting a Google or Microsoft calendar from **Settings** on desktop now shows up immediately. Before, the connection worked in the background, but Settings didn't catch up until you closed and reopened it. See [Connect your calendar](/getting-started/calendar).
+
 ## Bug fixes
 
-- Fixed copying a partial table selection (a single cell, row, or body range) producing blank or broken plain text in the clipboard. Full-table copies still produce the Slack-friendly key-value format.
-- Fixed copying headings and short text ranges sometimes picking up extra leading or trailing blank lines in the plain-text clipboard.
+- Fixed calendar toggles sometimes listing the other provider's calendars after a reconnect.
+- Fixed the connect dialog and Settings sometimes disagreeing about your connection when you switch back to the app.
 
 </Update>
 
-<Update label="April 10, 2026">
-## Calendar reconnect now reflects immediately in Settings
+<Update label="April 3, 2026" description="Reusable prompts">
+## Custom templates are here
 
-Connecting or reconnecting a Google or Microsoft calendar from **Settings** now updates the UI right away on desktop. Previously, the connection would succeed in the background but Settings would stay in its pre-connect state until you closed and reopened the panel — and even then the calendar toggles could show the wrong provider's calendars. That mismatch is fixed. See [Connect your calendar](/getting-started/calendar).
+Save your go-to meeting prompts as **Custom templates**, just for you or for your whole workspace. Create one from the **Templates** picker or save a prompt from the fullscreen composer, then reuse it the next time that meeting comes around. Less prompt archaeology, more reuse. See [Custom templates](/customization/custom-templates).
 
-## Bug fixes
+<Showcase
+  src="/images/custom-templates.png"
+  alt="Custom template creation flow showing a template name, prompt, visibility controls, and copy-link actions."
+/>
 
-- Fixed Settings staying in a stale pre-connect state after returning from the desktop OAuth browser so the new connection is reflected without needing to close and reopen the panel.
-- Fixed calendar toggles sometimes showing the wrong provider's calendars after a reconnect by isolating Google and Microsoft calendar lists in separate cache entries.
-- Fixed the standalone connect dialog and the Settings calendar section so both react consistently when the app regains focus after the OAuth handoff.
+## Your templates, right where you work
 
-</Update>
+Custom templates show up in the **Templates** picker and in inline `/` suggestions, so you can apply a recurring format mid-meeting without rebuilding the prompt. Teams get consistent outputs without slowing down.
 
-<Update label="April 3, 2026">
-## Custom templates are live
+## Share templates with a link
 
-You can now save reusable meeting prompts as `Custom templates`, either for yourself or for your workspace. Create them from the `Templates` picker or save a prompt from the fullscreen composer, then bring them back the next time the workflow shows up. Less prompt archaeology, more reuse. See [Custom templates](/customization/custom-templates).
-
-<Frame>
-  <div
-    style={{
-      backgroundImage: "url(/images/background-blue.png)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      borderRadius: "1rem",
-      padding: "4%",
-    }}
-  >
-    <div
-      style={{
-        borderRadius: "0.875rem",
-        overflow: "hidden",
-        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
-      }}
-    >
-      <img
-        src="/images/custom-templates.png"
-        alt="Custom template creation flow showing a template name, prompt, visibility controls, and copy-link actions."
-        style={{ width: "100%", display: "block" }}
-      />
-    </div>
-  </div>
-</Frame>
-
-## Use reusable prompts where the meeting work happens
-
-Custom templates now show up in the `Templates` picker and inline `/` suggestions, so recurring formats are easier to apply without rebuilding the prompt mid-meeting. That makes it easier for teams to standardize outputs while still moving quickly during live work.
-
-## Share templates without rebuilding them
-
-`Copy link` now creates a live shared link that anyone with the link can open in the web app or desktop app. Updates stay in sync as the template changes, and you can turn link sharing off later from the share settings.
+**Copy link** creates a live link that anyone can open in the web or desktop app. Edits to the template stay in sync, and you can turn link sharing off anytime from the share settings.
 
 ## Improvements
 
-- Shared template cards now show who created them, which makes team libraries easier to scan before you pick one.
-- Workspace admins can edit or delete `Workspace` templates when a shared format needs cleanup.
-- Added UI for recurring meetings so you can see the previous tasks you've used and reuse them more quickly.
+- Shared template cards show who made them, so team libraries are easier to scan.
+- Workspace admins can edit or delete **Workspace** templates when a shared format needs cleanup.
+- Recurring meetings now show the tasks you used last time, so you can reuse them quickly.
 
 </Update>
 
-<Update label="March 27, 2026">
-## Local transcript files landed on desktop
+<Update label="March 27, 2026" description="Agent-ready">
+## Save meetings as local files
 
-Earmark can now auto-save each meeting as a local markdown file when the meeting ends, making it easier to bring meeting context into tools like Codex, Cursor, and other local AI workflows. This works for standard meetings and [temporary meetings](/earmark-basics/temporary-meetings). See [Local transcript files](/earmark-basics/local-transcripts).
+The desktop app can now save each meeting as a local Markdown file when it ends, so tools like Codex, Cursor, and other local AI agents can pick up the context. It works for standard and [temporary meetings](/earmark-basics/temporary-meetings). See [Local transcript files](/earmark-basics/local-transcripts).
 
-## Choose where transcript files go
+## Choose where the files go
 
-Transcript file storage is controlled from **Settings > Personalization > Meeting files**, which lets you save local transcript files directly in the folders your local agent already uses. See [Local transcript files](/earmark-basics/local-transcripts).
+Pick a folder in **Settings > Personalization > Meeting files**, such as the one your local agent already reads from.
 
-<Frame>
-  <div
-    style={{
-      backgroundImage: "url(/images/background-blue.png)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      borderRadius: "1rem",
-      padding: "4%",
-    }}
-  >
-    <div
-      style={{
-        borderRadius: "0.875rem",
-        overflow: "hidden",
-        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
-      }}
-    >
-      <img
-        src="/images/local-transcripts-settings.png"
-        alt="Settings panel for local transcript files showing the save-location picker row."
-        style={{ width: "100%", display: "block" }}
-      />
-    </div>
-  </div>
-</Frame>
+<Showcase
+  src="/images/local-transcripts-settings.png"
+  alt="Settings panel for local transcript files showing the save-location picker row."
+/>
 
 ## Improvements
 
-- `Export open windows` now asks for a save location immediately on desktop instead of waiting until the export finishes collecting data.
-- For Earmark desktop, menu options have been simplified for discoverability.
+- **Export open windows** now asks where to save right away on desktop, instead of after it finishes gathering data.
+- Desktop menus are simpler, so options are easier to find.
 
 </Update>
 
-<Update label="March 20, 2026">
-## Desktop browser handoffs got more reliable
+<Update label="March 20, 2026" description="Fewer dead ends">
+## Smoother handoffs from browser to desktop
 
-Returning from the browser to the Earmark desktop app is more dependable now, especially during sign-in and calendar connection flows. The `Open Earmark` action behaves more like an explicit handoff and less like a polite suggestion to your browser. See [Connect your calendar](/getting-started/calendar) and [Desktop deep linking](/troubleshooting/desktop-deep-linking).
+Coming back to the desktop app from your browser is more dependable now, especially after signing in or connecting a calendar. **Open Earmark** behaves like a real handoff instead of a polite suggestion to your browser. See [Connect your calendar](/getting-started/calendar) and [Desktop deep linking](/troubleshooting/desktop-deep-linking).
 
 ## Bug fixes
 
-- Fixed the desktop sign-in return flow so clicking `Open Earmark` is more likely to reopen the app when the browser does not hand off automatically.
-- Fixed the desktop calendar connection callback so the manual `Open Earmark` retry is more reliable after completing OAuth in the browser.
+- Fixed **Open Earmark** sometimes not reopening the app after sign-in when the browser didn't hand off on its own.
+- Fixed the manual **Open Earmark** retry after connecting a calendar in the browser.
 
 </Update>
 
-<Update label="March 13, 2026">
-## Billing added to workspace settings
+<Update label="March 13, 2026" description="No scavenger hunts">
+## Billing lives in Settings now
 
-Admins can now manage billing from `Settings > Billing` instead of bouncing between trial notices and external links. Less tab archaeology, more shipping. See [Workspaces](/earmark-basics/workspaces).
+Admins can manage billing from **Settings > Billing**: see your plan, check trial status, and upgrade, all in one place instead of jumping between trial notices and external links. Less tab archaeology, more shipping. See [Workspaces](/earmark-basics/workspaces).
 
-<Frame>
-  <div
-    style={{
-      backgroundImage: "url(/images/background-blue.png)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      borderRadius: "1rem",
-      padding: "4%",
-    }}
-  >
-    <div
-      style={{
-        borderRadius: "0.875rem",
-        overflow: "hidden",
-        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
-      }}
-    >
-      <img
-        src="/images/changelog/2026-03-13/billing.png"
-        alt="Settings > Billing showing the current plan summary and monthly/yearly plan cards."
-        style={{ width: "100%", display: "block" }}
-      />
-    </div>
-  </div>
-</Frame>
+<Showcase
+  src="/images/changelog/2026-03-13/billing.png"
+  alt="Settings > Billing showing the current plan summary and monthly/yearly plan cards."
+/>
 
-## Desktop join and capture got more reliable
+## More reliable joins from desktop
 
-Desktop notification and tray handoffs are more dependable now, especially around cold starts and first-click joins. Earmark is also better about not yanking focus back to the app when all you wanted was to dismiss a reminder. See [Calendar](/getting-started/calendar).
+Desktop notifications and the tray are more dependable, especially right after launch and on your first click to join. Earmark also stops pulling you back into the app when all you wanted was to dismiss a reminder. See [Connect your calendar](/getting-started/calendar).
 
 ## Improvements
 
-- Added a `Billing` section in settings with plan visibility, trial status, and upgrade actions. One place instead of three.
-- Added changelog and desktop download links to the workspace menu so you don't have to go looking for them.
-- Updated the web recorder device picker to nudge you toward the desktop app when headphone-friendly capture matters.
+- Changelog and desktop download links now live in the workspace menu, so you don't have to go looking for them.
+- The web recorder's device picker now suggests the desktop app when headphone-friendly capture matters.
 
 ## Bug fixes
 
-- Fixed dismissing desktop meeting notifications on macOS sometimes bringing the main app forward like an overhelpful intern.
+- Fixed dismissing a desktop notification on macOS sometimes bringing the main app forward like an overhelpful intern.
 - Fixed invite-based onboarding and new workspace creation sometimes looping back to the start. Nobody should have to onboard twice.
-- Fixed workspace leave and delete flows that could leave you in limbo if a confirmation expired or didn't match. Limbo is not a feature.
-- Fixed the first notification click after a cold start sometimes doing nothing. It does something now.
-- Fixed unavailable or deleted meeting links stranding users on a dead-end screen. You now get sent home with an explanation instead of a blank stare.
+- Fixed leaving or deleting a workspace sometimes stranding you in limbo if a confirmation expired or didn't match. Limbo is not a feature.
+- Fixed the first notification click after launch sometimes doing nothing. It does something now.
+- Fixed unavailable or deleted meeting links leading to a dead end. You now land back home with an explanation instead of a blank stare.
 
 </Update>
 
-<Update label="March 6, 2026">
-  <h2 style={{ fontSize: '20px', lineHeight: '1.4', fontWeight: 600 }}>Introducing Earmark 2.0</h2>
-
-<div style={{ margin: "0 0 1rem 0" }}>
-  <Frame>
-    <img
-      src="/images/changelog/2026-03-06/sidebar.png"
-      alt="Earmark 2.0 release image showing the dark mode Earmark app interface."
-      style={{ width: "100%", display: "block" }}
-    />
-  </Frame>
-</div>
-
-<p style={{ fontSize: "14px", lineHeight: "1.7142857", margin: "0 0 1rem 0" }}>
-  Your meetings are now saved automatically. One window. Every meeting. Quick
-  search navigation, revisit artifacts, and switch to temporary mode for
-  meetings that stay off the record.
-</p>
-
-<h2 style={{ fontSize: "20px", lineHeight: "1.4", fontWeight: 600 }}>
-  One consolidated workspace
-</h2>
-
-<p style={{ fontSize: "14px", lineHeight: "1.7142857" }}>
-  Earmark now gives your day-to-day work a single home. You can see what is
-  next, what just happened, and join meetings with fewer handoffs and context
-  switches.
-</p>
+<Update label="March 6, 2026" description="A fresh start">
+## Introducing Earmark 2.0
 
 <Frame>
-  <div
-    style={{
-      backgroundImage: "url(/images/background-blue.png)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      borderRadius: "1rem",
-      padding: "4%",
-    }}
-  >
-    <div
-      style={{
-        borderRadius: "0.875rem",
-        overflow: "hidden",
-        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
-      }}
-    >
-      <img
-        src="/images/changelog/2026-03-06/workspace-overview.png"
-        alt="Earmark 2.0 workspace showing upcoming meetings, recent meetings, and live capture controls in a single window."
-        style={{ width: "100%", display: "block" }}
-      />
-    </div>
-  </div>
+  <img
+    src="/images/changelog/2026-03-06/sidebar.png"
+    alt="Earmark 2.0 release image showing the dark mode Earmark app interface."
+    style={{ width: "100%", display: "block" }}
+  />
 </Frame>
-<h2 style={{ fontSize: "20px", lineHeight: "1.4", fontWeight: 600 }}>
-  Meeting history that compounds
-</h2>
 
-<p style={{ fontSize: "14px", lineHeight: "1.7142857" }}>
-  Work does not disappear when the call ends. Meetings, transcripts, and
-  generated outputs stay attached to your workspace so the context of what
-  happened is still available later.
-</p>
+Your meetings now save automatically. One window holds every meeting, with quick search, your artifacts a click away, and temporary mode for conversations that should stay off the record.
 
-<Frame>
-  <div
-    style={{
-      backgroundImage: "url(/images/background-blue.png)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      borderRadius: "1rem",
-      padding: "4%",
-    }}
-  >
-    <div
-      style={{
-        borderRadius: "0.875rem",
-        overflow: "hidden",
-        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
-      }}
-    >
-      <img
-        src="/images/changelog/2026-03-06/meeting-history.gif"
-        alt="Animated view of Earmark meeting history showing saved meetings and retained outputs."
-        style={{ width: "100%", display: "block" }}
-      />
-    </div>
-  </div>
-</Frame>
-<h2 style={{ fontSize: "20px", lineHeight: "1.4", fontWeight: 600 }}>
-  Control your data
-</h2>
+## One home for your workday
 
-<p style={{ fontSize: "14px", lineHeight: "1.7142857" }}>
-  You can now decide what gets retained per meeting or across a workspace. Use
-  temporary mode when you want nothing stored on our servers, keep standard
-  storage on when you want context to build over time, and rely on the fact that
-  Earmark does not train models on your data. See [Temporary
-  meetings](/earmark-basics/temporary-meetings) and [Security and
-  privacy](/security-and-privacy) for the underlying policy details.
-</p>
+See what's next, catch up on what just happened, and join meetings with fewer handoffs and context switches.
 
-<Frame>
-  <div
-    style={{
-      backgroundImage: "url(/images/background-blue.png)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      borderRadius: "1rem",
-      padding: "4%",
-    }}
-  >
-    <div
-      style={{
-        borderRadius: "0.875rem",
-        overflow: "hidden",
-        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
-      }}
-    >
-      <img
-        src="/images/changelog/2026-03-06/data-controls.gif"
-        alt="Animated view of Earmark temporary meeting controls showing workspace-level retention settings."
-        style={{ width: "100%", display: "block" }}
-      />
-    </div>
-  </div>
-</Frame>
-<h2 style={{ fontSize: "20px", lineHeight: "1.4", fontWeight: 600 }}>
-  Instant recall
-</h2>
+<Showcase
+  src="/images/changelog/2026-03-06/workspace-overview.png"
+  alt="Earmark 2.0 workspace showing upcoming meetings, recent meetings, and live capture controls in a single window."
+/>
 
-<p style={{ fontSize: "14px", lineHeight: "1.7142857" }}>
-  Reopen any past meeting and pull its transcript and artifacts back into view
-  in seconds, even while another meeting is live. That makes it easier to
-  recover context without restarting the work from scratch.
-</p>
+## Meeting history that compounds
 
-<Frame>
-  <div
-    style={{
-      backgroundImage: "url(/images/background-blue.png)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      borderRadius: "1rem",
-      padding: "4%",
-    }}
-  >
-    <div
-      style={{
-        borderRadius: "0.875rem",
-        overflow: "hidden",
-        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
-      }}
-    >
-      <img
-        src="/images/changelog/2026-03-06/instant-recall.gif"
-        alt="Animated view of reopening a previous Earmark meeting to recover transcript and artifact context."
-        style={{ width: "100%", display: "block" }}
-      />
-    </div>
-  </div>
-</Frame>
-<h2 style={{ fontSize: "20px", lineHeight: "1.4", fontWeight: 600 }}>
-  Build with Cursor, v0, Linear, and Codex
-</h2>
+Work doesn't vanish when the call ends. Meetings, transcripts, and generated outputs stay in your workspace, so the context is there when you need it later.
 
-<p style={{ fontSize: "14px", lineHeight: "1.7142857" }}>
-  You can build with [Cursor](/integrations/cursor), [v0](/integrations/v0),
-  [Linear](/integrations/linear), and [Codex](/integrations/codex) before the
-  meeting ends, so the next step starts in the tool where the work will actually
-  ship.
-</p>
+<Showcase
+  src="/images/changelog/2026-03-06/meeting-history.gif"
+  alt="Animated view of Earmark meeting history showing saved meetings and retained outputs."
+/>
 
-<Frame>
-  <div
-    style={{
-      backgroundImage: "url(/images/background-blue.png)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      borderRadius: "1rem",
-      padding: "4%",
-    }}
-  >
-    <div
-      style={{
-        borderRadius: "0.875rem",
-        overflow: "hidden",
-        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
-      }}
-    >
-      <img
-        src="/images/changelog/2026-03-06/build-tools.gif"
-        alt="Animated view of sending an Earmark artifact into Cursor from the meeting workspace."
-        style={{ width: "100%", display: "block" }}
-      />
-    </div>
-  </div>
-</Frame>
-<h2 style={{ fontSize: "20px", lineHeight: "1.4", fontWeight: 600 }}>
-  Find anything faster
-</h2>
+## Control your data
 
-<p style={{ fontSize: "14px", lineHeight: "1.7142857" }}>
-  Search and quick actions are now easier to reach from anywhere with `Cmd/Ctrl
-  + K`. Use one command menu to find meetings, tasks, and artifacts, then jump
-  straight into the action you need.
-</p>
+Decide what gets kept, per meeting or across your workspace. Use temporary mode when you want nothing stored on our servers, or keep standard storage on and let context build over time. Either way, Earmark never trains models on your data. See [Temporary meetings](/earmark-basics/temporary-meetings) and [Security and privacy](/security-and-privacy) for the details.
 
-<Frame>
-  <div
-    style={{
-      backgroundImage: "url(/images/background-blue.png)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      borderRadius: "1rem",
-      padding: "4%",
-    }}
-  >
-    <div
-      style={{
-        borderRadius: "0.875rem",
-        overflow: "hidden",
-        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
-      }}
-    >
-      <img
-        src="/images/changelog/2026-03-06/command-search.gif"
-        alt="Animated view of the Earmark command menu used to search meetings and run quick actions."
-        style={{ width: "100%", display: "block" }}
-      />
-    </div>
-  </div>
-</Frame>
-<h2 style={{ fontSize: "20px", lineHeight: "1.4", fontWeight: 600 }}>
-  Improved workspace controls
-</h2>
+<Showcase
+  src="/images/changelog/2026-03-06/data-controls.gif"
+  alt="Animated view of Earmark temporary meeting controls showing workspace-level retention settings."
+/>
 
-<p style={{ fontSize: "14px", lineHeight: "1.7142857" }}>
-  Workspace administration is clearer and more direct. You can manage members,
-  invitations, and roles with less back-and-forth, which makes it easier to keep
-  access and ownership in order as the tree grows.
-</p>
+## Instant recall
 
-<Frame>
-  <div
-    style={{
-      backgroundImage: "url(/images/background-blue.png)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      borderRadius: "1rem",
-      padding: "4%",
-    }}
-  >
-    <div
-      style={{
-        borderRadius: "0.875rem",
-        overflow: "hidden",
-        boxShadow: "0 24px 60px rgba(15, 23, 42, 0.28)",
-      }}
-    >
-      <img
-        src="/images/changelog/2026-03-06/workspace-controls.png"
-        alt="Earmark workspace member management screen showing invitations, roles, and member controls."
-        style={{ width: "100%", display: "block" }}
-      />
-    </div>
-  </div>
-</Frame>
-<h2 style={{ fontSize: "20px", lineHeight: "1.4", fontWeight: 600 }}>
-  Built for global teams
-</h2>
+Reopen any past meeting and bring back its transcript and artifacts in seconds, even while another meeting is live.
 
-<p style={{ fontSize: "14px", lineHeight: "1.7142857" }}>
-  Earmark now supports English, Spanish, Portuguese, French, Italian, and
-  German. Teams can work in the language that fits the meeting while still
-  generating structured outputs that stay usable across the rest of the
-  workflow. See [Multilingual support](/customization/multilingual) for more.
-</p>
+<Showcase
+  src="/images/changelog/2026-03-06/instant-recall.gif"
+  alt="Animated view of reopening a previous Earmark meeting to recover transcript and artifact context."
+/>
 
-  <Frame>
-    <div
-      style={{
-        backgroundImage: 'url(/images/background-blue.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        borderRadius: '1rem',
-        padding: '4%',
-      }}
-    >
-      <div
-        style={{
-          borderRadius: '0.875rem',
-          overflow: 'hidden',
-          boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
-        }}
-      >
-        <img
-          src="/images/changelog/2026-03-06/multilingual-support.png"
-          alt="Earmark composer and live preview shown in French to demonstrate multilingual support."
-          style={{ width: '100%', display: 'block' }}
-        />
-      </div>
-    </div>
-  </Frame>
+## Build with Cursor, v0, Linear, and Codex
+
+Send meeting output to [Cursor](/integrations/overview#cursor), [v0](/integrations/overview#v0), [Linear](/integrations/overview#linear), and [Codex](/integrations/overview#codex) before the meeting even ends, so the next step starts where the work actually ships.
+
+<Showcase
+  src="/images/changelog/2026-03-06/build-tools.gif"
+  alt="Animated view of sending an Earmark artifact into Cursor from the meeting workspace."
+/>
+
+## Find anything faster
+
+Press `Cmd/Ctrl + K` from anywhere to search meetings, tasks, and artifacts, then jump straight to the action you need.
+
+<Showcase
+  src="/images/changelog/2026-03-06/command-search.gif"
+  alt="Animated view of the Earmark command menu used to search meetings and run quick actions."
+/>
+
+## Workspace controls, simplified
+
+Manage members, invitations, and roles with less back-and-forth, so access and ownership stay tidy as your team grows.
+
+<Showcase
+  src="/images/changelog/2026-03-06/workspace-controls.png"
+  alt="Earmark workspace member management screen showing invitations, roles, and member controls."
+/>
+
+## Built for global teams
+
+Earmark speaks English, Spanish, Portuguese, French, Italian, and German. Run the meeting in the language that fits, and get structured outputs your whole team can use. See [Multilingual support](/earmark-basics/transcription#language-support).
+
+<Showcase
+  src="/images/changelog/2026-03-06/multilingual-support.png"
+  alt="Earmark composer and live preview shown in French to demonstrate multilingual support."
+/>
+
 </Update>

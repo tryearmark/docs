@@ -1,6 +1,6 @@
 ---
 title: "Shareable summaries"
-description: "Turn meeting outputs into audience-tuned messages the people who weren't in the room can read and act on"
+description: "Turn meeting outputs into messages tuned for each audience, so people who weren't in the room can read them, understand them, and act on them."
 keywords: ["meeting summary", "Slack update", "executive summary", "customer follow-up", "shareable summary", "audience", "workflow"]
 ---
 
@@ -208,17 +208,23 @@ Different channels have different norms. A short, conversational note dropped in
 
 A summary in the wrong channel is wasted. Match deliberately.
 
-## What this workflow doesn't do
+## Weekly digests across meetings
 
-A weekly cross-meeting digest — "everything the team decided, shipped, and is working on this week" rolled up from five separate meetings — is the natural next thing readers ask for. It's not a one-click action inside Earmark today; cross-meeting state isn't there yet.
+A weekly cross-meeting digest — "everything the team decided, shipped, and is working on this week" rolled up from five separate meetings — is the natural next thing readers ask for. That's a question for [Chat](/earmark-basics/chat), not a new template.
 
-Practical workarounds:
+- **Ask for the rollup.** "Give me a recap of my meetings this week" or "What did the platform team decide this week, and who owns what?" Chat reads across your meetings and cites each one with a source chip. Hover a chip to check the excerpt before you repeat a decision to a wider audience.
+- **Check the Coverage line.** Every answer about your meetings ends with a **Coverage** line: the dates searched and how many meetings were reviewed. If the week had six team meetings and Coverage says four, the digest has a hole.
+- **Scope it with a project.** If the digest is for one team or initiative, put those meetings in a [project](/earmark-basics/projects) and ask from the project page. Chat stays on that project's meetings, including ones teammates shared. Write the digest rules into the project's **Instructions** once (headline first, no emojis, decisions and owners only) and every digest you ask for there follows them.
+- **Hold it to the same bar.** The headline rule, the no-emoji constraint, and the 90-second cleanup apply to a Chat answer the same way they apply to an artifact.
 
-- **Hand-assemble the weekly digest from the per-meeting summaries.** If you've been running this workflow on every team meeting for a week, you have five Slack-postable summaries. Paste their headlines and key bullets into a sixth document, tighten, post. Fifteen minutes once a week.
-- **Use the [command menu](/earmark-basics/command-menu)** (`Cmd+K` / `Ctrl+K`) to find specific decisions or commitments across past meetings when assembling the digest.
-- **Export [local transcript files](/earmark-basics/local-transcripts)** and run external synthesis if you want the weekly digest generated rather than assembled.
+To share the answer, hover over it:
 
-Per-meeting summaries done well are most of the value. The weekly digest is a layer on top that some teams find worth the assembly effort and many never need.
+- **Copy** keeps the lists and formatting and drops the source chips, so it pastes cleanly into Slack or email. For answers with tables, choose **Copy for chat** for Slack and Teams, or **Copy for documents** for Docs and Word.
+- **Copy as image** turns your question and the answer into an image with your name on it. Useful when you want the channel to see exactly what was asked, not a paraphrase.
+
+If you'd rather assemble it by hand, you already have the pieces: a week of this workflow on every team meeting is five Slack-postable summaries. Paste their headlines and key bullets into a sixth document, tighten, post. And if you want to run your own analysis, export [local transcript files](/earmark-basics/local-transcripts) and point an external agent at them.
+
+Per-meeting summaries done well are still most of the value. The weekly digest is a layer on top.
 
 ## Common pitfalls
 
@@ -240,6 +246,7 @@ Per-meeting summaries done well are most of the value. The weekly digest is a la
 - [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
 - [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding so the summary runs live
 - [Composer](/using-earmark/composer) — refining a prompt until it ships without manual rewriting
+- [Chat](/earmark-basics/chat) — weekly rollups across meetings, and the copy options for sharing answers
 - [Action items workflow](/workflows/action-items-workflow) — extracts what to communicate; this workflow communicates it
 - [Email follow-up workflow](/workflows/email-follow-up-workflow) — deeper treatment of external customer follow-up emails
 - [Structured meeting notes](/workflows/structured-meeting-notes-workflow) — the heavier workflow whose shareable summary section is this workflow

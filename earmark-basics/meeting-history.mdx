@@ -1,19 +1,21 @@
 ---
-title: "Past meetings"
-sidebarTitle: "Past meetings"
-description: "Review past meetings and restore deleted ones"
-keywords: ["meeting history", "past meetings", "restore meetings", "deleted meetings", "meeting search"]
+title: "Meetings and search"
+sidebarTitle: "Meetings and search"
+description: "Browse and search your Earmark meeting history, filter by date, find anything with Cmd+K, and restore deleted meetings within 30 days."
+keywords: ["meeting history", "past meetings", "search", "command menu", "Cmd+K", "quick actions", "restore meetings", "deleted meetings"]
 ---
+
+import { Showcase } from "/snippets/showcase.jsx";
 
 ## What it does
 
-Earmark keeps a full history of your meetings, organized by date. You can revisit any past meeting to review the transcript, regenerate artifacts, or share outputs after the fact. If you delete a meeting by mistake, you can restore it within 30 days.
+Earmark keeps a full history of your meetings, organized by date. Browse or search it to revisit any past meeting, review the transcript, regenerate artifacts, or share outputs after the fact. Press `Cmd+K` / `Ctrl+K` to find any meeting, artifact, or task from anywhere. If you delete a meeting by mistake, you can restore it within 30 days.
 
 ## Browsing your meetings
 
 ### Recent meetings
 
-The sidebar shows your most recent meetings for quick access. Click any meeting to open it and review its transcript and artifacts.
+The sidebar shows your most recent meetings for quick access. Click any meeting to open it and review its transcript and artifacts. Hover over a meeting to **Rename meeting** or **Delete meeting** without opening it.
 
 ### All meetings
 
@@ -43,7 +45,40 @@ The sidebar shows your most recent meetings for quick access. Click any meeting 
   </div>
 </Frame>
 
-Open the **Meetings** page from the sidebar to see your full meeting history, grouped by date. Each entry shows the meeting title (auto-generated from the transcript if you didn't set one manually) and when it was last updated.
+Open the **Meetings** page from the sidebar to see your full meeting history, grouped by date. Keep scrolling to load older meetings, all the way back to your first one.
+
+- **Search meetings**: type part of a title to search your entire history.
+- **Filter by date**: jump to a specific day. The calendar highlights the days that have meetings.
+- **Projects**: each meeting shows the [projects](/earmark-basics/projects) it belongs to. Tick the checkboxes next to several meetings to add them to a project at once.
+
+<Showcase
+  src="/images/meeting-search.png"
+  alt="The Meetings page searching for Chotchkie, showing three matching meetings with their project chips."
+/>
+
+To ask questions about what was said, rather than find a meeting by title, use [Chat](/earmark-basics/chat).
+
+## Search with the command menu
+
+Press `Cmd+K` (macOS) or `Ctrl+K` (Windows) from anywhere in Earmark, or click the search button in the sidebar, to search your meetings, artifacts, and tasks and jump to common actions. It's keyboard-first: open it, type, use the arrow keys to move through results, and press Enter to open one.
+
+<Showcase
+  src="/images/command-menu.png"
+  alt="Command menu open with search field and results grouped by meetings, artifacts, and tasks."
+  caption="Command menu search across meetings, artifacts, and tasks"
+/>
+
+| Content type | What's searched |
+| --- | --- |
+| **Meetings** | Meeting titles |
+| **Artifacts** | Full artifact text |
+| **Tasks** | The prompts used to generate artifacts |
+
+The command menu also has quick actions: start a new meeting, open settings, and switch between light and dark mode.
+
+<Tip>
+The command menu finds things. To get an answer that pulls from several meetings, like "What did we decide about pricing?", ask [Chat](/earmark-basics/chat).
+</Tip>
 
 ## Auto-generated titles
 

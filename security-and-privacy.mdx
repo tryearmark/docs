@@ -1,6 +1,6 @@
 ---
 title: "Security and privacy"
-description: "How Earmark handles your data, privacy, and meeting security"
+description: "How Earmark handles meeting data: botless capture, no stored audio, no training on your data, retention controls, meeting sharing, and sign-in options."
 keywords: ["security", "privacy", "data handling", "botless", "no training", "data retention", "HIPAA"]
 ---
 
@@ -28,24 +28,30 @@ Earmark does not use your meeting data, transcripts, or artifacts to train AI mo
 You control how long meeting data is retained:
 
 - **Standard meetings**: stored in your workspace until you delete them
-- **Temporary meetings**: automatically soft-deleted after the meeting ends, permanently removed after 30 days
+- **Temporary meetings**: never stored on Earmark's servers. The transcript, tasks, and artifacts exist only while the meeting is open.
 - **Deleted meetings**: kept in a 30-day recovery window, then permanently purged with all associated data (transcripts, tasks, artifacts, participants)
 
 See [Temporary meetings](/earmark-basics/temporary-meetings) for details on ephemeral meeting mode.
 
-## Workspace isolation
+## Who can see your meetings
 
-Meeting content is isolated per user. Each person sees only the meetings they created. Workspace collaboration means shared access to the workspace itself, team membership, and workspace-level settings, not cross-access to other people's meetings.
+Meetings are private to the person who recorded them. Being in the same workspace doesn't give teammates access to your meetings.
+
+To share meeting context, add meetings to a [project](/earmark-basics/projects) and share the project. People in the project can see each meeting's title, who recorded it, and when. They can't open your meeting, but [Chat](/earmark-basics/chat) can use its transcript and notes to answer their questions in that project, and can show short excerpts as sources. Your pins always stay private.
+
+## Chat
+
+Chat only uses meetings you recorded and meetings shared with you through projects. Your chats are private to you. When Chat searches the web for public information, your meeting content is never sent to web search.
 
 ## Authentication
 
-Earmark uses Clerk for authentication with support for:
+You can sign in with:
 
 - Email and password
-- Google SSO
-- Microsoft SSO
+- Google
+- Microsoft
 
-Enterprise customers can configure SSO through their identity provider.
+Enterprise workspaces can use single sign-on through their identity provider. Workspace admins can check single sign-on status in **Settings > Workspace** and contact us from there to set it up.
 
 ## Enterprise security
 

@@ -14,11 +14,9 @@ This guide is a specific instance of the [workflows](/workflows) pattern. It pai
 
 ## A note on this workflow specifically
 
-Leadership readouts are by definition rollups across many meetings. Earmark refines artifacts within a single meeting today; cross-meeting synthesis is not a one-click action. So this workflow has the largest manual assembly step of any in this guide series.
+Leadership readouts are by definition rollups across many meetings. The slow part used to be the gathering: finding the week's meetings, copying out what mattered, pasting it together. [Chat](/earmark-basics/chat) does that part now. Ask *"Give me a recap of my meetings this week"* for the weekly digest, or *"What did we decide this month, and what risks came up?"* for a business review. Chat cites each meeting it drew from, and every answer about your meetings ends with a **Coverage** line — the date range it searched and how many meetings it reviewed — so you can see whether the rollup is complete before you build on it.
 
-What that means in practice: the four template prompts below are real and produce useful drafts. They run on a **Customize context** document you assemble manually — pasting in the relevant inputs (key meeting artifacts, function lead updates, metrics) before running the template. The drafting step still saves substantial time. The synthesis step is the writer's curation work.
-
-This is the honest tradeoff. Most of this guide is about how to do the manual side well.
+Two things haven't changed. Chat only sees meetings: the metrics, written function-lead updates, and Slack signal still come from you, and the four templates below still run on a **Customize context** document where you bring those together. And the model still produces the draft, not the readout. The synthesis — what to elevate, what to cut, how to calibrate — is the writer's curation work. Most of this guide is about doing that part well.
 
 ## Five decisions before your first readout
 
@@ -57,7 +55,7 @@ The hardest part of writing for leadership is deciding what *not* to include. Ev
 - *"The weekly leadership digest covers commercial, product, and people developments. It does not cover individual incident detail unless it's strategic."*
 - *"The board pre-read covers KPIs vs. plan, decisions needed, and major risks. It does not cover normal operating updates."*
 
-A scope rule written down once protects every future artifact from drift. Without it, every readout tries to include everything, and signal density collapses.
+A scope rule written down once protects every future artifact from drift. Without it, every readout tries to include everything, and signal density collapses. If you keep the series' meetings in a [project](/earmark-basics/projects), put the scope rule in the project's **Instructions** too; Chat follows them in every answer in that project.
 
 ### Durable home
 
@@ -309,7 +307,7 @@ The **What I'm less sure about** section is what distinguishes a good decision m
 
 <Steps>
 <Step title="Start in the Composer with a real input set">
-For the weekly digest, do the manual input assembly described below, paste it into a new task, and iterate the prompt in the [Composer](/using-earmark/composer) until the draft lands.
+For the weekly digest, gather the inputs as described below, paste them into a new task, and iterate the prompt in the [Composer](/using-earmark/composer) until the draft lands.
 </Step>
 <Step title="Tune the constraints">
 Length caps, no-emoji, calibration discipline, the cap-at-three risk limit. The constraints are the template — they're what produces the difference between a useful draft and a generic one.
@@ -323,14 +321,16 @@ Weekly digest and decision memos are usually Private (the writer's working surfa
 
 <Steps>
 <Step title="Assemble the inputs into a Customize context document">
-This is the manual synthesis step. For the weekly digest, gather:
+For the weekly digest, gather:
 
-- The week's key meeting artifacts (leadership meetings, all-hands, key project meetings, customer escalations) — surface them via the [command menu](/earmark-basics/command-menu) (`Cmd+K` / `Ctrl+K`) and copy the relevant sections
+- The meeting side (leadership meetings, all-hands, key project meetings, customer escalations) from [Chat](/earmark-basics/chat). Ask *"Give me a recap of my meetings this week"* or *"What decisions did we make this week, and what's at risk?"* Check the **Coverage** line against your calendar, and hover the source chips on anything that will become a headline. Use the [command menu](/earmark-basics/meeting-history#search-with-the-command-menu) (`Cmd+K` / `Ctrl+K`) when you want to open a specific meeting's artifact.
 - Function-lead updates if you collect them
 - Metrics from your dashboards
 - Slack signal — what dominated the week, what surfaced as a crisis
 
 Paste the inputs into a single **Customize context** document. This is the raw material the template runs on.
+
+A shared leadership [project](/earmark-basics/projects) makes the meeting side far more complete. Add function leads as **Collaborators** and they add their own review meetings. You see each meeting's title, who recorded it, and when, but not the meeting itself; Chat can still use those transcripts and notes to answer your questions in the project.
 </Step>
 <Step title="Write the headline first, before the draft">
 The headline is the artifact in compressed form. If you can't write the headline, you don't yet have a clear picture. A good test: if a leader read only the headline, would they have the right impression of the period? If yes, you're done. If no, sharpen.
@@ -353,16 +353,20 @@ Same day of the week, same time. Predictability is the commitment. After distrib
 </Steps>
 
 <Tip>
-Triangulate signal in the synthesis. The highest-value content in a leadership artifact often lives in tensions: a function lead's update says "on track" while customer call artifacts say customers are frustrated; the sales pipeline view says strong while recent deal artifacts say champions are weakening. Look for these tensions deliberately when assembling inputs. They're invisible to single-source summaries; surfacing them is what makes the readout earn the read.
+Triangulate signal in the synthesis. The highest-value content in a leadership artifact often lives in tensions: a function lead's update says "on track" while customer call artifacts say customers are frustrated; the sales pipeline view says strong while recent deal artifacts say champions are weakening. Look for these tensions deliberately when assembling inputs. Ask Chat for them directly, too: *"Where did this week's meetings disagree with each other?"* They're invisible to single-source summaries; surfacing them is what makes the readout earn the read.
 </Tip>
 
 ## What this workflow doesn't do
 
-The biggest cross-meeting promise — *"run a synthesis prompt across the week's leadership meetings and get a structured digest"* — is exactly the cross-call generative Q&A capability covered in the [ad-hoc Q&A workflow](/workflows/ad-hoc-qa-workflow). Single-call Q&A in the [Composer](/using-earmark/composer) is real today. Cross-call generative Q&A across a chosen corpus is not a one-click action.
+Chat handles the cross-meeting gathering. The [ad-hoc Q&A workflow](/workflows/ad-hoc-qa-workflow) covers how to ask it good questions. A few limits still shape this workflow:
 
-So the workaround above — manually assembling inputs into a **Customize context** document, then running the template prompt against it — is the actual workflow. The honest framing: the templates plus Composer save substantial time on the draft (the 80% step). The input assembly and the 20-minute curation pass are the writer's work. Both together usually run 30–45 minutes for a weekly digest — meaningfully cheaper than producing the artifact from scratch.
+- **Chat only sees meetings it has access to.** It uses meetings you recorded and meetings shared with you through projects. A function review nobody added to the leadership project won't be in the rollup, and the **Coverage** line tells you how many meetings were reviewed, not whether they're the ones you expected.
+- **Name the period.** Say which week, month, or quarter you mean. For anything older, name the period or ask about "all my meetings."
+- **It doesn't do the curation.** Chat can make mistakes, and it has no view on what leadership needs to hear this week. The headline, the calibration, the cuts, and the leak test are the writer's.
 
-For larger-scale synthesis (quarterly reviews across many meetings), [exporting local transcripts](/earmark-basics/local-transcripts) and running an external agent is the other option.
+The gathering step shrinks; the 20-minute curation pass doesn't. That's the right trade: the curation is where the value is.
+
+If you want to run your own analysis on larger sets (a year of leadership meetings, say), [export local transcripts](/earmark-basics/local-transcripts) and run an external agent over them.
 
 ## Distribution and feedback
 
@@ -393,7 +397,7 @@ Quarterly, the writer should look back at the previous quarter's readouts and as
 
 This retrospective sharpens the writer's calibration over time. It's also useful to share back with the audience: *"Here's what we said three months ago; here's what actually happened; here's what we're updating."*
 
-The retrospective is manual today — pull the relevant past readouts from the archive, pair them with what actually happened, and run an external synthesis or work through them by hand. Cheap, high-leverage, and rarely done.
+Pull the relevant past readouts from the archive, then ask [Chat](/earmark-basics/chat) what actually happened on each flagged item: *"What happened with the enterprise SSO risk since April?"* Name the month when you're reaching back further. Pair each prediction with the answer and work through them by hand. Cheap, high-leverage, and rarely done.
 
 ## Common pitfalls
 
@@ -405,6 +409,7 @@ The retrospective is manual today — pull the relevant past readouts from the a
 - **Inconsistent cadence.** A weekly digest that lands every Friday for 50 weeks beats a great digest that lands sometimes. Pick a sustainable cadence and hold it.
 - **Trying to cover everything.** The scope rule exists for a reason. Everything in the artifact crowds out the most important thing. Cut ruthlessly.
 - **Letting the model write the final.** The model produces the draft. The writer's judgment — what to elevate, what to cut, how to calibrate — is the 20% that produces 80% of the value.
+- **Skipping the Coverage line.** A weekly recap that reviewed six meetings when the week had eleven is a digest with holes. Check it before you draft. If meetings are missing from the project, add yours and ask whoever recorded the others to add theirs.
 - **No durable home.** Without the archive, the series doesn't compound. Set up the home before the first artifact ships.
 - **Confusing audiences.** A weekly leadership digest written for the board reads wrong. A board pre-read written for investors reads wrong. Different audiences, different artifacts.
 - **No retrospective.** Without periodic review, the writer's calibration doesn't improve.
@@ -414,9 +419,11 @@ The retrospective is manual today — pull the relevant past readouts from the a
 
 - [Workflows](/workflows) — the general shape this is an instance of
 - [Shareable summaries workflow](/workflows/shareable-summaries-workflow) — for per-meeting outputs shaped for different audiences (the lighter cousin of this workflow)
-- [Ad-hoc Q&A workflow](/workflows/ad-hoc-qa-workflow) — for the cross-meeting capabilities and the manual workarounds this workflow depends on
+- [Chat](/earmark-basics/chat) — weekly and monthly recaps across your meetings, with sources and a Coverage line
+- [Projects](/earmark-basics/projects) — for keeping a readout series' meetings together and sharing them with function leads
+- [Ad-hoc Q&A workflow](/workflows/ad-hoc-qa-workflow) — for asking good questions across meetings
 - [Structured meeting notes workflow](/workflows/structured-meeting-notes-workflow) — for the per-meeting artifacts that feed leadership digests as inputs
 - [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
 - [Composer](/using-earmark/composer) — for tuning the prompt before saving as a template
-- [Command menu](/earmark-basics/command-menu) — for finding the right meetings to assemble as input
-- [Local transcripts](/earmark-basics/local-transcripts) — for export when you need external synthesis on larger scales
+- [Command menu](/earmark-basics/meeting-history#search-with-the-command-menu) — for finding the right meetings to assemble as input
+- [Local transcripts](/earmark-basics/local-transcripts) — for export when you want to run your own synthesis

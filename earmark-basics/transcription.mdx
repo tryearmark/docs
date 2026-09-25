@@ -1,9 +1,11 @@
 ---
 title: "Live transcription"
 sidebarTitle: "Live transcription"
-description: "Follow conversation in real time and keep everyone aligned"
-keywords: ["live transcription", "real-time transcription", "speech to text", "meeting transcription", "multilingual"]
+description: "How Earmark's botless live transcription works on desktop and web, how it separates your voice from everyone else's, and which languages it supports."
+keywords: ["live transcription", "real-time transcription", "speech to text", "meeting transcription", "multilingual", "transcription language", "Spanish", "French", "German"]
 ---
+
+import { Showcase } from "/snippets/showcase.jsx";
 
 ## What it does
 
@@ -58,9 +60,11 @@ When the meeting ends, the full transcript is saved. Earmark automatically gener
 </Step>
 </Steps>
 
-## Speaker recognition
+## Who said what
 
-Earmark does not label individual speakers in the transcript. There are no speaker tags like "Speaker 1" or "Speaker 2." However, the transcription engine is strong at inferring conversational turns, so the transcript naturally reflects when the conversation shifts between participants. Combined with the context of what's being said, it's straightforward to follow who said what when reviewing the transcript or generating artifacts.
+On desktop, Earmark transcribes your microphone and the meeting audio as separate sources. In the expanded transcript, color and alignment show what you said apart from what everyone else said, and [Chat](/earmark-basics/chat) uses the same split to answer questions like "What did I say?"
+
+Earmark doesn't label other participants by name. On the web, and in older desktop recordings, the transcript is a single mixed stream without speaker labels.
 
 ## What gets transcribed depends on your platform
 
@@ -87,16 +91,27 @@ For the best transcription of remote meetings, use the Earmark desktop app. Syst
 
 ## Language support
 
-Your workspace admin can set the transcription language mode in **Settings > Workspace**:
+Workspace admins choose the transcription language mode for the whole workspace:
 
 | Mode | What it covers |
 | --- | --- |
 | **English** | Highest accuracy for English-only conversations |
-| **Multilingual** | Supports English, Spanish, French, German, Italian, and Portuguese in the same session |
+| **Multilingual** | English, Spanish, French, German, Italian, and Portuguese in the same session |
 
-<Tip>
-Use English mode when your meetings are entirely in English for the best accuracy. Switch to Multilingual when participants speak different languages.
-</Tip>
+Use **English** when your meetings are entirely in English. Switch to **Multilingual** when participants speak different languages. It handles switching languages mid-conversation, so you don't need to set a language per speaker.
+
+To change it:
+
+1. Go to **Settings > Workspace**.
+2. Find **Transcription language**.
+3. Choose **English** or **Multilingual**.
+
+The setting applies to new meetings in the workspace. Existing transcripts aren't re-processed.
+
+<Showcase
+  src="/images/multilingual-settings.gif"
+  alt="Settings workspace showing the Transcription language dropdown with English and Multilingual options."
+/>
 
 ## Best-use moments
 

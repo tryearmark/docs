@@ -1,6 +1,6 @@
 ---
 title: "Action items"
-description: "Turn every conversation into a clean list of what needs to happen next, who owns it, and when"
+description: "Turn every meeting into a clean list of next steps with owners and due dates, and use Earmark Chat to catch commitments that slipped through."
 keywords: ["action items", "next steps", "todos", "task extraction", "follow-ups", "sales next steps", "workflow"]
 ---
 
@@ -126,7 +126,7 @@ This is the entire human-in-the-loop step. The checklist:
 - **Confirm deadlines.** "Unknown" is a valid value. A guessed deadline is worse.
 </Step>
 <Step title="Push to your destination">
-Send the action items to the task system you actually open. The fewer steps between cleanup and "in my task system," the more reliable this workflow becomes. The [Linear integration](/integrations/linear) generates one ticket per action item; for other task tools, the structured format is designed to paste cleanly.
+Send the action items to the task system you actually open. The fewer steps between cleanup and "in my task system," the more reliable this workflow becomes. The [Linear integration](/integrations/overview#linear) generates one ticket per action item; for other task tools, the structured format is designed to paste cleanly.
 </Step>
 </Steps>
 
@@ -136,13 +136,14 @@ The destination has to be the surface where you actually plan your day. Routing 
 
 ## What this workflow doesn't do
 
-The big one for this workflow: there is no cross-meeting rollup inside Earmark. A "weekly view of every action item I committed to this week across every meeting" is a real productivity payoff, but it's not a one-click feature today.
+The big one for this workflow: the template doesn't roll up. Each meeting's action items live in that meeting's artifact, and nothing merges them into one running list for you.
 
-Practical workarounds:
+For the cross-meeting view:
 
 - **Push every action item to your task system as you clean up.** Your task system already gives you the weekly view — that's what task systems are for. Earmark's job is to feed it accurately. Planning happens in the surface you use to plan.
-- **Search past meetings** with the [command menu](/earmark-basics/command-menu) (`Cmd+K` / `Ctrl+K`) when you need to find "did I commit to something this week that I forgot?"
-- **Export [local transcript files](/earmark-basics/local-transcripts)** if you want to run an external agent across a week's worth of artifacts and produce your own personal rollup.
+- **Ask [Chat](/earmark-basics/chat) what slipped.** "What did I commit to this week?" or the **Today's action items** suggestion on the Chat home page pulls commitments out of every meeting in range, with source chips back to the moment each was made. It's the fastest answer to "did I commit to something this week that I forgot?" On desktop recordings your mic is kept separate, so it can find your own words.
+- **Find a specific meeting** with the [command menu](/earmark-basics/meeting-history#search-with-the-command-menu) (`Cmd+K` / `Ctrl+K`) when you already know which call it was.
+- **Export [local transcript files](/earmark-basics/local-transcripts)** if you want to run your own analysis across a week's worth of meetings.
 
 The repeatable template plus a destination that's actually your working surface is what makes this useful. Without the destination, the artifacts pile up in Earmark and the action items never reach your day.
 
@@ -215,6 +216,8 @@ Lead with stage, next step, owner, and date.
 ```
 
 The **single most important next step** framing is deliberate. Deals stall when a rep walks away with three vague next steps and no priority. Forcing the model to pick one keeps the deal honest. After the call, the **Recommended CRM notes** section is what gets pasted into Salesforce, HubSpot, or whichever record holds the opportunity.
+
+To see how next steps have moved across the whole deal, keep the account's calls in a [project](/earmark-basics/projects) and ask from the project page: *"What next steps have we agreed with Acme, and which are still open?"*
 
 ## Common pitfalls
 

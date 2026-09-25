@@ -1,6 +1,6 @@
 ---
 title: "Roadmap synthesis"
-description: "Convert customer research, strategic discussions, capacity reviews, and competitive intelligence into the roadmap document your team actually executes against — sequenced by priority, justified by reasoning, and maintained as the world changes"
+description: "Turn customer research, strategy discussions, and capacity reviews into a prioritized roadmap with clear reasoning, and keep it current as things change."
 keywords: ["roadmap", "product roadmap", "strategy", "synthesis", "Now Next Later", "prioritization", "workflow"]
 ---
 
@@ -12,13 +12,15 @@ This guide is a specific instance of the [workflows](/workflows) pattern, applie
 
 ## A note on cross-meeting dependency
 
-Roadmap synthesis is the most cross-meeting-dependent workflow in this guide series. By definition, it draws across customer research from many calls, strategy discussions from leadership meetings, capacity reviews from engineering syncs, and competitive intelligence from market discussions. Earmark refines artifacts within a single meeting today; cross-meeting generative synthesis uses the manual workaround pattern this series documents.
+Roadmap synthesis is the most cross-meeting-dependent workflow in this guide series. By definition, it draws across customer research from many calls, strategy discussions from leadership meetings, capacity reviews from engineering syncs, and competitive intelligence from market discussions.
 
-What works today: each focused source-layer synthesis (customer signal across recent calls, strategy across recent leadership meetings, capacity across engineering reviews) runs via the standard pattern — tag the source meetings, paste relevant artifacts into a **Customize context** document, run a focused synthesis prompt. The integrated roadmap is then built from the four layered outputs.
+The default path is a [project](/earmark-basics/projects) plus [Chat](/earmark-basics/chat). Collect the source meetings in one roadmap project, then run each synthesis from the project page. Project chat answers across every meeting in the project, including the ones teammates shared, cites the meetings it drew on with source chips, and follows the project's **Instructions**. Each focused source-layer synthesis (customer signal across recent calls, strategy across recent leadership meetings, capacity across engineering reviews) is its own question in project chat. The integrated roadmap is then built from the four layered outputs.
 
-This is substantial work — 2–4 hours for an initial build, 30–60 minutes for monthly refreshes. The workaround is light enough to be practical for teams whose roadmap-quality investment is worth that level of effort. For most product organizations, it is. The cost of doing this work badly across a year of mis-prioritized execution is much larger than the cost of doing it well across a few hours of synthesis per refresh.
+Two habits keep the synthesis honest. Name the period when you want a longer window (a half-year of strategy discussions, a full year for the annual rebuild). And read the **Coverage** line at the end of each answer: it tells you the date range searched and how many meetings were reviewed, which is the first thing to check before you trust a frequency count.
 
-For very large corpora (a year of customer research across hundreds of calls), [exporting local transcripts](/earmark-basics/local-transcripts) and running an external agent is the alternative.
+This is still substantial work — 2–4 hours for an initial build, 30–60 minutes for monthly refreshes. Chat removes the context-assembly step; the time that's left is judgment: verifying signal, pressure-testing commitments, deciding what not to pursue. For most product organizations, that investment is worth it. The cost of doing this work badly across a year of mis-prioritized execution is much larger than the cost of doing it well across a few hours of synthesis per refresh.
+
+If you want to run your own analysis instead (for example, a year of customer research across hundreds of calls pushed through your own scripts), [exporting local transcripts](/earmark-basics/local-transcripts) and running an external agent is still an option.
 
 ## Foundation
 
@@ -37,7 +39,7 @@ A real roadmap synthesizes across distinct sources:
 | Support escalations and incidents | Recurring pain points; quality issues |
 | Industry conferences, analyst calls | Market context; emerging trends |
 
-A roadmap built from a single source has predictable blind spots. The synthesis is what gives the roadmap legitimacy across audiences. Identify which of these sources are captured in Earmark — those become queryable substrate. Sources that aren't captured need explicit notes in the roadmap about where the signal came from.
+A roadmap built from a single source has predictable blind spots. The synthesis is what gives the roadmap legitimacy across audiences. Identify which of these sources are captured in Earmark — those become queryable substrate once they're in the roadmap project. Sources that aren't captured need explicit notes in the roadmap about where the signal came from.
 
 ### Choose your time-horizon framework
 
@@ -341,8 +343,9 @@ reviews, any other developments since the last roadmap version.
 
 Inputs:
 - The current roadmap (paste below)
-- New source meetings since the last update (paste artifacts
-  below)
+- New source meetings since the last update (in project chat, the
+  project's meetings since {previous update date}; otherwise paste
+  artifacts below)
 
 Produce an updated version of the roadmap that:
 - Preserves the structure of the current roadmap
@@ -408,21 +411,27 @@ Roadmap construction is a team standard. **Workspace** visibility means PMs acro
 ## Building the initial roadmap
 
 <Steps>
-<Step title="Tag the source meeting corpus">
-Customer research calls from the last one to three months; strategy / leadership discussions from the last one to two quarters; engineering capacity reviews from the last quarter; sales win/loss interviews; CS / renewal calls; competitive intelligence sessions. Tag them with a common identifier (e.g., "roadmap-Q2-2026").
+<Step title="Collect the source meetings in a roadmap project">
+Customer research calls from the last one to three months; strategy / leadership discussions from the last one to two quarters; engineering capacity reviews from the last quarter; sales win/loss interviews; CS / renewal calls; competitive intelligence sessions.
+
+Create a [project](/earmark-basics/projects) (e.g., "Roadmap Q2 2026") and add them. On the **Meetings** page, tick the meetings you want (Shift-click for a range, up to 50 at a time) and choose **Add to project**. You can only add meetings you recorded, so **Share** the project with the sales, CS, and engineering leads as collaborators and ask them to add theirs. New calls can join the project as they happen, including before they start.
+
+In **Project settings**, put your time-horizon framework and prioritization framework in **Instructions**, so every answer in the project uses them.
 </Step>
 <Step title="Run the four-layer focused synthesis">
-The four-layer pattern (covered below) — run each layer's focused synthesis first. Each produces a section that feeds Template A.
+The four-layer pattern (covered below) — run each layer's focused synthesis first, each as its own question in project chat. Each produces a section that feeds Template A.
 </Step>
 <Step title="Run Template A against the integrated input">
-Paste the four layered outputs into a **Customize context** document along with key source artifacts. Run Template A. First draft will be long and rough — that's expected.
+In project chat, paste Template A along with the four layered outputs. Chat draws on the layers and on the source meetings behind them. First draft will be long and rough — that's expected.
+
+If you'd rather run Template A as a meeting task, paste the layered outputs and key source artifacts into a **Customize context** document and run it there.
 </Step>
 <Step title="The 2-to-4-hour curation pass">
 Substantial work; the output is the operating document for your team for the next month or quarter.
 
 - **Read the strategic context.** Does it accurately reflect the strategic direction? Sharpen.
 - **Verify themes.** Right ones? Right level of abstraction (not too broad, not too narrow)?
-- **Verify customer signal claims.** For each *"this came up in N customer calls"* claim, spot-check at least a few. The model occasionally over- or under-counts.
+- **Verify customer signal claims.** For each *"this came up in N customer calls"* claim, spot-check at least a few: hover the source chips for the excerpts, and compare N against the **Coverage** line. The model occasionally over- or under-counts.
 - **Verify strategic fit claims.** Each item's reasoning should be defensible.
 - **Pressure-test Now items.** Real commitments. Capacity actually allocated? Dependencies real?
 - **Pressure-test Next items.** Realistically next given Now's load?
@@ -438,6 +447,8 @@ Substantial work; the output is the operating document for your team for the nex
 - **Adjacent product leads:** Cross-product dependencies?
 
 Each reviewer is asked specific questions. Generic *"thoughts?"* produces generic feedback.
+
+Reviewers who are in the roadmap project can check claims against the same meetings you used: they ask project chat and get cited excerpts, even from calls they didn't record.
 </Step>
 <Step title="Publish to destination and derive lightweight + customer-facing versions">
 Templates B and C derive from A after A is finalized. Land in the appropriate destinations. Cross-link from related PRDs and OKRs.
@@ -453,7 +464,7 @@ The 2–4 hour curation pass is genuine senior product work, not a checklist. Tr
 
 ## The four-layer synthesis pattern
 
-The most distinctive technique in this workflow. Each layer is a focused synthesis run independently, then integrated.
+The most distinctive technique in this workflow. Each layer is a focused synthesis run independently, then integrated. In practice, each layer is a separate question in project chat, so each answer stays focused and cites its own sources.
 
 **Layer 1: Customer signal.** Across the customer research and CS calls provided, extract the pain points, feature requests, and unmet needs that came up most often. For each: the specific pain or request in customer language, how many calls it appeared in, which segments mentioned it, representative quotes, severity as customers framed it, whether existing capabilities address it. The output is the customer signal section of the roadmap and the input to prioritization. *Do not infer signals not present in the source.*
 
@@ -471,17 +482,17 @@ Each audience finds their concern reflected. That's the legitimacy property the 
 
 A roadmap that doesn't get updated decays. The maintenance discipline separates roadmaps that work from roadmaps that exist on paper.
 
-**Monthly light refresh.** Once a month, the roadmap owner reviews the past month's customer calls for new signal, strategy discussions for shifts, engineering reviews for capacity changes. Run Template D. Review the change log honestly — what actually changed? Thirty to sixty minutes when the discipline is in place; hours when neglected for two months.
+**Monthly light refresh.** Once a month, the roadmap owner reviews the past month's customer calls for new signal, strategy discussions for shifts, engineering reviews for capacity changes. Make sure the month's meetings are in the roadmap project, then run Template D in project chat with the current roadmap pasted in. Review the change log honestly — what actually changed? Thirty to sixty minutes when the discipline is in place; hours when neglected for two months.
 
 **Quarterly substantial review.** Once a quarter, a heavier review: Are the themes still right? Are the prioritization criteria still right? What did we ship, and how does that change the next quarter's view? Have any items moved between buckets multiple times? The quarterly review is the moment to make structural changes — new themes, retired themes, shifts in time horizons.
 
 **Trigger-based refresh.** Some events should trigger out-of-cycle refresh: a major strategy change (acquisition, pivot, new market); a customer signal shock (a wave of churn pointing to a specific cause, a new segment emerging strongly); a capacity shock (team additions, departures, reorg); a competitive move (competitor launch); a major incident or quality issue that forces re-prioritization. The monthly cadence handles continuous evolution; trigger-based refresh handles discontinuities.
 
-**Annual deep rebuild.** Once a year, rebuild from scratch rather than iterating. Re-tag the corpus for the full year; run Template A fresh; compare against the current incremental roadmap. The annual rebuild prevents the slow drift that monthly iteration produces. Sometimes the current roadmap is what fresh synthesis would have built; more often, fresh synthesis surfaces themes or items the iterative version has lost.
+**Annual deep rebuild.** Once a year, rebuild from scratch rather than iterating. Make sure the full year's meetings are in the project and name the full year when you ask; run Template A fresh; compare against the current incremental roadmap. The annual rebuild prevents the slow drift that monthly iteration produces. Sometimes the current roadmap is what fresh synthesis would have built; more often, fresh synthesis surfaces themes or items the iterative version has lost.
 
 ## Routing into systems of record
 
-**Primary roadmap tool.** Strategic roadmap synthesis becomes source of truth. For tools with item-level structure (Productboard, Aha, [Linear](/integrations/linear)), each Now and Next item becomes a feature/initiative in the tool. The roadmap is the document; the tool is the operational view.
+**Primary roadmap tool.** Strategic roadmap synthesis becomes source of truth. For tools with item-level structure (Productboard, Aha, [Linear](/integrations/overview#linear)), each Now and Next item becomes a feature/initiative in the tool. The roadmap is the document; the tool is the operational view.
 
 **Customer-facing version.** Template C lands in a customer-facing destination — public roadmap page, customer portal, customer newsletter, customer advisory board materials. Maintain the link between internal source-of-truth and external derivation. When internal changes, external updates too.
 
@@ -493,7 +504,7 @@ A roadmap that doesn't get updated decays. The maintenance discipline separates 
 
 **Integration with exec readouts.** Roadmap updates feed the [leadership readouts workflow](/workflows/leadership-readouts-workflow). The exec readout reports on roadmap progress; the roadmap is the source of what's being reported on.
 
-**Earmark archive as source.** Source meetings stay in Earmark. The roadmap links back. When someone asks *"why is this on the roadmap?"*, the answer is traceable to the customer calls and strategy discussions that informed it.
+**Earmark archive as source.** Source meetings stay in Earmark. The roadmap links back. When someone asks *"why is this on the roadmap?"*, the answer is traceable to the customer calls and strategy discussions that informed it. Anyone in the roadmap project can put that question to project chat and get the answer with sources.
 
 ## Closing the loop
 
@@ -535,8 +546,10 @@ Three retrospective habits.
 - [Meeting-to-PRD workflow](/workflows/meeting-to-prd-workflow) — for the projects the roadmap commits to
 - [Meeting-to-tickets workflow](/workflows/meeting-to-tickets-workflow) — for the engineering work the PRDs produce
 - [Architecture documentation workflow](/workflows/architecture-documentation-workflow) — for the technical context that shapes capacity
-- [Ad-hoc Q&A](/workflows/ad-hoc-qa-workflow) — for the cross-meeting workaround pattern this workflow depends on
-- [Linear integration](/integrations/linear) — for engineering tickets that flow from the roadmap
+- [Ad-hoc Q&A](/workflows/ad-hoc-qa-workflow) — for asking questions across meetings
+- [Projects](/earmark-basics/projects) — for collecting and sharing the roadmap's source meetings
+- [Chat](/earmark-basics/chat) — for running the synthesis across those meetings
+- [Linear integration](/integrations/overview#linear) — for engineering tickets that flow from the roadmap
 - [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
 - [Composer](/using-earmark/composer) — for tuning the prompt before saving as a workspace template
-- [Local transcripts](/earmark-basics/local-transcripts) — for external synthesis on very large corpora
+- [Local transcripts](/earmark-basics/local-transcripts) — for running your own analysis on very large corpora

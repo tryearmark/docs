@@ -1,6 +1,6 @@
 ---
 title: "Meeting-to-prototype"
-description: "Turn a design or feature conversation into a working prototype the same day, by translating the meeting transcript directly into a high-fidelity prompt for an AI prototyping tool"
+description: "Turn a design or feature conversation into a working prototype the same day by converting the meeting into a detailed prompt for an AI prototyping tool."
 keywords: ["prototype", "Figma Make", "v0", "Cursor", "Lovable", "Bolt", "design", "PRD", "workflow"]
 ---
 
@@ -10,7 +10,7 @@ Then the loop breaks. The designer who would build the prototype was in the meet
 
 What gets built has lost something at every step of the human translation. The meeting → memory → spec → first prototype loop runs at the cadence of human translation, which is slow and lossy.
 
-This guide is a specific instance of the [workflows](/workflows) pattern, applied to the loop from feature conversation to working prototype. It builds on what the [v0](/integrations/v0), [Cursor](/integrations/cursor), and [Codex](/integrations/codex) integration pages each describe for one tool, generalized to the workflow shape.
+This guide is a specific instance of the [workflows](/workflows) pattern, applied to the loop from feature conversation to working prototype. It builds on what the [v0](/integrations/overview#v0), [Cursor](/integrations/overview#cursor), and [Codex](/integrations/overview#codex) integration pages each describe for one tool, generalized to the workflow shape.
 
 ## What works today
 
@@ -25,10 +25,10 @@ The workflow is tool-agnostic, but the prompt shape varies slightly per tool.
 | Tool | Best for | Output |
 | --- | --- | --- |
 | Figma Make | Web/mobile UI, design-system-aligned prototypes | Figma file |
-| [v0](/integrations/v0) | Web components, React, Tailwind-style UIs | React / Next.js code |
+| [v0](/integrations/overview#v0) | Web components, React, Tailwind-style UIs | React / Next.js code |
 | Lovable | Full-stack web apps with light backend | Working web app |
 | Bolt.new | Full-stack web apps, prototypes that run | Working web app |
-| [Cursor](/integrations/cursor) / [Codex](/integrations/codex) | Coded prototypes, technical exploration | Code in any framework |
+| [Cursor](/integrations/overview#cursor) / [Codex](/integrations/overview#codex) | Coded prototypes, technical exploration | Code in any framework |
 
 Pick one for your first iteration cycle and stick with it. Don't switch tools mid-loop — the prompt patterns differ enough that switching restarts your learning curve.
 
@@ -368,7 +368,7 @@ The workflow doesn't end with a polished prototype. It ends with the prototype b
 The graduation move:
 
 1. Run a final review meeting with the prototype and a proto-spec discussion together
-2. Generate the PRD using the converged prompt as the starting point, plus the review meeting's discussion — the converged prompt already articulates context, user goals, key screens, states, edge cases, and constraints. The spec writer's job is to add the engineering perspective (technical approach, scope, dependencies), success metrics, rollout plan, and risks.
+2. Generate the PRD using the converged prompt as the starting point, plus the review meeting's discussion — the converged prompt already articulates context, user goals, key screens, states, edge cases, and constraints. The spec writer's job is to add the engineering perspective (technical approach, scope, dependencies), success metrics, rollout plan, and risks. If you kept the discovery and review meetings in a [project](/earmark-basics/projects), ask project chat for the decisions and rejected variants across the whole loop to fill in what the converged prompt doesn't carry.
 3. Hand off to engineering with: the Figma file, the PRD, the prompt history, and references to the source meetings
 
 Engineering teams who can see how the design evolved make better implementation decisions than teams who get only the final spec.
@@ -400,10 +400,10 @@ Same discipline as any external AI tool you feed company content into.
 ## Where to go next
 
 - [Workflows](/workflows) — the general shape this is an instance of
-- [v0 integration](/integrations/v0) — the single-tool version of this workflow for v0
-- [Cursor integration](/integrations/cursor) — the single-tool version for Cursor
-- [Codex integration](/integrations/codex) — the single-tool version for Codex
-- [Linear integration](/integrations/linear) — for spinning up tickets from the prototype review
+- [v0 integration](/integrations/overview#v0) — the single-tool version of this workflow for v0
+- [Cursor integration](/integrations/overview#cursor) — the single-tool version for Cursor
+- [Codex integration](/integrations/overview#codex) — the single-tool version for Codex
+- [Linear integration](/integrations/overview#linear) — for spinning up tickets from the prototype review
 - [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
 - [Composer](/using-earmark/composer) — for tuning the prompt before saving as a template
 - [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding the template on design discussions

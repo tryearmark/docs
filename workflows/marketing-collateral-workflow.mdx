@@ -1,6 +1,6 @@
 ---
 title: "Marketing collateral"
-description: "Turn customer calls, product reviews, exec strategy discussions, and launch planning meetings into the GTM artifacts your motion actually runs on — capability briefs, customer-facing copy, launch announcements, and messaging pillars"
+description: "Turn customer calls, product reviews, and launch planning into capability briefs, customer-facing copy, launch announcements, and messaging pillars."
 keywords: ["marketing collateral", "GTM", "voice of customer", "messaging", "launch announcement", "capability brief", "positioning", "workflow"]
 ---
 
@@ -461,7 +461,7 @@ Marketing curation is the heaviest in this guide series because the artifact rep
 - **Read it as a member of the target audience.** Would a prospect read this and say *"this is for me"*? Would a sales rep read this and want to use it?
 - **Cut everything not earning its space.** Marketing artifacts compete for attention. Sentences that explain the obvious, hedge unnecessarily, or sound generic — out.
 - **Replace internal jargon with customer language.** Wherever the model used a product code name, an internal term, or an industry buzzword, check whether customers actually use that language. If not, swap.
-- **Confirm verbatim quotes are accurate.** Verify against the source. Quotes that misrepresent the speaker damage trust; quotes that capture exactly what was said create credibility.
+- **Confirm verbatim quotes are accurate.** Verify against the source. Quotes that misrepresent the speaker damage trust; quotes that capture exactly what was said create credibility. If a quote came through Chat from a meeting a teammate recorded, you only see the excerpt; ask whoever recorded it to confirm the context before it ships.
 - **Strip vague qualifiers.** *"Seamless," "intuitive," "game-changing," "industry-leading"* — every instance is a candidate for cutting unless it earns its place with evidence.
 - **Test the headline ruthlessly.** If your headline could appear on any company's launch in your space, it's not specific enough.
 - **Sharpen the CTA.** *"Learn more"* is rarely the right CTA. *"Schedule a demo,"* *"Read the launch post,"* *"Start your trial"* — what specifically do you want them to do?
@@ -481,14 +481,16 @@ Read the artifact out loud before shipping. If it sounds like a real person coul
 
 ## Multi-meeting synthesis and the voice-of-customer corpus
 
-Many marketing artifacts draw from multiple source conversations. A launch announcement pulls from the launch planning meeting plus the strategic narrative discussion plus customer reviews. A messaging pillar document synthesizes across customer calls plus exec strategy plus competitive intelligence. A battle card pulls from sales calls plus win/loss interviews plus product reviews. Earmark refines artifacts within a single meeting today; cross-meeting synthesis uses the standard manual workaround.
+Many marketing artifacts draw from multiple source conversations. A launch announcement pulls from the launch planning meeting plus the strategic narrative discussion plus customer reviews. A messaging pillar document synthesizes across customer calls plus exec strategy plus competitive intelligence. A battle card pulls from sales calls plus win/loss interviews plus product reviews. [Chat](/earmark-basics/chat) handles this: it answers across meetings and cites each one.
 
-**Tag source meetings by artifact.** When multiple meetings feed a single artifact, tag them with a consistent identifier (*"Q3-launch-acme-feature"*). Paste the relevant artifacts from each tagged meeting into a Customize-context document; run the template against the assembled corpus. The output draws from all of them with attribution per section.
+**Group source meetings in a project.** When multiple meetings feed a single artifact, give the artifact a [project](/earmark-basics/projects) (*"Q3 launch — multi-region"*) and add every source meeting to it. Put your brand voice block in the project's **Instructions** (under **Project settings**) so every answer follows it. Then paste the template in as a question in the project chat. The output draws from all of the meetings, with source chips pointing back to them.
 
-**The voice-of-customer extraction.** A specifically marketing use of multi-meeting synthesis. Across many customer interviews, extract the language patterns customers use to describe a problem space:
+The writer is rarely the person who recorded the customer calls. You can only add meetings you recorded, so share the project with the AEs, researchers, and CSMs who ran them and ask each to add their own. People in the project see each meeting's title, who recorded it, and when. They can't open each other's meetings, but Chat can use them to answer questions in the project and shows short excerpts as sources.
+
+**The voice-of-customer extraction.** A specifically marketing use of multi-meeting synthesis. Across many customer interviews, extract the language patterns customers use to describe a problem space. A standing voice-of-customer project, where researchers and AEs add their interviews as they happen, keeps the source set ready:
 
 ```md
-Across the customer interviews provided, identify the most common
+Across the customer interviews in this project, identify the most common
 ways customers describe {pain / outcome / use case}. For each pattern:
 
 - The phrasing customers use (with verbatim quotes)
@@ -500,6 +502,8 @@ The output is a customer-language corpus that downstream marketing
 copy should draw from.
 ```
 
+Name the period when the corpus should reach further back. Check the **Coverage** line for how many interviews it reviewed.
+
 The corpus becomes the source-of-truth for customer language. Future copy decisions reference it; the team stops drifting into internal jargon because the customer language is documented and accessible. Maintain it as a queryable database (Notion, Airtable) with the quote, the customer / persona / segment, the topic, the source meeting, the date, and tags for theme, sentiment, and use case. The investment compounds — future positioning work, future copy, future messaging frameworks all draw from it.
 
 **Cross-meeting message testing.** When a messaging pillar has been articulated in one strategic discussion, test it against accumulated customer conversations to see if it resonates:
@@ -507,7 +511,7 @@ The corpus becomes the source-of-truth for customer language. Future copy decisi
 ```md
 The messaging pillar is: "{pillar message}"
 
-Across the customer conversations provided, identify:
+Across the customer conversations in this project, identify:
 - Moments where customers expressed something aligned with this
   pillar (with quotes)
 - Moments where customers expressed something orthogonal or
@@ -518,7 +522,7 @@ Across the customer conversations provided, identify:
 
 This is how a messaging pillar gets refined over its first quarter — by checking it against accumulated customer voice rather than by debating it internally.
 
-For very large corpora, [exporting local transcripts](/earmark-basics/local-transcripts) and running an external agent is the alternative.
+If you want to run your own analysis, [export local transcripts](/earmark-basics/local-transcripts) and run an external agent on them.
 
 ## Review and iteration
 
@@ -562,10 +566,12 @@ Three habits.
 
 - [Workflows](/workflows) — the general shape this is an instance of
 - [Customer research workflow](/workflows/customer-research-workflow) — for capturing the customer signal that this workflow turns into external artifacts
+- [Projects](/earmark-basics/projects) — grouping source meetings by launch or artifact, including teammates' calls
+- [Chat](/earmark-basics/chat) — synthesis across source meetings, with sources
 - [Shareable summaries workflow](/workflows/shareable-summaries-workflow) — for audience-aware summaries within the company (internal cousin of this workflow)
 - [Leadership readouts workflow](/workflows/leadership-readouts-workflow) — for leadership-facing artifacts where strategic narrative is central
 - [Sales calls workflow](/workflows/sales-calls-workflow) — for the deal-context that informs sales enablement collateral
 - [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
 - [Composer](/using-earmark/composer) — for tuning the prompt before saving as a workspace template
 - [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding the template on customer calls and strategy meetings
-- [Local transcripts](/earmark-basics/local-transcripts) — for external synthesis on large voice-of-customer corpora
+- [Local transcripts](/earmark-basics/local-transcripts) — if you want to run your own analysis outside Earmark

@@ -256,10 +256,12 @@ The first artifact will be rough. By the third or fourth call run through the sa
 
 <Steps>
 <Step title="Pre-seed the meeting">
-Open the call in Earmark before it starts and add your saved Sales Discovery template as a task. See [Before a meeting](/using-earmark/before-a-meeting).
+Open the call in Earmark before it starts and add your saved Sales Discovery template as a task. Click the project chip next to the title and add the call to the account's [project](/earmark-basics/projects). See [Before a meeting](/using-earmark/before-a-meeting).
 </Step>
 <Step title="Use Customize context for prior-call carryover">
 For follow-up calls, paste the **CRM update** and the **Risk signals** from your last call with this account into the **Customize context** dialog. The template will read it and produce an artifact that reflects what changed since last call, not a cold first-call view.
+
+To pull that together without digging, ask the account's project *"What's changed since our last call, and what risks are still open?"* With your calendar connected, you can also ask [Chat](/earmark-basics/chat) *"Help me prepare for tomorrow using my past meetings"*, and it pairs each call on your calendar with what was said in related past meetings.
 </Step>
 <Step title="State commitments and next steps out loud">
 Two habits sharpen the artifact dramatically:
@@ -370,16 +372,27 @@ studies (if won).
 
 Lost deals contain more useful information than won deals. The team that systematically debriefs losses improves faster than the team that does not.
 
-## What this workflow doesn't do
+## Across the whole deal
 
-Earmark generates and refines artifacts within a single call. The two natural next things a sales team wants — **deal-level synthesis across all calls in an opportunity** and **manager-level pipeline aggregation** — are not one-click actions inside Earmark today.
+The deal runs across many calls, so the read on it has to as well. Two features take the workflow past the single call.
 
-Practical workarounds:
+**A project per account.** Keep every call with one account in a [project](/earmark-basics/projects): discovery, demo, pricing, security review. If an SE or CSM runs calls on the same account, share the project with them as **Collaborators** so they add theirs. Everyone in the project can then ask questions across all of its calls, including ones they can't open.
 
-- **Manual deal-level rollup before major moments.** Before an executive sponsor meeting, a pricing conversation, or a forecast call, the rep pastes the **CRM update** and **Risk signals** sections from the last three or four call artifacts into a single Customize-context block, then runs a synthesis prompt that produces a current state-of-deal view. Fifteen minutes of work; produces an artifact comparable to what the original "Template C" would have produced automatically.
-- **Use the [command menu](/earmark-basics/command-menu)** (`Cmd+K` / `Ctrl+K`) to find prior calls with the same account when assembling the rollup.
-- **Export [local transcript files](/earmark-basics/local-transcripts)** when you want to run an external agent across an entire deal's worth of calls and produce a true synthesized rollup.
-- **The CRM is the deal-level aggregator.** If every call's CRM-update block lands in the opportunity activity log, the CRM is the place to see the deal's history. The rep's job is to feed the CRM faithfully; the manager's filters in the CRM are what produce pipeline visibility.
+**Chat for the deal-level rollup.** Before an executive sponsor meeting, a pricing conversation, or a forecast call, ask the account's project:
+
+- *"What has Acme said about budget and timeline across our calls?"*
+- *"How has the champion's engagement changed since discovery?"*
+- *"Which objections are still unresolved?"*
+
+[Chat](/earmark-basics/chat) answers with a source chip for each call, so you can check a claim before it goes in front of your manager. What used to be fifteen minutes of pasting CRM-update blocks into one document is now a question. Apply the same Stated / Implied / Unknown discipline to the answer that you apply to the artifact.
+
+**The team view.** Add calls to a shared team project as well, like "Q3 new business"; a meeting can be in several projects. A manager in that project can ask *"What are the most common objections across these deals?"* and get an answer drawn from every call the reps have added.
+
+The rest still applies:
+
+- **Find a specific call** by title with the [command menu](/earmark-basics/meeting-history#search-with-the-command-menu) (`Cmd+K` / `Ctrl+K`).
+- **The CRM is the pipeline of record.** If every call's CRM-update block lands in the opportunity activity log, the CRM holds the deal's history in structured form. The rep's job is to feed the CRM faithfully; the manager's filters in the CRM are what produce pipeline visibility.
+- **Run your own analysis** on [local transcript files](/earmark-basics/local-transcripts) if you want an external agent to process an entire deal's worth of calls in a pipeline you control.
 
 Manager-level forecasting based on champion strength or MEDDPICC scores requires those fields to be queryable in your CRM, not in Earmark. The workflow above produces the values; your CRM is where the team filter happens.
 
@@ -389,10 +402,10 @@ Manager-level forecasting based on champion strength or MEDDPICC scores requires
 - **Champion overestimation.** A champion is not someone who is nice to you. If you cannot point to specific advocacy behaviors, downgrade the strength read.
 - **Inventing next steps.** "We'll circle back" is not a next step. If no real next step was agreed, write that. A deal with no agreed next step is a deal in trouble.
 - **Hearing what you want to hear.** Buyers say "interesting" and "we'll think about it" because it's easier than saying no. The Risk Signals section is where you catch yourself.
-- **Treating discovery as a one-call event.** MEDDPICC dimensions get filled in over multiple calls. "Unknown" on call one and still Unknown on call four is a different problem than "Unknown" → "Strong read" by call four. Track the trajectory by using Customize context to carry prior reads into the next call.
+- **Treating discovery as a one-call event.** MEDDPICC dimensions get filled in over multiple calls. "Unknown" on call one and still Unknown on call four is a different problem than "Unknown" → "Strong read" by call four. Track the trajectory: carry prior reads into the next call with Customize context, or ask the account's project how the read has changed.
 - **Single-threading.** A deal with one contact at the buyer is a deal at high risk regardless of how strong that contact is. The multi-threading section forces you to confront this.
 - **Logging only the good news.** Reps reflexively log deals going well and skip deals going badly. The opposite is correct. Hard deals are where the artifact most needs to exist.
-- **Letting deals age in stage without a fresh rollup.** A deal in "Demo" for five weeks needs a fresh deal-level synthesis (the manual workaround above). Otherwise it's running on stale signal.
+- **Letting deals age in stage without a fresh rollup.** A deal in "Demo" for five weeks needs a fresh deal-level synthesis (ask the account's project for one). Otherwise it's running on stale signal.
 - **Skipping win/loss on lost deals.** Lost deals contain more useful information than won deals. Default Template D on every closed deal above a low ACV threshold.
 - **Pasting the full artifact into the CRM.** The CRM gets the curated **CRM update** block. The full artifact lives in Earmark, linked from the CRM entry. Pasting transcripts into CRMs is what makes nobody read them.
 - **Wrong framework dogma.** If your team uses BANT and the template says MEDDPICC, swap the labels. The workflow does not care which framework — only that you use one consistently across every deal.
@@ -402,6 +415,8 @@ Manager-level forecasting based on champion strength or MEDDPICC scores requires
 - [Workflows](/workflows) — the general shape this is an instance of
 - [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
 - [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding and using Customize context for prior-call carryover
+- [Projects](/earmark-basics/projects) — one project per account, shared with the account team
+- [Chat](/earmark-basics/chat) — deal-level questions across an account's calls, and prep for upcoming ones
 - [Action items workflow](/workflows/action-items-workflow) — the next-step extraction this workflow specializes; useful for non-sales calls too
 - [Email follow-up workflow](/workflows/email-follow-up-workflow) — for the external customer follow-up email that goes out after a call
 - [Customer research workflow](/workflows/customer-research-workflow) — for the pain-points and verbatim-quotes side of customer conversations

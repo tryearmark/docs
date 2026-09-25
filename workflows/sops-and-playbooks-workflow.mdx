@@ -1,6 +1,6 @@
 ---
 title: "SOPs and playbooks"
-description: "Convert operational discussions — process design, escalation handling, policy reviews, incident retrospectives — into the durable SOPs, playbooks, runbooks, and policies your team executes against"
+description: "Turn process discussions, escalation reviews, and incident retrospectives into the SOPs, playbooks, and runbooks your team runs on every day."
 keywords: ["SOP", "playbook", "runbook", "policy", "operational procedure", "compliance", "GRC", "workflow"]
 ---
 
@@ -10,7 +10,7 @@ The cost is paid in inconsistency, slow ramps, audit findings, key-person risk, 
 
 This guide is a specific instance of the [workflows](/workflows) pattern, applied to operational procedure documentation. It pairs with the [demo and facilitator scripts workflow](/workflows/demo-and-facilitator-scripts-workflow) — that workflow captures how one person runs an activity well (transferable individual excellence); this workflow captures how a team operates a recurring procedure consistently (team operational discipline).
 
-The single-meeting capture is fully tractable today. Multi-meeting synthesis — procedures that emerge from many discussions, runbooks that update from accumulated incident retrospectives, cross-team procedures — uses the standard workaround documented across the workflow series. The maintenance discipline is the part that separates SOP libraries that work from those that decay.
+The single-meeting capture is fully tractable today. Multi-meeting synthesis — procedures that emerge from many discussions, runbooks that update from accumulated incident retrospectives, cross-team procedures — runs through a [project](/earmark-basics/projects) and its chat. The maintenance discipline is the part that separates SOP libraries that work from those that decay.
 
 ## Foundation
 
@@ -392,7 +392,7 @@ SOP creation is a team standard. **Workspace** visibility means every team lead 
 
 <Steps>
 <Step title="Identify the source meeting">
-A process design session, refinement session, handoff/explanation, incident retrospective, or compliance review. Attach the right template before the meeting. Multi-meeting cases use the synthesis section below.
+A process design session, refinement session, handoff/explanation, incident retrospective, or compliance review. Attach the right template before the meeting. If the procedure is taking shape across several meetings, add this one to the procedure's project too; see the synthesis section below.
 </Step>
 <Step title="State the right things during the meeting">
 - **Name the trigger explicitly.** *"This procedure starts when {event} happens."* Without this, the SOP exists but nobody knows when to execute it.
@@ -428,15 +428,15 @@ The curation pass is what makes the difference between a checkbox-compliance SOP
 
 ## Multi-meeting synthesis
 
-Many SOPs don't emerge from a single discussion. They develop over weeks — a process gets discussed in one meeting, refined in another, an edge case comes up in a third. Earmark refines artifacts within a single meeting today; cross-meeting synthesis uses the standard manual workaround.
+Many SOPs don't emerge from a single discussion. They develop over weeks — a process gets discussed in one meeting, refined in another, an edge case comes up in a third. [Chat](/earmark-basics/chat) answers across meetings and cites each one, so the synthesis no longer means copying artifacts into one document.
 
-**The "tag and accumulate" pattern.** When you know an SOP is brewing across multiple meetings: tag the relevant meetings with a consistent identifier (e.g., *"billing-escalation-sop"*); each meeting contributes; when the procedure feels settled, paste the relevant artifacts from each tagged meeting into a Customize-context document and run the template against the assembled corpus. The output combines decisions from all of them, with attribution per section.
+**The "collect and accumulate" pattern.** When you know an SOP is brewing across multiple meetings, create a [project](/earmark-basics/projects) for it (e.g., *"Billing escalation SOP"*) and add each meeting as it happens, from the project chip next to the meeting title. Put the template's ground rules in the project's **Instructions** (under **Project settings**): don't invent steps, and mark anything unspecified as "[Confirm with owner]". When the procedure feels settled, paste the template in as a question in the project chat. The output combines decisions from all the meetings, with source chips pointing back to them.
 
-**Synthesizing from incident retrospectives.** Runbooks especially benefit. An incident retrospective produces one set of runbook updates; a related incident a month later produces more. Quarterly, the runbook owner pastes the relevant retrospective artifacts into Customize context and runs a synthesis prompt: *"Across these incident retrospectives, identify diagnostic checks that have proven useful, remediation steps that have worked, failure modes the current runbook doesn't cover, and steps in the current runbook that have proven misleading or stale. Produce an updated runbook draft."* This pattern is what makes runbooks improve over time rather than decay.
+**Synthesizing from incident retrospectives.** Runbooks especially benefit. An incident retrospective produces one set of runbook updates; a related incident a month later produces more. Keep a project for each runbook and add every applicable retrospective to it. Quarterly, the runbook owner asks the project chat: *"Across these incident retrospectives, identify diagnostic checks that have proven useful, remediation steps that have worked, failure modes the current runbook doesn't cover, and steps in the current runbook that have proven misleading or stale. Produce an updated runbook draft."* This pattern is what makes runbooks improve over time rather than decay.
 
-**Cross-team procedures.** Some procedures span multiple teams — a customer escalation that involves CS, support, and engineering, for example. Each team has a piece of the procedure; the full procedure requires synthesis across discussions in each team. Each team captures their portion; a cross-functional process owner (chief of staff, ops lead, or function head) pastes the team-level artifacts into Customize context and synthesizes the full procedure. The handoff points between teams are the part that single-team capture misses — they're where most cross-functional procedures break in practice.
+**Cross-team procedures.** Some procedures span multiple teams — a customer escalation that involves CS, support, and engineering, for example. Each team has a piece of the procedure; the full procedure requires synthesis across discussions in each team. A cross-functional process owner (chief of staff, ops lead, or function head) creates a project and shares it with someone from each team. You can only add meetings you recorded, so each team adds its own discussions. People in the project can't open each other's meetings, but Chat can use them to answer questions in the project and shows short excerpts as sources. The owner then asks the project chat for the full procedure, and separately for the handoffs: *"Where do CS, support, and engineering describe the handoff between them differently?"* The handoff points between teams are the part that single-team capture misses — they're where most cross-functional procedures break in practice.
 
-For very large multi-meeting corpora, [exporting local transcripts](/earmark-basics/local-transcripts) and running an external agent is the alternative.
+For a procedure or runbook with a longer history, name the period, and check the **Coverage** line for how many meetings it reviewed. If you want to run your own analysis, [export local transcripts](/earmark-basics/local-transcripts) and run an external agent on them.
 
 ## The maintenance discipline
 
@@ -462,7 +462,7 @@ SOPs decay faster than any other artifact in this guide series. Procedures chang
 
 **LMS and onboarding** (Lessonly, Workramp, Sana). New hires read the relevant SOPs as part of structured onboarding. A natural progression: week one read; week two shadow; week three execute with peer observing; week four execute independently. This is how SOPs become onboarding infrastructure rather than tribal-knowledge replacement.
 
-**The Earmark archive as source.** Source meetings stay in Earmark. SOPs link back. When a future owner wants to know *"why was this step added?"*, the source meeting is one click away. The pair — current SOP plus source recordings of the discussions that defined it — is more valuable than either alone.
+**The Earmark archive as source.** Source meetings stay in Earmark. SOPs link back. When a future owner wants to know *"why was this step added?"*, the source meeting is one click away. If the source meetings are in the procedure's project, a new owner added to it can ask the project chat directly and get the reasoning with the excerpt it came from. The pair — current SOP plus source recordings of the discussions that defined it — is more valuable than either alone.
 
 ## Closing the loop
 
@@ -504,4 +504,6 @@ Three habits.
 - [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
 - [Composer](/using-earmark/composer) — for tuning the prompt before saving as a workspace template
 - [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding the template on operational discussions
-- [Local transcripts](/earmark-basics/local-transcripts) — for external synthesis on very large multi-meeting corpora
+- [Projects](/earmark-basics/projects) — collecting the meetings behind a procedure, including other teams' discussions
+- [Chat](/earmark-basics/chat) — synthesis across those meetings, with sources
+- [Local transcripts](/earmark-basics/local-transcripts) — if you want to run your own analysis outside Earmark

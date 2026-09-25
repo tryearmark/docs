@@ -1,6 +1,6 @@
 ---
 title: "Architecture documentation"
-description: "Convert architecture reviews, technical design sessions, and engineering debates into the ADRs, SDDs, sequence diagrams, and integration specs your codebase needs — preserving the reasoning future engineers will look for"
+description: "Turn architecture reviews and design debates into ADRs, design docs, sequence diagrams, and integration specs that keep the reasoning behind decisions."
 keywords: ["architecture", "ADR", "SDD", "system design", "technical documentation", "engineering", "workflow"]
 ---
 
@@ -506,7 +506,7 @@ This is what makes the doc findable when it's needed.
 
 ## Multi-meeting synthesis and the ADR chain
 
-Some architectural decisions emerge over multiple meetings — a design review surfaces options; a follow-up debate narrows them; a third session finalizes the choice. Earmark refines artifacts within a single meeting today; cross-meeting synthesis uses the standard manual workaround: tag the source meetings with a consistent identifier; paste the relevant artifacts from each into a Customize-context document; run the template against the assembled corpus. The output draws from all of them with attribution per section.
+Some architectural decisions emerge over multiple meetings — a design review surfaces options; a follow-up debate narrows them; a third session finalizes the choice. Keep those meetings in a [project](/earmark-basics/projects) for the system or the decision, and run the template from the project page in [Chat](/earmark-basics/chat). The answer draws across every meeting in the project, cites each one with source chips, and ends with a **Coverage** line showing how many meetings it reviewed. You can only add meetings you recorded, so **Share** the project with the other engineers in the debate and ask them to add the sessions they ran. If you'd rather assemble the corpus yourself, paste the relevant artifacts from each meeting into a **Customize context** document and run the template as a task.
 
 **The ADR chain.** Architecture decisions build on each other. An ADR that says *"we'll use approach X"* gets superseded a year later by an ADR that says *"X didn't work as expected; we're moving to Y."* The chain matters. The convention:
 
@@ -517,7 +517,7 @@ Some architectural decisions emerge over multiple meetings — a design review s
 
 This is what makes ADRs compound. Each new decision references its predecessors; the architecture's history is traceable.
 
-**SDDs as living documents.** SDDs aren't one-meeting artifacts; they live for years as the system evolves. Each substantive change gets logged in the SDD's change log. Quarterly, the SDD owner audits the doc: does it still describe the system as it exists? Have components been renamed, added, or deprecated? Have flows changed? Are the non-functional characteristics still accurate? Without this audit, SDDs decay into historical fiction.
+**SDDs as living documents.** SDDs aren't one-meeting artifacts; they live for years as the system evolves. Each substantive change gets logged in the SDD's change log. Quarterly, the SDD owner audits the doc: does it still describe the system as it exists? Have components been renamed, added, or deprecated? Have flows changed? Are the non-functional characteristics still accurate? If the system has a project, start the audit there: *"What changes to the ingestion service did we discuss or decide since the last audit in March?"* gives you the list to check against the doc. Without this audit, SDDs decay into historical fiction.
 
 ## Diagrams: the special case
 
@@ -545,9 +545,9 @@ This makes the design intent visible at the line of code that implements it. New
 
 **Service catalog integration.** If your team uses Backstage, Cortex, or OpsLevel, link relevant ADRs and SDDs to the corresponding services. Engineers looking up *"what does the auth service do?"* see the SDD; engineers wondering *"why does it work this way?"* see the ADRs.
 
-**For engineering work that flows from architectural decisions**, the [Cursor](/integrations/cursor), [v0](/integrations/v0), and [Codex](/integrations/codex) integrations link the documented design to the prompts that implement it. The architectural doc explains *why*; the integration produces the code that realizes it.
+**For engineering work that flows from architectural decisions**, the [Cursor](/integrations/overview#cursor), [v0](/integrations/overview#v0), and [Codex](/integrations/overview#codex) integrations link the documented design to the prompts that implement it. The architectural doc explains *why*; the integration produces the code that realizes it.
 
-**Earmark as source.** The source meeting recordings stay in Earmark. Docs link back. When a future engineer reads an ADR and wants to understand a particular decision more deeply, the source meeting is one click away — including the debate, the alternatives that didn't make it into the doc, and the specific phrasings the team used.
+**Earmark as source.** The source meeting recordings stay in Earmark. Docs link back. When a future engineer reads an ADR and wants to understand a particular decision more deeply, the source meeting is one click away — including the debate, the alternatives that didn't make it into the doc, and the specific phrasings the team used. If the system's meetings live in a shared project, engineers who weren't in the room can ask project chat *"why did we reject the queue-based approach?"* and get the answer with cited excerpts from the debate.
 
 The architecture-doc library plus the paired source-meeting archive is more valuable than either alone. New engineers read the decisions and listen to the discussions that produced them.
 
@@ -586,9 +586,10 @@ This habit is the single most underrated part of architecture documentation. Mos
 - [SOPs and playbooks workflow](/workflows/sops-and-playbooks-workflow) — for the operational procedures and runbooks that complement architecture docs
 - [Meeting-to-PRD workflow](/workflows/meeting-to-prd-workflow) — for product specs that motivate architectural work
 - [Structured meeting notes workflow](/workflows/structured-meeting-notes-workflow) — for capturing postmortems and process-design meetings
-- [Cursor integration](/integrations/cursor) — for coded implementation of architectural decisions
-- [v0 integration](/integrations/v0) — for UI components informed by architectural choices
-- [Codex integration](/integrations/codex) — for engineering tasks shaped by architecture docs
+- [Projects](/earmark-basics/projects) — for keeping a system's design meetings together and shared with the team
+- [Cursor integration](/integrations/overview#cursor) — for coded implementation of architectural decisions
+- [v0 integration](/integrations/overview#v0) — for UI components informed by architectural choices
+- [Codex integration](/integrations/overview#codex) — for engineering tasks shaped by architecture docs
 - [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
 - [Composer](/using-earmark/composer) — for tuning the prompt before saving as a workspace template
 

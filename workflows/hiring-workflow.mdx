@@ -17,10 +17,10 @@ This workflow handles data about people who don't work at your company yet, and 
 
 - **Consent.** Always tell candidates the conversation is being recorded for note-taking, who has access, and how long it's retained. The recruiter typically handles this in the interview kit. Confirm at the start of every interview regardless: *"I'll be using Earmark to take notes so I can be present. Is that okay?"* If the candidate declines, take handwritten notes and skip the workflow for that interview.
 - **Retention has limits.** Don't keep candidate transcripts longer than your stated policy. For hired candidates, transfer relevant content to the employee record on a defined schedule and delete the originals. For non-hired candidates, delete on the same schedule (commonly 6–24 months depending on jurisdiction).
-- **Access is narrow.** Artifacts are for the hiring loop, the recruiter, and the hiring manager. Not part of company-wide ad-hoc Q&A. See the [ad-hoc Q&A workflow](/workflows/ad-hoc-qa-workflow) on the privacy discipline.
+- **Access is narrow.** Artifacts are for the hiring loop, the recruiter, and the hiring manager. Not part of company-wide ad-hoc Q&A. See the [ad-hoc Q&A workflow](/workflows/ad-hoc-qa-workflow) on the privacy discipline. If you run the loop in a shared [project](/earmark-basics/projects), everyone in it can ask Chat about every interview in it, so keep the project to the loop.
 - **Candidates may request access.** In many jurisdictions, candidates can request the records used to make hiring decisions about them. Write your artifacts in language you'd be comfortable showing the candidate.
 
-Use [temporary meetings](/earmark-basics/temporary-meetings) for sessions where retention should be tighter than the workspace default. Earmark's [workspace isolation](/security-and-privacy) keeps interview artifacts private to the interviewer until they're shared.
+Use [temporary meetings](/earmark-basics/temporary-meetings) for sessions that shouldn't be kept at all. They're never stored on Earmark's servers and can't be added to a project, so they won't be part of loop-level synthesis. Earmark's [workspace isolation](/security-and-privacy) keeps interview artifacts private to the interviewer until they're shared.
 </Warning>
 
 ## Sharpen your rubric first
@@ -176,7 +176,7 @@ Set visibility to **Workspace** so every interviewer in the loop produces the sa
 "I'm using Earmark to take notes so I can be present. Is that okay?" If the candidate declines, switch to handwritten notes for this interview.
 </Step>
 <Step title="Pre-seed with the right template">
-For the interview type and the specific competencies being evaluated. See [Before a meeting](/using-earmark/before-a-meeting).
+For the interview type and the specific competencies being evaluated. See [Before a meeting](/using-earmark/before-a-meeting). If the loop has a project, add the interview to it now from the project chip next to the meeting title. See [Loop-level synthesis with a project](#loop-level-synthesis-with-a-project).
 </Step>
 <Step title="Be present">
 The point of the workflow is to preserve presence during the interview. Take no manual notes. Engage. Probe follow-ups. Ask the questions a real conversation produces.
@@ -303,6 +303,39 @@ What does this reference shift about the hiring read?
 
 The **hesitations** section is the most valuable part. References usually want to be helpful and rarely say outright negative things — but the things they pause before saying, the words they choose carefully, the questions they don't quite answer, are often the most revealing signal in the entire loop. The template forces the interviewer to record those moments rather than smooth them into a clean narrative.
 
+## Loop-level synthesis with a project
+
+Each interview artifact stands on its own. The debrief needs them side by side. Give each loop a [project](/earmark-basics/projects), and [Chat](/earmark-basics/chat) can synthesize across every interviewer's meeting without anyone forwarding notes.
+
+<Steps>
+<Step title="Create one project per loop">
+The hiring manager or recruiter creates it and stays the owner. Name it for the candidate and role. In **Project settings**, paste a short version of the rubric into **Instructions**: the competencies, the target level, and the rule to cite evidence and write "Unknown" rather than infer. Chat follows those instructions for every question asked in the project.
+</Step>
+<Step title="Share it with the loop, and only the loop">
+Click **Share** and add each interviewer as a **Collaborator**. Collaborators can use the project in Chat and add their own meetings; only owners manage people and settings. Anyone in the project can ask Chat about every interview in it, so add only the people who'll be in the debrief. Hiring conversations are sensitive: don't reuse a broad team project for them.
+</Step>
+<Step title="Each interviewer adds their own interview">
+You can only add meetings you recorded, so every interviewer adds their own, from the project chip next to the meeting title. It works before, during, or after the interview. Screens and reference checks go in the same project.
+</Step>
+</Steps>
+
+What people in the project can see is narrower than it sounds. They see each interview's title, who recorded it, and when. They **can't open** each other's meetings. Chat can use the transcripts and notes to answer questions in the project, and shows short excerpts as sources. Only the interviewer who recorded a meeting can jump into it from a source chip.
+
+**Write your own scorecard before you ask the project anything.** Project chat can tell you what the other interviewers saw. Reading that before you've committed to your own read is the same anchoring problem as speaking second in the debrief. Push to the ATS first, then use the project.
+
+Before the debrief, the hiring manager asks the project:
+
+```md
+Across the interviews in this project, for each competency in the rubric:
+- Each interviewer's read, with the strongest piece of evidence
+- Where interviewers diverged, and what each one saw
+- Every gap flagged Coachable or Barrier, and whether the loop agrees
+- Competencies with insufficient signal across the whole loop
+Cite the interview for every point. Do not make a hire recommendation.
+```
+
+Check the **Coverage** line at the end of the answer. It should count every interview in the loop; if it's short, someone hasn't added theirs yet. Use **Copy** to move the answer into the debrief doc. This is the substrate the debrief actually needs.
+
 ## The calibration debrief
 
 The debrief is where decisions actually get made. It is also one of the most underutilized meetings in hiring — typically run on fading memories, dominated by whoever speaks first or loudest.
@@ -315,20 +348,17 @@ The structure that works:
 4. **Probe every Coachable/Barrier read.** For each gap the loop flagged, the panel discusses: do we agree it's coachable? Coachable by whom, and on what timeline?
 5. **Hiring manager makes the call** with the loop's input weighted appropriately. Calls that contradict the loop's aggregate read are fine — sometimes the hiring manager sees something the loop doesn't — but they should be made explicitly and with reasoning, not implicitly.
 
-A debrief run this way converges in 25–30 minutes instead of the usual 60. Most of the work has already been done by the structured artifacts; the debrief converges on the divergences and the decision.
+A debrief run this way converges in 25–30 minutes instead of the usual 60. Most of the work has already been done by the structured artifacts and the loop synthesis; the debrief converges on the divergences and the decision.
 
 ## What this workflow doesn't do
 
-Earmark refines artifacts within a single interview. Three things hiring teams want — **loop-level synthesis across multiple interviewers**, **post-hire retrospectives comparing interview reads to actual performance**, and **rubric refinement based on patterns across past loops** — all require synthesis across many meetings. Not a one-click action today.
+Loop-level synthesis is covered by the loop's project. Two longer-horizon moves still take a deliberate habit, and one handoff stays manual:
 
-Workarounds:
-
-- **Loop-level synthesis before a calibration debrief.** Paste each interviewer's **Scorecard-ready notes** and gap reads into a single Customize-context document. Run a synthesis task that surfaces per-competency aggregate reads, divergences across interviewers, and remaining open questions. Fifteen minutes; produces the substrate the debrief actually needs.
-- **Post-hire retrospectives at 6 and 12 months.** The structured original artifacts are still in the workspace. Pair them with the new hire's actual performance reads — compiled manually from recent 1:1 artifacts using the [people and team meetings workflow](/workflows/people-and-team-meetings-workflow) — and run an external synthesis on the pair. What did the loop predict? What's actually happening? Which coachable gaps closed?
-- **Rubric refinement.** Quarterly, the talent lead or hiring manager reviews the post-hire retrospectives by hand and updates the rubric, the question bank, and the coachable-vs-barrier list. The rubric becomes a living document over years.
+- **Post-hire retrospectives at 6 and 12 months.** If the loop's interviews are still within your retention policy, ask [Chat](/earmark-basics/chat) from the sidebar, not from the loop's project. It can see the loop's interviews (shared with you through the project) and your own 1:1s with the new hire, so you never need to add 1:1s to the hiring project. Name the period: *"Compare what the loop said about Priya's system design in her March interviews with what's come up in my 1:1s with her since she started."* What did the loop predict? What's actually happening? Which coachable gaps closed? If you'd rather run your own analysis, pair the original artifacts with recent 1:1 artifacts from the [people and team meetings workflow](/workflows/people-and-team-meetings-workflow) and run an external synthesis on the pair.
+- **Rubric refinement.** Quarterly, the talent lead or hiring manager reviews the post-hire retrospectives and updates the rubric, the question bank, and the coachable-vs-barrier list. Chat can gather the material; the judgment about what to change stays with you. The rubric becomes a living document over years.
 - **ATS push** is paste-based, not integrated. The structured **Scorecard-ready notes** section is designed to drop into Greenhouse, Lever, Ashby, or Workable cleanly. Workspace templates ensure every interviewer produces the same shape.
 
-The compounding payoff — measurably more accurate rubrics, calibrated interviewers, question banks that correlate with performance — requires this manual loop to be run. Most companies never realize it because the artifacts to support it never exist. With this workflow, they do.
+The compounding payoff — measurably more accurate rubrics, calibrated interviewers, question banks that correlate with performance — requires this loop to be run. Most companies never realize it because the artifacts to support it never exist. With this workflow, they do.
 
 ## Common pitfalls
 
@@ -338,11 +368,11 @@ The compounding payoff — measurably more accurate rubrics, calibrated intervie
 - **Conflating coachable gap with barrier.** The most common hiring mistake. Force the explicit call.
 - **No calibration across the loop.** Different interviewers using different competencies and different language. The loop's value depends on shared structure. Fix the rubric before standing up the workflow.
 - **Skipping loop-level synthesis before the debrief.** A debrief without the synthesis is the same debrief everyone's been running for decades, with a recording added. Run the synthesis first, every time.
-- **Anchoring in the debrief.** The first speaker tends to anchor the room. Mitigate by collecting individual recommendations before discussion — in writing if possible.
+- **Anchoring in the debrief.** The first speaker tends to anchor the room. Mitigate by collecting individual recommendations before discussion — in writing if possible. The same applies to the loop's project: write your scorecard before you ask Chat what anyone else saw.
 - **Reference checks as box-checking.** A poorly-run reference check is worse than no reference check — it generates false confidence. Probe for specifics; pay attention to hesitations.
 - **No close-the-loop habit.** Without post-hire retrospectives, the rubric never improves. Calendar them; do them.
 - **Treating interview signal as homogeneous.** Different competencies are observable to different degrees in interview settings. Technical depth: very observable. Long-term resilience: barely observable. Weight the synthesis accordingly.
-- **Querying interview artifacts for ad-hoc Q&A.** Interview artifacts are restricted access. Not part of company-wide [ad-hoc Q&A](/workflows/ad-hoc-qa-workflow) corpora. Keep them inside the hiring loop.
+- **Querying interview artifacts for ad-hoc Q&A.** Interview artifacts are restricted access. Not part of company-wide [ad-hoc Q&A](/workflows/ad-hoc-qa-workflow) corpora. Keep them inside the hiring loop: add interviews only to that loop's project, never to a broad team project, and share the project only with people in the loop.
 - **Retention drift.** It's easy to keep candidate artifacts longer than your retention policy. Audit annually. Delete what should be deleted.
 - **"Culture fit" as a competency.** If your rubric has "culture fit" as a dimension with no specific behavioral definition, it's a vector for bias. Replace with specific behaviors ("communicates disagreement directly," "shares credit," "asks for help when stuck") that match what you actually mean.
 
@@ -350,7 +380,9 @@ The compounding payoff — measurably more accurate rubrics, calibrated intervie
 
 - [Workflows](/workflows) — the general shape this is an instance of
 - [People and team meetings workflow](/workflows/people-and-team-meetings-workflow) — for the broader manager-relationship workflows including 1:1s and skip-levels
-- [Temporary meetings](/earmark-basics/temporary-meetings) — for sessions with tighter retention than the workspace default
+- [Projects](/earmark-basics/projects) — sharing a loop's interviews, roles, and what people in a project can see
+- [Chat](/earmark-basics/chat) — asking questions across the loop, with sources
+- [Temporary meetings](/earmark-basics/temporary-meetings) — for sessions that shouldn't be kept at all
 - [Security and privacy](/security-and-privacy) — workspace isolation, no training on your data, retention controls
 - [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
 - [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding the right template for the interview type

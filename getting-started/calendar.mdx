@@ -1,9 +1,12 @@
 ---
 title: "Calendar"
 sidebarTitle: "Connect your calendar"
-description: "Connect your calendar to streamline meeting capture"
+description: "Connect Google Calendar or Outlook to Earmark to see upcoming meetings, get reminders with sounds, and join and start recording with one click."
 keywords: ["calendar integration", "Google Calendar", "Outlook", "meeting notifications", "one-click join"]
 ---
+
+import { Showcase } from "/snippets/showcase.jsx";
+
 
 ## What it does
 
@@ -129,13 +132,24 @@ Once connected, today's meetings appear in the **Coming up** section of the side
 
 Meetings that have passed their end time are automatically hidden unless they're actively being recorded.
 
+### Hide events with no attendees
+
+Placeholder events, like focus time or reminders you put on your own calendar, can crowd **Coming up**. Turn off **Show events with no attendees** in **Settings > Calendar** to hide events that no one else is invited to. They're also hidden from the toolbar, notifications, and [Chat](/earmark-basics/chat). The setting is on by default, and meetings you've recorded always stay visible.
+
+<Showcase
+  src="/images/calendar-coming-up-settings.png"
+  alt="Calendar settings showing Show events with no attendees under Coming up, and Show countdown under Menu bar with a preview."
+/>
+
 ## Desktop notifications
 
 Enable **One click join and capture** in calendar settings to receive a notification before each meeting. The notification includes a button to join the meeting and start recording instantly.
 
+To hear a sound when the reminder appears, choose one under **Reminder sound**. You'll hear a preview as you pick. The default is **None**. Click **Show example** to see the full notification.
+
 ## Menu bar countdown (macOS)
 
-On macOS, Earmark can display your next meeting and a live countdown directly in the system menu bar. Toggle this in **Settings > Calendar > Menu bar**.
+On macOS, Earmark displays your next meeting and a live countdown directly in the system menu bar. It's on by default. Turn it off with **Show countdown** under **Menu bar** in **Settings > Calendar**.
 
 <Frame caption="macOS menu bar with next meeting and countdown">
   <div

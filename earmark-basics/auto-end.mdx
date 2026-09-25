@@ -1,0 +1,80 @@
+---
+title: "Auto-end and recording limits"
+sidebarTitle: "Auto-end"
+description: "The Earmark desktop app ends recordings when your meeting does, using only microphone activity. See supported apps, requirements, and the 3-hour limit."
+keywords: ["auto-end", "auto stop recording", "meeting ended", "recording limit", "three hour limit", "capture session", "long meetings", "forgot to stop recording"]
+---
+
+## What it does
+
+Forgot to hit stop? The desktop app ends a recording on its own once the meeting is over, so it doesn't keep capturing the next meeting or the hallway chat after it.
+
+Auto-end notices when you're done in your meeting app, the moment Zoom, Google Meet, Microsoft Teams, or another meeting app stops using your microphone. There's nothing to set up: it runs automatically on every desktop recording.
+
+<Info>
+**Nothing extra is ever recorded.** Auto-end only checks *whether* a meeting app is using your microphone. It never records, listens to, or saves audio from your meeting apps. It sees activity, not content.
+</Info>
+
+## When a recording ends
+
+A desktop recording stops when any of these happens:
+
+| What happens | When the recording stops |
+| --- | --- |
+| **The meeting wraps up** | Earmark follows your calendar to know when a meeting should end, and pays attention to the conversation too. If the meeting runs long, it keeps recording until you're actually done. |
+| **No one has spoken for 15 minutes** | Useful when a call ends but your meeting app stays open. |
+| **Your computer goes to sleep** | Closing the lid ends the recording cleanly instead of leaving it hanging. |
+| **The recording reaches 3 hours** | See [Recording limits](#recording-limits). |
+
+Recordings that aren't tied to a calendar event, like [Quick Capture](/using-earmark/toolbar#quick-capture), end once the conversation is over.
+
+When a recording ends, Earmark saves the transcript and finishes your artifacts, just as if you had clicked **Stop capture** yourself.
+
+## Supported meeting apps
+
+Auto-end recognizes calls in:
+
+- Zoom
+- Google Meet in Chrome
+- Microsoft Teams
+- Slack huddles
+- Discord
+- FaceTime
+- Webex, RingCentral, and GoTo Meeting
+
+## Requirements
+
+- The Earmark desktop app, version **1.8.0** or later, on Mac or Windows
+- On a Mac, macOS **14.2** or later
+
+The web app doesn't end recordings automatically. Click **Stop capture** when your meeting is done.
+
+## Recording limits
+
+A single capture session runs for up to **3 hours**, on desktop and web.
+
+1. At 2.5 hours, Earmark shows a **Meeting time approaching limit** notice, so the end never catches you by surprise.
+2. At 3 hours, capture stops and Earmark finishes your artifacts.
+
+To keep going, click **Start capture** in the same meeting. The transcript continues in that meeting, and the new session gets another 3 hours. You can do this as many times as you need for workshops and all-day sessions.
+
+## If a recording ends too early
+
+Click **Start capture** in the meeting to pick up where you left off. Everything captured so far stays in the meeting.
+
+## FAQs
+
+<AccordionGroup>
+  <Accordion title="Can I turn auto-end off?">
+    Not currently. If a recording ends before you're done, click **Start capture** in the same meeting to continue.
+  </Accordion>
+  <Accordion title="Does auto-end record anything extra?">
+    No. To tell when a call is over, Earmark checks whether a meeting app is using your microphone. That check never records audio.
+  </Accordion>
+  <Accordion title="My meeting app isn't listed. Will auto-end still work?">
+    Recordings still stop after 15 minutes without speech, when your computer goes to sleep, and at the 3-hour limit.
+  </Accordion>
+  <Accordion title="Can I change the 3-hour limit?">
+    No. The limit is fixed. Start capture again in the same meeting to continue past it.
+  </Accordion>
+</AccordionGroup>

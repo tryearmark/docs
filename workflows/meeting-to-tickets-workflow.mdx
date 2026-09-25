@@ -1,6 +1,6 @@
 ---
 title: "Meeting-to-tickets"
-description: "Convert engineering discussions, customer escalations, and design reviews into structured, tracker-ready tickets — with the context downstream refinement and sprint planning need"
+description: "Turn engineering discussions, customer escalations, and design reviews into tracker-ready tickets with the context sprint planning needs."
 keywords: ["tickets", "user story", "spike", "bug report", "epic", "Linear", "Jira", "Productboard", "workflow"]
 ---
 
@@ -10,7 +10,7 @@ Then the bridge breaks. The PM or EM is the bottleneck. They translate the discu
 
 The cost compounds. Backlog health degrades. Refinement meetings get longer because they're doing the work the original meeting should have produced. Engineers ramp slower on tickets because the context that would have helped them isn't there.
 
-This guide is a specific instance of the [workflows](/workflows) pattern, applied to the meeting → tracker bridge. It builds on the [Linear integration](/integrations/linear) and the built-in `Ticket Generator` template — generalizing to multiple ticket types (story, spike, bug report, epic) for any tracker your team works out of.
+This guide is a specific instance of the [workflows](/workflows) pattern, applied to the meeting → tracker bridge. It builds on the [Linear integration](/integrations/overview#linear) and the built-in `Ticket Generator` template — generalizing to multiple ticket types (story, spike, bug report, epic) for any tracker your team works out of.
 
 ## Foundation
 
@@ -20,7 +20,7 @@ The templates below are written to drop into your tracker's conventions. Walk th
 
 | Tracker | Common ticket types |
 | --- | --- |
-| [Linear](/integrations/linear) | Issue (default), with labels for type — feature, bug, spike, chore, improvement |
+| [Linear](/integrations/overview#linear) | Issue (default), with labels for type — feature, bug, spike, chore, improvement |
 | Jira | Story, Task, Spike, Bug, Epic, Sub-task |
 | GitHub Issues | Issue with labels for type; PR templates for code-tied work |
 | Productboard | Insight (research/discovery), Feature, Component, Note |
@@ -372,7 +372,7 @@ For each ticket the template produced:
 For meetings that produced 5–8 tickets, the per-ticket cleanup totals 10–15 minutes.
 </Step>
 <Step title="Paste into the tracker — same day">
-The longer the gap between meeting and tracker, the more drift happens. For [Linear](/integrations/linear), the keyboard flow (C to create, paste, save, repeat) makes rapid ticket creation easy — a meeting that produced six tickets becomes six minutes of ticket creation. For other trackers, the markdown output pastes cleanly.
+The longer the gap between meeting and tracker, the more drift happens. For [Linear](/integrations/overview#linear), the keyboard flow (C to create, paste, save, repeat) makes rapid ticket creation easy — a meeting that produced six tickets becomes six minutes of ticket creation. For other trackers, the markdown output pastes cleanly.
 </Step>
 <Step title="Post the ticket list in the team channel">
 "From today's design review on the import flow — created 4 stories and 1 spike: {links}. Refinement on Thursday." This is the lightest possible coordination artifact and it materially improves the team's sense that meetings produce real work.
@@ -420,8 +420,8 @@ This three-step loop is what makes customers feel heard. The escalation call alo
 ## Where to go next
 
 - [Workflows](/workflows) — the general shape this is an instance of
-- [Linear integration](/integrations/linear) — the single-tool version of this workflow for Linear
-- [Cursor integration](/integrations/cursor) — for tickets that flow into coded prototypes
+- [Linear integration](/integrations/overview#linear) — the single-tool version of this workflow for Linear
+- [Cursor integration](/integrations/overview#cursor) — for tickets that flow into coded prototypes
 - [Templates](/earmark-basics/templates) — the built-in `Ticket Generator` and other engineering-output templates
 - [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
 - [Composer](/using-earmark/composer) — for tuning the prompt before saving as a workspace template
