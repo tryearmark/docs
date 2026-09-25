@@ -1,6 +1,6 @@
 ---
 title: "Structured meeting notes"
-description: "Turn every working meeting into a durable record of what was discussed, decided, committed to, and still open"
+description: "Turn recurring working meetings into a durable record of what was discussed, decided, committed to, and still open, meeting after meeting."
 keywords: ["meeting notes", "structured notes", "decision log", "action items", "open questions", "workflow", "agenda"]
 ---
 
@@ -171,7 +171,7 @@ This is the highest-leverage step in the whole workflow. The checklist:
 <Step title="Route the outputs">
 Send the artifact to the destinations you picked when you set this up:
 
-- **Todos** → your task system. The [Linear integration](/integrations/linear) generates one ticket per todo with a link back to the artifact; for other task tools, paste.
+- **Todos** → your task system. The [Linear integration](/integrations/overview#linear) generates one ticket per todo with a link back to the artifact; for other task tools, paste.
 - **Decisions** → your decision log (a Notion page, a Confluence space, an internal wiki — whatever your team uses).
 - **Open questions** → the next meeting's calendar invite, as agenda items.
 - **Shareable summary** → the Slack channel or email list for that meeting series.
@@ -211,7 +211,7 @@ And at the bottom:
 ```
 
 <Note>
-Earmark refines artifacts within a single meeting — it doesn't automatically pull last meeting's todos into this one. The way to make the continuity loop work today is to paste last meeting's todos and open questions into the **Customize context** dialog before this meeting starts. The template instructs the model to use that context as the status section.
+Templates work within a single meeting — the template doesn't pull last meeting's todos into this one on its own. To make the continuity loop work, paste last meeting's todos and open questions into the **Customize context** dialog before this meeting starts. The template instructs the model to use that context as the status section. To gather them without copying by hand, ask [Chat](/earmark-basics/chat): *"List the open todos and open questions from last week's leadership sync."*
 </Note>
 
 ### High-stakes decision meetings
@@ -264,14 +264,15 @@ Heavier than the universal template. Use it only when the decision is the point 
 
 ## What this workflow doesn't do
 
-Earmark generates and refines artifacts inside a single meeting. Cross-meeting state — pulling last week's todos into this week's artifact automatically, or maintaining a running decision log inside Earmark — is not a one-click feature today.
+Earmark generates and refines artifacts inside a single meeting. The template won't pull last week's todos into this week's artifact automatically, and it doesn't keep a running decision log for you.
 
 The way to make these work in practice:
 
 - **Continuity between recurring meetings:** the artifact owner pastes last meeting's todos and open questions into the **Customize context** dialog before the call. The template uses that context as the status section.
 - **A running decision log:** keep it as a separate page in your wiki of choice (Notion, Confluence, a single internal page). After each meeting, copy that meeting's decisions into the log with a link back to the artifact.
-- **Searching across meetings:** the [command menu](/earmark-basics/command-menu) (`Cmd+K` / `Ctrl+K`) is how you find "did we ever decide X" without spanning meetings.
-- **A team-wide rollup:** export [local transcript files](/earmark-basics/local-transcripts) and run external synthesis when you want a quarterly review.
+- **"Did we ever decide X?":** ask [Chat](/earmark-basics/chat). It answers across meetings with source chips back to the moment the decision was made, and a **Coverage** line showing how far back it looked. Use the [command menu](/earmark-basics/meeting-history#search-with-the-command-menu) (`Cmd+K` / `Ctrl+K`) when you only need to find and open a specific meeting.
+- **A series-level view:** add every session of a recurring meeting to a [project](/earmark-basics/projects) and ask from the project page — *"What decisions have we made?"* or *"What's the latest status?"* Share the project with the team, and everyone can ask the same questions of the same set of meetings.
+- **If you want to run your own analysis:** export [local transcript files](/earmark-basics/local-transcripts) and run external synthesis, for example a quarterly review in your own format.
 
 The repeatable template is what makes any of these durable. Without it, the destinations have nothing aggregateable to receive.
 
@@ -308,6 +309,7 @@ For a team standing this up from scratch:
 - [Workflows](/workflows) — the general shape this is an instance of
 - [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
 - [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding tasks and using Customize context for continuity
+- [Projects](/earmark-basics/projects) — keeping a recurring series together so Chat can answer across its sessions
 - [After a meeting](/using-earmark/after-a-meeting) — producing audience-specific outputs from the same transcript
 - [Customer research workflow](/workflows/customer-research-workflow) — the same skeleton, specialized for discovery and user interviews
 - [People and team meetings workflow](/workflows/people-and-team-meetings-workflow) — the same skeleton, specialized for 1:1s, skip-levels, interviews, and standups

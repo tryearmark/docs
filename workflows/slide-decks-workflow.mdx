@@ -1,6 +1,6 @@
 ---
 title: "Slide decks"
-description: "Convert strategy discussions, status reviews, customer conversations, and exec briefings into slide-by-slide deck content — with narrative arc, speaker notes, and supporting evidence — ready for visual layout"
+description: "Turn strategy discussions, status reviews, and customer calls into slide-by-slide deck content with a narrative arc, speaker notes, and evidence."
 keywords: ["slide deck", "presentation", "pitch deck", "board deck", "sales deck", "strategy deck", "workflow"]
 ---
 
@@ -466,17 +466,21 @@ The content and design phases should be distinct. Finalize content in a document
 
 ## Multi-meeting synthesis
 
-Many decks draw from multiple source conversations. A board deck synthesizes across a quarter's worth of leadership meetings; a pitch deck pulls from customer interviews, strategy discussions, and traction reviews; an all-hands strategy deck combines exec discussions, customer signal, and team feedback. Earmark refines artifacts within a single meeting today; cross-meeting synthesis uses the standard manual workaround.
+Many decks draw from multiple source conversations. A board deck synthesizes across a quarter's worth of leadership meetings; a pitch deck pulls from customer interviews, strategy discussions, and traction reviews; an all-hands strategy deck combines exec discussions, customer signal, and team feedback.
 
-**Tag the source meetings.** When you know multiple meetings will feed a deck, tag them with a consistent identifier. Paste the relevant artifacts from each into a **Customize context** document; run the template against the assembled corpus. The output draws from all of them with attribution per section.
+**Put the source meetings in a project.** When you know multiple meetings will feed a deck, add them to a [project](/earmark-basics/projects) as they happen — a meeting can join before it starts, while it's live, or after. If teammates ran some of the source conversations, share the project so they can add theirs. Then ask from the project page: *"What did we decide this quarter, and what's still open?"* or *"Draft the narrative arc and slide headlines for a board update from these meetings."* [Chat](/earmark-basics/chat) answers with source chips, so every claim that makes it onto a slide can be traced to the meeting it came from. Treat the answer the way you treat any first draft: run the curation pass below before building slides.
 
-**Watch for contradictions.** Multi-meeting synthesis often reveals tensions — the strategy discussion said one thing; subsequent customer calls said another; the product roadmap implied one trajectory; the financial review surfaced a different reality. The deck should resolve these tensions, not paper over them. Sometimes the right move is to acknowledge the tension in the deck itself — that's often the most honest and well-received content.
+If you'd rather run the saved template, ask Chat for the substance (decisions, customer language, numbers mentioned, open risks), paste the answer into a **Customize context** document, and run the template against it.
+
+**Watch for contradictions.** Multi-meeting synthesis often reveals tensions — the strategy discussion said one thing; subsequent customer calls said another; the product roadmap implied one trajectory; the financial review surfaced a different reality. Ask the project directly: *"Where do these meetings disagree?"* The deck should resolve these tensions, not paper over them. Sometimes the right move is to acknowledge the tension in the deck itself — that's often the most honest and well-received content.
 
 **The repeated-deck pattern.** Some decks get presented to different audiences (a strategy deck that goes to the board, then leadership, then all-hands; a sales deck used across many prospects). Build a master content version from the source meetings; tailor variants for each audience by selecting and reframing slides; maintain the master as canonical with variants as projections. Faster than building each from scratch, keeps the core message consistent.
 
 **Iteration across deliveries.** A deck used repeatedly improves with use. After each delivery, note which slides landed, which didn't, what questions came up that the deck didn't anticipate, what transitions didn't work. Update the deck before the next delivery. A recurring sales deck or roadshow pitch deck gets sharper across a quarter of use.
 
-For very large multi-meeting corpora, [local transcripts](/earmark-basics/local-transcripts) and running an external agent is the alternative.
+For an annual review or a pitch that draws on older conversations, name the period (*"since January"*) or say *"all my meetings."* Check the **Coverage** line at the end of each answer to confirm the date range and how many meetings it reviewed.
+
+If you want to run your own analysis instead, export [local transcripts](/earmark-basics/local-transcripts) and run an external agent over them.
 
 ## From content to slides: the visual handoff
 
@@ -505,7 +509,7 @@ Decks worth presenting are usually worth archiving. Common destinations:
 
 For internal decks (all-hands, board, leadership), recording the actual presentation creates a complete archive — the deck shows what was presented, the recording shows how, and the Earmark sources show where the substance came from. Future viewers can navigate the full context.
 
-Source meetings stay in Earmark. Decks link back. When a future deck-builder asks *"where did this content come from?"*, the source is one click away. This is especially valuable for recurring decks — the Q4 board deck inherits content patterns from Q3, which inherits from Q2, all linked to source meetings. The team's presentation tradition becomes navigable.
+Source meetings stay in Earmark. Decks link back. When a future deck-builder asks *"where did this content come from?"*, the source is one click away. This is especially valuable for recurring decks — the Q4 board deck inherits content patterns from Q3, which inherits from Q2, all linked to source meetings. Keep one project per recurring deck (the board series, say), and next quarter's builder can start by asking it *"What's changed since the last board meeting?"* The team's presentation tradition becomes navigable.
 
 ## Closing the loop
 
@@ -547,4 +551,5 @@ Three habits.
 - [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
 - [Composer](/using-earmark/composer) — for tuning the prompt before saving as a workspace template
 - [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding the template on meetings expected to produce decks
-- [Local transcripts](/earmark-basics/local-transcripts) — for external synthesis on large multi-meeting corpora
+- [Projects](/earmark-basics/projects) — for grouping a deck's source meetings and asking questions across them
+- [Local transcripts](/earmark-basics/local-transcripts) — for running your own synthesis outside Earmark

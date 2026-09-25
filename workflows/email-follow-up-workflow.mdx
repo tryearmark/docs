@@ -1,6 +1,6 @@
 ---
 title: "Email follow-up"
-description: "Turn every customer call, partner meeting, and internal kickoff into a warm, specific, same-day follow-up email that honors what was promised and lands before the conversation cools"
+description: "Turn customer calls, partner meetings, and kickoffs into warm, specific follow-up emails that honor what was promised and go out the same day."
 keywords: ["email follow-up", "customer email", "post-meeting email", "introduction", "handoff", "workflow"]
 ---
 
@@ -39,7 +39,7 @@ Tone is the part most templates handle poorly. The template flags relationship s
 
 ### CRM, signature, and ownership
 
-For customer-facing email, the CRM is the durable record. The email lives in the recipient's inbox and your sent-mail; the CRM gets the structured trace. Common patterns: BCC a CRM email-in address (Salesforce, HubSpot, Pipedrive all support this), or manually log the email as an activity on the opportunity. Use the [Linear integration](/integrations/linear) if commitments map to tickets you'll spin up from the same conversation.
+For customer-facing email, the CRM is the durable record. The email lives in the recipient's inbox and your sent-mail; the CRM gets the structured trace. Common patterns: BCC a CRM email-in address (Salesforce, HubSpot, Pipedrive all support this), or manually log the email as an activity on the opportunity. Use the [Linear integration](/integrations/overview#linear) if commitments map to tickets you'll spin up from the same conversation.
 
 Every follow-up ends with your signature — your name, role, company, contact, calendar link. The model shouldn't generate this; keep a fixed signature you append. The template ends with a placeholder so you add it explicitly. This also gives you a last chance to confirm the email is going to the right person under the right name.
 
@@ -347,11 +347,13 @@ For customers you talk to weekly or biweekly, the follow-up becomes part of an o
 - **Track commitments across meetings.** *"I owed you the analysis from two weeks ago — here it is, finally."* Better than pretending the commitment didn't exist.
 - **Update on prior asks.** *"Following up on the question you raised about Y — here's what I learned."* Closes loops the customer is tracking even if you weren't.
 
+You don't have to hold that history in your head. Click **Chat** in the meeting's header and ask *"Did this come up in the previous meeting?"*, or ask [Chat](/earmark-basics/chat) *"What have I promised Acme across our last few calls, and what's still open?"* The answer cites each call, so you can check the exact wording before you reference it in an email. If you keep a [project](/earmark-basics/projects) per customer, ask from the project page and Chat stays on that customer's calls.
+
 The template adapts well if you tell it: add to the prompt *"This is an ongoing weekly conversation; cut the preamble and focus on what's new and what's open."* The output gets noticeably tighter.
 
 ### Multi-meeting consolidation
 
-For implementation engagements with several customer touchpoints in a short window, a single consolidated update sometimes beats three separate recaps. The cross-meeting synthesis is the same workaround as everywhere else: paste the relevant artifacts from the source meetings into a Customize-context document, then run the customer-follow-up template against the assembled material. Earmark refines artifacts within a single meeting today; cross-meeting generative synthesis is manual assembly.
+For implementation engagements with several customer touchpoints in a short window, a single consolidated update sometimes beats three separate recaps. Put the engagement's calls in one [project](/earmark-basics/projects) and ask from the project page: *"What did we cover and commit to across these calls, and what's still open on each side?"* Draft the email from that answer, or paste it into a **Customize context** document and run Template A against it. Either way, the personalization pass still applies: confirm each commitment against its source chip before it goes in an email.
 
 ## Closing the loop
 
@@ -361,7 +363,7 @@ Three habits that make follow-up emails work as part of an ongoing relationship 
 
 **Honor every commitment in the email.** The email made commitments. If it said *"I'll send the ROI analysis by Thursday,"* the analysis goes by Thursday. The reliability of follow-up emails as trust-building artifacts depends entirely on whether the commitments in them get honored. After sending the email, immediately add the commitments to your task system with due dates. Don't trust your memory. The [action items workflow](/workflows/action-items-workflow) covers the personal task-tracking side; commitments that affect engineering work belong in the [tickets workflow](/workflows/meeting-to-tickets-workflow).
 
-**Reference prior emails in future emails.** Two emails into a relationship, refer to the first. Five emails in, reference the arc. This is how a sequence of follow-ups becomes a relationship rather than a series of transactions. *"When we first spoke in February, you mentioned X. Here's how that's evolving…"* — the customer feels the continuity. Use the [command menu](/earmark-basics/command-menu) (`Cmd+K` / `Ctrl+K`) to find prior conversations when assembling the reference.
+**Reference prior emails in future emails.** Two emails into a relationship, refer to the first. Five emails in, reference the arc. This is how a sequence of follow-ups becomes a relationship rather than a series of transactions. *"When we first spoke in February, you mentioned X. Here's how that's evolving…"* — the customer feels the continuity. Use the [command menu](/earmark-basics/meeting-history#search-with-the-command-menu) (`Cmd+K` / `Ctrl+K`) to jump to a prior conversation by title, or ask [Chat](/earmark-basics/chat) *"What did Acme say about X when we first spoke in February?"* to get the answer with a source. Name the month so Chat looks back far enough.
 
 ## Common pitfalls
 
@@ -385,6 +387,7 @@ Three habits that make follow-up emails work as part of an ongoing relationship 
 - [Shareable summaries workflow](/workflows/shareable-summaries-workflow) — for the broader audience-aware output pattern (Slack, exec, external — this page is the deeper treatment of external email)
 - [Sales calls workflow](/workflows/sales-calls-workflow) — for the deal-context layer that informs sales-related follow-ups
 - [Customer research workflow](/workflows/customer-research-workflow) — for capturing the customer signal that follow-up emails reference
+- [Projects](/earmark-basics/projects) — for keeping each customer's calls together so Chat can answer across them
 - [Action items workflow](/workflows/action-items-workflow) — for tracking your personal commitments after the email is sent
 - [Meeting-to-tickets workflow](/workflows/meeting-to-tickets-workflow) — when commitments in the email map to engineering work
 - [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions

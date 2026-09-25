@@ -19,12 +19,12 @@ This workflow handles material the other workflows do not — performance concer
 
 > *"I use Earmark to take notes on our 1:1s so I can be present in the conversation and keep continuity from week to week. The recording stays in my workspace and is private to me until I share it. I'll send you the structured notes after each meeting. If you ever want a moment off-record, tell me and I'll stop. If you want past artifacts deleted, ask and I will."*
 
-Then live by it. Honor "let's go off-record" immediately. For sessions you want captured without keeping long-term, use [temporary meetings](/earmark-basics/temporary-meetings) — the meeting auto-purges after the retention window. For some conversations, don't record at all: compensation delivery, terminations, mental health discussions. Presence matters more than artifact for these.
+Then live by it. Honor "let's go off-record" immediately. For sessions you want captured without keeping long-term, use [temporary meetings](/earmark-basics/temporary-meetings) — the meeting isn't kept, so Chat can't draw on it later. For some conversations, don't record at all: compensation delivery, terminations, mental health discussions. Presence matters more than artifact for these.
 </Warning>
 
 Two structural properties of Earmark make this workflow safer than it might otherwise be. Both are worth knowing before you start:
 
-- **Workspace isolation.** Meeting content is private per user — your 1:1 artifacts are not visible to anyone else in your workspace unless you share them. See [Security and privacy](/security-and-privacy).
+- **Workspace isolation.** Meeting content is private per user — your 1:1 artifacts are not visible to anyone else in your workspace unless you share them. That includes Chat: a teammate's Chat never uses your meetings unless you add them to a shared [project](/earmark-basics/projects). Keep 1:1s out of shared projects. See [Security and privacy](/security-and-privacy).
 - **No training on your data.** Earmark does not use your transcripts to train models.
 
 The shareable artifact is one thing; your private observations are another. The artifact contains what's appropriate to share with the report. Your private read on someone's career trajectory, performance concerns you're forming, hypotheses you haven't tested — those live in a separate notes surface, not the shared artifact. The cleanup step below is where you enforce that boundary.
@@ -157,6 +157,9 @@ In writing. Standing consent applies after that, but honor any "let's go off-rec
 <Step title="Pre-seed the meeting">
 Add the saved 1:1 template as a task. For recurring 1:1s, attach it once to the calendar series. See [Before a meeting](/using-earmark/before-a-meeting).
 </Step>
+<Step title="Prep from past 1:1s">
+The day before, open [Chat](/earmark-basics/chat) and ask *"Help me prepare for my 1:1 with Priya tomorrow using our past 1:1s."* With your [calendar connected](/getting-started/calendar), Chat pairs the upcoming 1:1 with your earlier ones. Ask it for the open threads and both sides' commitments, and each comes back with a source. It's the fastest way into the continuity loop below.
+</Step>
 <Step title="Use Customize context for continuity">
 Before the call, paste the **Open threads** and **What we're bringing to next 1:1** sections from last week's artifact into the **Customize context** dialog. The template will use them to produce the **Follow-up from last 1:1** section automatically.
 </Step>
@@ -168,7 +171,7 @@ Within the hour:
 
 - **Move sensitive content out.** If anything in the artifact is too sensitive to share with the report (a performance concern you're forming, something confidential you mentioned in error), reframe it or move it to your private notes.
 - **Strip inferred emotional states.** "Priya seemed frustrated about X" is the model interpreting. If she said "this is frustrating," keep that as a quote. Otherwise, cut the editorial.
-- **Confirm the Open threads section.** This is what carries to next week. Add anything the model missed.
+- **Confirm the Open threads section.** This is what carries to next week. Add anything the model missed. If you're not sure whether a thread is new, click **Chat** in the meeting header and ask *"Did this come up in the previous meeting?"*
 - **Confirm commitments.** Each side's commitments are explicit, with deadlines.
 </Step>
 <Step title="Share with the report — same day">
@@ -302,17 +305,15 @@ Headline the most important update or blocker.
 
 The Slack-postable summary is the part most teams actually use. Don't over-curate.
 
-## What this workflow doesn't do
+## Working across many 1:1s
 
-The biggest cross-meeting moves managers want — **performance review prep**, **promotion case building**, **interview calibration across a hiring loop**, **disengagement detection across a quarter of 1:1s** — all require synthesizing across many meetings. Earmark refines artifacts within a single meeting today; cross-meeting synthesis is not a one-click action.
+The biggest moves managers want — **performance review prep**, **promotion case building**, **interview calibration across a hiring loop**, **disengagement detection across a quarter of 1:1s** — all draw on many meetings. Ask [Chat](/earmark-basics/chat) from the sidebar. It searches the meetings you recorded, cites each one, and ends with a **Coverage** line showing the date range and how many meetings it reviewed. Check that count against the 1:1s you actually had. Name the review period when you ask. Your chats are private to you.
 
-Workarounds:
-
-- **Performance review prep.** Manually compile the **Open threads**, **Commitments**, and **Career notes** sections from each 1:1 over the review period into a single context document. Run a synthesis task in Earmark using that document as input. Lower-effort than full transcript export; works.
-- **Promotion case building.** Same pattern as performance review prep, oriented to the competencies at the target level. The structure of the 1:1 template (specific moments, verbatim quotes, growth notes) gives you the raw material a defensible case needs.
-- **Interview calibration across a loop.** Paste each interviewer's **Scorecard-ready notes** into a single calibration document and run a synthesis prompt that highlights where interviewers aligned and where they diverged.
-- **Disengagement detection.** The hardest one to do today. Export [local transcript files](/earmark-basics/local-transcripts) for the report's 1:1s over the period and run external synthesis, or — and this works better than it sounds — manually scan the last quarter's artifacts. The structure of the template (topics tagged by who raised them, open threads carried forward) makes the patterns visible to a careful reader.
-- **Search across past 1:1s** with the [command menu](/earmark-basics/command-menu) (`Cmd+K` / `Ctrl+K`) when you want to find when a specific topic was first raised.
+- **Performance review prep.** *"Across my 1:1s with Priya since January, list her open threads, the commitments each of us made and whether they closed, and anything that touched on growth or feedback. Cite each meeting."* Then read the sources before anything goes into the review. The synthesis gives you the material; the assessment is yours.
+- **Promotion case building.** Same pattern, oriented to the competencies at the target level. Ask for specific moments and her own words. The structure of the 1:1 template (specific moments, verbatim quotes, growth notes) is what makes those answers precise.
+- **Interview calibration across a loop.** Each interviewer adds their interview to a shared project for the loop, and project chat synthesizes across them. See the [hiring workflow](/workflows/hiring-workflow).
+- **Disengagement detection.** Ask about what was said, not how anyone felt: *"Over my last quarter of 1:1s with Priya, which topics did she raise each time, and which threads have stayed open for more than three meetings?"* Then read the artifacts it cites. A pattern is a reason for a conversation, not a conclusion. If you'd rather run your own analysis, export [local transcript files](/earmark-basics/local-transcripts) for the period.
+- **Find a specific past 1:1** with the [command menu](/earmark-basics/meeting-history#search-with-the-command-menu) (`Cmd+K` / `Ctrl+K`). To find when a topic first came up, ask Chat, and say "ever" so it searches your full history: *"When did Priya first raise the principal track, ever?"*
 
 ## Common pitfalls
 
@@ -321,7 +322,8 @@ Workarounds:
 - **Sharing the artifact selectively.** The 1:1 artifact is a shared resource. Sometimes-sharing destroys trust faster than not-sharing at all. Pick one (always share) and commit.
 - **Private observations leaking into the shared artifact.** The model has no way to know what is private. The cleanup is where you enforce the boundary.
 - **Skipping the continuity loop.** Without reviewing open threads at the top of every 1:1, the workflow becomes a more efficient version of forgetfulness.
-- **Performance reviews written from recent memory anyway.** If you have six months of artifacts and still write the review from the past three weeks, you have defeated the purpose. Run the manual synthesis first.
+- **Performance reviews written from recent memory anyway.** If you have six months of artifacts and still write the review from the past three weeks, you have defeated the purpose. Ask Chat across the whole review period first.
+- **Adding 1:1s to a shared project.** Everyone in a project can ask Chat about its meetings and see short excerpts. Keep 1:1s and skip-levels out of shared projects entirely; interviews go only in their own loop's project.
 - **Vague interview scorecards.** "Smart, good fit" is not interview signal. Force evidence-grounded language.
 - **Sharing skip-level signal with the skip's manager.** Unless explicitly consented to. Skip-levels rely on confidentiality.
 - **Letting the workflow become surveillance.** The point is to support the relationship, not monitor the report. If you notice yourself using the artifacts for control rather than care, something has gone wrong.
@@ -330,6 +332,7 @@ Workarounds:
 ## Where to go next
 
 - [Workflows](/workflows) — the general shape this is an instance of
+- [Chat](/earmark-basics/chat) — prep from past 1:1s and synthesis across a review period
 - [Temporary meetings](/earmark-basics/temporary-meetings) — for sessions you want to capture without keeping
 - [Security and privacy](/security-and-privacy) — workspace isolation, no training on your data, retention controls
 - [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions

@@ -1,0 +1,133 @@
+---
+title: "Chat"
+description: "Ask Earmark Chat questions across your meetings and get answers with sources. Prep for upcoming meetings, chat with a live meeting, and share answers."
+keywords: ["chat", "ask questions", "meeting search", "AI search", "meeting chat", "meeting prep", "weekly recap", "citations"]
+---
+
+import { Showcase } from "/snippets/showcase.jsx";
+
+
+## What it does
+
+Chat answers questions about your meetings. Ask about a decision from last month, what a customer asked for, or how to prepare for tomorrow. Earmark searches your meetings, shows its research as it works, and answers with sources that link back to what was actually said.
+
+Open **Chat** from the sidebar, on web or desktop.
+
+<Showcase
+  src="/images/chat/chat-home.png"
+  alt="The Chat home page with the heading What should we work on?, a question box, three suggestions, and a list of recent chats."
+/>
+
+## Things to try
+
+- **"What did we decide about pricing last month?"** Search across all your meetings, not just the one you're in.
+- **"Help me prepare for tomorrow using my past meetings."** Pair your upcoming calendar with what was said before.
+- **"What did I say about the launch date?"** Find your own words on desktop recordings.
+- **"What are my action items from today?"** Pull commitments out of the day's meetings.
+- **"Give me a recap of my meetings this week."** Catch up in a few paragraphs.
+
+## How answers work
+
+- **Research steps.** While Chat works, you see each step, like **Searching Earmark** and reading transcripts. Expand a step to see which meetings it looked at.
+- **Sources.** Answers cite meetings with source chips. Hover over a chip to preview the excerpt, and click it to jump to that moment in the meeting.
+- **Coverage.** Answers about your meetings end with a **Coverage** line that says which date range Chat searched and how many meetings it reviewed, so you know how complete the answer is.
+
+<Showcase
+  src="/images/chat/answer-with-sources.png"
+  alt="A Chat answer listing Chotchkie's rollout requirements, with source chips after each point, a Coverage line, and answer actions."
+/>
+
+Chat can make mistakes. Check important details against the source.
+
+## Chat with a meeting
+
+Open a live or finished meeting and click **Chat** in the header. A chat window opens that you can move and resize.
+
+- Ask about just this meeting: "What's being discussed right now?"
+- Connect it to earlier ones: "Did this come up in the previous meeting?"
+- Ask for an artifact: "Create an artifact that lists every open question."
+
+During a live meeting, Chat reads the conversation so far. Click **Open full chat** to continue at full size.
+
+<Note>
+Meeting chat isn't available in [temporary meetings](/earmark-basics/temporary-meetings).
+</Note>
+
+<Showcase
+  src="/images/chat/meeting-chat.png"
+  maxWidth="360px"
+  alt="The meeting chat window answering a question about the Chotchkie's QBR meeting, with research steps, sources, and a Coverage line."
+/>
+
+## Prepare for upcoming meetings
+
+With your [calendar connected](/getting-started/calendar), Chat can look up to two weeks ahead in Google Calendar or Outlook. Ask "Help me prepare for my meetings tomorrow" and it pairs each upcoming event with what was said in related past meetings.
+
+## Chat with a project
+
+Start a chat from a [project](/earmark-basics/projects) page to focus Chat on that project's meetings, including the ones teammates shared. Answers also follow the project's instructions.
+
+## Who said what
+
+Desktop recordings keep your microphone separate from everyone else, so questions like "What did I say?" find your words. Chat can't always tell exactly who the other speakers were. When it's making an educated guess, it says so. Web recordings and older desktop recordings aren't separated by speaker.
+
+## Share and reuse answers
+
+Hover over an answer to see its actions:
+
+| Action | What it does |
+| --- | --- |
+| **Copy** | Copies the answer with its lists, links, and formatting, minus the source chips. For answers with tables, choose **Copy for documents** for Docs and Word, or **Copy for chat** for Slack and Teams. |
+| **Copy as image** | Turns your question and the answer into an image with your name on it, ready to paste into Slack or a slide |
+| **Handoff to Claude Cowork** or **Handoff to Codex** | Opens your question and the answer in that app so you can keep working |
+| **More detail** | Asks Chat to expand on its last answer |
+| **Helpful** or **Not helpful** | Tells us how the answer landed |
+
+<Showcase
+  src="/images/chat/copy-as-image.png"
+  maxWidth="420px"
+  alt="An image made with Copy as image: the question, Chat's answer with sources, and a Shared by footer with the Earmark logo."
+  caption="What Copy as image creates"
+/>
+
+## More things Chat can do
+
+- **Look things up on the web.** Ask about public or current information and Chat can search the web. Your meeting content is never sent to web search.
+- **Manage your templates.** Ask Chat to find a [custom template](/customization/custom-templates), or turn a format into a new one. New templates are private unless you ask to share them with your workspace.
+
+## Your week in Earmark
+
+Once you've been using Earmark for a week, the home page shows **Your week in Earmark**. Click **View recap** for a playful look at your past week: work patterns, favorite phrases, your communication style, and a light roast. Close the banner to hide it.
+
+<Showcase
+  src="/images/chat/weekly-recap-banner.png"
+  alt="The Your week in Earmark banner with a View recap button."
+/>
+
+## Find past chats
+
+- The Chat home page lists your most recent chats. Click **More**, or the **Recent chats** button in the header, to see your full history.
+- Click **New chat** in the header to start fresh.
+- To see chats in the sidebar, open the menu next to the recents heading and choose **Chats** or **Mixed**.
+
+## What Chat can see
+
+- Meetings you recorded, and meetings shared with you through [projects](/earmark-basics/projects). Chat never uses teammates' meetings that haven't been shared with you.
+- [Temporary meetings](/earmark-basics/temporary-meetings) aren't saved, so Chat can't use them later.
+- Your chats are private to you, and separate in each workspace.
+
+Earmark doesn't use your meetings or chats to train AI models. See [Security and privacy](/security-and-privacy).
+
+## FAQs
+
+<AccordionGroup>
+  <Accordion title="Why didn't Chat find an older meeting?">
+    Name the period you mean, like "since January", or say "search all my meetings". Check the **Coverage** line to see which dates Chat searched.
+  </Accordion>
+  <Accordion title="Can Chat see my teammates' meetings?">
+    Only the ones they've added to a project you're in. Everything else stays private to the person who recorded it.
+  </Accordion>
+  <Accordion title="Can I click through to a teammate's meeting from a source chip?">
+    You can preview the excerpt, but only the person who recorded a meeting can open it.
+  </Accordion>
+</AccordionGroup>

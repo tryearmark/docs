@@ -2,6 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "Earmark",
+  "description": "Earmark is a botless AI meeting assistant for macOS, Windows, and the web. Learn to capture meetings, ask questions across them with Chat, and turn conversations into finished work.",
   "colors": {
     "primary": "#059669",
     "light": "#34d399",
@@ -41,27 +42,19 @@
             "icon": "book-open",
             "pages": [
               "earmark-basics/transcription",
+              "earmark-basics/auto-end",
+              "earmark-basics/chat",
+              "earmark-basics/projects",
               "earmark-basics/transcript-import",
               "earmark-basics/artifacts",
               "earmark-basics/pins",
               "earmark-basics/live-widget",
               "earmark-basics/templates",
-              "earmark-basics/command-menu",
               "earmark-basics/meeting-history",
               "earmark-basics/temporary-meetings",
               "earmark-basics/local-transcripts",
               "earmark-basics/workspaces",
-              {
-                "group": "Integrations",
-                "expanded": false,
-                "pages": [
-                  "integrations/overview",
-                  "integrations/cursor",
-                  "integrations/linear",
-                  "integrations/v0",
-                  "integrations/codex"
-                ]
-              }
+              "integrations/overview"
             ]
           },
           {
@@ -80,9 +73,7 @@
             "icon": "sliders",
             "pages": [
               "customization/personalization",
-              "customization/capture",
-              "customization/custom-templates",
-              "customization/multilingual"
+              "customization/custom-templates"
             ]
           },
           {
@@ -91,8 +82,7 @@
             "pages": [
               "troubleshooting/live-transcription",
               "troubleshooting/app-disconnected",
-              "troubleshooting/desktop-deep-linking",
-              "troubleshooting/capture-session-limit"
+              "troubleshooting/desktop-deep-linking"
             ]
           },
           {
@@ -211,6 +201,38 @@
   },
   "redirects": [
     {
+      "source": "/integrations/cursor",
+      "destination": "/integrations/overview#cursor"
+    },
+    {
+      "source": "/integrations/linear",
+      "destination": "/integrations/overview#linear"
+    },
+    {
+      "source": "/integrations/v0",
+      "destination": "/integrations/overview#v0"
+    },
+    {
+      "source": "/integrations/codex",
+      "destination": "/integrations/overview#codex"
+    },
+    {
+      "source": "/customization/capture",
+      "destination": "/earmark-basics/live-widget"
+    },
+    {
+      "source": "/customization/multilingual",
+      "destination": "/earmark-basics/transcription#language-support"
+    },
+    {
+      "source": "/earmark-basics/command-menu",
+      "destination": "/earmark-basics/meeting-history#search-with-the-command-menu"
+    },
+    {
+      "source": "/troubleshooting/capture-session-limit",
+      "destination": "/earmark-basics/auto-end#recording-limits"
+    },
+    {
       "source": "/using-earmark/workflows",
       "destination": "/workflows"
     },
@@ -316,11 +338,29 @@
       "robots": "index, follow",
       "language": "en",
       "category": "Technology"
+    },
+    "organization": {
+      "id": "https://www.tryearmark.com/#organization",
+      "name": "Earmark",
+      "url": "https://www.tryearmark.com",
+      "logo": "https://docs.tryearmark.com/logo/dark.png",
+      "sameAs": [
+        "https://www.linkedin.com/company/earmark-ai/",
+        "https://x.com/earmark_ai",
+        "https://www.instagram.com/earmark.ai/"
+      ]
     }
   },
   "footer": {
     "socials": {
       "website": "https://www.tryearmark.com"
     }
+  },
+  "markdown": {
+    "instructions": [
+      "Earmark is a botless AI meeting assistant: it captures meetings from the user's own device, with no bot joining the call, and turns conversations into artifacts, answers, and follow-ups.",
+      "For questions across many meetings, point people to Chat (https://docs.tryearmark.com/earmark-basics/chat) and Projects (https://docs.tryearmark.com/earmark-basics/projects). For data handling, cite Security and privacy (https://docs.tryearmark.com/security-and-privacy).",
+      "Only describe capabilities documented on these pages."
+    ]
   }
 }

@@ -1,6 +1,6 @@
 ---
 title: "Meeting-to-PRD"
-description: "Convert customer discovery, feature kickoffs, design reviews, and technical discussions into the document engineering actually builds from — one-pager, full PRD, or technical spec"
+description: "Turn discovery calls, kickoffs, design reviews, and technical discussions into a one-pager, full PRD, or technical spec engineers can build from."
 keywords: ["PRD", "spec", "one-pager", "product requirements", "technical spec", "design doc", "workflow"]
 ---
 
@@ -38,7 +38,7 @@ If your team uses Amazon-style six-pagers, FAQ-led PRDs, or an RFC format, subst
 | Strategy / roadmap discussion | One-pager for the bet being made |
 | Leadership review / sponsor meeting | Updates to existing PRDs |
 
-A full PRD frequently draws from multiple meetings. The synthesis section below covers how to handle that today.
+A full PRD frequently draws from multiple meetings. The synthesis section below covers how to pull them together.
 
 ### Audiences and destination
 
@@ -215,7 +215,7 @@ Items raised but not resolved. Should converge to zero before build.
 
 The **Stakeholder sign-offs** section is the part most PRDs skip and most teams quietly regret skipping. When ambiguity later emerges about who agreed to what, the section is the answer. Treat it as load-bearing.
 
-The PRD usually draws from multiple meetings. See the multi-meeting synthesis section below for how to do that today.
+The PRD usually draws from multiple meetings. See the multi-meeting synthesis section below for how to run it across all of them.
 
 ### Template C — Technical spec / engineering design doc
 
@@ -403,18 +403,18 @@ Teams that skip the one-pager get full PRDs written for projects that shouldn't 
 
 A full PRD rarely comes from a single meeting. It typically draws from one to three customer discovery meetings, one to two feature kickoffs, one to two design reviews, a technical scoping meeting, and a stakeholder review.
 
-The challenge: producing a coherent PRD from a corpus of conversations spread across weeks. Earmark refines artifacts within a single meeting today; cross-meeting generative synthesis is not a one-click action.
+The challenge: producing a coherent PRD from a corpus of conversations spread across weeks. The way to do it is a [project](/earmark-basics/projects) for the feature, with [Chat](/earmark-basics/chat) doing the synthesis:
 
-The workaround:
+- **Give the feature a project.** Add each source meeting as it happens; meetings can join before they start, while live, or after. Use the [command menu](/earmark-basics/meeting-history#search-with-the-command-menu) (`Cmd+K` / `Ctrl+K`) or **Search meetings** on the **Meetings** page to find older ones. You can only add meetings you recorded, so **Share** the project with the tech lead and designer and ask them to add the reviews and scoping sessions they ran.
+- **Put your PRD format in the project's instructions.** In **Project settings**, add your team's required sections to **Instructions**, so drafts in the project follow them.
+- **Run Template B in project chat.** From the project page, paste Template B into the chat box. The answer draws across the project's meetings, cites them with source chips, and ends with a **Coverage** line showing how many meetings were reviewed.
+- **Ask for decisions directly.** *"What decisions have we made on the import flow, and in which meeting?"* is a faster check on the draft's decided / proposed / open markings than rereading every artifact.
 
-- **Tag the source meetings.** Either with a project name in their Earmark titles, or in a running list. The synthesis will work against a defined corpus.
-- **Manual context assembly.** Pull the relevant artifacts (or transcript excerpts) from each source meeting into a single Customize-context document. Run Template B against the assembled document. The output draws from all of them with attribution per section.
-- **Use the [command menu](/earmark-basics/command-menu)** (`Cmd+K` / `Ctrl+K`) to surface the right source meetings when assembling the corpus.
-- **Local transcript export** if you want to run an external agent across many meetings for the synthesis ([local transcript files](/earmark-basics/local-transcripts)).
+If you'd rather run your own synthesis, the older paths still work: paste the relevant artifacts from each source meeting into a single **Customize context** document and run Template B as a task, or export [local transcript files](/earmark-basics/local-transcripts) and run an external agent across them.
 
-The most useful signal from multi-meeting synthesis is **contradiction**. The customer described the problem one way; the internal kickoff framed it differently. The design review proposed a solution shape the technical scoping says is infeasible. The stakeholder review approved a direction that customer follow-ups have since complicated. These contradictions are the most important content the PRD can surface. Either they get resolved (and the resolution is captured) or they remain open (and the PRD makes the openness explicit). A PRD that papers over real contradictions ships a project that runs into them later, more expensively.
+The most useful signal from multi-meeting synthesis is **contradiction**. The customer described the problem one way; the internal kickoff framed it differently. The design review proposed a solution shape the technical scoping says is infeasible. The stakeholder review approved a direction that customer follow-ups have since complicated. These contradictions are the most important content the PRD can surface. Either they get resolved (and the resolution is captured) or they remain open (and the PRD makes the openness explicit). A PRD that papers over real contradictions ships a project that runs into them later, more expensively. Ask project chat for them directly: *"Where do the customer calls and the kickoff describe the problem differently?"*
 
-Use Template D after every meaningful project-related meeting to keep the PRD current. The PRD becomes a living artifact — v1 from the one-pager, v2 incorporating design review feedback, v3 incorporating technical scoping, and so on, each with a change log.
+Use Template D after every meaningful project-related meeting to keep the PRD current, and add that meeting to the project so later questions include it. The PRD becomes a living artifact — v1 from the one-pager, v2 incorporating design review feedback, v3 incorporating technical scoping, and so on, each with a change log.
 
 ## Doc tool conventions and the PRD → tickets bridge
 
@@ -440,7 +440,7 @@ Don't treat the PRD as a write-once artifact. As the project moves through desig
 
 At ship, the PRD should reflect what actually shipped — not the original proposal. This is the artifact future readers will need.
 
-Within a month of shipping, run a brief retrospective using the PRD as the substrate: Did we ship what the PRD specified? Where did we drift, and why? Did the success metrics move? Were the risks accurate? What did we learn that should update our future PRDs?
+Within a month of shipping, run a brief retrospective using the PRD as the substrate: Did we ship what the PRD specified? Where did we drift, and why? Did the success metrics move? Were the risks accurate? What did we learn that should update our future PRDs? If the feature's meetings are in a project, project chat can list the decisions made after the PRD was approved, which is usually where the drift started.
 
 ## Common pitfalls
 
@@ -465,6 +465,8 @@ Within a month of shipping, run a brief retrospective using the PRD as the subst
 - [Meeting-to-tickets workflow](/workflows/meeting-to-tickets-workflow) — for the handoff from PRD to tracker
 - [Meeting-to-prototype workflow](/workflows/meeting-to-prototype-workflow) — for visual prototyping that often happens between one-pager and PRD
 - [Structured meeting notes workflow](/workflows/structured-meeting-notes-workflow) — for the design reviews and scoping meetings that update PRDs
+- [Projects](/earmark-basics/projects) — for keeping a feature's meetings together and sharing them with the team
+- [Chat](/earmark-basics/chat) — for running the PRD synthesis across those meetings
 - [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
 - [Composer](/using-earmark/composer) — for tuning the prompt before saving as a workspace template
 - [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding the template on kickoffs and discovery

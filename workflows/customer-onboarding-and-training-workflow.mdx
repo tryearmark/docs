@@ -1,6 +1,6 @@
 ---
 title: "Customer onboarding and training"
-description: "Convert customer training sessions, implementation workshops, and onboarding calls into the structured follow-up artifact that keeps every commitment, configuration need, feature request, and documentation gap from quietly slipping through"
+description: "Turn onboarding calls and training sessions into follow-ups that track every commitment, configuration need, feature request, and documentation gap."
 keywords: ["customer onboarding", "implementation", "training", "EIC", "follow-ups", "customer success", "workflow"]
 ---
 
@@ -76,7 +76,7 @@ The artifact has multiple audiences; the destinations vary:
 | The implementation team | Per-customer tracking doc (Notion, Coda) or CSM platform (Gainsight, ChurnZero, Vitally, Catalyst) |
 | Product team | Productboard, Jira Product Discovery, or whatever your product feature-request system is |
 | Documentation team | Documentation backlog (Notion, GitHub Issues, internal queue) |
-| Engineering team | Tickets in [Linear](/integrations/linear), Jira, or GitHub via the [meeting-to-tickets workflow](/workflows/meeting-to-tickets-workflow) |
+| Engineering team | Tickets in [Linear](/integrations/overview#linear), Jira, or GitHub via the [meeting-to-tickets workflow](/workflows/meeting-to-tickets-workflow) |
 | CRM | Customer's account record with implementation status |
 
 The workflow's value scales with how cleanly these handoffs work. An item categorized correctly but routed nowhere is functionally the same as an item not captured. Wire the destinations before standing the workflow up.
@@ -88,6 +88,17 @@ The trainer who ran the session owns the cleanup and routing. Always.
 For sessions with multiple trainers from your side (a CSM, an EIC, and a solutions engineer on the same call), one of them owns the artifact — usually the relationship lead.
 
 For team-wide pattern detection, the implementation team lead or training lead owns the cross-customer synthesis cadence.
+
+### One project per customer
+
+Give every customer implementation its own [project](/earmark-basics/projects) and put every session in it, kickoff through hypercare. The project is what makes the cross-session views later in this guide one question instead of an afternoon of copy-paste.
+
+- **Share it with everyone on your side** who runs sessions with that customer (CSM, EIC, solutions engineer) as **Collaborators**, plus the implementation lead. Collaborators can use the project in Chat and add their own meetings.
+- **Each person adds the sessions they recorded.** You can only add meetings you created. Add a session before it starts, from the project chip next to the meeting title, so it never gets forgotten afterward.
+- **Backfill an implementation already under way** from the **Meetings** page: tick the past sessions (Shift-click for a range, up to 50), then click **Add to project** in the toolbar.
+- **Put your categorization model and the "only unresolved" rule in the project's Instructions** (under **Project settings**). Chat follows them for every question asked in the project.
+
+People in the project see each session's title, who recorded it, and when. They can't open each other's sessions, but [Chat](/earmark-basics/chat) can use them to answer questions in the project and shows short excerpts as sources.
 
 ## The four templates
 
@@ -274,13 +285,12 @@ The structure separates customer-owned items from trainer-owned items deliberate
 
 ### Template C — Customer implementation milestone synthesis
 
-For looking at one customer across all their training sessions. Run before milestones (pre-go-live, end-of-onboarding, mid-implementation review) or whenever the team needs a snapshot of where this customer stands.
+For looking at one customer across all their training sessions. Run before milestones (pre-go-live, end-of-onboarding, mid-implementation review) or whenever the team needs a snapshot of where this customer stands. Paste it as your question in the customer's project chat; it answers from every session in the project, including the ones teammates ran.
 
 ```md
-Synthesize across the training session artifacts provided for this
-customer. Produce an implementation snapshot showing where the
-customer stands now: what's been resolved, what's still open, what's
-at risk, what's coming next.
+Synthesize across this customer's training sessions. Produce an
+implementation snapshot showing where the customer stands now: what's
+been resolved, what's still open, what's at risk, what's coming next.
 
 Format:
 
@@ -354,11 +364,11 @@ This template is what the implementation team takes into pipeline reviews, miles
 
 ### Template D — Cross-customer pattern detection
 
-For the implementation team lead. Run quarterly (or monthly for higher-volume teams) across all customer implementation artifacts to surface patterns. This template uses the standard multi-meeting workaround — paste relevant artifacts from many customer sessions into Customize context, then run the template.
+For the implementation team lead. Run quarterly (or monthly for higher-volume teams) across all customer implementations to surface patterns. Paste it as your question in [Chat](/earmark-basics/chat) from the sidebar, which searches the sessions you recorded plus every session shared with you through a project. That's why the lead belongs in every customer project: sessions in projects you're not in are invisible to your Chat. Name the period you mean, and check the **Coverage** line for how many sessions it reviewed.
 
 ```md
-Synthesize across the training session artifacts provided (multiple
-customers, specified period). Identify patterns worth acting on at
+Synthesize across the training sessions from {date range}, across all
+customers. Identify patterns worth acting on at
 the team or product level.
 
 Format:
@@ -442,7 +452,9 @@ Training capture is a team standard, especially for teams with multiple trainers
 
 <Steps>
 <Step title="Pre-seed every training session">
-For trainers running multiple sessions per day, the template attachment becomes a recurring habit. Some teams set up the template as the default for the entire training calendar series; others attach per-session. Either way, set it before the session starts so the artifact is ready when the session ends. See [Before a meeting](/using-earmark/before-a-meeting).
+For trainers running multiple sessions per day, the template attachment becomes a recurring habit. Some teams set up the template as the default for the entire training calendar series; others attach per-session. Either way, set it before the session starts so the artifact is ready when the session ends. See [Before a meeting](/using-earmark/before-a-meeting). While you're there, add the session to the customer's project from the project chip next to the meeting title.
+
+On the desktop app, [Auto-end](/earmark-basics/auto-end) stops each recording once the session is over, so back-to-back sessions don't bleed into each other's queue. Sessions that run long keep recording.
 </Step>
 <Step title="State the right things during the session">
 A few habits make the categorization noticeably more accurate:
@@ -476,7 +488,7 @@ Same-day, every time:
 The routing step is where the workflow's value gets realized. Items captured but not routed are functionally the same as items not captured.
 </Step>
 <Step title="Brief the next session">
-If another team member runs the next session with this customer, share the artifact with them ahead of their session. They start with the customer's open items already in their head; the customer experiences continuity.
+If another team member runs the next session with this customer, share the artifact with them ahead of their session. They start with the customer's open items already in their head; the customer experiences continuity. They can also ask [Chat](/earmark-basics/chat) *"Help me prepare for tomorrow's session with Acme using past sessions"*: with their calendar connected, it pairs the upcoming session with past ones, including sessions teammates added to the customer's project.
 </Step>
 </Steps>
 
@@ -486,7 +498,7 @@ The "only unresolved" discipline is the discipline. Items that came up and were 
 
 ## The customer journey: cross-session synthesis per customer
 
-Single sessions are tactical. The cross-session view per customer is what the implementation team needs to manage the customer's overall trajectory. This synthesis uses the standard cross-meeting workaround — paste the relevant session artifacts for one customer into Customize context, run Template C against the assembled corpus.
+Single sessions are tactical. The cross-session view per customer is what the implementation team needs to manage the customer's overall trajectory. Run Template C in the customer's project chat. The answer cites sessions with source chips; hover one to see the excerpt it came from. Check the **Coverage** line: the meeting count should match the sessions you've run. If it's short, someone's sessions aren't in the project yet.
 
 **The weekly customer health check.** For each active customer implementation, run Template C weekly. The 15-minute output shows items still open and aging, implementation health read, risks and wins, recommendation for next session. This is the artifact the implementation manager reviews in their weekly portfolio walkthrough.
 
@@ -494,13 +506,13 @@ Single sessions are tactical. The cross-session view per customer is what the im
 
 **Stuck-implementation diagnosis.** When an implementation is dragging — sessions are happening but the customer isn't progressing — Template C surfaces why. Common patterns: customer-side actions pending too long (customer was supposed to do X three sessions ago; never did); same questions recurring (customer keeps asking variations of the same thing — diagnose understanding gap); feature gaps blocking progress (customer's use case requires capabilities the product doesn't have); stakeholder drift (initial champion has disengaged; new contact doesn't have context). Each pattern has a different remediation.
 
-**Renewal and expansion preparation.** Before a renewal conversation, run Template C across the customer's full implementation history. The artifact tells the renewal lead what was promised vs. delivered, what's still pending, where enthusiasm was strongest, where friction was raised, what stakeholders are most engaged. A renewal conversation grounded in this artifact is materially different from one grounded in memory.
+**Renewal and expansion preparation.** Before a renewal conversation, run Template C across the customer's full implementation history. Implementations often run for months, so ask for the full history explicitly. The artifact tells the renewal lead what was promised vs. delivered, what's still pending, where enthusiasm was strongest, where friction was raised, what stakeholders are most engaged. A renewal conversation grounded in this artifact is materially different from one grounded in memory.
 
 ## Cross-customer pattern detection
 
 The single most strategically valuable habit in the workflow. Most implementation teams know they have aggregate insight buried in their session artifacts; few have a systematic way to surface it.
 
-**The quarterly pattern report.** Once a quarter, the implementation lead runs Template D across the team's session artifacts (manually assembled via the standard cross-meeting workaround). The output:
+**The quarterly pattern report.** Once a quarter, the implementation lead runs Template D in Chat across every customer project they're in. The output:
 
 - Configuration questions that recurred across N customers → documentation update or self-serve build
 - Feature requests that recurred → product priority signal
@@ -515,7 +527,7 @@ This is what transforms implementation from a reactive function into a feedback 
 
 **Cross-functional handoffs.** Patterns surfaced through the workflow need to land somewhere actionable. Product: feature-request patterns feed Productboard, JPD, or your product intake. Documentation: gap patterns feed the docs team's quarterly backlog. Engineering: bug patterns feed engineering triage. Training enablement: trainer behavior or customer friction patterns feed the training improvement queue. Without these handoffs, patterns surface but nothing changes.
 
-For very large multi-customer corpora, [exporting local transcripts](/earmark-basics/local-transcripts) and running an external agent is the alternative to manual assembly.
+If you want to run your own analysis, [export local transcripts](/earmark-basics/local-transcripts) and run an external agent on them.
 
 ## Routing into systems of record
 
@@ -527,11 +539,11 @@ For very large multi-customer corpora, [exporting local transcripts](/earmark-ba
 
 **Documentation team intake.** Documentation gaps routed to docs team's queue.
 
-**Engineering intake.** Bug reports and engineering-blocking items routed via the [meeting-to-tickets workflow](/workflows/meeting-to-tickets-workflow) and the [Linear integration](/integrations/linear).
+**Engineering intake.** Bug reports and engineering-blocking items routed via the [meeting-to-tickets workflow](/workflows/meeting-to-tickets-workflow) and the [Linear integration](/integrations/overview#linear).
 
 **CSM / Account record.** The CRM or CS platform's account record tracks the customer's overall trajectory.
 
-**Earmark archive as source.** Source meetings stay in Earmark. Every artifact links back. When a question arises six months later — *"what did we agree on about {topic} during the configuration phase?"* — the answer is one click from the artifact to the source. Especially valuable during renewal conversations and during escalations.
+**Earmark archive as source.** Source meetings stay in Earmark. Every artifact links back. When a question arises six months later — *"what did we agree on about {topic} during the configuration phase?"* — ask it in the customer's project chat and you get the answer with the excerpt it came from, even if a colleague ran that session. Especially valuable during renewal conversations and during escalations.
 
 ## Closing the loop
 
@@ -541,7 +553,7 @@ Three habits.
 
 **Milestone validation.** Before declaring an implementation milestone complete, run Template C and verify no critical items still open, all committed customer-side actions resolved or actively in progress, all committed trainer/team actions resolved or actively in progress, no risks unaddressed. Milestones declared complete without this check come back as escalations weeks later.
 
-**Onboarding retrospective.** Within 30 days of an implementation completing, run a brief retrospective using the customer's full implementation artifact archive. What did we promise? Did we deliver? What items took longest to resolve? Why? What patterns showed up that should inform the next implementation? What did we learn about the customer that should inform their post-launch engagement? What feedback should go to product, docs, engineering? The retrospective is what feeds learnings forward.
+**Onboarding retrospective.** Within 30 days of an implementation completing, run a brief retrospective in the customer's project chat, across the full implementation. What did we promise? Did we deliver? What items took longest to resolve? Why? What patterns showed up that should inform the next implementation? What did we learn about the customer that should inform their post-launch engagement? What feedback should go to product, docs, engineering? The retrospective is what feeds learnings forward.
 
 ## Common pitfalls
 
@@ -551,6 +563,7 @@ Three habits.
 - **No same-day customer email.** The email's value degrades hourly.
 - **Categorized items that don't get routed.** Items captured in the artifact but never sent to the destination they need to reach. The routing step is where value gets realized.
 - **No cross-customer synthesis.** Patterns that exist in the data go unseen because nobody runs Template D. Quarterly at minimum.
+- **Sessions missing from the customer's project.** Project chat focuses on the sessions in the project. A trainer who skips adding theirs leaves a hole in every snapshot. Add sessions before they start.
 - **Stuck implementations not getting diagnosed.** When an implementation drags, run the diagnostic synthesis.
 - **No milestone gating.** Going live without verifying critical items are resolved is the most common cause of post-launch escalations.
 - **No resolution tracking.** Open items accumulate forever. Trust in the artifact collapses.
@@ -563,14 +576,16 @@ Three habits.
 ## Where to go next
 
 - [Workflows](/workflows) — the general shape this is an instance of
+- [Projects](/earmark-basics/projects) — one per customer, shared with everyone who runs their sessions
+- [Chat](/earmark-basics/chat) — per-customer snapshots and cross-customer patterns, with sources
 - [Action items workflow](/workflows/action-items-workflow) — the general version this workflow specializes
 - [Email follow-up workflow](/workflows/email-follow-up-workflow) — for the customer-facing email patterns
 - [Meeting-to-tickets workflow](/workflows/meeting-to-tickets-workflow) — for routing bugs and engineering work to the tracker
 - [Customer research workflow](/workflows/customer-research-workflow) — for the customer-signal-capture sibling to this workflow
 - [SOPs and playbooks workflow](/workflows/sops-and-playbooks-workflow) — for documenting the implementation procedures themselves
 - [Demo and facilitator scripts workflow](/workflows/demo-and-facilitator-scripts-workflow) — for capturing how senior trainers run their sessions, as transferable scripts
-- [Linear integration](/integrations/linear) — for engineering tickets
+- [Linear integration](/integrations/overview#linear) — for engineering tickets
 - [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
 - [Composer](/using-earmark/composer) — for tuning the prompt before saving as a workspace template
 - [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding the template on every training session
-- [Local transcripts](/earmark-basics/local-transcripts) — for external synthesis on large cross-customer corpora
+- [Local transcripts](/earmark-basics/local-transcripts) — if you want to run your own analysis outside Earmark

@@ -1,7 +1,7 @@
 ---
 title: "Pre-meeting prep"
-description: "Use your captured meeting archive to walk into the next meeting already knowing what was discussed last time, what's open, what was promised, and what to address"
-keywords: ["meeting prep", "briefing", "1:1 prep", "customer prep", "coverage", "handoff", "workflow"]
+description: "Walk into every meeting prepared. Use Earmark Chat and past meetings to see what was discussed last time, what's still open, and what you promised."
+keywords: ["meeting prep", "briefing", "1:1 prep", "customer prep", "Chat", "calendar", "projects", "coverage", "handoff", "workflow"]
 ---
 
 There's a quiet pattern across most knowledge work. Meetings happen and get captured. The capture creates a growing archive — every customer call, every 1:1, every project meeting. Users invest in the capture; few invest in the retrieval. The result is an archive that's mostly write-only. You put meetings in; you rarely pull them out.
@@ -16,15 +16,19 @@ This guide is a specific instance of the [workflows](/workflows) pattern, applie
 
 Worth being precise about up front, because this workflow is more cross-meeting-dependent than any other in the series.
 
-**Single-call briefings work directly.** If your prep needs context from one specific prior meeting — *"what did we discuss in our call last Tuesday?"* — the Composer on that prior meeting gives you a usable briefing in seconds. Real today, no workaround needed.
+**Chat reads your calendar and your past meetings together.** With your [calendar connected](/getting-started/calendar), [Chat](/earmark-basics/chat) looks up to two weeks ahead in Google Calendar or Outlook and pairs each upcoming event with related past meetings. Ask *"Help me prepare for tomorrow using my past meetings"* — or click the **Prep for tomorrow** suggestion on the Chat home page — and Chat walks through tomorrow's calendar alongside what was said before, with source chips back to the calls it drew from.
 
-**Multi-call briefings use the manual workaround.** If your prep needs synthesis across many prior meetings — *"what's open across our last three calls with this customer?"* — that's the cross-meeting Q&A capability covered in the [ad-hoc Q&A](/workflows/ad-hoc-qa-workflow) page. Earmark refines artifacts within a single meeting today; multi-meeting briefings require manual context assembly: use the [command menu](/earmark-basics/command-menu) (`Cmd+K` / `Ctrl+K`) to find the relevant prior calls; paste the artifacts (or transcript excerpts) from each into a Customize-context document; run the briefing template against the assembled corpus.
+**Multi-call briefings are one question.** *"What's open across our last three calls with this customer?"* is a plain question in Chat. For a renewal or a long relationship, say *"all my meetings with Acme"* or name the period. Every answer ends with a **Coverage** line — the date range searched and how many meetings were reviewed — so you know how complete the briefing is before you walk in.
 
-**The morning sweep takes 10–15 minutes.** For users who run briefings on every substantive meeting, the morning sweep — generate all the day's briefings at once — is the practical pattern. Each briefing is 60–90 seconds of assembly plus a 30-second model run. Five briefings before a packed day works.
+**Meeting chat preps the meeting in front of you.** Open the meeting in Earmark, click **Chat** in its header, and choose **Help me prepare for this meeting**. The chat window moves and resizes, so it can sit beside your call.
 
-**For very large corpora** (every customer call across two years for a renewal conversation), [exporting local transcripts](/earmark-basics/local-transcripts) and running an external agent is the alternative to manual assembly.
+**Projects focus the corpus.** If a customer, report, or meeting series has its own [project](/earmark-basics/projects), ask from the project page. Chat looks only at that project's meetings, including ones teammates shared, and follows the project's **Instructions**.
 
-The rest of this guide is built around these mechanics. The workflow is fully usable today; the multi-call cases require the manual workaround the rest of the series has documented.
+**The morning sweep takes a few minutes.** One question covers the whole day's calendar. Scan the results, then run a fuller template (below) on the two or three meetings that matter most.
+
+**If you want to run your own analysis** — a custom pass across every customer call in two years, say — [exporting local transcripts](/earmark-basics/local-transcripts) and running an external agent is still an option.
+
+The rest of this guide is built around these mechanics: what to ask, which template to use, and the habit that makes it stick.
 
 ## Foundation
 
@@ -58,9 +62,9 @@ Briefings have a useful window. Too early and you'll forget by meeting time; too
 
 Practical patterns:
 
-- **Between meetings.** If you have back-to-back meetings, run the briefing as the previous one ends. Sixty seconds to assemble; one minute to read; into the next meeting prepped.
+- **Between meetings.** If you have back-to-back meetings, run the briefing as the previous one ends. One question; one minute to read; into the next meeting prepped.
 - **Morning sweep.** For meetings happening later in the day, do a sweep first thing in the morning. Briefings ready to glance at right before each meeting.
-- **End-of-day prep for next morning.** For the first one or two meetings of the next day, prep at end of today.
+- **End-of-day prep for next morning.** For the first one or two meetings of the next day, prep at end of today. The **Prep for tomorrow** suggestion on the Chat home page is built for this.
 - **On demand.** When meetings move or new ones drop in, run the briefing in the moment.
 
 ### Organize the corpus for retrieval
@@ -68,9 +72,8 @@ Practical patterns:
 The briefing queries your captured archive. Better organization produces sharper briefings.
 
 - **Name meetings consistently.** *"Customer X — Weekly check-in"* beats *"Meeting."* Cmd+K uses titles to find relevant prior calls.
-- **Tag meetings by relationship.** Customer name, project name, person name. Tags make the query efficient.
+- **Group each relationship in a project.** One [project](/earmark-basics/projects) per customer, account, or meeting series. Add meetings at any stage — even before they happen — from the project chip next to the meeting title, or tick several on the **Meetings** page and choose **Add to project**. Prep asked from the project page then draws only on that relationship.
 - **Keep identifiers consistent.** Don't switch between *"Acme"* and *"Acme Corp"* and *"Acme, Inc."* — the model handles small variations but consistency helps.
-- **Use Earmark's standard organizational features.** Whatever your version of folders, projects, or accounts is, use it consistently.
 
 The corpus doesn't need to be perfect; it needs to be navigable.
 
@@ -80,7 +83,7 @@ Each briefing has one owner: you, the person who'll be in the meeting. There's n
 
 ## The four templates
 
-Each template includes the manual workaround instructions in its preamble — *"assemble prior call artifacts into Customize context, then run this prompt."*
+Each template is a prompt you paste into [Chat](/earmark-basics/chat), or into a project's chat, with the braces filled in. The **Source material** line tells Chat which past meetings to draw on; it finds them itself. Run one in the [Composer](/using-earmark/composer) instead and it works from that one meeting, which suits single-call briefings.
 
 ### Template A — Account or customer briefing
 
@@ -89,11 +92,9 @@ For sales calls, CSM check-ins, customer review meetings, and any recurring conv
 ```md
 I have an upcoming meeting with {Customer / Account name} on {date}.
 
-Source material: Paste the artifacts from prior meetings with this
-customer over the past {N} months below. Include the most recent call
-plus any others where substantive context was set. If running against
-many calls, use Cmd+K to find them; export local transcripts for very
-large corpora.
+Source material: my past meetings with this customer over the past
+{N} months. Include the most recent call plus any others where
+substantive context was set.
 
 Produce a briefing covering everything I should walk in knowing.
 
@@ -175,10 +176,8 @@ For managers prepping for their next 1:1 with a report.
 ```md
 I have a 1:1 with {Report name} on {date}.
 
-Source material: Paste the artifacts from prior 1:1s with this report
-over the past {N} months below. Use the manual workaround pattern —
-Cmd+K to find prior 1:1s, paste relevant sections into Customize
-context.
+Source material: my prior 1:1s with {Report name} over the past {N}
+months.
 
 Produce a briefing covering everything I should walk in knowing.
 
@@ -250,8 +249,8 @@ For when you're covering for a colleague (or being covered for). The audience is
 {Colleague name} is unavailable. I am covering for them | briefing
 them for an upcoming meeting with {counterparty/topic} on {date}.
 
-Source material: Paste the artifacts from prior meetings between
-{Colleague} and {Counterparty} over the past {N} months below.
+Source material: prior meetings between {Colleague} and
+{Counterparty} over the past {N} months.
 
 Produce a briefing that lets the cover walk in informed.
 
@@ -324,6 +323,8 @@ needs to handle:
 
 The **"what to NOT commit to"** section is what makes coverage briefings actually usable. The cover walks in armed to handle the meeting and clear about the limits of their authority — so they don't accidentally commit to something the regular owner wouldn't have.
 
+Who runs it depends on what Chat can see. Chat uses meetings you recorded plus meetings shared with you through a project. If the colleague has shared the relationship's project with you, run Template C from that project yourself. If not, the colleague runs it and sends you the result.
+
 ### Template D — Recurring meeting refresh
 
 For ongoing internal meetings (weekly leadership sync, recurring project meeting, monthly cross-functional). The cadence is recurring; the briefing primes you on what's recently happened.
@@ -331,9 +332,9 @@ For ongoing internal meetings (weekly leadership sync, recurring project meeting
 ```md
 I have an upcoming {meeting name} on {date}.
 
-Source material: Paste the artifacts from the last {N} sessions of
-this meeting series below. Include any related discussions outside
-the series (relevant project meetings, strategic discussions).
+Source material: the last {N} sessions of this meeting series, plus
+any related discussions outside the series (relevant project
+meetings, strategic discussions).
 
 Format:
 
@@ -391,10 +392,10 @@ The recurring-meeting briefing is what makes you the person who walks into the s
 For sales and CS: Template A. For managers: Template B. For internal team leads: Template D. For anyone whose colleagues take PTO: Template C. Save the most-used first.
 </Step>
 <Step title="Save with Private visibility">
-Briefings are personal prep, not team standards. **Private** visibility is the right default. Templates can be exported and shared when standing up handoff scenarios. See [Custom templates](/customization/custom-templates).
+Briefings are personal prep, not team standards. **Private** visibility is the right default. Templates can be exported and shared when standing up handoff scenarios. You can also ask Chat to find a saved template or turn a format into a new one; new templates stay private unless you ask to share them with the workspace. See [Custom templates](/customization/custom-templates).
 </Step>
-<Step title="Practice the workaround once">
-Before relying on the workflow daily, run it once end-to-end on a real upcoming meeting: Cmd+K to find the prior calls; paste relevant sections into Customize context on a new task; run the briefing template. Notice the friction of the assembly step; that's where most of the per-briefing time goes.
+<Step title="Practice once on a real meeting">
+Before relying on the workflow daily, run it once end-to-end on a real upcoming meeting: paste the template into Chat with the braces filled in, then read the **Coverage** line and hover a few source chips. If Chat reviewed fewer meetings than you expected, widen the date range or name the meetings, and note the phrasing for next time.
 </Step>
 </Steps>
 
@@ -404,13 +405,13 @@ Before relying on the workflow daily, run it once end-to-end on a real upcoming 
 <Step title="Pick the template">
 Match to the meeting type. A for customer/account, B for 1:1s, C for coverage scenarios, D for recurring internal.
 </Step>
-<Step title="Assemble the source material">
-For single-call briefings: open the prior call's artifact directly and run the Composer on it.
+<Step title="Ask Chat">
+Paste the template into [Chat](/earmark-basics/chat) with the braces filled in — or into the project's chat, if the relationship has a [project](/earmark-basics/projects). Chat finds the prior meetings itself and shows which ones it's reading as it works. For long histories (renewal preparation across two years of customer history), say *"all my meetings"* or name the period.
 
-For multi-call briefings: use [Cmd+K](/earmark-basics/command-menu) to find the relevant prior meetings (search by customer name, person name, project name); copy the relevant sections from each into a Customize-context document on a new task. The assembly takes 60–90 seconds for most briefings. For large corpora (renewal preparation across two years of customer history), [export local transcripts](/earmark-basics/local-transcripts) and run an external agent.
+For a quick version, open the meeting, click **Chat** in its header, and choose **Help me prepare for this meeting**. For a single-call briefing, run the template in the Composer on the prior call.
 </Step>
-<Step title="Run the briefing template">
-Against the assembled material. Output appears in seconds.
+<Step title="Check the Coverage line">
+Did Chat review the meetings you expected? If the count looks low, widen the range or name the calls, and ask again. Hover the source chip on anything you plan to say out loud.
 </Step>
 <Step title="Scan, don't read">
 The briefing is a tool for priming, not a document for reading. Sixty seconds of scanning is usually enough. Headlines, bullets, verbatim quotes — close it, walk in.
@@ -430,9 +431,9 @@ The workflow's value depends entirely on consistency. A briefing run before half
 
 **The trigger.** For most users, the trigger is the calendar. Every recurring meeting on tomorrow's calendar gets a briefing today; every meeting today gets a briefing in the 5–30 minute window before it.
 
-**The morning sweep.** A useful pattern for managers and executives with packed days: a 15-minute morning sweep where you generate briefings for every substantive meeting on the day's calendar. Briefings sit ready; you scan each one in the minute before the meeting starts. The morning sweep prevents the failure mode of *"I'll prep right before the meeting"* — which collapses when meetings run long and you're walking in cold to the next one.
+**The morning sweep.** A useful pattern for managers and executives with packed days: first thing, ask Chat to *"help me prepare for today's meetings using my past meetings."* It pairs every event on the day's calendar with related past meetings in one pass. Run a full template on the two or three that matter most. Briefings sit ready; you scan each one in the minute before the meeting starts. The morning sweep prevents the failure mode of *"I'll prep right before the meeting"* — which collapses when meetings run long and you're walking in cold to the next one.
 
-**The between-meeting rhythm.** For users in back-to-back meetings, the briefing becomes part of the transition: meeting ends, briefing for next meeting runs, scan briefing while walking to the next room, meeting starts. The 60-second transition is enough.
+**The between-meeting rhythm.** For users in back-to-back meetings, the briefing becomes part of the transition: meeting ends, ask Chat to *"help me prepare for my next meeting,"* scan the answer while walking to the next room, meeting starts. The 60-second transition is enough.
 
 **The "skip prep" check.** For meetings you'd normally skip prep for, ask: would 30 seconds of preparation make this meeting better? If yes, run the briefing. The exception is highly repetitive meetings where the prior context is in your head — daily standups with the same team, twice-weekly status checks.
 
@@ -444,6 +445,8 @@ The single most underrated application of this workflow. Coverage scenarios — 
 
 **Covering for a colleague on PTO.** Day before PTO starts, the colleague generates Template C briefings for each meeting their cover will attend. Briefings get shared with the cover (Slack DM, email, shared doc). Cover scans each briefing 5 minutes before its meeting; walks in informed; counterparty barely notices the handoff. The investment from the colleague going on PTO: maybe 15 minutes generating briefings. The payoff for customer experience: substantial.
 
+**Share the project, not only the briefing.** If the colleague keeps the account's meetings in a [project](/earmark-basics/projects), they can **Share** it with the cover as a **Collaborator** before leaving. The cover can then ask Chat in that project the questions the briefing didn't anticipate — *"what did we promise them about the SSO timeline?"* — and get answers with short excerpts as sources. The cover sees each meeting's title, who recorded it, and when, but can't open the colleague's meetings, and pins stay private. The same move works for account transitions and onboarding. Keep 1:1s and other sensitive meetings out of shared projects.
+
 **Onboarding a new team member into ongoing situations.** Every new team member inherits a portfolio of ongoing relationships. Historically the onboarding is a series of "let me bring you up to speed" conversations. With this workflow, briefings get generated for each ongoing relationship; the new team member reads them in their first few days; they walk into their first meetings already informed. This is one of the highest-leverage uses of the workflow — new hires who would historically be useful at month four become useful at week three.
 
 **Account transitions.** When an account moves from one CSM/AE to another, the briefing is the handoff. The outgoing rep generates Template A; the incoming rep reads it; the relationship continues with the customer feeling continuity. Add personal context the model can't extract — *"Lisa is hard to read but always engaged when we talk about data; Marcus is the real decision-maker even though Lisa is the contact"*.
@@ -454,24 +457,19 @@ The single most underrated application of this workflow. Coverage scenarios — 
 
 ## What this workflow doesn't do (and how to work around it)
 
-The honest summary: this workflow is built on the cross-meeting Q&A pattern, which is the most-workarounded capability in the entire workflow series.
+The honest summary: this workflow is built on cross-meeting Q&A, and [Chat](/earmark-basics/chat) now handles most of it directly — multi-call customer briefings, 1:1 briefings drawing on a report's last six meetings, recurring-series refreshes, and calendar-aware prep for the next two weeks.
 
-What works without workaround:
+The limits worth knowing:
 
-- Single-call briefings (prep needs only the last meeting)
-- Asking a focused question of any one past meeting via the Composer
-- Finding prior meetings by keyword via [Cmd+K](/earmark-basics/command-menu) full-text search
+- **Chat only sees what you can see.** Meetings you recorded, plus meetings shared with you through projects. For coverage briefings on a colleague's relationship, the colleague shares the project or runs the briefing.
+- **Older history needs to be asked for.** Say *"all my meetings with Acme,"* or the period you mean. Check the **Coverage** line to confirm.
+- **Calendar lookahead needs a connected calendar,** and reaches up to two weeks ahead. See [Calendar](/getting-started/calendar).
+- **Temporary meetings aren't saved,** so they can't feed a later briefing.
+- **Anything that didn't happen in a meeting isn't there.** Slack threads, emails, and hallway conversations only show up if someone said them out loud on a recorded call.
 
-What requires the workaround pattern (paste relevant artifacts into Customize context, then run the briefing template):
+Finding a specific prior meeting by title or keyword is still a job for [Cmd+K](/earmark-basics/meeting-history#search-with-the-command-menu).
 
-- Multi-call briefings across a customer's history
-- 1:1 briefings drawing on the report's last six meetings
-- Project briefings synthesizing across many recent sessions
-- Coverage briefings spanning the original owner's full history with the counterparty
-
-The workaround is light enough to be practical — under 90 seconds for most briefings — but it's not zero-effort. If the workflow's value to you is large enough (and for most meeting-heavy professionals, it is), the workaround is worth running. If it's not, single-call briefings still give you most of the value at lower cost.
-
-For very large corpora (renewal preparation across two years; onboarding into a complex multi-year account), [exporting local transcripts](/earmark-basics/local-transcripts) and running an external agent is the alternative.
+If you want to run your own analysis (a custom pass across a multi-year account, say), [exporting local transcripts](/earmark-basics/local-transcripts) and running an external agent is still an option.
 
 ## Common pitfalls
 
@@ -480,9 +478,9 @@ For very large corpora (renewal preparation across two years; onboarding into a 
 - **Treating the briefing as a script.** The briefing primes you; it doesn't script the meeting.
 - **Generating briefings too early.** A briefing generated two days before the meeting may be slightly stale. Generate close to the meeting.
 - **Pasting raw briefing content into the meeting context.** Briefings often contain candid notes — *"watch for: customer was frustrated about pricing."* Don't paste these as-is into the meeting room or share with the counterparty.
-- **Assuming the briefing is complete.** The briefing reflects what was captured. If important context lived in Slack threads or emails Earmark didn't see, the briefing won't include it.
+- **Assuming the briefing is complete.** The briefing reflects what was captured. If important context lived in Slack threads or emails Earmark didn't see, the briefing won't include it. And read the **Coverage** line: a briefing built from two meetings when you've had eight is missing most of the story.
 - **Generating briefings for every meeting.** Some meetings don't benefit. Standups, all-hands, and first-time calls don't need them.
-- **Inventing context.** The model can fabricate plausible-sounding prior context that didn't actually happen. The verbatim-quote check is your defense — if the briefing references a specific quote, that's source-grounded; if it asserts a pattern without specifics, scrutinize.
+- **Inventing context.** The model can fabricate plausible-sounding prior context that didn't actually happen. The source check is your defense — if a claim has a source chip, hover it and read the excerpt; if the briefing asserts a pattern without specifics or sources, scrutinize.
 - **Not using briefings during handoffs and coverage.** The single largest missed opportunity. Coverage briefings should be standard practice.
 - **Letting briefings replace relationship-building.** The briefing primes you; it doesn't substitute for being attentive in the meeting itself.
 - **Reading the briefing during the meeting.** Visible reading reads as inattention. Read before; reference its content naturally.
@@ -490,12 +488,14 @@ For very large corpora (renewal preparation across two years; onboarding into a 
 ## Where to go next
 
 - [Workflows](/workflows) — the general shape this is an instance of
-- [Ad-hoc Q&A](/workflows/ad-hoc-qa-workflow) — the underlying capability this workflow systematizes; covers the cross-meeting workaround in detail
-- [Command menu](/earmark-basics/command-menu) — for finding the prior meetings to assemble into briefing context
-- [Local transcripts](/earmark-basics/local-transcripts) — for very large corpora where external synthesis is the alternative
+- [Chat](/earmark-basics/chat) — calendar-aware prep, meeting chat, sources, and the Coverage line
+- [Projects](/earmark-basics/projects) — grouping a relationship's meetings, and sharing them for coverage and handoffs
+- [Ad-hoc Q&A](/workflows/ad-hoc-qa-workflow) — the underlying capability this workflow systematizes; covers asking across meetings and verifying answers
+- [Command menu](/earmark-basics/meeting-history#search-with-the-command-menu) — for finding a specific prior meeting by title or keyword
+- [Local transcripts](/earmark-basics/local-transcripts) — if you want to run your own analysis
 - [People and team meetings workflow](/workflows/people-and-team-meetings-workflow) — for the 1:1 capture artifacts that feed Template B briefings
 - [Sales calls workflow](/workflows/sales-calls-workflow) — for the deal context that feeds Template A briefings on customer accounts
 - [Customer onboarding and training workflow](/workflows/customer-onboarding-and-training-workflow) — for implementation contexts where briefings draw on session histories
 - [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
-- [Composer](/using-earmark/composer) — the surface where briefing generation actually runs
+- [Composer](/using-earmark/composer) — for single-call briefings run on one prior meeting
 - [Before a meeting](/using-earmark/before-a-meeting) — the per-meeting workflow this prep workflow precedes

@@ -1,6 +1,6 @@
 ---
 title: "AI tool orchestration"
-description: "Use Earmark as the contextual substrate for your entire AI tool stack — converting meetings into well-shaped prompts for Claude Code, Cursor, v0, Perplexity, Obsidian, and the specialized AI tools your work depends on"
+description: "Use Earmark as the context layer for your AI tools, turning meetings into well-shaped prompts for Claude Code, Cursor, v0, Perplexity, and more."
 keywords: ["AI prompts", "Claude Code", "Cursor", "v0", "Perplexity", "Obsidian", "system prompt", "AI orchestration", "workflow"]
 ---
 
@@ -30,12 +30,12 @@ Before standing this up, inventory what you actually use and what each tool is g
 
 | Tool category | Tools | Best for |
 | --- | --- | --- |
-| Code generation | [Claude Code / Cursor / Aider](/integrations/cursor) | Code generation, refactoring, multi-file changes |
-| UI components | [v0 by Vercel](/integrations/v0) | React components, Tailwind UI |
+| Code generation | [Claude Code / Cursor / Aider](/integrations/overview#cursor) | Code generation, refactoring, multi-file changes |
+| UI components | [v0 by Vercel](/integrations/overview#v0) | React components, Tailwind UI |
 | Full-stack apps | Lovable, Bolt.new | Web apps with backend |
 | UI prototypes | Figma Make | UI prototypes with design-system context (see [meeting-to-prototype](/workflows/meeting-to-prototype-workflow)) |
-| Coded engineering tasks | [Codex](/integrations/codex) | Engineering tasks shaped by architecture docs |
-| Engineering tickets | [Linear](/integrations/linear) | Tickets that flow from architectural decisions |
+| Coded engineering tasks | [Codex](/integrations/overview#codex) | Engineering tasks shaped by architecture docs |
+| Engineering tickets | [Linear](/integrations/overview#linear) | Tickets that flow from architectural decisions |
 | General analysis | Claude / ChatGPT (Projects mode) | Analysis, writing, structured thinking |
 | Web research | Perplexity | Web research with citations |
 | Source-grounded analysis | Notebook LM | Analysis across uploaded documents |
@@ -43,7 +43,7 @@ Before standing this up, inventory what you actually use and what each tool is g
 | Knowledge vault / linked notes | Obsidian | Meeting-derived notes, analyses, and prompt libraries in markdown; wikilinks and tags for retrieval |
 | Persistent assistants | Custom GPTs, Claude Projects | Persistent assistants for specific recurring tasks |
 
-Earmark has direct integrations with Cursor, v0, Codex, and Linear (linked above). The rest are paste targets — Earmark generates the prompt; you paste into the tool.
+Earmark has direct integrations with Cursor, v0, Codex, and Linear (linked above). The rest are paste targets — Earmark generates the prompt; you paste into the tool. When the prompt comes from a [Chat](/earmark-basics/chat) answer, **Handoff to Claude Cowork** and **Handoff to Codex** open your question and the answer in that app directly, with no copy and paste.
 
 For each tool you use, know: what is it good at, what is it bad at, what does a good prompt for it look like?
 
@@ -389,6 +389,8 @@ End of system prompt.
 
 System prompts are the most strategically valuable category. They establish persistent context that makes every future interaction more productive. Once configured well, they eliminate the need to re-explain context at the start of each conversation. Configure deliberately; revisit quarterly as your work evolves.
 
+The context a system prompt needs (what you're focused on, who you work with, the terms your team uses) rarely lives in one meeting. Rather than assembling it by hand, paste Template D into [Chat](/earmark-basics/chat) and ask it to draw on your recent meetings, or run it from a [project](/earmark-basics/projects) page if the assistant is for one body of work. Rerun the same question at each quarterly revisit to see what's changed.
+
 ## Save them as workspace templates
 
 <Steps>
@@ -433,6 +435,24 @@ Does it match what you wanted? If yes, use the artifact. If no, refine the promp
 <Tip>
 Treating the chain as one-shot — *"ran it once, output wasn't great, gave up"* — is the most common failure mode. Treating it as iterative — *"ran it three times with specific refinements between each"* — is what produces results that outperform manual work.
 </Tip>
+
+## When the context spans several meetings
+
+The templates above run on one meeting. Often the context a good prompt needs is spread across several: a feature discussed over three design reviews, a research question that came up in five customer calls. Use [Chat](/earmark-basics/chat) for these.
+
+<Steps>
+<Step title="Ask Chat with the template">
+Open **Chat** from the sidebar, paste the template that matches the downstream tool, and say which meetings to draw on: *"Using our design reviews on the import flow from the last month, write a Claude Code prompt in this format."* If the work already has a [project](/earmark-basics/projects), ask from the project page so Chat focuses on that project's meetings, including ones teammates shared.
+</Step>
+<Step title="Check the sources">
+Hover the source chips to confirm each requirement came from a real conversation, and read the **Coverage** line to see how many meetings Chat reviewed. Name an older period if the context goes back further.
+</Step>
+<Step title="Hand off or copy">
+For Claude Cowork or Codex, **Handoff to Claude Cowork** or **Handoff to Codex** opens your question and the answer in that app, ready to keep working. For every other tool, **Copy** keeps the formatting and drops the source chips. Handoff sends the answer as it is, so if it needs scrubbing for sensitive content, copy and edit it instead.
+</Step>
+</Steps>
+
+If you want to run your own pipeline instead, export [local transcript files](/earmark-basics/local-transcripts) and point an external agent at them.
 
 ## The chain: tool/task matching
 
@@ -529,11 +549,13 @@ Three habits.
 - [Meeting-to-tickets workflow](/workflows/meeting-to-tickets-workflow) — for the engineering tickets that follow from architecture decisions
 - [Meeting-to-PRD workflow](/workflows/meeting-to-prd-workflow) — for product specs that motivate AI-tool work
 - [Architecture documentation workflow](/workflows/architecture-documentation-workflow) — for the technical documentation that often grounds engineering AI prompts
-- [Cursor integration](/integrations/cursor) — for coded implementation
-- [v0 integration](/integrations/v0) — for UI components
-- [Codex integration](/integrations/codex) — for engineering tasks
-- [Linear integration](/integrations/linear) — for tickets that flow from AI-tool work
+- [Cursor integration](/integrations/overview#cursor) — for coded implementation
+- [v0 integration](/integrations/overview#v0) — for UI components
+- [Codex integration](/integrations/overview#codex) — for engineering tasks
+- [Linear integration](/integrations/overview#linear) — for tickets that flow from AI-tool work
 - [Custom templates](/customization/custom-templates) — visibility, sharing, and edit permissions
 - [Composer](/using-earmark/composer) — for tuning the prompt before saving as a workspace template
 - [Before a meeting](/using-earmark/before-a-meeting) — pre-seeding the template on meetings expected to produce AI prompts
-- [Local transcripts](/earmark-basics/local-transcripts) — for export when you want to use the transcript with an external tool directly
+- [Chat](/earmark-basics/chat) — for prompts that draw on several meetings, and for handing answers off to Claude Cowork or Codex
+- [Projects](/earmark-basics/projects) — for keeping one body of work's meetings together so Chat can draw on them
+- [Local transcripts](/earmark-basics/local-transcripts) — for export when you want to run your own pipeline over the transcripts

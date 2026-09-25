@@ -1,86 +1,72 @@
 ---
 title: "Temporary meetings"
-description: "Run meetings that are intentionally ephemeral"
-keywords: ["temporary meetings", "ephemeral meetings", "data retention", "meeting privacy", "auto-delete"]
+description: "Temporary meetings let you transcribe and create artifacts without anything stored on Earmark's servers. Learn how they work and what's different."
+keywords: ["temporary meetings", "ephemeral meetings", "off the record", "data retention", "meeting privacy", "not stored"]
 ---
+
+import { Showcase } from "/snippets/showcase.jsx";
+
 
 ## What it does
 
-Temporary meeting mode lets your team capture and work with a meeting in real time, but with the understanding that the record won't persist long-term. The meeting, its transcript, artifacts, and participant data are all subject to the same 30-day soft-delete retention window, after which everything is permanently removed.
+Temporary meetings let you capture and work with a conversation in real time without saving it to your account or Earmark's servers. Live transcription, tasks, and artifacts work while the meeting is open. When you close it, the transcript, tasks, and artifacts are gone.
 
-This is not a separate meeting type. It's a mode you can enable per meeting or enforce across your entire workspace.
+This is a mode you turn on per meeting, or require across your whole workspace.
 
 ## Why teams use it
 
-- **Sensitive conversations**: personnel discussions, early-stage strategy, or topics where a permanent record isn't appropriate
-- **Brainstorming and exploration**: free-flowing idea sessions where you want real-time capture but don't need a lasting artifact
-- **Quick syncs**: short check-ins that don't warrant long-lived meeting history
-- **Compliance requirements**: teams that need to limit how long meeting data is retained
+- **Sensitive conversations**: personnel discussions, early-stage strategy, or topics where a lasting record isn't appropriate
+- **Brainstorming and exploration**: free-flowing sessions where you want live help but don't need history
+- **Quick syncs**: short check-ins that don't warrant a place in your meeting history
+- **Compliance requirements**: teams that can't keep meeting content on a third-party service
 
-## How it works
+## Start a temporary meeting
 
-When temporary mode is active for a meeting:
+<Steps>
+<Step title="Open a new meeting">
+Click **New meeting**, or use **Quick Capture** from the [toolbar](/using-earmark/toolbar).
+</Step>
+<Step title="Turn on temporary mode">
+Use the temporary meeting toggle in the meeting header before you start capture. The header shows **Temporary meeting** while it's on. Once capture starts, the mode is locked for that meeting.
+</Step>
+<Step title="Work as usual, then save what you need">
+Generate artifacts and copy anything you want to keep before you close the meeting. Earmark warns you before you leave a temporary meeting, because everything in it will be lost.
+</Step>
+</Steps>
 
-1. The meeting is created and functions normally: live transcription, artifact generation, templates, and all other features work as expected
-2. When the meeting is finished, it enters the soft-delete lifecycle automatically
-3. The meeting appears in **Recently deleted** in settings, where it can be restored within 30 days
-4. After the 30-day retention window, the meeting and all associated data are permanently purged
+<Showcase
+  src="/images/temporary-meeting-notice.png"
+  alt="A temporary meeting with the notice: This meeting is not stored on our servers. Export or copy anything you want to keep."
+/>
 
-<Note>
-Temporary meetings are fully functional during the session. Your team gets the same transcription, artifact generation, and template access as any other meeting. The only difference is the automatic cleanup afterward.
-</Note>
+## What's different in a temporary meeting
 
-## Workspace enforcement
+| Feature | Temporary meeting |
+| --- | --- |
+| Live transcription, tasks, and artifacts | Work normally while the meeting is open |
+| Meeting history, search, and Chat | Not saved, so it won't appear later |
+| [Pins](/earmark-basics/pins) | Not available |
+| [Projects](/earmark-basics/projects) | Can't be added |
+| Chat inside the meeting | Not available |
+| Restore after closing | Not possible. Nothing is kept to restore. |
 
-<Frame caption="Workspace setting to enforce temporary meetings">
-  <div
-    style={{
-      backgroundImage: 'url(/images/background-blue.png)',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      borderRadius: '1rem',
-      padding: '4%',
-    }}
-  >
-    <div
-      style={{
-        borderRadius: '0.875rem',
-        overflow: 'hidden',
-        boxShadow: '0 24px 60px rgba(15, 23, 42, 0.28)',
-      }}
-    >
-      <img
-        src="/images/settings-workspace-enforce-temporary-mode.png"
-        alt="Settings Workspace section showing the enforce temporary meetings toggle for the workspace."
-        style={{ width: '100%', display: 'block' }}
-      />
-    </div>
-  </div>
-</Frame>
+<Tip>
+On desktop, [local transcript files](/earmark-basics/local-transcripts) can still save a copy of a temporary meeting to your own device, if you've turned that on. Nothing is stored on Earmark's servers.
+</Tip>
 
-Workspace admins can **enforce temporary mode** for all new meetings created in the workspace. When this policy is active:
+## Require temporary mode for a workspace
 
-- Every new meeting automatically uses temporary mode
-- Individual users cannot override the setting
-- The setting is configured in **Settings > Workspace > Temporary meetings**
+Workspace admins can make every new meeting temporary. Turn on **Require temporary mode** under **Temporary meetings** in **Settings > Workspace**. When it's on:
 
-This is useful for teams with data retention policies or a preference for ephemeral meeting records across the board.
+- Every new meeting in the workspace is temporary
+- Members can't switch it off for individual meetings
+- Meetings saved before you turned it on aren't affected
 
 <AccordionGroup>
   <Accordion icon="shield" title="When this is a good choice">
-    Topics that benefit from immediate alignment but should not become part of long-lived team history. Early-stage product explorations, sensitive HR discussions, one-off brainstorms, or any session where the team agrees upfront that the conversation shouldn't persist.
+    Conversations that benefit from live help but shouldn't become part of your team's history: early-stage explorations, sensitive HR discussions, one-off brainstorms, or any session where everyone agrees upfront that nothing should be kept.
   </Accordion>
   <Accordion icon="triangle-exclamation" title="What to watch for">
-    If action items or decisions need to be revisited later, generate and share an artifact before the meeting ends. Once the retention window closes, there is no way to recover the meeting data.
+    If action items or decisions need to be revisited later, copy the artifact somewhere safe before you close the meeting. Once it's closed, there's no way to get it back.
   </Accordion>
 </AccordionGroup>
-
-## Data retention lifecycle
-
-| Stage | What happens |
-| --- | --- |
-| **During the meeting** | Fully functional: transcription, artifacts, templates all work normally |
-| **After the meeting** | Meeting enters soft-delete; visible in Recently deleted for 30 days |
-| **After 30 days** | Meeting and all associated data (transcript, tasks, artifacts, participants) are permanently purged |
-
-When a meeting is deleted, all associated data is cascade-deleted with it. Restoring a meeting within the 30-day window brings everything back: transcript chunks, tasks, artifacts, and participant records.

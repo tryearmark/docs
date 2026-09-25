@@ -1,6 +1,6 @@
 ---
 title: "Workflows"
-description: "Make the same kind of meeting produce the same shape of output every time"
+description: "Earmark workflow guides show how to turn recurring meetings into consistent outputs, from recaps and action items to PRDs, tickets, decks, and playbooks."
 keywords: ["workflows", "repeatable meetings", "templates", "custom templates", "meeting patterns", "artifact destinations"]
 ---
 
@@ -113,11 +113,11 @@ A prompt proven on a real meeting transfers to the next real meeting better than
 
 | If you run… | Template to start from | Where the output goes |
 | --- | --- | --- |
-| **Sprint planning** | Engineering Specs + Ticket Generator | [Linear](/integrations/linear) |
+| **Sprint planning** | Engineering Specs + Ticket Generator | [Linear](/integrations/overview#linear) |
 | **Discovery or customer calls** | Client Call + Topic Outcome Tracker | Slack, Notion, your CRM |
 | **Stakeholder reviews** | Stakeholder Review + Executive Summary | Email to leadership |
-| **Design reviews** | PRD Outline | [v0](/integrations/v0) or [meeting-to-prototype](/workflows/meeting-to-prototype-workflow) |
-| **Engineering syncs** | Engineering Specs + Decision Summary | [Cursor](/integrations/cursor) or [Codex](/integrations/codex) |
+| **Design reviews** | PRD Outline | [v0](/integrations/overview#v0) or [meeting-to-prototype](/workflows/meeting-to-prototype-workflow) |
+| **Engineering syncs** | Engineering Specs + Decision Summary | [Cursor](/integrations/overview#cursor) or [Codex](/integrations/overview#codex) |
 | **Weekly team sync** | Real-Time Meeting Minutes + Slack Update Post Generator | Slack |
 | **1:1s** | [People and team meetings](/workflows/people-and-team-meetings-workflow) | Shared with your report same day |
 
@@ -145,15 +145,16 @@ The model gets things wrong. Every workflow assumes a few minutes of curation, n
 
 ## What workflows don't do
 
-Each artifact is tied to the meeting it came from. Earmark refines outputs within a single meeting, not across many — so a question like "summarize every pain point we heard this quarter" isn't a one-click action inside Earmark today.
+Each artifact is tied to the meeting it came from. A template shapes the output of one meeting, not many — it won't roll twenty calls into one artifact on its own.
 
-Practical workarounds:
+For questions that span meetings, like "summarize every pain point we heard this quarter":
 
-- **Search across meetings** with the [command menu](/earmark-basics/command-menu) (`Cmd+K` / `Ctrl+K`) to find specific discussions, decisions, or action items.
+- **Ask [Chat](/earmark-basics/chat).** It answers across your meetings, cites the ones it drew from, and ends with a **Coverage** line showing the date range and how many meetings it reviewed. Group a customer's or a series' meetings in a [project](/earmark-basics/projects) to keep answers to just those.
+- **Find a specific meeting or artifact** with the [command menu](/earmark-basics/meeting-history#search-with-the-command-menu) (`Cmd+K` / `Ctrl+K`) when you know what you're looking for.
 - **Aggregate in the destination tool.** Twenty artifacts in the same Notion table is one filter away from a quarterly view. This is the payoff for the stable template shape.
-- **Use [local transcript files](/earmark-basics/local-transcripts)** with an external agent if you want a rollup you control end-to-end.
+- **Use [local transcript files](/earmark-basics/local-transcripts)** with an external agent if you want to run your own analysis end-to-end.
 
-Without the repeatable template, none of these have anything aggregateable to work on. That's why the template comes first.
+Chat can answer from raw transcripts, but the durable record your team filters, sorts, and reports on only exists if every artifact has the same shape. That's why the template comes first.
 
 ## Guides
 
@@ -161,7 +162,7 @@ Step-by-step guides for specific meeting types. Each is an instance of the three
 
 ### Essentials
 
-Start here for outputs every team needs — use [ad-hoc Q&A](/workflows/ad-hoc-qa-workflow) when you need a grounded answer from a single call, or [pre-meeting prep](/workflows/pre-meeting-prep-workflow) when you need context before the next one.
+Start here for outputs every team needs — use [ad-hoc Q&A](/workflows/ad-hoc-qa-workflow) when you need a grounded answer from one call or many, or [pre-meeting prep](/workflows/pre-meeting-prep-workflow) when you need context before the next one.
 
 <CardGroup cols={2}>
   <Card title="Advanced meeting recaps" icon="file-text" href="/workflows/generic-recaps-workflow">
@@ -174,7 +175,7 @@ Start here for outputs every team needs — use [ad-hoc Q&A](/workflows/ad-hoc-q
     Turn every working meeting into decisions, todos, open questions, and a shareable summary — same shape, every time.
   </Card>
   <Card title="Ad-hoc Q&A" icon="circle-question" href="/workflows/ad-hoc-qa-workflow">
-    Ask any recorded meeting a question and get a grounded answer — patterns, verification, and cross-call workarounds.
+    Ask one meeting or all of them a question and get a grounded answer — patterns, verification, and asking across meetings with Chat.
   </Card>
   <Card title="Pre-meeting prep" icon="clipboard-check" href="/workflows/pre-meeting-prep-workflow">
     Use your captured archive before the next meeting — open threads, commitments, and a recommended opening, not a cold start.

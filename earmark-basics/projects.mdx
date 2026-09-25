@@ -1,0 +1,141 @@
+---
+title: "Projects"
+description: "Group related meetings into Earmark projects, share them with teammates, and ask Chat across them. Learn roles, sharing, and what others can see."
+keywords: ["projects", "group meetings", "shared meetings", "project chat", "collaborators", "share meetings", "organize meetings"]
+---
+
+import { Showcase } from "/snippets/showcase.jsx";
+
+
+## What it does
+
+Projects group related meetings, like a customer, a launch, or a hiring loop, so their context lives in one place. Share a project with teammates, and everyone in it can ask [Chat](/earmark-basics/chat) questions across all of its meetings.
+
+Projects are private until you share them.
+
+<Showcase
+  src="/images/projects/project-page.png"
+  alt="The Chotchkie's launch project page with a chat box, three suggested questions, and Chats and Meetings tabs."
+/>
+
+## Why teams use it
+
+- Keep every meeting about one customer, launch, or initiative together, even when the titles don't match
+- Ask questions across a whole body of work, like "What decisions have we made?"
+- Give teammates the same context without forwarding notes or transcripts
+
+## Create a project
+
+<Steps>
+<Step title="Start a new project">
+Click **New** on the **Projects** page, or the **+** next to **Your projects** in the sidebar.
+</Step>
+<Step title="Name it">
+Type a project name. Earmark suggests a matching icon and color as you type. Click the icon to pick your own instead.
+</Step>
+<Step title="Create it">
+Click **Create project**.
+</Step>
+</Steps>
+
+<Showcase
+  src="/images/projects/create-project.png"
+  maxWidth="460px"
+  alt="The Create project dialog with the name Chotchkie's launch and a suggested rocket icon."
+  caption="Earmark suggests an icon and color from the name"
+/>
+
+You can also create a project while you're organizing meetings: choose **New project** from a meeting's project menu, and Earmark adds that meeting to it.
+
+<Tip>
+Open **Project settings** to add a **Description** and **Instructions**. Instructions shape how Earmark responds in this project's chats, for example "Focus on customer commitments and open risks."
+</Tip>
+
+## Add meetings
+
+A meeting can join a project at any stage: before it starts, while it's live, or after it ends. A meeting can belong to more than one project. You can add meetings you created.
+
+- **From a meeting:** click the project chip next to the meeting title and tick the projects you want.
+- **From the Meetings page:** open a meeting's **…** menu and choose **Add to project**.
+- **Several at once:** on the **Meetings** page, hover over a meeting and tick its checkbox. Shift-click selects a range, up to 50 meetings. Then click **Add to project** in the toolbar that appears.
+
+<Showcase
+  src="/images/projects/add-to-project.png"
+  alt="The Meetings page with three meetings selected and the Add to project menu listing Chotchkie's launch, Q4 roadmap, and New project."
+/>
+
+To take a meeting out of a project, untick it in the same menus, or open the project's **Meetings** tab and choose **…** > **Remove from project**. Removing a meeting from a project doesn't delete the meeting.
+
+<Note>
+[Temporary meetings](/earmark-basics/temporary-meetings) can't be added to projects.
+</Note>
+
+## Chat with a project
+
+On the project page, type a question in the chat box, or start with a suggestion like **What's the latest status?** or **What should we focus on next?** Answers draw on the project's meetings and follow its instructions. Ask Chat to look beyond the project if you need to.
+
+Your project chats appear on the project's **Chats** tab. Chats are private: other people in the project don't see yours.
+
+## Share a project
+
+<Steps>
+<Step title="Open sharing">
+On the project page, click **Share**.
+</Step>
+<Step title="Find your teammates">
+Search by name or email. You can add anyone in your workspace.
+</Step>
+<Step title="Choose a role and add them">
+Pick **Owner** or **Collaborator**, then click **Add**.
+</Step>
+</Steps>
+
+<Showcase
+  src="/images/projects/project-roles.png"
+  maxWidth="380px"
+  alt="The role menu in Share project with Owner and Collaborator and their descriptions."
+/>
+
+| Role | What they can do |
+| --- | --- |
+| **Owner** | Manage people, edit project settings, and delete the project |
+| **Collaborator** | Use the project in Chat and add their own meetings |
+
+A project can have several owners, and always needs at least one.
+
+### What people in a project can see
+
+When you add a meeting to a shared project, everyone in the project can see its title, who recorded it, and when. They can't open your meeting, but Chat can use its transcript and notes to answer their questions in that project, and can show short excerpts as sources. Your [pins](/earmark-basics/pins) stay private.
+
+If someone is removed from a project, the meetings they added stay in it as shared context.
+
+## Project settings
+
+Owners can open the **…** menu on the project page and choose **Project settings** to change the name, description, and instructions. Click the project's icon to change its icon and color.
+
+<Showcase
+  src="/images/projects/project-settings.png"
+  maxWidth="420px"
+  alt="Project settings for Q4 roadmap with a description and instructions filled in."
+/>
+
+## Delete a project
+
+Owners can open the **…** menu and choose **Delete project**. The meetings in it aren't deleted. You can restore a deleted project within 30 days from **Settings > Recently deleted**.
+
+## FAQs
+
+<AccordionGroup>
+  <Accordion title="Can I share a project with someone outside my workspace?">
+    No. You can only add people who are members of your workspace.
+  </Accordion>
+  <Accordion title="Can I add a teammate's meeting to my project?">
+    No. You can only add meetings you created. Ask your teammate to add theirs.
+  </Accordion>
+  <Accordion title="How do I leave a project?">
+    For now, ask a project owner to remove you. We're working on letting you leave a project yourself.
+  </Accordion>
+  <Accordion title="What happens when someone leaves the workspace?">
+    They lose access to its projects. If they were a project's last owner, the longest-standing collaborator becomes the owner. If no one else is in the project, it's removed.
+  </Accordion>
+</AccordionGroup>
