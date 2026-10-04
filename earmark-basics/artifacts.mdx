@@ -5,6 +5,8 @@ description: "Turn meetings into AI artifacts like summaries, PRDs, tickets, and
 keywords: ["AI artifacts", "meeting summaries", "action items", "PRD generation", "meeting deliverables"]
 ---
 
+import { Showcase } from "/snippets/showcase.jsx";
+
 ## Not notes. Real work.
 
 Artifacts are not meeting summaries. They're structured, shippable deliverables: PRDs, Linear/Jira tickets, decision logs, exec updates, engineering specs, and follow-ups, generated directly from the live conversation.
@@ -72,6 +74,23 @@ Check the artifact, then share it with your team. Artifacts are visible to every
 ## Every meeting gets a summary
 
 The first time you stop a meeting, Earmark adds a **Real-Time Meeting Summary and Action Items** task for you, so every meeting ends with something useful. If you've already added a summary task, Earmark skips this one. [Temporary meetings](/earmark-basics/temporary-meetings) get the same default task.
+
+New summary tasks group your discussion into a few broad sections, with headings that fit the conversation and decisions alongside their topics. They end with **Action Items**, naming owners and any deadlines stated. If nobody took ownership, the item is marked **Unassigned**. Existing tasks keep their saved prompts.
+
+## Share an artifact
+
+Hover over an artifact card to find **Copy** and **Copy as image** in its lower-right corner. You can also open the artifact in fullscreen and use the same controls at the top of **Live Preview**.
+
+- **Copy** keeps the artifact's formatting when you paste it into another document.
+- **Copy as image** creates an image of the artifact, with your name and the meeting's title and date when available. Wide tables expand the image so their columns stay readable.
+
+Wait for **Image copied to clipboard**, then paste wherever you want to share it. If your browser can't copy the image, Earmark downloads it instead.
+
+<Showcase
+  src="/images/changelog/2026-10-02/artifact-image.png"
+  alt="An image of a fictional Initech meeting recap with the meeting title and date, decisions, next steps, and a Shared by footer."
+  caption="What Copy as image creates"
+/>
 
 ## Live updates
 
