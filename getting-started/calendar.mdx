@@ -40,7 +40,7 @@ When meetings are connected to your calendar, you start faster, stay in context,
 
 <Columns cols={2}>
   <Card title="One-click join and capture" icon="bolt">
-    See upcoming meetings in the sidebar and start recording instantly, with no manual setup.
+    Open your call and start recording in one click, right from a desktop notification or the toolbar.
   </Card>
   <Card title="Never miss a meeting" icon="bell">
     Get desktop notifications before meetings with a button to join and start capturing.
@@ -100,7 +100,7 @@ After connecting, choose which calendars appear in Earmark. Toggle individual ca
 
 Once connected, today's meetings appear in the **Coming up** section of the sidebar. Each meeting shows:
 
-<Frame caption="Sidebar Coming up with upcoming meetings and join actions">
+<Frame caption="Coming up in the sidebar">
   <div
     style={{
       backgroundImage: 'url(/images/background-blue.png)',
@@ -119,7 +119,7 @@ Once connected, today's meetings appear in the **Coming up** section of the side
     >
       <img
         src="/images/upcoming-meetings-sidebar.png"
-        alt="Earmark sidebar showing the Coming up section with upcoming meetings, countdown badges, and join controls."
+        alt="Earmark sidebar showing the Coming up section with one upcoming meeting, Weekly Team Sync, and an in 31m countdown badge."
         style={{ width: '100%', display: 'block' }}
       />
     </div>
@@ -128,7 +128,9 @@ Once connected, today's meetings appear in the **Coming up** section of the side
 
 - The meeting title from your calendar
 - A countdown badge showing time remaining ("in 30m", "in 2h", "now")
-- A link to join and start capturing
+- A hover preview with the date, time, and assigned projects
+
+Click a meeting to open it in Earmark. Long titles scroll into view when you hover.
 
 Meetings that have passed their end time are automatically hidden unless they're actively being recorded.
 
@@ -147,9 +149,25 @@ Placeholder events, like focus time or reminders you put on your own calendar, c
   alt="Calendar settings showing Show events with no attendees under Coming up, and Show countdown under Menu bar with a preview."
 />
 
+### Finding the join link
+
+Earmark looks for the call link in your event's conferencing details, location, and description. Passcodes stay attached even when the link sits in a formatted description, and an unrelated link, like one to your agenda, doesn't stop Earmark from finding the call. Zoom webinar links work too.
+
+If Earmark can't find a call link, open the event in your calendar and check that it has one.
+
+### Joining your call
+
+When a scheduled meeting is underway, open it in the desktop app. If the event has a call link, a button such as **Join Zoom**, **Join Google Meet**, or **Join Teams** appears above the transcript. Click it to open the call.
+
+This button doesn't start recording, so you can get settled first. Start capture from the meeting's capture controls when you're ready. To join and record in one click, use **Join & capture** from a desktop notification, or click the meeting under **Coming up** in the [Earmark toolbar](/using-earmark/toolbar#coming-up).
+
+The button hides when Earmark detects an active call. To hide it yourself, click **Dismiss meeting link**. It stays hidden for your current visit and can reappear when you reopen the meeting, as long as the scheduled meeting is still happening.
+
+With desktop 1.9.0 or later, supported Zoom links open straight in Zoom instead of going through your browser first. If Zoom isn't installed or the link can't open directly, Earmark falls back to the original web link. Other meeting tools open the way they always have.
+
 ## Desktop notifications
 
-Enable **One click join and capture** in calendar settings to receive a notification before each meeting. The notification includes a button to join the meeting and start recording instantly.
+Turn on **One click join and capture** in calendar settings to get a notification before each meeting. Click **Join & capture** in the notification to open the call and start recording together. That's the difference from the call button above the transcript, which only opens the call.
 
 To hear a sound when the reminder appears, choose one under **Reminder sound**. You'll hear a preview as you pick. The default is **None**. Click **Show example** to see the full notification.
 
