@@ -67,7 +67,7 @@ Point Claude Code, Claude Cowork, Codex, Cursor or your local AI agent of choice
 - What decisions were made in the product sync on Monday?
 - Are there any open questions or unresolved threads from this week's meetings?
 
-If the meeting title changes after the file is written (for example, a system-generated title arrives), Earmark rewrites the file automatically.
+For saved meetings, Earmark waits for participant details to load before writing the file. While the meeting is open, it rewrites the file if the title or participant details change.
 
 <Note>
   This is a desktop-only feature. It requires the Earmark Mac or Windows app version 1.4.1 or later.
@@ -108,7 +108,7 @@ Open **Settings > Personalization > Meeting files** to manage local transcripts.
 
 ## File format
 
-Each file is named with the meeting start time in UTC, for example `2026-03-20_21-30-00Z.md`. Inside the file, the metadata stays in your local time zone and includes the timezone. Each file has frontmatter followed by a `## Transcript` section:
+Each file is named with the meeting start time in UTC, for example `2026-03-20_21-30-00Z.md`. Inside, times are in your local time zone, and the `timezone` field says which one. The file starts with frontmatter, followed by a `## Transcript` section:
 
 ```markdown
 ---
@@ -125,8 +125,10 @@ format_version: 1
 
 ## Transcript
 
-Alex: Let's start with the status update...
+Me: Let's start with the status update...
 ```
+
+In `participants`, each person's email address appears alongside their account name, calendar name, or a readable version of their email address, in that order of preference. These are meeting participants, not individual speaker labels. Desktop recordings label transcript lines `Me:` and `Them:`. Web recordings and older desktop recordings don't have speaker labels. See [Who said what](/earmark-basics/transcription#who-said-what).
 
 <Warning>
   **Transcript not accessible?** iCloud Drive may be offloading the file to save
