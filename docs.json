@@ -42,6 +42,7 @@
             "icon": "book-open",
             "pages": [
               "earmark-basics/transcription",
+              "earmark-basics/speaker-labels",
               "earmark-basics/auto-end",
               "earmark-basics/chat",
               "earmark-basics/projects",
