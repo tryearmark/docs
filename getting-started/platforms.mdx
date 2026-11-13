@@ -53,12 +53,21 @@ For the best transcription quality on remote meetings, use the desktop app.
 
 ### Permissions
 
-| Permission | Web | Desktop (macOS) | Desktop (Windows) |
-| --- | --- | --- | --- |
-| Microphone | Browser prompt | System Preferences | Windows Settings |
-| System audio | Not available | Screen & System Audio Recording permission | System audio permission |
+On desktop, when **Set up meeting capture** appears, enable the two audio sources:
 
-On macOS, system audio capture requires the "Screen & System Audio Recording" permission. Despite the name, Earmark only captures audio; no visual screen content is recorded or stored.
+1. Next to **Capture your voice**, click **Enable access** and allow your microphone.
+2. Next to **Capture everyone else**, click **Enable access** and follow the system prompt for meeting audio.
+3. Return to Earmark. It checks your permissions again; once both sources are enabled, click **Continue**.
+
+On supported Macs, Earmark can capture system audio without screen-recording access. Older Mac setups may still ask for **Screen & System Audio Recording** permission. Earmark captures audio, not your screen.
+
+Update to desktop 1.13.0 for buttons that open the matching system settings page. If a permission stays disabled, allow Earmark in your system settings, then return to the app.
+
+<Note>
+Seeing **Start capture** doesn't guarantee that meeting audio is enabled. If you allow only your microphone, Earmark may record your voice without the other side of the call. Check both audio sources before a remote meeting.
+</Note>
+
+On the web, allow microphone access in your browser. System audio capture isn't available there.
 
 ## Calendar integration
 
