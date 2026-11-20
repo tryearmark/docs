@@ -74,7 +74,7 @@ That's it. During a meeting there's nothing extra to do: capture as usual, and n
 
 ## What to expect
 
-Each line in the live transcript shows who said it. Your lines use your Earmark profile name, and other people's use their Zoom names. While someone is still talking, a gray placeholder holds the spot until their name appears.
+Your lines use your Earmark profile name. When Earmark can identify another speaker, their name appears above what they said. You may see a gray placeholder while they're still speaking.
 
 <Showcase
   src="/images/speaker-labels/transcript.png"
@@ -82,12 +82,12 @@ Each line in the live transcript shows who said it. Your lines use your Earmark 
   caption="Speaker labels in the live transcript"
 />
 
-- **Lines Earmark isn't sure about stay unnamed.** Anyone Earmark can't safely name shows as **Them**.
-- **Overlapping speech is harder.** When people talk over each other or right after one another, some lines may be labeled **Them** or get the wrong name.
+- **Unidentified speakers stay unnamed on screen.** Copied transcripts and local Markdown files still use `Them:` for these lines.
+- **Overlapping speech is harder.** When people talk over each other or right after one another, some lines may stay unnamed or show the wrong name.
 - **Shared rooms show one name.** If several people join through one Zoom connection, like a conference room, they all get that connection's name.
 - **Other audio isn't named.** Sound from other apps on your Mac can show up in the transcript without a name.
 - **Immersive view isn't supported.** Switch to one of the views above.
-- **Names start from your next capture.** Earlier transcripts keep their **Me** and **Them** labels.
+- **Names start from your next capture.** Turning on speaker labels doesn't add names to earlier transcripts.
 
 ## Privacy
 
@@ -106,10 +106,10 @@ Make sure you're using the latest Earmark desktop app for Mac. Speaker labels is
 In **System Settings > Privacy & Security > Device Control and Data Access** (**Accessibility** on macOS 26 and earlier), turn **Earmark** off and on again, then switch back to Earmark. If it still doesn't show **Allowed**, quit and reopen Earmark.
 </Accordion>
 
-<Accordion title="Names show as Them">
+<Accordion title="Speaker names are missing">
 1. **Check your Zoom app.** Use the Zoom desktop app, version 7.2.5 or later, not Zoom in a browser.
 2. **Use a supported view.** Speaker, Gallery, Dynamic gallery, or Multi-speaker. In large meetings, use Speaker view.
 3. **Keep the meeting window open.** Names pause while it's minimized.
-4. **Turn on Always show meeting controls.** In Zoom, open **Settings > General** and turn it on. Gallery names can pause while Zoom hides its controls.
+4. **Keep meeting controls visible.** In Zoom, open **Settings > Meetings & webinars** and turn on **Keep meeting controls visible** under **Controls**. Names can stop updating in Gallery view when the controls are hidden.
 </Accordion>
 </AccordionGroup>
